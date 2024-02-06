@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    @apply font-primary;
+}
+
+@font-face {
+    font-family: 'ttnorms';
+    src: url('./fonts/TTNorms-Regular.otf');
+}
+
+@font-face {
+    font-family: 'ttnormsBold';
+    src: url('./fonts/TTNorms-Bold.otf');
+}
+
+@font-face {
+    font-family: 'kantumruyPro';
+    src: url('./fonts/KantumruyPro-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'kantumruyProBold';
+    src: url('./fonts/KantumruyPro-Bold.ttf');
+}

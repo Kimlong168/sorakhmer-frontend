@@ -1,7 +1,14 @@
+import Home from "./pages/Home";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 export default function App() {
   return (
-    <h1 className="text-3xl font-bold underline text-red-600 container bg-blue-300">
-      Hello world!
-    </h1>
-  )
+    <>
+      <Router>
+        <Routes>
+          {/* authentication */}
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </Router>
+    </>
+  );
 }

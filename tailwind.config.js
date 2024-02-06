@@ -15,11 +15,39 @@ export default {
       xl: "1350px",
     },
     extend: {
-      colors: {
-        primary: "rgb(134,0,22)",
-        accent: "rgb(255,255,255)",
-        // will be changed to the current theme
+      fontFamily: {
+        primary: ["ttnorms"],
+        "primary-bold": ["ttnormsBold"],
+        secondary: ["kantumruyPro"],
+        "secondary-bold": ["kantumruyProBold"],
       },
+      colors: {
+        primary: "#fa9f00",
+        "primary-content": "#0A0A0A",
+        "primary-light": "#ffb32e",
+        "primary-dark": "#c77f00",
+        
+        secondary: "#fac900",
+        "secondary-content": "#313131",
+        "secondary-dark": "#c7a000",
+        "secondary-light": "#ffd62e",
+
+        background: "#f1f0ee",
+        foreground: "#fcfbfb",
+        border: "#e2e0dc",
+
+        copy: "#2a2722",
+        "copy-light": "#70695c",
+        "copy-lighter": "#988f81",
+
+        success: "#00fa00",
+        warning: "#fafa00",
+        error: "#fa0000",
+
+        "success-content": "#000000",
+        "warning-content": "#000000",
+        "error-content": "#fffafa"
+    },
     },
   },
   plugins: [],
