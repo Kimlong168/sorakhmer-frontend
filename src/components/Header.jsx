@@ -7,11 +7,11 @@ import {
 import { FaFacebook } from "react-icons/fa";
 import logo from "../assets/images/sorakhmer-logo.png";
 import SideBar from "./SideBar";
-// import MenuButton from "./MenuButton";
 import { useState } from "react";
 import ToggleLightDarkMode from "./ToggleLightDarkMode";
 import NavLink from "./NavLink";
 import NavLinkDropdown from "./NavLinkDropdown";
+import MenuButton from "./MenuButton";
 const Header = () => {
   const [showSideBar, setShowSideBar] = useState(false);
   return (
@@ -33,7 +33,7 @@ const Header = () => {
             <div className="w-[100px]">
               <img src={logo} alt="logo" />
             </div>
-            <ul className="flex items-center gap-8 font-bold uppercase">
+            <ul className="hidden lg:flex items-center gap-8 font-bold uppercase">
               <li className="cursor-pointer">
                 <NavLink href="#" title="Home" />
               </li>
@@ -56,8 +56,11 @@ const Header = () => {
           <div className="flex items-center gap-5 text-2xl">
             <ToggleLightDarkMode />
             <FaShoppingCart className="cursor-pointer hover:text-primary" />
-            <div onClick={() => setShowSideBar((prev) => !prev)}>
-              {/* <MenuButton active={false} /> */}
+            <div
+              className="lg:hidden"
+              onClick={() => setShowSideBar((prev) => !prev)}
+            >
+              <MenuButton active={false} />
             </div>
           </div>
         </nav>

@@ -63,7 +63,7 @@ const SideBar = ({ setShowSideBar }) => {
 
       <div
         onClick={() => setShowSideBar((prev) => !prev)}
-        className="fixed top-4 right-4  text-white"
+        className="fixed top-0 right-0 md:top-4 md:right-4 z-[10] text-white"
       >
         <MenuButton active={true} />
       </div>
