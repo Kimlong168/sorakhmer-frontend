@@ -1,0 +1,14 @@
+/* Chrome, Edge, and Safari */
+#sideBar::-webkit-scrollbar {
+    width: 5px;
+}
+
+#sideBar::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+#sideBar::-webkit-scrollbar-thumb {
+    background-color: #FA9F00;
+    border-radius: 0px;
+    border: 0px solid #ffffff;
+}

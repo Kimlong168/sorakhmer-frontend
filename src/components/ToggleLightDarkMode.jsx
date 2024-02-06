@@ -29,8 +29,8 @@ const SliderToggle = ({ selected, setSelected }) => {
           setSelected("light");
         }}
       >
-        <FiMoon className="relative z-10 text-lg md:text-sm" />
-        <span className="relative z-10">Light</span>
+        <FiMoon className="relative z-10 text-lg md:text-sm " />
+        <span className="relative z-10 hidden md:block">Light</span>
       </button>
       <button
         className={`${TOGGLE_CLASSES} ${
@@ -40,8 +40,8 @@ const SliderToggle = ({ selected, setSelected }) => {
           setSelected("dark");
         }}
       >
-        <FiSun className="relative z-10 text-lg md:text-sm" />
-        <span className="relative z-10">Dark</span>
+        <FiSun className="relative z-10 text-lg md:text-sm " />
+        <span className="relative z-10 hidden md:block">Dark</span>
       </button>
       <div
         className={`absolute inset-0 z-0 flex ${

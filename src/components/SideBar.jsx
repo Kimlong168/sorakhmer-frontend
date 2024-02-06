@@ -10,11 +10,11 @@ import sora14 from "../assets/images/sora14.jpeg";
 import sora10 from "../assets/images/sora10.jpg";
 import sora11 from "../assets/images/sora11.jpg";
 import MenuButton from "./MenuButton";
-
+import "../App.css";
 const SideBar = ({ setShowSideBar }) => {
   return (
-    <div className="absolute inset-0 z-[1000]">
-      <section className="bg-neutral-950 p-4 md:p-8">
+    <div id="sideBar"  className="fixed inset-0 z-[1000] overflow-auto">
+      <section className="bg-neutral-950 p-4 md:p-8 ">
         <div className="mx-auto max-w-5xl ">
           <Link
             heading="Home"

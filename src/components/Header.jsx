@@ -27,9 +27,9 @@ const Header = () => {
           <FaTelegram />
         </div>
       </div>
-      <header className="text-primary-content sticky top-0 bg-white z-[10]">
-        <nav className="flex justify-between items-center gap-5 px-8 p-2 bg-primary-content text-white">
-          <div className="flex item-center gap-24">
+      <header className="text-primary-content sticky top-0 bg-white z-[10] shadow-xl">
+        <nav className="flex justify-between items-center gap-5 px-6 md:px-8 p-2 bg-primary-content text-white">
+          <div className="flex item-center gap-10 md:gap-24">
             <div className="w-[100px]">
               <img src={logo} alt="logo" />
             </div>
@@ -53,7 +53,7 @@ const Header = () => {
             </ul>
           </div>
 
-          <div className="flex items-center gap-5 text-2xl">
+          <div className="flex items-center gap-2 md:gap-5 text-2xl">
             <ToggleLightDarkMode />
             <FaShoppingCart className="cursor-pointer hover:text-primary" />
             <div
@@ -65,7 +65,9 @@ const Header = () => {
           </div>
         </nav>
       </header>
-      <div>{showSideBar && <SideBar setShowSideBar={setShowSideBar} />}</div>
+      <div>
+        {showSideBar && <SideBar setShowSideBar={setShowSideBar} />}
+      </div>
     </>
   );
 };
