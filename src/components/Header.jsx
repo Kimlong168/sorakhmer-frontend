@@ -8,9 +8,9 @@ import { FaFacebook } from "react-icons/fa";
 import logo from "../assets/images/sorakhmer-logo.png";
 import SideBar from "./SideBar";
 import { useState } from "react";
-import ToggleLightDarkMode from "./ToggleLightDarkMode";
-import NavLink from "./NavLink";
-import NavLinkDropdown from "./NavLinkDropdown";
+import ToggleLightDarkMode from "./ui/ToggleLightDarkMode";
+import NavLink from "./ui/NavLink";
+import NavLinkDropdown from "./ui/NavLinkDropdown";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 const Header = () => {
   const [showSideBar, setShowSideBar] = useState(false);

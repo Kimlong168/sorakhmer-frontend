@@ -1,13 +1,17 @@
 /* Chrome, Edge, and Safari */
-#sideBar::-webkit-scrollbar {
+#sideBar::-webkit-scrollbar,
+#blog::-webkit-scrollbar {
     width: 5px;
+    height: 5px;
 }
 
-#sideBar::-webkit-scrollbar-track {
-    background: #ffffff;
+#sideBar::-webkit-scrollbar-track,
+#blog::-webkit-scrollbar-track {
+    background: #eee;
 }
 
-#sideBar::-webkit-scrollbar-thumb {
+#sideBar::-webkit-scrollbar-thumb,
+#blog::-webkit-scrollbar-thumb {
     background-color: #FA9F00;
     border-radius: 0px;
     border: 0px solid #ffffff;
@@ -17,31 +21,31 @@
 /* bubble text*/
 .hoverText {
     transition:
-      0.35s font-weight,
-      0.35s color;
-  }
-  
-  .hoverText:hover {
+        0.35s font-weight,
+        0.35s color;
+}
+
+.hoverText:hover {
     font-weight: 900;
     color: rgb(238, 242, 255);
-  }
-  
-  /* To the right */
-  .hoverText:hover + .hoverText {
+}
+
+/* To the right */
+.hoverText:hover+.hoverText {
     font-weight: 500;
     color: rgb(199, 210, 254);
-  }
-  
-  .hoverText:hover + .hoverText + .hoverText {
+}
+
+.hoverText:hover+.hoverText+.hoverText {
     font-weight: 300;
-  }
-  
-  /* To the left */
-  .hoverText:has(+ .hoverText:hover) {
+}
+
+/* To the left */
+.hoverText:has(+ .hoverText:hover) {
     font-weight: 500;
     color: rgb(199, 210, 254);
-  }
-  
-  .hoverText:has(+ .hoverText + .hoverText:hover) {
+}
+
+.hoverText:has(+ .hoverText + .hoverText:hover) {
     font-weight: 300;
-  }
+}

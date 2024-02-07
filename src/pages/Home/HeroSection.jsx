@@ -1,26 +1,26 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import sora1 from "../assets/images/sora1.jpg";
-import sora2 from "../assets/images/sora2.jpg";
-import sora3 from "../assets/images/sora3.jpg";
-import sora4 from "../assets/images/sora4.jpg";
-import sora5 from "../assets/images/sora5.webp";
-import sora6 from "../assets/images/sora6.webp";
-import sora7 from "../assets/images/sora7.jpg";
-import sora8 from "../assets/images/sora8.jpg";
-import sora9 from "../assets/images/sora9.jpg";
-import sora10 from "../assets/images/sora10.jpg";
-import sora11 from "../assets/images/sora11.jpg";
-import sora12 from "../assets/images/sora12.jpg";
-import sora13 from "../assets/images/sora13.jpeg";
-import sora14 from "../assets/images/sora14.jpeg";
-import sora15 from "../assets/images/sora15.jpeg";
-import sora16 from "../assets/images/sora16.jpeg";
-import PrimaryButton from "./PrimaryButton";
+import sora1 from "../../assets/images/sora1.jpg";
+import sora2 from "../../assets/images/sora2.jpg";
+import sora3 from "../../assets/images/sora3.jpg";
+import sora4 from "../../assets/images/sora4.jpg";
+import sora5 from "../../assets/images/sora5.webp";
+import sora6 from "../../assets/images/sora6.webp";
+import sora7 from "../../assets/images/sora7.jpg";
+import sora8 from "../../assets/images/sora8.jpg";
+import sora9 from "../../assets/images/sora9.jpg";
+import sora10 from "../../assets/images/sora10.jpg";
+import sora11 from "../../assets/images/sora11.jpg";
+import sora12 from "../../assets/images/sora12.jpg";
+import sora13 from "../../assets/images/sora13.jpeg";
+import sora14 from "../../assets/images/sora14.jpeg";
+import sora15 from "../../assets/images/sora15.jpeg";
+import sora16 from "../../assets/images/sora16.jpeg";
+import PrimaryButton from "../../components/ui/PrimaryButton";
 
 const HeroSection = () => {
   return (
-    <section className="w-full px-8 py-20 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto">
+    <section className="w-full px-8 py-10 sm:py-20 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto">
       <div>
         <span className="block mb-4 text-xs md:text-sm text-primary font-medium">
           Explore quality and value with us
