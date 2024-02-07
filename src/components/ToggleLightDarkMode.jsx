@@ -9,7 +9,7 @@ const ToggleLightDarkMode = () => {
   const [selected, setSelected] = useState("light");
   return (
     <div
-      className={`grid  place-content-center px-4 transition-colors ${
+      className={`grid  place-content-center transition-colors ${
         selected === "light" ? "bg-black" : "bg-black"
       }`}
     >
@@ -29,7 +29,7 @@ const SliderToggle = ({ selected, setSelected }) => {
           setSelected("light");
         }}
       >
-        <FiMoon className="relative z-10 text-lg md:text-sm " />
+        <FiMoon className="relative z-10 text-sm " />
         <span className="relative z-10 hidden md:block">Light</span>
       </button>
       <button
@@ -40,7 +40,7 @@ const SliderToggle = ({ selected, setSelected }) => {
           setSelected("dark");
         }}
       >
-        <FiSun className="relative z-10 text-lg md:text-sm " />
+        <FiSun className="relative z-10 text-sm " />
         <span className="relative z-10 hidden md:block">Dark</span>
       </button>
       <div

@@ -9,11 +9,14 @@ import sora4 from "../assets/images/sora4.jpg";
 import sora14 from "../assets/images/sora14.jpeg";
 import sora10 from "../assets/images/sora10.jpg";
 import sora11 from "../assets/images/sora11.jpg";
-import MenuButton from "./MenuButton";
+import { IoMdClose } from "react-icons/io";
 import "../App.css";
 const SideBar = ({ setShowSideBar }) => {
   return (
-    <div id="sideBar"  className="fixed inset-0 z-[1000] overflow-auto">
+    <div
+      id="sideBar"
+      className="fixed inset-0 z-[1000] overflow-auto overflow-x-hidden"
+    >
       <section className="bg-neutral-950 p-4 md:p-8 ">
         <div className="mx-auto max-w-5xl ">
           <Link
@@ -63,9 +66,9 @@ const SideBar = ({ setShowSideBar }) => {
 
       <div
         onClick={() => setShowSideBar((prev) => !prev)}
-        className="fixed top-0 right-0 md:top-4 md:right-4 z-[10] text-white"
+        className="fixed top-2 right-3 md:top-4 md:right-5 z-[10] p-2 text-white hover:bg-neutral-800"
       >
-        <MenuButton active={true} />
+        <IoMdClose className="w-10 h-10 cursor-pointer" />
       </div>
     </div>
   );

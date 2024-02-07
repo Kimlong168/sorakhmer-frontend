@@ -3,17 +3,17 @@ import logo from "../assets/images/footer-logo.png";
 import {
   FaCopyright,
   FaFacebook,
-  FaMailBulk,
-  FaMap,
-  FaPhone,
+  FaPhoneSquareAlt,
   FaTelegram,
   FaYoutube,
+  FaMapMarkerAlt,
 } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 const Footer = () => {
   return (
     <div className=" bg-primary-content">
       <footer className="container text-white  flex flex-col lg:flex-row items-start lg:justify-between gap-12 py-10 px-6">
-        <div className="w-full pr-10">
+        <div className="w-full p-0 lg:pr-10">
           <div className="w-[110px] mx-auto lg:mx-0">
             <img src={logo} alt="logo" />
           </div>
@@ -25,40 +25,87 @@ const Footer = () => {
         <div className="w-full">
           <h3 className="font-bold text-primary text-xl mb-4">Useful Links</h3>
           <div className="flex flex-col gap-2">
-            <Link to="/">Home</Link>
-            <Link to="/about">Product</Link>
-            <Link to="/product">Blog</Link>
-            <Link to="/contact">Process</Link>
-            <Link to="/contact">Distillery</Link>
-            <Link to="/contact">About</Link>
-            <Link to="/contact">Contact</Link>
+            <Link to="/" className="hover:text-primary-light hover:underline">
+              Home
+            </Link>
+            <Link
+              to="/about"
+              className="hover:text-primary-light hover:underline"
+            >
+              Product
+            </Link>
+            <Link
+              to="/product"
+              className="hover:text-primary-light hover:underline"
+            >
+              Blog
+            </Link>
+            <Link
+              to="/contact"
+              className="hover:text-primary-light hover:underline"
+            >
+              Process
+            </Link>
+            <Link
+              to="/contact"
+              className="hover:text-primary-light hover:underline"
+            >
+              Distillery
+            </Link>
+            <Link
+              to="/contact"
+              className="hover:text-primary-light hover:underline"
+            >
+              About
+            </Link>
+            <Link
+              to="/contact"
+              className="hover:text-primary-light hover:underline"
+            >
+              Contact
+            </Link>
           </div>
         </div>
 
         <div className="w-full">
           <h3 className="font-bold text-primary text-xl mb-4">Contact Us</h3>
           <div className="flex flex-col gap-4">
-            <Link to="/" className="flex items-center gap-2">
-              <FaPhone /> <span>(855) 086 861 256</span>
+            <Link
+              to="/"
+              className="flex items-center gap-2 hover:text-primary-light hover:underline"
+            >
+              <FaPhoneSquareAlt /> <span>(855) 086 861 256</span>
             </Link>
-            <Link to="/about" className="flex items-center gap-2">
-              <FaMailBulk /> <span>example@gmail.com</span>
+            <Link
+              to="/about"
+              className="flex items-center gap-2 hover:text-primary-light hover:underline"
+            >
+              <MdEmail /> <span>example@gmail.com</span>
             </Link>
-            <Link to="/product" className="flex items-center gap-2">
-              <FaMap /> <span>Battambang, Cambodia</span>
+            <Link
+              to="/product"
+              className="flex items-center gap-2 hover:text-primary-light hover:underline"
+            >
+              <FaMapMarkerAlt /> <span>Battambang, Cambodia</span>
             </Link>
           </div>
         </div>
         <div className="w-full">
           <h3 className="font-bold text-primary text-xl mb-4">Follow Us</h3>
           <div className="flex item-center gap-5 text-3xl">
-            <Link to="/">
+            <Link to="/" className="hover:text-primary-light hover:underline">
               <FaFacebook />
             </Link>
-            <Link to="/about">
+            <Link
+              to="/about"
+              className="hover:text-primary-light hover:underline"
+            >
               <FaYoutube />
             </Link>
-            <Link to="/product">
+            <Link
+              to="/product"
+              className="hover:text-primary-light hover:underline"
+            >
               <FaTelegram />
             </Link>
           </div>
