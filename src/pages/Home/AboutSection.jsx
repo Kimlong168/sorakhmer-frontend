@@ -4,7 +4,7 @@ import sora1 from "../../assets/images/sora1.jpg";
 import { TypeAnimation } from "react-type-animation";
 const AboutSection = () => {
   return (
-    <section className="container p-8 md:p-0 flex flex-col md:flex-row items-center justify-center  gap-8 md:gap-24 md:h-screen">
+    <section className="container p-8 md:p-0 flex flex-col md:flex-row items-center justify-between  gap-8 md:gap-24 md:h-screen">
       <div>
         <Title />
         <h3 className="font-primary-bold text-4xl md:text-5xl py-8">
@@ -37,7 +37,7 @@ const AboutSection = () => {
         </p>
         <PrimaryButton content="Learn More" href="/about" />
       </div>
-      <div className="w-full md:w-[500px] shadow-lg hover:shadow-gray-800 shadow-gray-500 -rotate-6 hover:z-[2] hover:rotate-0 md:rotate-0 md:hover:rotate-6 overflow-hidden transition-all">
+      <div className="w-full md:w-[500px] shadow-lg hover:shadow-gray-800 shadow-gray-500 hover:-rotate-6 overflow-hidden transition-all">
         <img
           className="hover:scale-125 transition-all cursor-pointer w-full h-full object-cover object-center"
           src={sora1}

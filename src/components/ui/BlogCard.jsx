@@ -35,14 +35,14 @@ const BlogCard = ({
         <div className="w-[75px] h-[75px] overflow-hidden">
           <img className="w-full h-full cover" src={authorImg} alt="" />
         </div>
-        <div className="text-sm text-gray-400 flex items-center gap-3">
+        <div className="text-sm text-gray-400 flex items-center gap-3 line-clamp-1">
           <BiSolidUser />
           {authorName}
         </div>
       </div>
 
       <div className="p-4 md:p-6">
-        <div className="line-clamp-2  font-semibold text-2xl my-4 hover:text-primary transition-all ">
+        <div className="line-clamp-2  font-semibold text-2xl my-1.5 md:my-4 hover:text-primary transition-all ">
           {title}
         </div>
         <div className="line-clamp-2 text-sm text-gray-400">{description}</div>
