@@ -19,7 +19,7 @@ const AboutSection = () => {
               2000,
               "OUR HISTORY",
               2000,
-              "OUR MISSON",
+              "OUR MISSION",
               2000,
               "OUR VISION",
               2000,
