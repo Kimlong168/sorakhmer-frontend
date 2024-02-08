@@ -7,7 +7,7 @@ const ProductSection = () => {
   return (
     <>
       <section className="container p-8 md:p-0 flex flex-col md:flex-row items-center justify-between  gap-8 md:gap-24 md:h-screen md:-mt-36">
-        <div className="w-full sm:w-[80%] md:w-[500px]  md:min-w-[400px] shadow-lg hover:shadow-gray-800 shadow-gray-500 order-2 md:order-1">
+        <div className="w-full sm:w-[80%] md:w-[500px]  md:min-w-[400px] shadow-lg hover:shadow-gray-800 shadow-gray-500 order-2 md:order-1 hover:rounded-lg overflow-hidden">
           <ProductCarousel />
         </div>
         <div className="order-1 md:order-2">
