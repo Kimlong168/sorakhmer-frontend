@@ -49,3 +49,21 @@
 .hoverText:has(+ .hoverText + .hoverText:hover) {
     font-weight: 300;
 }
+
+
+/* award carousel */
+.custom-next-arrow,
+.custom-prev-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.custom-next-arrow {
+    right: -20px;
+}
+
+.custom-prev-arrow {
+    left: -20px;
+}

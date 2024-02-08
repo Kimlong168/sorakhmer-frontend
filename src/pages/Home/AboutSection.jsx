@@ -1,6 +1,6 @@
 import PrimaryButton from "../../components/ui/PrimaryButton";
 import Title from "../../components/ui/Title";
-import sora1 from "../../assets/images/sora1.jpg";
+import sora1 from "../../assets/images/sora5.webp";
 import { TypeAnimation } from "react-type-animation";
 const AboutSection = () => {
   return (
@@ -37,7 +37,7 @@ const AboutSection = () => {
         </p>
         <PrimaryButton content="Learn More" href="/about" />
       </div>
-      <div className="w-full md:w-[500px] shadow-lg hover:shadow-gray-800 shadow-gray-500 hover:-rotate-6 overflow-hidden transition-all">
+      <div className="w-full md:w-[500px] shadow-lg hover:shadow-gray-800 shadow-gray-500 overflow-hidden transition-all">
         <img
           className="hover:scale-125 transition-all cursor-pointer w-full h-full object-cover object-center"
           src={sora1}

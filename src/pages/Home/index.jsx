@@ -3,6 +3,8 @@ import AboutSection from "./AboutSection";
 import HeroSection from "./HeroSection";
 import ProductSection from "./ProductSection";
 import BlogSection from "./BlogSection";
+import AwardSection from "./AwardSection";
+import PartnerSection from "./PartnerSection";
 const Home = () => {
   return (
     <>
@@ -11,6 +13,8 @@ const Home = () => {
         <AboutSection />
         <ProductSection />
         <BlogSection />
+        <AwardSection />
+        <PartnerSection />
       </Layout>
     </>
   );

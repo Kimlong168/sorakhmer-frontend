@@ -2,7 +2,7 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 // import PropTypes from "prop-types";
-import sora1 from "../../assets/images/sora1.jpg";
+import sora1 from "../../assets/images/sora5.webp";
 import sora2 from "../../assets/images/sora2.jpg";
 import sora3 from "../../assets/images/sora3.jpg";
 import sora4 from "../../assets/images/sora4.jpg";
