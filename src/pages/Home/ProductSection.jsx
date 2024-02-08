@@ -35,12 +35,17 @@ const ProductSection = () => {
 
             <span className="text-primary font-bold">.</span>
           </h3>
-          <p className="mb-10">
+          <p className="md:mb-10">
             Sora Khmer envisions building peace for the world by supporting
             post-demining sustainable community development
             <span className="text-primary font-bold">.</span>
           </p>
-          <PrimaryButton content="View Products" href="/about" />
+          <div className="hidden md:block">
+            <PrimaryButton content="View Products" href="/product" />
+          </div>
+        </div>
+        <div className="md:hidden block w-full order-3">
+          <PrimaryButton content="View Products" href="/product" />
         </div>
       </section>
     </>

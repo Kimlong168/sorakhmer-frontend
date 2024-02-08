@@ -66,7 +66,9 @@ const Header = () => {
           </div>
         </nav>
       </header>
-      <div>{showSideBar && <SideBar setShowSideBar={setShowSideBar} />}</div>
+      <div>
+        <SideBar setShowSideBar={setShowSideBar} showSideBar={showSideBar} />
+      </div>
     </>
   );
 };

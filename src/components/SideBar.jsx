@@ -12,11 +12,12 @@ import sora11 from "../assets/images/sora11.jpg";
 import { IoMdClose } from "react-icons/io";
 import { Link } from "react-router-dom";
 import "../App.css";
-const SideBar = ({ setShowSideBar }) => {
+  // 
+const SideBar = ({ setShowSideBar,showSideBar }) => {
   return (
     <div
       id="sideBar"
-      className="fixed inset-0 z-[1000] overflow-auto overflow-x-hidden"
+      className={`fixed inset-0 z-[1000] overflow-auto overflow-x-hidden transition-all duration-300 ease-in-out transform ${showSideBar ? 'translate-x-0' : '-translate-x-full'}`}
     >
       <section className="bg-neutral-950 p-4 md:p-8 ">
         <div className="mx-auto max-w-5xl ">
@@ -190,5 +191,6 @@ LinkContainer.propTypes = {
 };
 SideBar.propTypes = {
   setShowSideBar: PropTypes.func.isRequired,
+  showSideBar: PropTypes.bool.isRequired,
 };
 export default SideBar;

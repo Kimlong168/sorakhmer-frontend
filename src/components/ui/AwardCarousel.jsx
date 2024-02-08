@@ -57,6 +57,9 @@ function AwardCarousel() {
               src={award1}
               alt="award"
             />
+            <div className="text-center font-bold  uppercase pb-3 text-primary">
+              Best Sora of the year
+            </div>
           </div>
           <div>
             <img
@@ -64,6 +67,9 @@ function AwardCarousel() {
               src={sora2}
               alt="award"
             />
+            <div className="text-center font-bold  uppercase pb-3 text-primary">
+              Best Sora of the year
+            </div>
           </div>
           <div>
             <img
@@ -71,6 +77,9 @@ function AwardCarousel() {
               src={award1}
               alt="award"
             />
+            <div className="text-center font-bold  uppercase pb-3 text-primary">
+              Best Sora of the year
+            </div>
           </div>
           <div>
             <img
@@ -78,6 +87,9 @@ function AwardCarousel() {
               src={sora4}
               alt="award"
             />
+            <div className="text-center font-bold  uppercase pb-3 text-primary">
+              Best Sora of the year
+            </div>
           </div>
         </Slider>
       </div>

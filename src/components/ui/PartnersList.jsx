@@ -2,8 +2,8 @@ import partner1 from "../../assets/images/partner1.png";
 import partner2 from "../../assets/images/partner2.png";
 // import partner4 from "../../assets/images/partner4.png";
 import Marquee from "react-fast-marquee";
-
-const PartnersList = () => {
+import PropTypes from "prop-types";
+const PartnersList = ({ direction = "left" }) => {
   return (
     <div className="bg-primary">
       <Marquee
@@ -13,6 +13,7 @@ const PartnersList = () => {
         delay={2}
         gradient={true}
         gradientWidth={0}
+        direction={direction}
         className="flex justify-between items-center py-6 w-full"
       >
         <div>
@@ -28,6 +29,7 @@ const PartnersList = () => {
             src={partner2}
             alt="partner"
           />
+        
         </div>
         {/* <div>
           <img
@@ -40,5 +42,7 @@ const PartnersList = () => {
     </div>
   );
 };
-
+PartnersList.propTypes = {
+  direction: PropTypes.string,
+};
 export default PartnersList;

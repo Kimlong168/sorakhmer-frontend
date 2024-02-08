@@ -31,11 +31,13 @@ const AboutSection = () => {
           {/* </div> */}
           <span className="text-primary font-bold">.</span>
         </h3>
-        <p className="mb-10">
+        <p className="md:mb-10">
           We create fine spirits that support post-demining sustainable
           community development<span className="text-primary font-bold">.</span>
         </p>
-        <PrimaryButton content="Learn More" href="/about" />
+        <div className="hidden md:block">
+          <PrimaryButton content="Learn More" href="/about" />
+        </div>
       </div>
       <div className="w-full md:w-[500px] shadow-lg hover:shadow-gray-800 shadow-gray-500 overflow-hidden transition-all">
         <img
@@ -43,6 +45,9 @@ const AboutSection = () => {
           src={sora1}
           alt="about-image"
         />
+      </div>
+      <div className="md:hidden block w-full">
+        <PrimaryButton content="Learn More" href="/about" />
       </div>
     </section>
   );

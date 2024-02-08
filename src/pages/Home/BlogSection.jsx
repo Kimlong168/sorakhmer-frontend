@@ -18,7 +18,7 @@ const BlogSection = () => {
         <BlogCard
           coverImage={sora1}
           authorImg={adminProfile}
-          authorName={"Kimlong"}
+          authorName={"Kimlong Chann"}
           title={
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto illo necessitatibus cum dolorum velit laboriosam. Nihil ipsum nostrum molestias sunt! Exercitationem corporis est libero tenetur culpa quasi tempore laboriosam consectetur."
           }
@@ -29,7 +29,7 @@ const BlogSection = () => {
         <BlogCard
           coverImage={sora1}
           authorImg={adminProfile}
-          authorName={"Kimlong"}
+          authorName={"Kimlong Chann"}
           title={
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto illo necessitatibus cum dolorum velit laboriosam. Nihil ipsum nostrum molestias sunt! Exercitationem corporis est libero tenetur culpa quasi tempore laboriosam consectetur."
           }
@@ -40,7 +40,7 @@ const BlogSection = () => {
         <BlogCard
           coverImage={sora1}
           authorImg={adminProfile}
-          authorName={"Kimlong"}
+          authorName={"Kimlong Chann"}
           title={
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto illo necessitatibus cum dolorum velit laboriosam. Nihil ipsum nostrum molestias sunt! Exercitationem corporis est libero tenetur culpa quasi tempore laboriosam consectetur."
           }

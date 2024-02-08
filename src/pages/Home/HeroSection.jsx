@@ -17,17 +17,36 @@ import sora14 from "../../assets/images/sora14.jpeg";
 import sora15 from "../../assets/images/sora15.jpeg";
 import sora16 from "../../assets/images/sora16.jpeg";
 import PrimaryButton from "../../components/ui/PrimaryButton";
-
+import { TypeAnimation } from "react-type-animation";
+// import dragon from "../../assets/images/dragon.png";
 const HeroSection = () => {
   return (
-    <section className="w-full px-8 py-10 sm:py-20 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto">
+    // items-center
+    <section className="w-full px-8 py-10 sm:py-20 grid grid-cols-1 md:grid-cols-2  gap-8 max-w-6xl mx-auto ">
       <div>
         <span className="block mb-4 text-xs md:text-sm text-primary font-medium">
           Explore quality and value with us
         </span>
         <h3 className="text-4xl md:text-6xl font-primary-bold">
-          <div className="mb-4">WELCOME TO</div>
-          <div>
+          <div className="font-secondary">
+            <TypeAnimation
+              speed={50}
+              cursor={false}
+              sequence={[
+                "WELCOME TO",
+                5000,
+                "សូមស្វាគមន៍មកកាន់",
+                5000,
+                "へようこそ",
+                5000,
+              ]}
+              className="text-accent"
+              wrapper="span"
+              repeat={Infinity}
+            />
+            <span className="invisible">I</span>
+          </div>
+          <div className="mt-2">
             SORA KHMER<span className="text-primary font-bold">.</span>
           </div>
         </h3>
@@ -35,9 +54,14 @@ const HeroSection = () => {
           Fine spirits supporting post-demining sustainable community
           development<span className="text-primary font-bold">.</span>
         </p>
-        <PrimaryButton content="Contact Us" href="/contact" />
+        <div className="hidden md:block">
+          <PrimaryButton content="Contact Us" href="/contact" />
+        </div>
       </div>
       <ShuffleGrid />
+      <div className="md:hidden block">
+        <PrimaryButton content="Contact Us" href="/contact" />
+      </div>
     </section>
   );
 };
@@ -132,7 +156,7 @@ const generateSquares = () => {
       key={sq.id}
       layout
       transition={{ duration: 1.5, type: "spring" }}
-      className="w-full h-full"
+      className="w-full h-full shadow-2xl"
       style={{
         backgroundImage: `url(${sq.src})`,
         backgroundSize: "cover",
@@ -154,11 +178,11 @@ const ShuffleGrid = () => {
   const shuffleSquares = () => {
     setSquares(generateSquares());
 
-    timeoutRef.current = setTimeout(shuffleSquares, 3000);
+    timeoutRef.current = setTimeout(shuffleSquares, 4000);
   };
 
   return (
-    <div className="grid grid-cols-4 grid-rows-4 h-[450px] gap-1">
+    <div className="grid grid-cols-3 grid-rows-3 h-[300px] sm:h-[400px] lg:h-[450px] gap-1">
       {squares.map((sq) => sq)}
     </div>
   );
