@@ -16,10 +16,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        primary: ["ttnorms"],
-        "primary-bold": ["ttnormsBold"],
-        secondary: ["kantumruyPro"],
-        "secondary-bold": ["kantumruyProBold"],
+        primary: ["ttnorms","kantumruyPro"],
+        "primary-bold": ["ttnormsBold","kantumruyProBold"],
+        secondary: ["kantumruyPro","ttnorms"],
+        "secondary-bold": ["kantumruyProBold","ttnormsBold"],
       },
       colors: {
         primary: "#fa9f00",

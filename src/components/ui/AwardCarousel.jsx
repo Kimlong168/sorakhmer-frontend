@@ -1,17 +1,17 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import award1 from "../../assets/images/award1.jpg";
-import sora2 from "../../assets/images/sora2.jpg";
-import sora4 from "../../assets/images/sora4.jpg";
+
 
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 import PropTypes from "prop-types";
 import "../../App.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { DataContext } from "../../contexts/DataContext";
+
 function AwardCarousel() {
   const [slidesToShow, setSlidesToShow] = useState(3);
-
+  const { awardList } = useContext(DataContext);
   useEffect(() => {
     const handleResize = () => {
       // Check Tailwind breakpoints and update slidesToShow accordingly
@@ -51,46 +51,21 @@ function AwardCarousel() {
     <div className="py-8 flex justify-center">
       <div className="w-[95%] md:w-[90%]  lg:w-[95%] relative">
         <Slider {...settings}>
-          <div>
-            <img
-              className="p-2  w-full object-cover h-[300px]"
-              src={award1}
-              alt="award"
-            />
-            <div className="text-center font-bold  uppercase pb-3 text-primary">
-              Best Sora of the year
-            </div>
-          </div>
-          <div>
-            <img
-              className="p-2 h-[300px] w-full object-cover"
-              src={sora2}
-              alt="award"
-            />
-            <div className="text-center font-bold  uppercase pb-3 text-primary">
-              Best Sora of the year
-            </div>
-          </div>
-          <div>
-            <img
-              className="p-2 h-[300px] w-full object-cover"
-              src={award1}
-              alt="award"
-            />
-            <div className="text-center font-bold  uppercase pb-3 text-primary">
-              Best Sora of the year
-            </div>
-          </div>
-          <div>
-            <img
-              className="p-2 h-[300px] w-full object-cover"
-              src={sora4}
-              alt="award"
-            />
-            <div className="text-center font-bold  uppercase pb-3 text-primary">
-              Best Sora of the year
-            </div>
-          </div>
+          {awardList &&
+            awardList.map((award, index) => {
+              return (
+                <div key={index}>
+                  <img
+                    className="p-2  w-full object-cover h-[300px]"
+                    src={award.awardLogo}
+                    alt="award"
+                  />
+                  <div className="text-center font-bold  uppercase pb-3 text-primary">
+                    {award.awardName}
+                  </div>
+                </div>
+              );
+            })}
         </Slider>
       </div>
     </div>
