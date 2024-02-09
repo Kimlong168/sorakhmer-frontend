@@ -1,17 +1,16 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 const NavLinkDropdown = () => {
   return (
     <div className="flex  justify-center ">
-      <FlyoutLink href="/about" FlyoutContent={AboutContent}>
-        About
-      </FlyoutLink>
+      <FlyoutLink FlyoutContent={AboutContent}>About</FlyoutLink>
     </div>
   );
 };
 
-const FlyoutLink = ({ children, href, FlyoutContent }) => {
+const FlyoutLink = ({ children, FlyoutContent }) => {
   const [open, setOpen] = useState(false);
 
   const showFlyout = FlyoutContent && open;
@@ -22,7 +21,7 @@ const FlyoutLink = ({ children, href, FlyoutContent }) => {
       onMouseLeave={() => setOpen(false)}
       className="relative w-fit h-fit"
     >
-      <a href={href} className="relative text-white">
+      <div className="relative text-white">
         {children}
         <span
           style={{
@@ -30,7 +29,7 @@ const FlyoutLink = ({ children, href, FlyoutContent }) => {
           }}
           className="absolute -bottom-2 -left-2 -right-2 h-1 origin-left scale-x-0 rounded-full bg-primary-light transition-transform duration-300 ease-out"
         />
-      </a>
+      </div>
       <AnimatePresence>
         {showFlyout && (
           <motion.div
@@ -55,24 +54,24 @@ const AboutContent = () => {
   return (
     <div className="w-64 bg-white p-6 shadow-xl rounded-lg">
       <div className="mb-3 space-y-3">
-        <a
-          href="#"
+        <Link
+          to="/about"
           className="block text-sm hover:underline hover:text-primary"
         >
           Company
-        </a>
-        <a
-          href="#"
+        </Link>
+        <Link
+          to="/process"
           className="block text-sm hover:underline hover:text-primary"
         >
           Process
-        </a>
-        <a
-          href="#"
+        </Link>
+        <Link
+          to="/distillery"
           className="block text-sm hover:underline hover:text-primary"
         >
           Distillery
-        </a>
+        </Link>
       </div>
     </div>
   );
@@ -80,7 +79,6 @@ const AboutContent = () => {
 
 FlyoutLink.propTypes = {
   children: PropTypes.node.isRequired,
-  href: PropTypes.string.isRequired,
   FlyoutContent: PropTypes.func,
 };
 

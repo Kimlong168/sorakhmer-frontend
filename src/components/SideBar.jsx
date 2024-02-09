@@ -31,37 +31,37 @@ const SideBar = ({ setShowSideBar,showSideBar }) => {
             heading="Product"
             subheading="Learn what we do here"
             imgSrc={sora2}
-            href="/product"
+            href="/products"
           />
           <LinkContainer
             heading="Blog"
             subheading="We work with great people"
             imgSrc={sora3}
-            href="#"
+            href="/blogs"
           />
           <LinkContainer
             heading="Process"
             subheading="Our work speaks for itself"
             imgSrc={sora4}
-            href="#"
+            href="/process"
           />
           <LinkContainer
             heading="Distillery"
             subheading="We want cool people"
             imgSrc={sora14}
-            href="#"
+            href="/distillery"
           />
           <LinkContainer
             heading="About"
             subheading="Incase you're bored"
             imgSrc={sora10}
-            href="#"
+            href="/about"
           />
           <LinkContainer
             heading="Contact"
             subheading="Incase you're bored"
             imgSrc={sora11}
-            href="#"
+            href="/contact"
           />
         </div>
       </section>

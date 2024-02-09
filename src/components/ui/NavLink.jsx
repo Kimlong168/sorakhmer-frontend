@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 const NavLink = ({ href, title }) => {
   return (
     <div className="flex justify-center hover:text-primary-light">
@@ -17,7 +18,7 @@ const FlyoutLink = ({ children, href }) => {
       onMouseLeave={() => setOpen(false)}
       className="relative w-fit h-fit"
     >
-      <a href={href} className="relative">
+      <Link to={href} className="relative">
         {children}
         <span
           style={{
@@ -25,7 +26,7 @@ const FlyoutLink = ({ children, href }) => {
           }}
           className="absolute -bottom-2 -left-2 -right-2 h-1 origin-left scale-x-0 rounded-full bg-primary-light transition-transform duration-300 ease-out"
         />
-      </a>
+      </Link>
     </div>
   );
 };

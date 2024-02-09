@@ -35,17 +35,17 @@ const Header = () => {
             </div>
             <ul className="hidden lg:flex items-center gap-8 font-bold uppercase">
               <li className="cursor-pointer">
-                <NavLink href="#" title="Home" />
+                <NavLink href="/" title="Home" />
               </li>
               <li className="cursor-pointer">
-                <NavLink href="#" title="Product" />
+                <NavLink href="/products" title="Product" />
               </li>
               <li className="cursor-pointer">
-                <NavLink href="#" title="Blog" />
+                <NavLink href="/blogs" title="Blog" />
               </li>
 
               <li className="cursor-pointer">
-                <NavLink href="#" title="Contact" />
+                <NavLink href="/contact" title="Contact" />
               </li>
               <li className="cursor-pointer">
                 <NavLinkDropdown />

@@ -34,11 +34,11 @@ const HeroSection = () => {
               cursor={false}
               sequence={[
                 "WELCOME TO",
-                5000,
+                3000,
                 "សូមស្វាគមន៍មកកាន់",
-                5000,
+                3000,
                 "へようこそ",
-                5000,
+                3000,
               ]}
               className="text-accent"
               wrapper="span"

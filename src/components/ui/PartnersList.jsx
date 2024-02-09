@@ -1,8 +1,8 @@
-
 import Marquee from "react-fast-marquee";
 import PropTypes from "prop-types";
 import { useContext } from "react";
 import { DataContext } from "../../contexts/DataContext";
+import partnerLogo from "../../assets/images/partner1.png";
 const PartnersList = ({ direction = "left" }) => {
   const { partnerList } = useContext(DataContext);
   return (
@@ -17,7 +17,7 @@ const PartnersList = ({ direction = "left" }) => {
         direction={direction}
         className="flex justify-between items-center py-6 w-full"
       >
-        {partnerList &&
+        {partnerList ? (
           partnerList.map((partner, index) => {
             return (
               <div key={index}>
@@ -28,7 +28,16 @@ const PartnersList = ({ direction = "left" }) => {
                 />
               </div>
             );
-          })}
+          })
+        ) : (
+          <div>
+            <img
+              className="max-w-[80px] md:max-w-[120px] mr-8 md:mr-24"
+              src={partnerLogo}
+              alt="partnerLogo"
+            />
+          </div>
+        )}
       </Marquee>
     </div>
   );

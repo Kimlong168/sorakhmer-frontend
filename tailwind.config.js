@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 // import flowBitePlugin from 'flowbite/plugin';
+import typography from "@tailwindcss/typography";
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
@@ -16,17 +17,17 @@ export default {
     },
     extend: {
       fontFamily: {
-        primary: ["ttnorms","kantumruyPro"],
-        "primary-bold": ["ttnormsBold","kantumruyProBold"],
-        secondary: ["kantumruyPro","ttnorms"],
-        "secondary-bold": ["kantumruyProBold","ttnormsBold"],
+        primary: ["ttnorms", "kantumruyPro"],
+        "primary-bold": ["ttnormsBold", "kantumruyProBold"],
+        secondary: ["kantumruyPro", "ttnorms"],
+        "secondary-bold": ["kantumruyProBold", "ttnormsBold"],
       },
       colors: {
         primary: "#fa9f00",
         "primary-content": "#0A0A0A",
         "primary-light": "#ffb32e",
         "primary-dark": "#c77f00",
-        
+
         secondary: "#fac900",
         "secondary-content": "#313131",
         "secondary-dark": "#c7a000",
@@ -46,9 +47,12 @@ export default {
 
         "success-content": "#000000",
         "warning-content": "#000000",
-        "error-content": "#fffafa"
-    },
+        "error-content": "#fffafa",
+      },
+      backgroundImage: {
+        pageTitle: "url('./assets/images/pageTitle.jpg')",
+      },
     },
   },
-  plugins: [],
+  plugins: [typography],
 };
