@@ -6,6 +6,7 @@ import FounderSection from "./FounderSection";
 import AwardSection from "./AwardSection";
 import PartnerSection from "./PartnerSection";
 import PhotoSection from "./PhotoSection";
+import VideoSection from "./VideoSection";
 const About = () => {
   return (
     <div>
@@ -15,6 +16,7 @@ const About = () => {
         <MissionAndVisionSection />
         <FounderSection />
         <PhotoSection />
+        <VideoSection />
         <AwardSection />
         <PartnerSection />
       </Layout>

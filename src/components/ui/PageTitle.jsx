@@ -4,7 +4,7 @@ const PageTitle = ({ text = "About" }) => {
   var screenHeight = window.innerHeight;
 
   // Subtract 100 pixels from the screen height
-  var adjustedHeight = screenHeight - 100;
+  var adjustedHeight = screenHeight - 250;
   return (
     <section className="relative">
       <div className="absolute bg-pageTitle brightness-[0.3] bg-repeat-round inset-0"></div>
