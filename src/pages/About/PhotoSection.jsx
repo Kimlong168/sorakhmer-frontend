@@ -26,14 +26,14 @@ const PhotoSection = () => {
   return (
     <section className="container">
       <div className="py-8 flex justify-center">
-        <div className="w-[95%] md:w-[90%]  lg:w-[100%] relative ">
+        <div className="w-[95%] md:w-[90%]  lg:w-[100%]">
           <Slider {...settings}>
             {imageList &&
               imageList.map((item, index) => {
                 return (
                   <div key={index}>
                     <img
-                      className="w-full object-cover h-[500px] rounded-xl"
+                      className="w-full object-cover h-[300px] sm:h-[400px] md:h-[500px] rounded-xl"
                       src={item}
                       alt="item"
                     />
