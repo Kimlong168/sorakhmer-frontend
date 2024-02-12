@@ -11,7 +11,7 @@ const ContactSection = () => {
             <h3 className="text-nowrap font-primary-bold text-4xl md:text-5xl ">
               Our Company<span className="text-primary font-bold">.</span>
             </h3>
-            <p className="pt-8 pb-2  hover:text-primary hover:underline cursor-pointer">
+            <p className="pt-8 pb-2">
               #45, st. 59, Au anlok village, Tasen commune, Kamrieng district,
               Battambang Province, Cambodia.
             </p>

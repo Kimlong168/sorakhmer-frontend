@@ -11,7 +11,7 @@ const FounderSection = () => {
           />
           <div className="text-center mt-5">
             <h5 className="font-bold uppercase text-xl">Hong Sokmean</h5>
-            <p className="text-gray-700">CEO and Founder of SORAKHMER</p>
+            <p className="text-gray-700">Founder of SORAKHMER</p>
           </div>
         </div>
         <div className="porse lg:prose-xl text-justify md:w-[60%]">

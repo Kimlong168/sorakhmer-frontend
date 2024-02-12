@@ -6,7 +6,8 @@ import adminProfile from "../../assets/images/adminProfile.png";
 import { DataContext } from "../../contexts/DataContext";
 import { useContext } from "react";
 const BlogSection = () => {
-  const { blogList } = useContext(DataContext);
+  const { blogList, authorList } = useContext(DataContext);
+  const activeBlog = blogList.filter((blog) => blog.isActive);
   return (
     <section className="container p-8 md:p-0 mb-12">
       <h3 className="font-primary-bold text-4xl md:text-5xl py-8 uppercase text-center mb-4">
@@ -17,14 +18,37 @@ const BlogSection = () => {
         className="flex justify-between gap-5 lg:gap-10 overflow-x-auto pb-5"
         id="blog"
       >
-        {blogList &&
-          blogList.slice(0, 3).map((blog, index) => {
+        {activeBlog &&
+          activeBlog.slice(0, 3).map((blog, index) => {
+            // return if the blog is disabled
+            if (!blog.isActive) return;
+            // get the author name and profile image
+            const authorName =
+              blog.authorId.toLowerCase() === "default"
+                ? "Admin"
+                : authorList &&
+                  authorList.map((data) => {
+                    if (data.id == blog.authorId) {
+                      return data.fullName;
+                    }
+                  });
+
+            const authorImage =
+              blog.authorId.toLowerCase() === "default"
+                ? adminProfile
+                : authorList &&
+                  authorList.map((data) => {
+                    if (data.id == blog.authorId) {
+                      return data.profilePicture;
+                    }
+                  });
+
             return (
               <BlogCard
                 key={index}
                 coverImage={blog.coverImage}
-                authorImg={adminProfile}
-                authorName={"chann kimlong"}
+                authorImg={authorImage}
+                authorName={authorName}
                 title={blog.title}
                 description={blog.description}
               />

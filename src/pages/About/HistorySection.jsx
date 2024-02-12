@@ -6,18 +6,18 @@ const HistorySection = () => {
       <div className="py-12">
         <div className="pb-6">
           <h3 className="text-nowrap font-primary-bold text-4xl md:text-5xl ">
-            <span className="text-primary">OUR </span>
+            <span className="text-primary">Our </span>
             <TypeAnimation
               speed={50}
               cursor={false}
               sequence={[
-                "HISTORY",
+                "History",
                 2000,
-                "JOURNEY",
+                "Journey",
                 2000,
-                "MISSION",
+                "Mission",
                 2000,
-                "VISION",
+                "Vision",
                 2000,
               ]}
               className="text-accent"

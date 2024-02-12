@@ -70,8 +70,8 @@ const WhereToBuySection = () => {
 
 const Collapsible = ({ title, content, isOpen, onToggle }) => {
   return (
-    <div className="w-full  mx-auto">
-      <div className="border rounded w-full">
+    <div className="w-full mx-auto">
+      <div className={`border rounded w-full ${isOpen && "border-primary"}`}>
         <button
           onClick={onToggle}
           className="w-full px-4 py-2.5  focus:outline-none flex justify-between items-center"
@@ -81,6 +81,7 @@ const Collapsible = ({ title, content, isOpen, onToggle }) => {
             {isOpen ? <FaArrowDown /> : <FaArrowRight />}
           </span>
         </button>
+
         {isOpen && (
           <div className="px-4 py-5 bg-gray-200/50">
             {/* Content of the collapsible item */}

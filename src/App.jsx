@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Product from "./pages/Product";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Process from "./pages/Process"
 export default function App() {
   const [productCategoryList, setProductCategoryList] = useState([]);
   const [productList, setProductList] = useState([]);
@@ -118,6 +119,7 @@ export default function App() {
             <Route path="/product" element={<Product />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/process" element={<Process />} />
           </Routes>
         </Router>
       </DataContext.Provider>
