@@ -3,7 +3,7 @@ import { TypeAnimation } from "react-type-animation";
 const HistorySection = () => {
   return (
     <section className="container p-8 md:p-0">
-      <div className="py-12">
+      <div className="pt-12 md:py-12">
         <div className="pb-6">
           <h3 className="text-nowrap font-primary-bold text-4xl md:text-5xl ">
             <span className="text-primary">Our </span>

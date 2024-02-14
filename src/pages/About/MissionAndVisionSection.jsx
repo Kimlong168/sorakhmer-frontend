@@ -3,7 +3,7 @@ import { GoGoal } from "react-icons/go";
 const MissionAndVisionSection = () => {
   return (
     <section className="container p-8 md:p-0">
-      <div className="flex flex-col sm:flex-row justify-center gap-24 py-12 porse lg:prose-xl">
+      <div className="flex flex-col sm:flex-row justify-center gap-24 pt-12 md:py-12 porse lg:prose-xl">
         <div className="flex flex-col items-center gap-8">
           <h3 className="text-nowrap font-primary-bold text-4xl md:text-5xl ">
             Our Mission<span className="text-primary font-bold">.</span>

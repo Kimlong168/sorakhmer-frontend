@@ -9,10 +9,12 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import scrollToTop from "../utils/scrollToTop";
 const Footer = () => {
   return (
     <div className=" bg-primary-content">
       <footer className="container text-white  flex flex-col lg:flex-row items-start lg:justify-between gap-12 py-10 px-6">
+        {/* logo */}
         <div className="w-full p-0 lg:pr-10">
           <div className="w-[110px] mx-auto lg:mx-0">
             <img src={logo} alt="logo" />
@@ -22,38 +24,40 @@ const Footer = () => {
             community development.
           </div>
         </div>
+
+        {/* useful links */}
         <div className="w-full">
           <h3 className="font-bold text-primary text-xl mb-4">Useful Links</h3>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2" onClick={scrollToTop}>
             <Link to="/" className="hover:text-primary-light hover:underline">
               Home
             </Link>
             <Link
-              to="/about"
+              to="/products"
               className="hover:text-primary-light hover:underline"
             >
               Product
             </Link>
             <Link
-              to="/product"
+              to="/blogs"
               className="hover:text-primary-light hover:underline"
             >
               Blog
             </Link>
             <Link
-              to="/contact"
+              to="/process"
               className="hover:text-primary-light hover:underline"
             >
               Process
             </Link>
             <Link
-              to="/contact"
+              to="/distillery"
               className="hover:text-primary-light hover:underline"
             >
               Distillery
             </Link>
             <Link
-              to="/contact"
+              to="/about"
               className="hover:text-primary-light hover:underline"
             >
               About
@@ -67,6 +71,7 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* contact information */}
         <div className="w-full">
           <h3 className="font-bold text-primary text-xl mb-4">Contact Us</h3>
           <div className="flex flex-col gap-4">
@@ -90,6 +95,8 @@ const Footer = () => {
             </Link>
           </div>
         </div>
+
+        {/* social media */}
         <div className="w-full">
           <h3 className="font-bold text-primary text-xl mb-4">Follow Us</h3>
           <div className="flex item-center gap-5 text-3xl">
@@ -112,6 +119,7 @@ const Footer = () => {
         </div>
       </footer>
       <div className="bg-primary-dark w-[90%] h-[1px] mx-auto"></div>
+      {/* copyright */}
       <div className=" py-4 text-white flex justify-center items-center gap-2 text-sm">
         <FaCopyright />
         2024 Copyright, Sorakhmer. All rights reserved.

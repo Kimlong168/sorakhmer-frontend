@@ -5,15 +5,15 @@ import ContentDisplay from "../../components/ui/ContentDisplay";
 import { DataContext } from "../../contexts/DataContext";
 const ProcessSection = () => {
   const { processList } = useContext(DataContext);
-
   const [openItemIndex, setOpenItemIndex] = useState(null);
 
+  // toggle the collapsible item
   const toggleCollapse = (index) => {
     setOpenItemIndex(index === openItemIndex ? null : index);
   };
   return (
     <section className="container p-8 md:p-0">
-      <div className="py-12">
+      <div className="pt-12 md:py-12">
         <h3 className="text-nowrap text-center font-primary-bold text-4xl md:text-5xl ">
           Our Process<span className="text-primary font-bold">.</span>
         </h3>

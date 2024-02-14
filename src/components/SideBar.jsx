@@ -12,15 +12,18 @@ import sora11 from "../assets/images/sora11.jpg";
 import { IoMdClose } from "react-icons/io";
 import { Link } from "react-router-dom";
 import "../App.css";
-  // 
-const SideBar = ({ setShowSideBar,showSideBar }) => {
+import scrollToTop from "../utils/scrollToTop";
+
+const SideBar = ({ setShowSideBar, showSideBar }) => {
   return (
     <div
       id="sideBar"
-      className={`fixed inset-0 z-[1000] overflow-auto overflow-x-hidden transition-all duration-300 ease-in-out transform ${showSideBar ? 'translate-x-0' : '-translate-x-full'}`}
+      className={`fixed inset-0 z-[1000] overflow-auto overflow-x-hidden transition-all duration-300 ease-in-out transform ${
+        showSideBar ? "translate-x-0" : "-translate-x-full"
+      }`}
     >
       <section className="bg-neutral-950 p-4 md:p-8 ">
-        <div className="mx-auto max-w-5xl ">
+        <div className="mx-auto max-w-5xl " onClick={scrollToTop}>
           <LinkContainer
             heading="Home"
             subheading="Learn what we do here"
@@ -66,6 +69,7 @@ const SideBar = ({ setShowSideBar,showSideBar }) => {
         </div>
       </section>
 
+      {/* close icon */}
       <div
         onClick={() => setShowSideBar((prev) => !prev)}
         className="fixed top-2 right-3 md:top-4 md:right-5 z-[10] p-2 text-white hover:bg-neutral-800"

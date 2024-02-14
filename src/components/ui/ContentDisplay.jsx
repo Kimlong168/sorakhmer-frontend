@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 
+// use to display the content of the blog post and process of produce of the product
+
 const ContentDisplay = ({ htmlString }) => {
   //   Use a regular expression to find the oembed element in the HTML string
   const oembedRegex = /<oembed[^>]*>/g;

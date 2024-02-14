@@ -3,7 +3,7 @@ import { FaFacebook, FaTelegram, FaYoutube } from "react-icons/fa";
 const ContactSection = () => {
   return (
     <section className="container p-8 md:p-0">
-      <div className="flex flex-col md:flex-row gap-12 md:gap-24 py-12">
+      <div className="flex flex-col md:flex-row gap-12 md:gap-24 pt-12 md:py-12">
         {/* contact information */}
         <div className="w-full">
           {/* map */}

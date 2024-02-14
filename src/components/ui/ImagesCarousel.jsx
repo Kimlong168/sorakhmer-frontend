@@ -32,6 +32,8 @@ function AwardCarousel({ imageList }) {
       window.removeEventListener("resize", handleResize);
     };
   }, []); // Empty dependency array ensures the effect runs only once
+
+  // slider configuration
   const settings = {
     dots: true,
     infinite: true,

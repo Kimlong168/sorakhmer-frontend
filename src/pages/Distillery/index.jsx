@@ -1,13 +1,13 @@
 import PageTitle from "../../components/ui/PageTitle";
 import Layout from "../../layouts/Layout";
-const Product = () => {
+const Distillery = () => {
   return (
-    <div>
+    <>
       <Layout>
-        <PageTitle text="Our Product" />
+        <PageTitle text="Distillery" />
       </Layout>
-    </div>
+    </>
   );
 };
 
-export default Product;
+export default Distillery;

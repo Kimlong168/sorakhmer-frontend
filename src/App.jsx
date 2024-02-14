@@ -7,7 +7,10 @@ import Home from "./pages/Home";
 import Product from "./pages/Product";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import Process from "./pages/Process"
+import Process from "./pages/Process";
+import Error404 from "./pages/Error404";
+import Distillery from "./pages/Distillery";
+import Blog from "./pages/Blog";
 export default function App() {
   const [productCategoryList, setProductCategoryList] = useState([]);
   const [productList, setProductList] = useState([]);
@@ -21,6 +24,7 @@ export default function App() {
   const [storeList, setStoreList] = useState([]);
   const [galleryList, setGalleryList] = useState([]);
 
+  // fetch all the data from database
   useEffect(() => {
     const productCollectionRef = collection(db, "products");
     const productCategoryCollectionRef = collection(db, "product_category");
@@ -116,10 +120,13 @@ export default function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/product" element={<Product />} />
+            <Route path="/products" element={<Product />} />
+            <Route path="/blogs" element={<Blog />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/process" element={<Process />} />
+            <Route path="/distillery" element={<Distillery />} />
+            <Route path="*" element={<Error404 />} />
           </Routes>
         </Router>
       </DataContext.Provider>

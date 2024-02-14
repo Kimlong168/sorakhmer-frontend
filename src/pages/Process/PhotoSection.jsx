@@ -8,7 +8,7 @@ const PhotoSection = () => {
   const imageList = [sora16, sora15, sora13, sora14];
   return (
     <section className="container p-8 md:p-0">
-      <div className="py-12">
+      <div className="md:py-12">
         <h4 className="text-2xl text-center font-semibold">
           We crafted it with passion and care{" "}
           <span className="text-primary">!</span>

@@ -1,8 +1,11 @@
 import PrimaryButton from "../../components/ui/PrimaryButton";
 import Title from "../../components/ui/Title";
-// import sora1 from "../../assets/images/product1.jpg";
-import ProductCarousel from "../../components/ui/ProductCarousel";
 import { TypeAnimation } from "react-type-animation";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
+import { useContext } from "react";
+import { DataContext } from "../../contexts/DataContext";
+
 const ProductSection = () => {
   return (
     <>
@@ -49,6 +52,37 @@ const ProductSection = () => {
         </div>
       </section>
     </>
+  );
+};
+
+// ProductCarousel component 
+const ProductCarousel = () => {
+  const { productList } = useContext(DataContext);
+  return (
+    <div className="relative w-full h-full">
+      <Carousel
+        infiniteLoop={true}
+        autoPlay={true}
+        showIndicators={true}
+        showArrows={true}
+        showThumbs={false}
+        showStatus={false}
+        stopOnHover={true}
+        interval={4000}
+        transitionTime={500}
+      >
+        {productList &&
+          productList.map((item) => (
+            <div className="w-full h-[280px] md:h-[335px]" key={item.id}>
+              <img
+                className="h-full w-full object-fill"
+                src={item.image}
+                alt={item.name}
+              />
+            </div>
+          ))}
+      </Carousel>
+    </div>
   );
 };
 

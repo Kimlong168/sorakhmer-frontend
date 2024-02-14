@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+
+// primary button component with dashed border
 const PrimaryButton = ({ content, href }) => {
   return (
     <>

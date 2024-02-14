@@ -2,6 +2,8 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+
+// drop down link in the navigation bar with the underline animation
 const NavLinkDropdown = () => {
   return (
     <div className="flex  justify-center ">

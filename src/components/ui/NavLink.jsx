@@ -1,6 +1,8 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+
+// link in the navigation bar with the underline animation
 const NavLink = ({ href, title }) => {
   return (
     <div className="flex justify-center hover:text-primary-light">

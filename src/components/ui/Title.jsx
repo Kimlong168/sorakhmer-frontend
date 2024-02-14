@@ -1,4 +1,6 @@
 import dragon from "../../assets/images/dragon.png";
+
+// the title with dragon image
 const Title = () => {
   return (
     <>

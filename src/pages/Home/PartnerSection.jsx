@@ -1,7 +1,7 @@
 import PartnersList from "../../components/ui/PartnersList";
 const PartnerSection = () => {
   return (
-    <section className="overflow-hidden mt-32">
+    <section className="overflow-hidden md:mt-32">
       <h3 className="font-primary-bold text-4xl md:text-5xl pt-8 uppercase text-center">
         OUR PARTNERS<span className="text-primary">.</span>
       </h3>
