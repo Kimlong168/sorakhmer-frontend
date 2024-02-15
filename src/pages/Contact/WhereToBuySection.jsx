@@ -20,7 +20,7 @@ const WhereToBuySection = () => {
   useEffect(() => {
     const updatedCitySet = new Set(cityList);
     storeList.forEach((store) => {
-      updatedCitySet.add(store.city);
+      updatedCitySet.add(store.city.toLowerCase().trim());
     });
     setCityList(Array.from(updatedCitySet));
   }, [storeList, cityList]);
@@ -35,13 +35,14 @@ const WhereToBuySection = () => {
           {cityList &&
             cityList.map((city) => {
               const cityStores = storeList.filter(
-                (store) => store.city === city
+                (store) =>
+                  store.city.toLowerCase().trim() === city.toLowerCase().trim()
               );
               return (
                 <div key={city}>
-                  <h4 className="text-xl font-primary-bold mt-5 md:mt-8 mb-2 flex gap-2 items-center">
+                  <h4 className="text-xl font-primary-bold mt-5 md:mt-8 mb-2 flex gap-2 items-center capitalize">
                     <FaMapMarkerAlt className="text-primary" />
-                    {city}, {cityStores[0].country}
+                    {city.toLowerCase()}, {cityStores[0].country.toLowerCase()}
                   </h4>
                   <div className="flex flex-col gap-3.5">
                     {cityStores.map((store) => (
@@ -76,7 +77,7 @@ const Collapsible = ({ title, content, isOpen, onToggle }) => {
       <div className={`border rounded w-full ${isOpen && "border-primary"}`}>
         <button
           onClick={onToggle}
-          className="w-full px-4 py-2.5  focus:outline-none flex justify-between items-center"
+          className="w-full px-4 py-2.5  focus:outline-none flex justify-between items-center capitalize"
         >
           {title}
           <span className="text-primary">
@@ -90,7 +91,7 @@ const Collapsible = ({ title, content, isOpen, onToggle }) => {
             {content ? (
               <div className="flex flex-col gap-2">
                 <div>
-                  <span className="font-semibold">Store name:</span>{" "}
+                  <span className="font-semibold capitalize">Store name:</span>{" "}
                   {content.storeName}
                 </div>
                 {content.address && (

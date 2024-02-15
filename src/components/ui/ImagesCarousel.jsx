@@ -55,7 +55,7 @@ function AwardCarousel({ imageList }) {
               return (
                 <div key={index}>
                   <img
-                    className="p-2  w-full object-cover h-[300px]"
+                    className="p-2  w-full object-cover h-[230px] sm:h-[300px]"
                     src={award}
                     alt="image"
                   />

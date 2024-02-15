@@ -28,7 +28,7 @@ const IntroSection = () => {
 
         <div className="w-full ">
           <img
-            className="mx-auto block w-full lg:w-auto"
+            className="mx-auto block w-full lg:w-auto rounded-lg shadow-2xl"
             src={processImage}
             alt="processImage"
           />

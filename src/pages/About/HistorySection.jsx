@@ -29,7 +29,11 @@ const HistorySection = () => {
         </div>
         <div className="flex flex-col md:flex-row gap-8 md:gap-14 lg:gap-24">
           <div className="pt-3 md:w-[90%]">
-            <img src={sora3} alt="history" />
+            <img
+              className="w-full  object-cover shadow-2xl rounded-lg"
+              src={sora3}
+              alt="history"
+            />
           </div>
 
           <div className="flex items-end w-full">
