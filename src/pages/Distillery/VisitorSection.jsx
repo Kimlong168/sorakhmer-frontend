@@ -1,14 +1,14 @@
 import dragon from "../../assets/images/dragon.png";
 import Marquee from "react-fast-marquee";
-
 import { useContext } from "react";
 import { DataContext } from "../../contexts/DataContext";
 
 const VisitorSection = () => {
   const { galleryList } = useContext(DataContext);
+
+  // split the gallery list into 3 or 2 rows
   let imgLength =
     galleryList.length < 12 ? galleryList.length / 2 : galleryList.length / 3;
-
   const imageRow1 = galleryList.slice(0, imgLength);
   const imageRow2 = galleryList.slice(imgLength, 2 * imgLength);
   const imageRow3 = galleryList.slice(2 * imgLength, galleryList.length);
@@ -42,7 +42,7 @@ const VisitorSection = () => {
               return (
                 <div key={index}>
                   <img
-                    className="max-w-[300px] h-[170px] mr-1"
+                    className="max-w-[300px] h-[110px] md:h-[170px] mr-1"
                     src={image.url}
                     alt="image"
                   />
@@ -66,7 +66,7 @@ const VisitorSection = () => {
               return (
                 <div key={index}>
                   <img
-                    className="max-w-[300px] h-[170px] mr-1"
+                    className="max-w-[300px] h-[110px] md:h-[170px] mr-1"
                     src={image.url}
                     alt="image"
                   />
@@ -74,6 +74,8 @@ const VisitorSection = () => {
               );
             })}
         </Marquee>
+
+        {/* don't show this row of images is less than 12 */}
         {galleryList.length > 11 && (
           <Marquee
             pauseOnClick={true}
@@ -90,7 +92,7 @@ const VisitorSection = () => {
                 return (
                   <div key={index}>
                     <img
-                      className="max-w-[300px] h-[170px] mr-1"
+                      className="max-w-[300px] h-[110px] md:h-[170px] mr-1"
                       src={image.url}
                       alt="image"
                     />

@@ -10,7 +10,7 @@ const ProductSection = () => {
   return (
     <>
       <section className="container p-8 md:p-0 flex flex-col md:flex-row items-center justify-between  gap-8 md:gap-24 md:h-screen md:-mt-36">
-        <div className="w-full sm:w-[80%] md:w-[500px]  md:min-w-[400px] shadow-lg hover:shadow-gray-800 shadow-gray-500 order-2 md:order-1 hover:rounded-lg overflow-hidden">
+        <div className="w-full sm:w-[80%] md:w-[500px]  md:min-w-[400px] shadow-2xl rounded-lg order-2 md:order-1 hover:rounded-lg overflow-hidden">
           <ProductCarousel />
         </div>
         <div className="order-1 md:order-2">
@@ -55,16 +55,16 @@ const ProductSection = () => {
   );
 };
 
-// ProductCarousel component 
+// ProductCarousel component
 const ProductCarousel = () => {
   const { productList } = useContext(DataContext);
   return (
-    <div className="relative w-full h-full">
+    <div className=" w-full h-full">
       <Carousel
         infiniteLoop={true}
         autoPlay={true}
         showIndicators={true}
-        showArrows={true}
+        showArrows={false}
         showThumbs={false}
         showStatus={false}
         stopOnHover={true}
@@ -74,11 +74,7 @@ const ProductCarousel = () => {
         {productList &&
           productList.map((item) => (
             <div className="w-full h-[280px] md:h-[335px]" key={item.id}>
-              <img
-                className="h-full w-full object-fill"
-                src={item.image}
-                alt={item.name}
-              />
+              <img className="h-full w-full" src={item.image} alt={item.name} />
             </div>
           ))}
       </Carousel>

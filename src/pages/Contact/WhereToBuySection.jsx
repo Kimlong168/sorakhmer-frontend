@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { FaArrowDown, FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
 const WhereToBuySection = () => {
   const { storeList } = useContext(DataContext);
   const [cityList, setCityList] = useState([]);
@@ -18,12 +17,12 @@ const WhereToBuySection = () => {
 
   // update the city list when the store list changes, city list is use to group the stores by city
   useEffect(() => {
-    const updatedCitySet = new Set(cityList);
+    const updatedCitySet = new Set([]);
     storeList.forEach((store) => {
       updatedCitySet.add(store.city.toLowerCase().trim());
     });
     setCityList(Array.from(updatedCitySet));
-  }, [storeList, cityList]);
+  }, [storeList]);
 
   return (
     <section className="container p-8 md:p-0">

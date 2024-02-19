@@ -39,9 +39,9 @@ const AboutSection = () => {
           <PrimaryButton content="Learn More" href="/about" />
         </div>
       </div>
-      <div className="w-full md:w-[500px] shadow-lg hover:shadow-gray-800 shadow-gray-500 overflow-hidden transition-all  hover:rounded-lg">
+      <div className="w-full md:w-[500px] shadow-2xl overflow-hidden rounded-lg transition-all">
         <img
-          className="hover:scale-125 transition-all cursor-pointer w-full h-full object-cover object-center"
+          className="scale-105 hover:scale-125 transition-all cursor-pointer w-full h-full object-cover object-center"
           src={sora1}
           alt="about-image"
         />

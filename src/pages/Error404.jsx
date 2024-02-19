@@ -2,11 +2,11 @@
 import { Link } from "react-router-dom";
 const Error404 = () => {
   return (
-    <div className="overflow-hidden bg-gray-700">
+    <div className="overflow-hidden bg-[#eee]">
       {/* <Helmet>
         <title>Boyloy-News| Error page not found!</title>
       </Helmet> */}
-      <div className="bg-errorPage flex items-center justify-center min-h-screen  bg-fixed bg-cover bg-bottom error-bg">
+      <div className="flex items-center justify-center min-h-screen bg-fixed bg-bottom">
         <div className="container">
           <div className="row">
             <div className="col-sm-8 offset-sm-2 text-red-600 text-center -mt-52">
@@ -24,7 +24,7 @@ const Error404 = () => {
                 Page not found
               </h5>
               <p className=" mt-2 mb-6">
-                we are sorry, but the page you requested was not found
+                We are sorry, but the page you requested was not found
               </p>
               <Link
                 to="/"

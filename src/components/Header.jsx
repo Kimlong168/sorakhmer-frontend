@@ -22,7 +22,7 @@ const Header = () => {
       <div className="flex justify-between items-center p-1 px-8 ">
         <div className="flex items-center gap-2">
           <FaPhoneSquareAlt />
-          <span>(+855) 12 345 678</span>
+          <Link to="tel:+1234567890">(855) 123-456-7890</Link>
         </div>
         <div className="flex item-center gap-3">
           <FaFacebook />

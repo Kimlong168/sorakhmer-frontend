@@ -22,7 +22,7 @@ import { TypeAnimation } from "react-type-animation";
 const HeroSection = () => {
   return (
     // items-center
-    <section className="w-full px-8 py-10 sm:py-20 grid grid-cols-1 md:grid-cols-2  gap-8 max-w-6xl mx-auto ">
+    <section className="w-full px-8 py-10 sm:py-20 grid grid-cols-1 md:grid-cols-2  gap-8 md:gap-24  mx-auto container">
       <div>
         <span className="block mb-4 text-xs md:text-sm text-primary font-medium">
           Explore quality and value with us
@@ -33,9 +33,9 @@ const HeroSection = () => {
               speed={50}
               cursor={false}
               sequence={[
-                "WELCOME TO",
-                2000,
                 "សូមស្វាគមន៍មកកាន់",
+                2000,
+                "WELCOME TO",
                 2000,
                 "へようこそ",
                 2000,

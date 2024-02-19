@@ -76,22 +76,25 @@ const Footer = () => {
           <h3 className="font-bold text-primary text-xl mb-4">Contact Us</h3>
           <div className="flex flex-col gap-4">
             <Link
-              to="/"
+              to="tel:+1234567890"
               className="flex items-center gap-2 hover:text-primary-light hover:underline"
             >
-              <FaPhoneSquareAlt /> <span>(855) 086 861 256</span>
+              <FaPhoneSquareAlt />
+              <span>(855) 123-456-7890</span>
             </Link>
             <Link
-              to="/about"
+              to="mailto:example@example.com"
               className="flex items-center gap-2 hover:text-primary-light hover:underline"
             >
-              <MdEmail /> <span>example@gmail.com</span>
+              <MdEmail />
+              <span>example@example.com</span>
             </Link>
             <Link
-              to="/product"
+              to="https://maps.app.goo.gl/GWBq9PAQotji4jceA"
               className="flex items-center gap-2 hover:text-primary-light hover:underline"
             >
-              <FaMapMarkerAlt /> <span>Battambang, Cambodia</span>
+              <FaMapMarkerAlt />
+              <span>Battambang, Cambodia</span>
             </Link>
           </div>
         </div>
@@ -103,16 +106,10 @@ const Footer = () => {
             <Link to="/" className="hover:text-primary-light hover:underline">
               <FaFacebook />
             </Link>
-            <Link
-              to="/about"
-              className="hover:text-primary-light hover:underline"
-            >
+            <Link to="/" className="hover:text-primary-light hover:underline">
               <FaYoutube />
             </Link>
-            <Link
-              to="/product"
-              className="hover:text-primary-light hover:underline"
-            >
+            <Link to="/" className="hover:text-primary-light hover:underline">
               <FaTelegram />
             </Link>
           </div>
