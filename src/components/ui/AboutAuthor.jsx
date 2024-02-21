@@ -17,12 +17,8 @@ const AboutAuthor = ({ fullName, profileImage, bio, links }) => {
           </a>
         </div>
         <div className="text-center md:px-3 pt-2">
-          <h3 className=" bold font-sans text-2xl text-bold uppercase ">
-            {fullName}
-          </h3>
-          <p className="mt-2 font-sans font-semibold w-full md:w-[60%] mx-auto block">
-            {bio}
-          </p>
+          <h3 className=" bold  text-2xl text-bold uppercase ">{fullName}</h3>
+          <p className="mt-2  w-full md:w-[60%] mx-auto block">{bio}</p>
         </div>
         <div className="flex justify-center  mt-8">
           <div className="flex justify-center space-x-6 ">
