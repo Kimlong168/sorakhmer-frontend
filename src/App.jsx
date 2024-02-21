@@ -12,6 +12,7 @@ import Process from "./pages/Process";
 import Error404 from "./pages/Error404";
 import Distillery from "./pages/Distillery";
 import Blog from "./pages/Blog";
+import BlogDetail from "./pages/BlogDetail";
 export default function App() {
   const [productCategoryList, setProductCategoryList] = useState([]);
   const [productList, setProductList] = useState([]);
@@ -124,6 +125,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Product />} />
             <Route path="/blogs" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogDetail />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/thank" element={<Thank />} />

@@ -3,7 +3,6 @@ import { TypeAnimation } from "react-type-animation";
 import { useContext } from "react";
 import { DataContext } from "../../contexts/DataContext";
 const RecentBlogSection = () => {
-
   const { blogList } = useContext(DataContext);
   const activeBlog = blogList.filter((blog) => blog.isActive);
 
@@ -39,7 +38,10 @@ const RecentBlogSection = () => {
                     {blog.description}
                   </p>
                   <div className="hidden md:block">
-                    <PrimaryButton content="Read More" href="#" />
+                    <PrimaryButton
+                      content="Read More"
+                      href={`/blog/${blog.id}`}
+                    />
                   </div>
                 </div>
                 {/* cover image */}
@@ -53,7 +55,10 @@ const RecentBlogSection = () => {
 
                 {/* buuton */}
                 <div className="md:hidden block mt-4">
-                  <PrimaryButton content="Read More" href="#" />
+                  <PrimaryButton
+                    content="Read More"
+                    href={`/blog/${blog.id}`}
+                  />
                 </div>
               </>
             ))}

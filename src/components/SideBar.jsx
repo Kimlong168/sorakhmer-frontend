@@ -12,7 +12,7 @@ import sora11 from "../assets/images/sora11.jpg";
 import { IoMdClose } from "react-icons/io";
 import { Link } from "react-router-dom";
 import "../App.css";
-import scrollToTop from "../utils/scrollToTop";
+import scrollToTop from "../utils/scrollTop";
 
 const SideBar = ({ setShowSideBar, showSideBar }) => {
   return (

@@ -5,9 +5,11 @@ import PrimaryButton from "../../components/ui/PrimaryButton";
 import adminProfile from "../../assets/images/adminProfile.png";
 import { DataContext } from "../../contexts/DataContext";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 const BlogSection = () => {
   const { blogList, authorList } = useContext(DataContext);
   const activeBlog = blogList.filter((blog) => blog.isActive);
+
   return (
     <section className="container p-8 md:p-0 mb-12">
       <h3 className="font-primary-bold text-4xl md:text-5xl py-8 uppercase text-center mb-4">
@@ -22,36 +24,34 @@ const BlogSection = () => {
           activeBlog.slice(0, 3).map((blog, index) => {
             // return if the blog is disabled
             if (!blog.isActive) return;
-            // get the author name and profile image
-            const authorName =
-              blog.authorId.toLowerCase() === "default"
-                ? "Admin"
-                : authorList &&
-                  authorList.map((data) => {
-                    if (data.id == blog.authorId) {
-                      return data.fullName;
-                    }
-                  });
 
-            const authorImage =
-              blog.authorId.toLowerCase() === "default"
-                ? adminProfile
-                : authorList &&
-                  authorList.map((data) => {
-                    if (data.id == blog.authorId) {
-                      return data.profilePicture;
-                    }
-                  });
+            // get author for the blog
+            let author = authorList.filter(
+              (author) => author.id == blog.authorId
+            )[0];
+
+            if (!author) {
+              author = {
+                id: "default",
+                fullName: "Admin",
+                profilePicture: adminProfile,
+              };
+            }
+
+            console.log("author for card:", author);
 
             return (
-              <BlogCard
-                key={index}
-                coverImage={blog.coverImage}
-                authorImg={authorImage}
-                authorName={authorName}
-                title={blog.title}
-                description={blog.description}
-              />
+              <div key={index} className="w-full">
+                <Link to={`/blog/${blog.id}`}>
+                  <BlogCard
+                    coverImage={blog.coverImage}
+                    title={blog.title}
+                    description={blog.description}
+                    authorImg={author.profilePicture}
+                    authorName={author.fullName}
+                  />
+                </Link>
+              </div>
             );
           })}
       </div>

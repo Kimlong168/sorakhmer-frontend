@@ -5,6 +5,8 @@ import { DataContext } from "../../contexts/DataContext";
 
 const PartnersList = ({ direction = "left" }) => {
   const { partnerList } = useContext(DataContext);
+
+
   return (
     <>
       <div>

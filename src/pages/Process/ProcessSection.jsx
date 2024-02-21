@@ -11,6 +11,10 @@ const ProcessSection = () => {
   const toggleCollapse = (index) => {
     setOpenItemIndex(index === openItemIndex ? null : index);
   };
+
+  // if there is no process list, return null
+  if (!processList) return null;
+  
   return (
     <section className="container p-8 md:p-0">
       <div className="pt-12 md:py-12">

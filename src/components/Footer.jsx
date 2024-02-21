@@ -9,7 +9,7 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import scrollToTop from "../utils/scrollToTop";
+import scrollToTop from "../utils/scrollTop";
 const Footer = () => {
   return (
     <div className=" bg-primary-content">

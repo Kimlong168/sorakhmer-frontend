@@ -2,57 +2,122 @@ import { FaSearch } from "react-icons/fa";
 import { IoMdArrowForward } from "react-icons/io";
 import DrawOutlineButton from "../../components/ui/DrawOutlineButton";
 import { DataContext } from "../../contexts/DataContext";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import adminProfile from "../../assets/images/adminProfile.png";
 import BlogCard from "../../components/ui/BlogCard";
-import { Link } from "react-router-dom";
-// import PrimaryButton from "../../components/ui/PrimaryButton";
 import GoToTop from "../../components/ui/GoToTop";
+// motion
+import { motion } from "framer-motion";
+// vartants
+import { fadeIn } from "../../variants";
+import { Link } from "react-router-dom";
 const BlogListSection = () => {
   const { blogList, authorList, blogCategoryList } = useContext(DataContext);
   const [visible, setVisible] = useState(3);
-  //   const [visible1, setVisible1] = useState(4);
+  const [filter, setFilter] = useState("default");
+  const [activeBlog, setActiveBlog] = useState(blogList);
+  const [activeCategory, setActiveCategory] = useState(blogCategoryList);
+  const [searchKeyword, setSearchKeyword] = useState("");
 
+  // load more blogs
   const handleLoadMore = (numberToShow) => {
     setVisible((prev) => prev + numberToShow);
-    // setVisible1((prev) => prev + numberToShow);
   };
 
-  const activeBlog = blogList.filter((blog) => blog.isActive);
+  // search blog
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setFilter("default");
+    const searchedBlog = blogList.filter((blog) =>
+      blog.title.toLowerCase().includes(searchKeyword.toLowerCase().trim())
+    );
+    setActiveBlog(searchedBlog);
+    if (searchedBlog.length === 0) {
+      setSearchKeyword("");
+    }
+  };
+
+  // get the category which has active blog
+  useEffect(() => {
+    const activeCategory = blogCategoryList.filter((category) => {
+      const activeBlog = blogList.filter(
+        (blog) => blog.isActive && blog.categoryId === category.id
+      );
+      return activeBlog.length > 0;
+    });
+    setActiveCategory(activeCategory);
+  }, [blogList, blogCategoryList]);
+
+  // get active blog and filter base on category
+  useEffect(() => {
+    let activeBlog = [];
+    if (filter === "default") {
+      activeBlog = blogList.filter((blog) => blog.isActive);
+      setActiveBlog(activeBlog);
+    } else {
+      activeBlog = blogList.filter(
+        (blog) => blog.isActive && blog.categoryId === filter
+      );
+      setActiveBlog(activeBlog);
+    }
+    setSearchKeyword("");
+  }, [blogList, filter]);
+
   return (
     <section className="container p-8 md:p-0">
       <div className="pt-12 md:py-12">
         {/* all buttons */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-8 border-b border-border pb-4  text-lg font-bold">
           <div className="flex items-center justify-between sm:justify-start gap-12">
+            {/* set filter to default or show all blogs */}
             <DrawOutlineButton>
-              <Link to="/blogs">
-                <button className="px-4 py-2">All Blog</button>
-              </Link>
+              <button
+                onClick={() => {
+                  setActiveBlog(blogList);
+                  setFilter("default");
+                  setSearchKeyword("");
+                }}
+                className="px-4 py-2 font-bold"
+              >
+                All Blog
+              </button>
             </DrawOutlineButton>
 
-            <select className="outline-none px-2 cursor-pointer">
+            {/* filter blog base on categorys */}
+            <select
+              className="outline-none px-2 cursor-pointerborder-none bg-transparent font-bold"
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+            >
               <option value="default">All Category</option>
-              {blogCategoryList.map((category) => (
+              {activeCategory.map((category) => (
                 <option key={category.id} value={category.id}>
                   {category.categoryName}
                 </option>
               ))}
             </select>
           </div>
+
+          {/* search bar */}
           <DrawOutlineButton>
-            <div className="w-full sm:w-auto">
+            <form className="w-full sm:w-auto" onSubmit={handleSearch}>
               <div className="flex items-center gap-3 px-4 py-2 border">
+                {/* search input */}
                 <input
                   className="outline-none border-none p-1 w-full"
                   type="text"
                   placeholder="Search..."
+                  name="search"
+                  value={searchKeyword}
+                  onChange={(e) => setSearchKeyword(e.target.value)}
                 />
-                <div>
+
+                {/* search icon */}
+                <div onClick={handleSearch}>
                   <FaSearch />
                 </div>
               </div>
-            </div>
+            </form>
           </DrawOutlineButton>
         </div>
 
@@ -66,40 +131,46 @@ const BlogListSection = () => {
             activeBlog.slice(0, visible).map((blog, index) => {
               // return if the blog is disabled
               if (!blog.isActive) return;
-              // get the author name and profile image
-              const authorName =
-                blog.authorId.toLowerCase() === "default"
-                  ? "Admin"
-                  : authorList &&
-                    authorList.map((data) => {
-                      if (data.id == blog.authorId) {
-                        return data.fullName;
-                      }
-                    });
 
-              const authorImage =
-                blog.authorId.toLowerCase() === "default"
-                  ? adminProfile
-                  : authorList &&
-                    authorList.map((data) => {
-                      if (data.id == blog.authorId) {
-                        return data.profilePicture;
-                      }
-                    });
+              // get author for the blog
+              let author = authorList.filter(
+                (author) => author.id == blog.authorId
+              )[0];
+
+              if (!author) {
+                author = {
+                  id: "default",
+                  fullName: "Admin",
+                  profilePicture: adminProfile,
+                };
+              }
+
+              console.log("author for card:", author);
 
               return (
-                <BlogCard
-                  key={index}
-                  coverImage={blog.coverImage}
-                  authorImg={authorImage}
-                  authorName={authorName}
-                  title={blog.title}
-                  description={blog.description}
-                />
+                <Link to={`/blog/${blog.id}`} key={index}>
+                  <BlogCard
+                    key={index}
+                    coverImage={blog.coverImage}
+                    authorImg={author.profilePicture}
+                    authorName={author.fullName}
+                    title={blog.title}
+                    description={blog.description}
+                  />
+                </Link>
               );
             })
           ) : (
-            <div className="text-center col-span-3"> No blog found</div>
+            <div className="text-center col-span-3 h-[100px]">
+              <motion.div
+                variants={fadeIn("up", 0)}
+                initial="hidden"
+                whileInView={"show"}
+                viewport={{ once: true, amount: 0 }}
+              >
+                No blog found
+              </motion.div>
+            </div>
           )}
         </div>
 

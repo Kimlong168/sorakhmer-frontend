@@ -5,6 +5,7 @@ import { fadeIn } from "../../variants";
 import { BiSolidUser } from "react-icons/bi";
 import { BsArrowRight } from "react-icons/bs";
 import noImage from "../../assets/images/sora1.jpg";
+import scrollTop from "../../utils/scrollTop";
 import PropType from "prop-types";
 const BlogCard = ({
   coverImage,
@@ -13,9 +14,6 @@ const BlogCard = ({
   authorImg,
   authorName,
 }) => {
-  const scrollTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
   return (
     <motion.div
       onClick={scrollTop}

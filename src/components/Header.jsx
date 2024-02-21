@@ -12,7 +12,7 @@ import ToggleLightDarkMode from "./ui/ToggleLightDarkMode";
 import NavLink from "./ui/NavLink";
 import NavLinkDropdown from "./ui/NavLinkDropdown";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
-import scrollToTop from "../utils/scrollToTop";
+import scrollToTop from "../utils/scrollTop";
 import { Link } from "react-router-dom";
 const Header = () => {
   const [showSideBar, setShowSideBar] = useState(false);
