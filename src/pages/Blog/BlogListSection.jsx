@@ -79,17 +79,17 @@ const BlogListSection = () => {
                 }}
                 className="px-4 py-2 font-bold"
               >
-                All Blog
+                All Blogs
               </button>
             </DrawOutlineButton>
 
             {/* filter blog base on categorys */}
             <select
-              className="outline-none px-2 cursor-pointerborder-none bg-transparent font-bold"
+              className="outline-none px-2 cursor-pointer border-none bg-transparent font-bold"
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
             >
-              <option value="default">All Category</option>
+              <option value="default">All Categories</option>
               {activeCategory.map((category) => (
                 <option key={category.id} value={category.id}>
                   {category.categoryName}

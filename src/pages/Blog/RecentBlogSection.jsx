@@ -47,7 +47,7 @@ const RecentBlogSection = () => {
                 {/* cover image */}
                 <div className="w-full">
                   <img
-                    className="w-full lg:w-4/5 max-h-[330px] shadow-2xl  ml-auto shadow-gray-500 rounded-lg"
+                    className="w-full lg:w-4/5 max-h-[330px] shadow-2xl  ml-auto  rounded-lg"
                     src={blog.coverImage}
                     alt="coverImage"
                   />
