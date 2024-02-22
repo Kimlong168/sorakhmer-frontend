@@ -1,24 +1,33 @@
 import { doc, getDoc } from "firebase/firestore";
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { db } from "../../firebase-config";
-import { BiSolidUser } from "react-icons/bi";
-import { LuCalendarDays } from "react-icons/lu";
+import { BiCalendar, BiCategory, BiUser } from "react-icons/bi";
 import SharingBtn from "../../components/ui/SharingBtn";
-
 import adminProfile from "../../assets/images/adminProfile.png";
 import Loading from "../../components/ui/Loading";
 import ContentDisplay from "../../components/ui/ContentDisplay";
 import { DataContext } from "../../contexts/DataContext";
 import AboutAuthor from "../../components/ui/AboutAuthor";
 import RelatedContent from "./RelatedContent";
+import { IoIosArrowBack } from "react-icons/io";
+import DrawOutlineButton from "../../components/ui/DrawOutlineButton";
+import { FaSearch, FaWindowClose } from "react-icons/fa";
+// motion
+import { motion } from "framer-motion";
+// vartants
+import { fadeIn } from "../../variants";
+import scrollTop from "../../utils/scrollTop";
 const BlogDetailSection = () => {
   const { id: blogParams } = useParams();
   const { blogList, authorList, blogCategoryList } = useContext(DataContext);
   const [data, setData] = useState(null);
   const [author, setAuthor] = useState(null);
   const [category, setCategory] = useState(null);
-
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const [resultBlog, setResultBlog] = useState([]);
+  const [isSearched, setIsSearched] = useState(false);
+  const [showSercchBar, setShowSearchBar] = useState(false);
   //   get current url
   const currentURL = window.location.href;
 
@@ -81,26 +90,62 @@ const BlogDetailSection = () => {
     );
   });
 
+  // handle search
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchKeyword === "") {
+      setResultBlog([]);
+      return;
+    }
+
+    const searchedBlog = blogList.filter((blog) =>
+      blog.title.toLowerCase().includes(searchKeyword.toLowerCase().trim())
+    );
+    setResultBlog(searchedBlog);
+    setIsSearched(true);
+    if (searchedBlog.length === 0) {
+      // setSearchKeyword("");
+      setResultBlog([]);
+    }
+  };
   //   if data is not available
   if (!data) return <Loading />;
   return (
     <section className="container px-4 md:p-0 min-h-screen">
+      {/* back button */}
+      <div className="mt-3 md:mt-5 flex justify-between items-center">
+        <Link to="/blogs">
+          <DrawOutlineButton>
+            <button className="group text-primary font-bold rounded px-3 py-1.5  flex items-center justify-center gap-1 ">
+              <IoIosArrowBack className="group-hover:block hidden" /> Back
+            </button>
+          </DrawOutlineButton>
+        </Link>
+
+        <div
+          className="flex items-center gap-3 font-bold hover:text-primary cursor-pointer lg:hidden"
+          onClick={() => setShowSearchBar(true)}
+        >
+          Search <FaSearch />
+        </div>
+      </div>
+
       {/* content */}
-      <div className=" flex flex-col md:flex-row gap-2 mt-3 md:mt-5 ">
-        <div className="w-full md:w-[75%] mt-4 bg-white dark:bg-black dark:text-white border border-white/20 shadow-xl p-6 min-h-screen">
+      <div className=" flex flex-col md:flex-row gap-2 mt-3 ">
+        <div className="w-full lg:w-[75%] mt-4 bg-white dark:bg-black dark:text-white border border-white/20 shadow-xl p-6 min-h-screen">
           <div className="text-gray-900 dark:text-white font-bold text-2xl md:text-3xl">
             {data.title}
           </div>
-          <div className="flex items-center gap-5 md:gap-8 py-5">
+          <div className="flex items-center gap-5 md:gap-8 py-5 mb-3">
             <div className="flex items-center gap-2">
-              <LuCalendarDays />
+              <BiCalendar />
               {data.publicationDate}
             </div>
             <div className="flex items-center gap-2">
-              <BiSolidUser /> {category}
+              <BiCategory /> {category}
             </div>
-            <div className="flex items-center gap-2">
-              <BiSolidUser /> {author.fullName}
+            <div className=" sm:flex items-center gap-2 hidden">
+              <BiUser /> {author.fullName}
             </div>
           </div>
           <div className="mb-5 text-xl font-semibold">{data.description}</div>
@@ -109,7 +154,7 @@ const BlogDetailSection = () => {
           </div>
 
           {/* content */}
-          <div className="prose lg:prose-xl prose-a:text-blue-600 min-w-full">
+          <div className="prose lg:prose-xl prose-img:w-full lg:prose-img:w-auto lg:prose-img:mx-auto lg:prose-img:block prose-a:text-blue-600 prose-a:hover:text-blue-400  min-w-full">
             <ContentDisplay htmlString={data.content} />
           </div>
           <div className="mt-10 mb-5">
@@ -129,8 +174,109 @@ const BlogDetailSection = () => {
         </div>
 
         {/* right side of the content  */}
-        <div className="hidden md:flex flex-col items-center  gap-2 md:w-[25%] mt-4 md:min-h-screen bg-white shadow-xl p-6 text-2xl font-semibold ">
-          <span className="text-center uppercase">SPONSORED BY</span>
+        <div
+          className={`${
+            showSercchBar ? "flex " : "hidden "
+          } lg:w-[25%] w-[100%] lg:flex  justify-center items-center lg:justify-start lg:items-start shadow-xl fixed lg:static inset-0 z-[100] lg:z-[1] md:min-h-screen bg-black/50 lg:bg-white`}
+        >
+          <div className="flex flex-col gap-2 mt-4 p-6 w-[90%]  sm:w-[70%] lg:w-full text-xl font-semibold h-[100%]  overflow-auto lg:overflow-hidden bg-white lg:bg-transparent">
+            <div className="flex justify-between items-center gap-4">
+              <span>Search</span>
+              <FaWindowClose
+                className="cursor-pointer lg:hidden"
+                onClick={() => setShowSearchBar(false)}
+              />
+            </div>
+
+            {/* search bar */}
+            <DrawOutlineButton>
+              <form className="w-full sm:w-auto" onSubmit={handleSearch}>
+                <div className="flex items-center gap-3 px-4 py-2 border">
+                  {/* search input */}
+                  <input
+                    className="outline-none border-none p-1 w-full"
+                    type="text"
+                    placeholder="find blogs..."
+                    name="search"
+                    value={searchKeyword}
+                    // onBlur={() => setIsSearched(false)}
+                    onChange={(e) => {
+                      setSearchKeyword(e.target.value);
+                      setResultBlog([]);
+                      setIsSearched(false);
+                    }}
+                  />
+
+                  {/* search icon */}
+                  <div onClick={handleSearch}>
+                    <FaSearch />
+                  </div>
+                </div>
+              </form>
+            </DrawOutlineButton>
+
+            <hr className="mt-1 mb-3" />
+
+            {/* result blog display */}
+            <div className="flex flex-col gap-5 text-sm">
+              {resultBlog.length !== 0 ? (
+                resultBlog.map((blog) => {
+                  // get category name for each blog
+                  // const category = blogCategoryList.filter(
+                  //   (category) => category.id === blog.categoryId
+                  // )[0];
+
+                  return (
+                    <Link to={`/blog/${blog.id}`} key={blog.id}>
+                      <motion.div
+                        onClick={() => {
+                          scrollTop();
+                          setShowSearchBar(false);
+                        }}
+                        variants={fadeIn("up", 0.2)}
+                        initial="hidden"
+                        whileInView={"show"}
+                        viewport={{ once: true, amount: 0.3 }}
+                        className="flex gap-3 w-full h-[60px] cursor-pointer group"
+                      >
+                        <div className="lg:w-[30%]">
+                          <img
+                            className="w-full h-full rounded-sm"
+                            src={blog.coverImage}
+                            alt="coverImage"
+                          />
+                        </div>
+                        <div className="w-[100%] lg:w-[70%]">
+                          <div className="line-clamp-2 font-semibold group-hover:text-primary">
+                            {blog.title}
+                          </div>
+                          <div className="line-clamp-1 font-light mt-0.5">
+                            {blog.publicationDate}
+                            {/* <span className="mr-2">{category.categoryName}</span> */}
+                          </div>
+                        </div>
+                      </motion.div>
+                    </Link>
+                  );
+                })
+              ) : (
+                <>
+                  {isSearched && (
+                    <motion.div
+                      onClick={scrollTop}
+                      variants={fadeIn("up", 0.2)}
+                      initial="hidden"
+                      whileInView={"show"}
+                      viewport={{ once: true, amount: 0.3 }}
+                      className="text-center"
+                    >
+                      No blog found
+                    </motion.div>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
         </div>
       </div>
 

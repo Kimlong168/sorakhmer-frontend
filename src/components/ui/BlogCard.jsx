@@ -32,7 +32,7 @@ const BlogCard = ({
       </div>
       <div className="-mt-[40px] px-7 flex gap-7 items-end  relative">
         {/* author profile image */}
-        <div className="w-[75px] h-[75px] overflow-hidden   border-r border-b border-gray-500">
+        <div className="w-[75px] h-[75px] overflow-hidden">
           <img className="w-full h-full cover" src={authorImg} alt="" />
         </div>
         {/* author name */}
