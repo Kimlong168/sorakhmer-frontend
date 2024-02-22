@@ -18,6 +18,7 @@ import { motion } from "framer-motion";
 // vartants
 import { fadeIn } from "../../variants";
 import scrollTop from "../../utils/scrollTop";
+import "../../App.css";
 const BlogDetailSection = () => {
   const { id: blogParams } = useParams();
   const { blogList, authorList, blogCategoryList } = useContext(DataContext);
@@ -179,11 +180,14 @@ const BlogDetailSection = () => {
             showSercchBar ? "flex " : "hidden "
           } lg:w-[25%] w-[100%] lg:flex  justify-center items-center lg:justify-start lg:items-start shadow-xl fixed lg:static inset-0 z-[100] lg:z-[1] md:min-h-screen bg-black/50 lg:bg-white`}
         >
-          <div className="flex flex-col gap-2 mt-4 p-6 w-[90%]  sm:w-[70%] lg:w-full text-xl font-semibold h-[100%]  overflow-auto lg:overflow-hidden bg-white lg:bg-transparent">
+          <div
+            id="searchResult"
+            className="flex flex-col gap-2 mt-4 p-6 w-[90%]  sm:w-[70%] lg:w-full text-xl font-semibold h-[100%]  overflow-auto lg:overflow-hidden bg-white lg:bg-transparent"
+          >
             <div className="flex justify-between items-center gap-4">
               <span>Search</span>
               <FaWindowClose
-                className="cursor-pointer lg:hidden"
+                className="cursor-pointer lg:hidden hover:text-primary"
                 onClick={() => setShowSearchBar(false)}
               />
             </div>
