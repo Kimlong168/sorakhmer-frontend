@@ -7,6 +7,7 @@ import {
   FaFacebook,
   FaInstagram,
   FaLinkedin,
+  FaLine,
   FaPinterest,
   FaSnapchat,
   FaYoutube,
@@ -19,10 +20,11 @@ import { MdMailOutline } from "react-icons/md";
 import { RiCloseCircleLine } from "react-icons/ri";
 import PropTypes from "prop-types";
 
-const IconSelector = ({ title }) => {
+const IconSelector = ({ title, size }) => {
   let lowerCaseTitle = title;
   lowerCaseTitle = lowerCaseTitle.toLowerCase().trim();
   const iconMapping = {
+    line: FaLine,
     twitter: FaTwitter,
     facebook: FaFacebook,
     instagram: FaInstagram,
@@ -45,21 +47,23 @@ const IconSelector = ({ title }) => {
 
   const IconComponent = iconMapping[lowerCaseTitle] || FaGlobe;
 
-  return <IconComponent size={24} />;
+  return <IconComponent size={size} />; //size 24
 };
 IconSelector.propTypes = {
   title: PropTypes.string.isRequired,
+  size: PropTypes.number,
 };
 
-const LinkIcon = ({ title }) => {
+const LinkIcon = ({ title, size = 24 }) => {
   return (
     <>
-      <IconSelector title={title} />
+      <IconSelector title={title} size={size} />
     </>
   );
 };
 LinkIcon.propTypes = {
   title: PropTypes.string.isRequired,
-};  
+  size: PropTypes.number,
+};
 
 export default LinkIcon;

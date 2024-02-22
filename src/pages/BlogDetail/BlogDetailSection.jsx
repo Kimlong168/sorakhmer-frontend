@@ -239,7 +239,7 @@ const BlogDetailSection = () => {
                         viewport={{ once: true, amount: 0.3 }}
                         className="flex gap-3 w-full h-[60px] cursor-pointer group"
                       >
-                        <div className="lg:w-[30%]">
+                        <div className="w-[85px] h-[60px] lg:h-auto lg:w-[30%]">
                           <img
                             className="w-full h-full rounded-sm"
                             src={blog.coverImage}

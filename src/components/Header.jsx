@@ -7,14 +7,18 @@ import {
 import { FaFacebook } from "react-icons/fa";
 import logo from "../assets/images/sorakhmer-logo.png";
 import SideBar from "./SideBar";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ToggleLightDarkMode from "./ui/ToggleLightDarkMode";
 import NavLink from "./ui/NavLink";
 import NavLinkDropdown from "./ui/NavLinkDropdown";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import scrollToTop from "../utils/scrollTop";
 import { Link } from "react-router-dom";
+import { DataContext } from "../contexts/DataContext";
+import LinkIcon from "./ui/LinkIcon";
 const Header = () => {
+  const { contact } = useContext(DataContext);
+  const contactInfo = contact.map((item) => item)[0];
   const [showSideBar, setShowSideBar] = useState(false);
   return (
     <>
@@ -22,12 +26,36 @@ const Header = () => {
       <div className="flex justify-between items-center p-1 px-8 ">
         <div className="flex items-center gap-2">
           <FaPhoneSquareAlt />
-          <Link to="tel:+1234567890">(855) 123-456-7890</Link>
+          {contactInfo ? (
+            <Link to={`tel:${contactInfo.phoneNumber}`}>
+              (855) {contactInfo.phoneNumber.substring(1)}
+            </Link>
+          ) : (
+            <Link to="tel:123-456-7890">(855) 123-456-7890</Link>
+          )}
         </div>
         <div className="flex item-center gap-3">
-          <FaFacebook />
-          <FaYoutube />
-          <FaTelegram />
+          {contactInfo ? (
+            contactInfo.socialMedia.map((item, index) => (
+              <Link to={item.url} key={index}>
+                <LinkIcon title={item.title} size={18} />
+              </Link>
+            ))
+          ) : (
+            <>
+              <Link to="#">
+                <FaFacebook />
+              </Link>
+
+              <Link to="#">
+                <FaYoutube />
+              </Link>
+
+              <Link to="#">
+                <FaTelegram />
+              </Link>
+            </>
+          )}
         </div>
       </div>
 
