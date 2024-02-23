@@ -15,10 +15,12 @@ const ContactSection = () => {
             <h3 className="text-nowrap font-primary-bold text-4xl md:text-5xl ">
               Our Company<span className="text-primary font-bold">.</span>
             </h3>
+            {/* company address */}
             <p className="pt-8 pb-2">
               #45, st. 59, Au anlok village, Tasen commune, Kamrieng district,
               Battambang Province, Cambodia.
             </p>
+
             <div>
               {/* google map */}
               <iframe
@@ -39,11 +41,13 @@ const ContactSection = () => {
             </h3>
             <div className="pt-6 pb-3">
               <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
+                {/* phone */}
                 <p>
                   Phone: <Link to="tel:+1234567890">123-456-7890</Link>
                 </p>
               </div>
               <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
+                {/* email */}
                 <p>
                   Email:{" "}
                   <Link to="mailto:example@example.com">
@@ -52,11 +56,14 @@ const ContactSection = () => {
                 </p>
               </div>
               <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
+                {/* telegram */}
                 <p>
                   Telegram: <Link to="/contact">@sorakhmer</Link>
                 </p>
               </div>
             </div>
+
+            {/* social media */}
             <div className="flex items-center gap-4 text-2xl ">
               <Link to="/">
                 <FaFacebook className=" hover:text-primary hover:underline cursor-pointer" />
@@ -102,6 +109,7 @@ const ContactSection = () => {
             />
             <div className="flex flex-col gap-3.5 mt-5 md:mt-8">
               <div className="flex flex-col gap-1">
+                {/* input fullname */}
                 <label>Fullname</label>
                 <input
                   className="border border-border focus:border-primary outline-none p-2.5"
@@ -111,6 +119,7 @@ const ContactSection = () => {
               </div>
 
               <div className="flex flex-col gap-1">
+                {/* input email */}
                 <label>Email</label>
                 <input
                   className="border border-border focus:border-primary outline-none p-2.5"
@@ -121,6 +130,7 @@ const ContactSection = () => {
               </div>
 
               <div className="flex flex-col gap-1">
+                {/* input phone */}
                 <label>Phone</label>
                 <input
                   className="border border-border focus:border-primary outline-none p-2.5"
@@ -130,6 +140,7 @@ const ContactSection = () => {
               </div>
 
               <div className="flex flex-col gap-1">
+                {/* input country */}
                 <label>Country</label>
                 <input
                   className="border border-border focus:border-primary outline-none p-2.5"
@@ -138,6 +149,7 @@ const ContactSection = () => {
                 />
               </div>
               <div className="flex flex-col gap-1">
+                {/* input message */}
                 <label>Message</label>
                 <textarea
                   className="border border-border focus:border-primary outline-none p-2.5"
@@ -146,6 +158,8 @@ const ContactSection = () => {
                   rows="5"
                 ></textarea>
               </div>
+
+              {/* submit button */}
               <button
                 type="submit"
                 className="border-2 border-dashed border-primary bg-white px-6 py-3 font-semibold uppercase text-primary transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-xl hover:shadow-[4px_4px_0px_rgb(245,156,0)] active:translate-x-[0px] active:translate-y-[0px] active:rounded-lg active:shadow-none"

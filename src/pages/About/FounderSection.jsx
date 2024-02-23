@@ -4,16 +4,20 @@ const FounderSection = () => {
     <section className="container p-8 md:p-0">
       <div className="flex flex-col md:flex-row items-center gap-5 md:gap-24 py-12">
         <div className="md:w-[40%]">
+          {/* profile image */}
           <img
             className="w-[250px] h-[250px]  block mx-auto rounded-full"
             src={adminProfile}
             alt="adminProfile"
           />
+          {/* founder name */}
           <div className="text-center mt-5">
             <h5 className="font-bold uppercase text-xl">Hong Sokmean</h5>
             <p className="text-gray-700">Founder of SORAKHMER</p>
           </div>
         </div>
+
+        {/* description */}
         <div className="porse lg:prose-xl text-justify md:w-[60%]">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed

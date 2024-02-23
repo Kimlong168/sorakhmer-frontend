@@ -72,7 +72,8 @@ const BlogListSection = () => {
             <DrawOutlineButton>
               <button
                 onClick={() => {
-                  setActiveBlog(blogList);
+                  const activeBlog = blogList.filter((blog) => blog.isActive);
+                  setActiveBlog(activeBlog);
                   setFilter("default");
                   setSearchKeyword("");
                 }}

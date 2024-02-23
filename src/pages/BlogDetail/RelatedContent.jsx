@@ -21,7 +21,6 @@ const RelatedContent = ({ relatedPost }) => {
           </div>
 
           {/* related content blog card for big screen */}
-
           <div className="grid sm:hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-auto gap-7 mt-5">
             <RelatedBlogContainer numberToShow={3} relatedPost={relatedPost} />
           </div>
@@ -33,6 +32,7 @@ const RelatedContent = ({ relatedPost }) => {
         </div>
       )}
 
+      {/* back to previous page button */}
       <div className="mb-8">
         <BackToPrevBtn />
       </div>
@@ -60,7 +60,6 @@ const RelatedBlogContainer = ({ relatedPost, numberToShow }) => {
             profilePicture: adminProfile,
           };
         }
-
         console.log("author for card:", author);
         return (
           <div key={data.id} onClick={scrollTop}>

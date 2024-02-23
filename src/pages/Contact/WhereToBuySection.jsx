@@ -78,6 +78,7 @@ const Collapsible = ({ title, content, isOpen, onToggle }) => {
           onClick={onToggle}
           className="w-full px-4 py-2.5  focus:outline-none flex justify-between items-center capitalize"
         >
+          {/* title */}
           {title}
           <span className="text-primary">
             {isOpen ? <FaArrowDown /> : <FaArrowRight />}
@@ -90,21 +91,30 @@ const Collapsible = ({ title, content, isOpen, onToggle }) => {
             {content ? (
               <div className="flex flex-col gap-2">
                 <div>
-                  <span className="font-semibold capitalize">Store name:</span>{" "}
+                  {/* store name */}
+                  <span className="font-semibold capitalize">
+                    Store name:
+                  </span>{" "}
                   {content.storeName}
                 </div>
+
+                {/* address */}
                 {content.address && (
                   <div>
                     <span className="font-semibold">Address:</span>{" "}
                     {content.address}
                   </div>
                 )}
+
+                {/* phone number */}
                 {content.phone && (
                   <div>
                     <span className="font-semibold">Phone:</span>{" "}
                     {content.phone}
                   </div>
                 )}
+
+                {/* map */}
                 <div>
                   <span className="font-semibold">Map:</span>{" "}
                   {content.mapLink ? (
@@ -119,6 +129,8 @@ const Collapsible = ({ title, content, isOpen, onToggle }) => {
                   )}
                 </div>
                 {/* <div className="bg-gray-500 w-full h-[1px] mt-5 mb-2"></div> */}
+
+                {/* description */}
                 {content.description && (
                   <div>
                     <span className="font-semibold">Description:</span>{" "}

@@ -18,6 +18,7 @@ import { motion } from "framer-motion";
 // vartants
 import { fadeIn } from "../../variants";
 import scrollTop from "../../utils/scrollTop";
+import Modal from "../../components/ui/Modal";
 import "../../App.css";
 const BlogDetailSection = () => {
   const { id: blogParams } = useParams();
@@ -29,6 +30,7 @@ const BlogDetailSection = () => {
   const [resultBlog, setResultBlog] = useState([]);
   const [isSearched, setIsSearched] = useState(false);
   const [showSercchBar, setShowSearchBar] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   //   get current url
   const currentURL = window.location.href;
 
@@ -94,7 +96,9 @@ const BlogDetailSection = () => {
   // handle search
   const handleSearch = (e) => {
     e.preventDefault();
-    if (searchKeyword === "") {
+    if (searchKeyword.trim() === "") {
+      // alert("Please enter a keyword to search");
+      setIsOpen(true);
       setResultBlog([]);
       return;
     }
@@ -138,30 +142,41 @@ const BlogDetailSection = () => {
             {data.title}
           </div>
           <div className="flex items-center gap-5 md:gap-8 py-5 mb-3">
+            {/* publish date */}
             <div className="flex items-center gap-2">
               <BiCalendar />
               {data.publicationDate}
             </div>
+            {/* category */}
             <div className="flex items-center gap-2">
               <BiCategory /> {category}
             </div>
+            {/* author name */}
             <div className=" sm:flex items-center gap-2 hidden">
               <BiUser /> {author.fullName}
             </div>
           </div>
+
+          {/* description */}
           <div className="mb-5 text-xl font-semibold">{data.description}</div>
+
+          {/* blog cover image */}
           <div className="mb-5 w-full">
             <img className="w-full" src={data.coverImage} alt="cover-image" />
           </div>
 
-          {/* content */}
+          {/* blog content */}
           <div className="prose lg:prose-xl prose-img:w-full lg:prose-img:w-auto lg:prose-img:mx-auto lg:prose-img:block prose-a:text-blue-600 prose-a:hover:text-blue-400  min-w-full">
             <ContentDisplay htmlString={data.content} />
           </div>
+
+          {/* sharing to social media button */}
           <div className="mt-10 mb-5">
             <SharingBtn url={currentURL} title={data.title} />
           </div>
           <hr />
+
+          {/* about the author */}
           <div>
             {author && author.fullName !== "Admin" && (
               <AboutAuthor
@@ -184,6 +199,7 @@ const BlogDetailSection = () => {
             id="searchResult"
             className="flex flex-col gap-2 mt-4 p-6 w-[90%]  sm:w-[70%] lg:w-full text-xl font-semibold h-[100%]  overflow-auto lg:overflow-hidden bg-white lg:bg-transparent"
           >
+            {/* search bar header */}
             <div className="flex justify-between items-center gap-4">
               <span>Search</span>
               <FaWindowClose
@@ -244,6 +260,7 @@ const BlogDetailSection = () => {
                         className="flex gap-3 w-full h-[60px] cursor-pointer group"
                       >
                         <div className="w-[85px] h-[60px] lg:h-auto lg:w-[30%]">
+                          {/* blog image */}
                           <img
                             className="w-full h-full rounded-sm"
                             src={blog.coverImage}
@@ -251,9 +268,11 @@ const BlogDetailSection = () => {
                           />
                         </div>
                         <div className="w-[100%] lg:w-[70%]">
+                          {/* blog title */}
                           <div className="line-clamp-2 font-semibold group-hover:text-primary">
                             {blog.title}
                           </div>
+                          {/* publish date */}
                           <div className="line-clamp-1 font-light mt-0.5">
                             {blog.publicationDate}
                             {/* <span className="mr-2">{category.categoryName}</span> */}
@@ -265,6 +284,7 @@ const BlogDetailSection = () => {
                 })
               ) : (
                 <>
+                  {/* search not found */}
                   {isSearched && (
                     <motion.div
                       onClick={scrollTop}
@@ -288,6 +308,11 @@ const BlogDetailSection = () => {
 
       <div>
         <RelatedContent relatedPost={relatedPost} />
+      </div>
+
+      {/* warning modal */}
+      <div>
+        <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
     </section>
   );

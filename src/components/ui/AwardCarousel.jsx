@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import "../../App.css";
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../contexts/DataContext";
-
+import FlipCard from "./FlipCard";
 function AwardCarousel() {
   const [slidesToShow, setSlidesToShow] = useState(3);
   const { awardList } = useContext(DataContext);
@@ -55,14 +55,7 @@ function AwardCarousel() {
             awardList.map((award, index) => {
               return (
                 <div key={index}>
-                  <img
-                    className="p-2  w-full object-cover h-[300px]"
-                    src={award.awardLogo}
-                    alt="award"
-                  />
-                  <div className="text-center font-bold  uppercase pb-3 text-primary">
-                    {award.awardName}
-                  </div>
+                  <FlipCard {...award} />
                 </div>
               );
             })}

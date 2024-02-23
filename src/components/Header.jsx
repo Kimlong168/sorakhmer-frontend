@@ -24,6 +24,7 @@ const Header = () => {
     <>
       {/* telephone and social media icon */}
       <div className="flex justify-between items-center p-1 px-8 ">
+        {/* phone number */}
         <div className="flex items-center gap-2">
           <FaPhoneSquareAlt />
           {contactInfo ? (
@@ -34,6 +35,8 @@ const Header = () => {
             <Link to="tel:123-456-7890">(855) 123-456-7890</Link>
           )}
         </div>
+
+        {/* social media icon */}
         <div className="flex item-center gap-3">
           {contactInfo ? (
             contactInfo.socialMedia.map((item, index) => (

@@ -30,7 +30,7 @@ const BlogCard = ({
           src={coverImage ? coverImage : noImage}
         />
       </div>
-      <div className="-mt-[40px] px-7 flex gap-7 items-end  relative">
+      <div className="-mt-[40px] px-4 md:px-7 flex gap-4 md:gap-7 items-end  relative">
         {/* author profile image */}
         <div className="w-[75px] h-[75px] overflow-hidden">
           <img className="w-full h-full cover" src={authorImg} alt="" />

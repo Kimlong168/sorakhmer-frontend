@@ -72,7 +72,7 @@ const ProductCarousel = () => {
         transitionTime={500}
       >
         {productList &&
-          productList.map((item) => (
+          productList.slice(0, 8).map((item) => (
             <div className="w-full h-[280px] md:h-[335px]" key={item.id}>
               <img className="h-full w-full" src={item.image} alt={item.name} />
             </div>

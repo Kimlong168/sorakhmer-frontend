@@ -4,7 +4,12 @@ const Product = () => {
   return (
     <div>
       <Layout>
-        <PageTitle text="Our Product" />
+        <div className="md:hidden">
+          <PageTitle text="Products" />
+        </div>
+        <div className="hidden md:block">
+          <PageTitle text="Our Products" />
+        </div>
       </Layout>
     </div>
   );

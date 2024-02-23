@@ -30,6 +30,8 @@ const IntroSection = () => {
             <PrimaryButton content="Contact us" href="/contact" />
           </div>
         </div>
+
+        {/* combodia map image */}
         <div className="w-full  md:w-4/5">
           <img
             src={cambodiaMap}
