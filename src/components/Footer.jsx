@@ -13,6 +13,7 @@ import scrollToTop from "../utils/scrollTop";
 import { useContext } from "react";
 import { DataContext } from "../contexts/DataContext";
 import LinkIcon from "./ui/LinkIcon";
+import convertToPhoneNumber from "../utils/convertToPhoneNumber ";
 const Footer = () => {
   const { contact } = useContext(DataContext);
   const contactInfo = contact.map((item) => item)[0];
@@ -87,7 +88,9 @@ const Footer = () => {
                   className="flex items-center gap-2 hover:text-primary-light hover:underline"
                 >
                   <FaPhoneSquareAlt />
-                  <span>(855) {contactInfo.phoneNumber.substring(1)}</span>
+                  <span>
+                    (855) {convertToPhoneNumber(contactInfo.phoneNumber)}
+                  </span>
                 </Link>
                 <Link
                   to={`mailto:${contactInfo.email}`}

@@ -26,19 +26,19 @@ const SideBar = ({ setShowSideBar, showSideBar }) => {
         <div className="mx-auto max-w-5xl " onClick={scrollToTop}>
           <LinkContainer
             heading="Home"
-            subheading="Learn what we do here"
+            subheading="Welcome to Sora Khmer"
             imgSrc={sora1}
             href="/"
           />
           <LinkContainer
-            heading="Product"
-            subheading="Learn what we do here"
+            heading="Products"
+            subheading="Explore our amazing products"
             imgSrc={sora2}
             href="/products"
           />
           <LinkContainer
-            heading="Blog"
-            subheading="We work with great people"
+            heading="Blogs"
+            subheading="Read our latest blogs"
             imgSrc={sora3}
             href="/blogs"
           />
@@ -50,19 +50,19 @@ const SideBar = ({ setShowSideBar, showSideBar }) => {
           />
           <LinkContainer
             heading="Distillery"
-            subheading="We want cool people"
+            subheading="Learn about our distillery"
             imgSrc={sora14}
             href="/distillery"
           />
           <LinkContainer
             heading="About"
-            subheading="Incase you're bored"
+            subheading="Learn what we do here"
             imgSrc={sora10}
             href="/about"
           />
           <LinkContainer
             heading="Contact"
-            subheading="Incase you're bored"
+            subheading="Incase you want to contact us"
             imgSrc={sora11}
             href="/contact"
           />

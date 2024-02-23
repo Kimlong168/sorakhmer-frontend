@@ -16,6 +16,7 @@ import scrollToTop from "../utils/scrollTop";
 import { Link } from "react-router-dom";
 import { DataContext } from "../contexts/DataContext";
 import LinkIcon from "./ui/LinkIcon";
+import convertToPhoneNumber from "../utils/convertToPhoneNumber ";
 const Header = () => {
   const { contact } = useContext(DataContext);
   const contactInfo = contact.map((item) => item)[0];
@@ -29,7 +30,7 @@ const Header = () => {
           <FaPhoneSquareAlt />
           {contactInfo ? (
             <Link to={`tel:${contactInfo.phoneNumber}`}>
-              (855) {contactInfo.phoneNumber.substring(1)}
+              (855) {convertToPhoneNumber(contactInfo.phoneNumber)}
             </Link>
           ) : (
             <Link to="tel:123-456-7890">(855) 123-456-7890</Link>
@@ -82,10 +83,10 @@ const Header = () => {
                 <NavLink href="/" title="Home" />
               </li>
               <li className="cursor-pointer">
-                <NavLink href="/products" title="Product" />
+                <NavLink href="/products" title="Products" />
               </li>
               <li className="cursor-pointer">
-                <NavLink href="/blogs" title="Blog" />
+                <NavLink href="/blogs" title="Blogs" />
               </li>
 
               <li className="cursor-pointer">

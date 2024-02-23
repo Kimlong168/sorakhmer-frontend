@@ -21,12 +21,12 @@ const BlogCard = ({
       initial="hidden"
       whileInView={"show"}
       viewport={{ once: true, amount: 0.3 }}
-      className="mb-2 cursor-pointer shadow-xl h-[470px] md:h-[500px] min-w-[270px] md:min-w-min bg-white dark:bg-white/90 w-full"
+      className="group mb-2 cursor-pointer shadow-xl h-[470px] md:h-[500px] min-w-[270px] md:min-w-min bg-white dark:bg-white/90 w-full"
     >
       <div className="w-full h-[240px] overflow-hidden">
         {/* cover image */}
         <img
-          className="w-full h-full  hover:scale-110 transition-all"
+          className="w-full h-full  group-hover:scale-110 transition-all"
           src={coverImage ? coverImage : noImage}
         />
       </div>
@@ -44,7 +44,7 @@ const BlogCard = ({
 
       <div className="p-4 md:p-6">
         {/* title */}
-        <div className="line-clamp-2  font-semibold text-2xl my-1.5 md:my-4 hover:text-primary transition-all ">
+        <div className="line-clamp-2  font-semibold text-2xl my-1.5 md:my-4 group-hover:text-primary transition-all ">
           {title}
         </div>
         {/* description */}

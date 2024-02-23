@@ -44,11 +44,11 @@ const ProductSection = () => {
             <span className="text-primary font-bold">.</span>
           </p>
           <div className="hidden md:block">
-            <PrimaryButton content="View Products" href="/product" />
+            <PrimaryButton content="View Products" href="/products" />
           </div>
         </div>
         <div className="md:hidden block w-full order-3">
-          <PrimaryButton content="View Products" href="/product" />
+          <PrimaryButton content="View Products" href="/products" />
         </div>
       </section>
     </>

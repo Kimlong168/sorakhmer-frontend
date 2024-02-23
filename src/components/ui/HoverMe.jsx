@@ -10,10 +10,11 @@ const HoverMe = ({ imageList }) => {
       rotationRange={25}
       images={imageList}
     >
-      <section className=" h-[600px] w-full ">
-        <p className="flex items-center justify-center mt-8 gap-2 text-3xl font-bold uppercase text-primary">
+      <section className=" min-h-screen w-full grid place-content-centermt-8 ">
+        <p className="flex items-center justify-center gap-2 text-3xl font-bold uppercase text-primary">
           <FiMousePointer />
-          <div>Hover me</div>
+          <div className="hidden md:block">Hover me</div>
+          <div className="md:hidden">Click me</div>
         </p>
       </section>
     </MouseImageTrail>

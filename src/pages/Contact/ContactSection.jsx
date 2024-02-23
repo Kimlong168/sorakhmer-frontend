@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import LinkIcon from "../../components/ui/LinkIcon";
 import { DataContext } from "../../contexts/DataContext";
+import convertToPhoneNumber from "../../utils/convertToPhoneNumber ";
 const ContactSection = () => {
   // get user email to cc to the user when they submit the contact form
   const { contact } = useContext(DataContext);
@@ -51,7 +52,7 @@ const ContactSection = () => {
                   <p>
                     Phone:{" "}
                     <Link to={`tel:${contactInfo.phoneNumber}`}>
-                      {contactInfo.phoneNumber}
+                      {convertToPhoneNumber(contactInfo.phoneNumber)}
                     </Link>
                   </p>
                 </div>
