@@ -1,8 +1,12 @@
 import { FaFacebook, FaTelegram, FaYoutube } from "react-icons/fa";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import LinkIcon from "../../components/ui/LinkIcon";
+import { DataContext } from "../../contexts/DataContext";
 const ContactSection = () => {
   // get user email to cc to the user when they submit the contact form
+  const { contact } = useContext(DataContext);
+  const contactInfo = contact.map((item) => item)[0];
   const [userEmail, setUserEmail] = useState("");
 
   return (
@@ -39,41 +43,94 @@ const ContactSection = () => {
             <h3 className="text-nowrap font-primary-bold text-4xl md:text-5xl ">
               Our Contact<span className="text-primary font-bold">.</span>
             </h3>
-            <div className="pt-6 pb-3">
-              <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
-                {/* phone */}
-                <p>
-                  Phone: <Link to="tel:+1234567890">123-456-7890</Link>
-                </p>
+
+            {contactInfo ? (
+              <div className="pt-6 pb-3">
+                <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
+                  {/* phone */}
+                  <p>
+                    Phone:{" "}
+                    <Link to={`tel:${contactInfo.phoneNumber}`}>
+                      {contactInfo.phoneNumber}
+                    </Link>
+                  </p>
+                </div>
+                <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
+                  {/* email */}
+                  <p>
+                    Email:{" "}
+                    <Link to={`mailto:${contactInfo.email}`}>
+                      {contactInfo.email}
+                    </Link>
+                  </p>
+                </div>
+                <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
+                  {/* telegram */}
+                  <p>
+                    Telegram: <Link to={contactInfo.telegram}>@sorakhmer</Link>
+                  </p>
+                </div>
               </div>
-              <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
-                {/* email */}
-                <p>
-                  Email:{" "}
-                  <Link to="mailto:example@example.com">
-                    example@example.com
-                  </Link>
-                </p>
+            ) : (
+              <div className="pt-6 pb-3">
+                <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
+                  {/* phone */}
+                  <p>
+                    Phone: <Link to="tel:+1234567890">123-456-7890</Link>
+                  </p>
+                </div>
+                <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
+                  {/* email */}
+                  <p>
+                    Email:{" "}
+                    <Link to="mailto:example@example.com">
+                      example@example.com
+                    </Link>
+                  </p>
+                </div>
+                <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
+                  {/* telegram */}
+                  <p>
+                    Telegram: <Link to="/contact">@sorakhmer</Link>
+                  </p>
+                </div>
               </div>
-              <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
-                {/* telegram */}
-                <p>
-                  Telegram: <Link to="/contact">@sorakhmer</Link>
-                </p>
-              </div>
-            </div>
+            )}
 
             {/* social media */}
             <div className="flex items-center gap-4 text-2xl ">
-              <Link to="/">
-                <FaFacebook className=" hover:text-primary hover:underline cursor-pointer" />
-              </Link>
-              <Link to="/">
-                <FaYoutube className=" hover:text-primary hover:underline cursor-pointer" />
-              </Link>
-              <Link to="/">
-                <FaTelegram className=" hover:text-primary hover:underline cursor-pointer" />
-              </Link>
+              {contactInfo ? (
+                contactInfo.socialMedia.map((item, index) => (
+                  <Link
+                    to={item.url}
+                    key={index}
+                    className="hover:text-primary-light hover:underline"
+                  >
+                    <LinkIcon title={item.title} size={32} />
+                  </Link>
+                ))
+              ) : (
+                <>
+                  <Link
+                    to="/"
+                    className="hover:text-primary-light hover:underline"
+                  >
+                    <FaFacebook />
+                  </Link>
+                  <Link
+                    to="/"
+                    className="hover:text-primary-light hover:underline"
+                  >
+                    <FaYoutube />
+                  </Link>
+                  <Link
+                    to="/"
+                    className="hover:text-primary-light hover:underline"
+                  >
+                    <FaTelegram />
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
