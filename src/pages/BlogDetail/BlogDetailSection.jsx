@@ -113,6 +113,7 @@ const BlogDetailSection = () => {
       setResultBlog([]);
     }
   };
+
   //   if data is not available
   if (!data) return <Loading />;
   return (
@@ -172,6 +173,7 @@ const BlogDetailSection = () => {
 
           {/* sharing to social media button */}
           <div className="mt-10 mb-5">
+            <div className="font-semibold text-center p-4">Share this blog</div>
             <SharingBtn url={currentURL} title={data.title} />
           </div>
           <hr />

@@ -12,7 +12,7 @@ import PropType from "prop-types";
 const SharingBtn = ({ url, title }) => {
   return (
     <div>
-      <div className="font-semibold text-center p-4">Share this blog</div>
+    
       <div className="flex gap-2 justify-center p-2">
         <TelegramShareButton url={url} title={`====${title}====`}>
           <TelegramIcon size={32} round={true} />

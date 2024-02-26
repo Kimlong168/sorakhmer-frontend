@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { DataContext } from "./contexts/DataContext";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
+import ProductDetail from "./pages/ProductDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Thank from "./pages/Contact/Thank";
@@ -13,6 +14,7 @@ import Error404 from "./pages/Error404";
 import Distillery from "./pages/Distillery";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
+
 export default function App() {
   const [productCategoryList, setProductCategoryList] = useState([]);
   const [productList, setProductList] = useState([]);
@@ -127,6 +129,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Product />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/blogs" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogDetail />} />
             <Route path="/about" element={<About />} />
