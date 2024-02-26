@@ -1,4 +1,5 @@
 import PageTitle from "../../components/ui/PageTitle";
+import ProductListSection from "./ProductListSection";
 import Layout from "../../layouts/Layout";
 const Product = () => {
   return (
@@ -10,6 +11,7 @@ const Product = () => {
         <div className="hidden md:block">
           <PageTitle text="Our Products" />
         </div>
+        <ProductListSection />
       </Layout>
     </div>
   );

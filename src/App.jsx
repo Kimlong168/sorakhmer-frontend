@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { db } from "./firebase-config";
-import { getDocs, collection } from "firebase/firestore";
+import { getDocs, collection, query, orderBy } from "firebase/firestore";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { DataContext } from "./contexts/DataContext";
 import Home from "./pages/Home";
@@ -42,7 +42,10 @@ export default function App() {
 
     const fetchAllData = async () => {
       // fetch data of product
-      const products = await getDocs(productCollectionRef);
+      const products = await getDocs(
+        // productCollectionRef,
+        query(productCollectionRef, orderBy("categoryId", "desc"))
+      );
       setProductList(
         products.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
       );
@@ -102,7 +105,7 @@ export default function App() {
     fetchAllData();
     console.log("fetch data");
   }, []);
-  
+
   return (
     <>
       <DataContext.Provider

@@ -39,10 +39,10 @@ const BlogListSection = () => {
   // get the category which has active blog
   useEffect(() => {
     const activeCategory = blogCategoryList.filter((category) => {
-      const activeBlog = blogList.filter(
+      const activeBlogs = blogList.filter(
         (blog) => blog.isActive && blog.categoryId === category.id
       );
-      return activeBlog.length > 0;
+      return activeBlogs.length > 0;
     });
     setActiveCategory(activeCategory);
   }, [blogList, blogCategoryList]);
