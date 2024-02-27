@@ -1,20 +1,23 @@
 /* Chrome, Edge, and Safari */
 #sideBar::-webkit-scrollbar,
 #blog::-webkit-scrollbar,
-#searchResult::-webkit-scrollbar {
+#searchResult::-webkit-scrollbar,
+#cart::-webkit-scrollbar {
     width: 5px;
     height: 5px;
 }
 
 #sideBar::-webkit-scrollbar-track,
 #blog::-webkit-scrollbar-track,
-#searchResult::-webkit-scrollbar-track {
+#searchResult::-webkit-scrollbar-track,
+#cart::-webkit-scrollbar-track {
     background: #eee;
 }
 
 #sideBar::-webkit-scrollbar-thumb,
 #blog::-webkit-scrollbar-thumb,
-#searchResult::-webkit-scrollbar-thumb {
+#searchResult::-webkit-scrollbar-thumb,
+#cart::-webkit-scrollbar-thumb {
     background-color: #FA9F00;
     border-radius: 0px;
     border: 0px solid #ffffff;

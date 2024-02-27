@@ -106,9 +106,12 @@ const Header = () => {
             <Link to="/cart">
               <div className="relative">
                 <FaShoppingCart className="cursor-pointer hover:text-primary" />
-                <div className="text-xs bg-red-500 w-4 h-4 rounded-full grid place-content-center absolute -top-1 -right-2">
-                  {cartItems.length > 0 && cartItems.length}
-                </div>
+
+                {cartItems.length > 0 && (
+                  <div className="text-xs bg-red-500 w-4 h-4 rounded-full grid place-content-center absolute -top-1 -right-2">
+                    {cartItems.length}
+                  </div>
+                )}
               </div>
             </Link>
             {/* menu icon */}

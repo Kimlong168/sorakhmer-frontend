@@ -37,7 +37,7 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
-  
+
   // fetch all the data from database
   useEffect(() => {
     const productCollectionRef = collection(db, "products");
@@ -120,12 +120,22 @@ export default function App() {
 
   // add to cart
   const addToCart = (product) => {
-    // Update state
-    setCartItems((prevCartItems) => [...prevCartItems, product]);
+    // find if the product is already in the cart
+    const existingProduct = cartItems.find((item) => item.id === product.id);
 
-    // Update local storage
-    const updatedCartItems = [...cartItems, product];
-    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+    if (!existingProduct) {
+      // Add quantity property to the product
+      product = { ...product, quantity: 1 };
+      // Update state
+      setCartItems((prevCartItems) => [...prevCartItems, product]);
+      // Update local storage
+      const updatedCartItems = [...cartItems, product];
+      localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+
+      return true;
+    }
+
+    return false;
   };
 
   return (

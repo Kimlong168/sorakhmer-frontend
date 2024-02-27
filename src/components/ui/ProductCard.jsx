@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import Notification from "./Notification";
 const ProductCard = ({ product }) => {
   const { addToCart } = useContext(DataContext);
-  const { id, name, price } = product;
+  const { id, name, price, image } = product;
   const [isAddedtoCart, setIsAddedtoCart] = useState(false);
   return (
     <motion.div
@@ -56,8 +56,8 @@ const ProductCard = ({ product }) => {
           </Link>
           <span
             onClick={() => {
-              addToCart({ id, name, price });
-              setIsAddedtoCart(true);
+              const isAdded = addToCart({ id, name, price , image});
+              setIsAddedtoCart(isAdded);
             }}
             className="hover:text-primary text-gray-800 p-4 pt-0"
           >

@@ -26,6 +26,7 @@ const DetailProductCard = ({
   const [isAddedtoCart, setIsAddedtoCart] = useState(false);
   //   get current url
   const currentURL = window.location.href;
+
   return (
     <div className=" w-full mt-5">
       <div className="flex items-center justify-center w-full">
@@ -129,8 +130,8 @@ const DetailProductCard = ({
               </button>
               <button
                 onClick={() => {
-                  addToCart({ id, name, price });
-                  setIsAddedtoCart(true);
+                  const isAdded = addToCart({ id, name, price, image });
+                  setIsAddedtoCart(isAdded);
                 }}
                 className="flex items-center gap-2 px-2 py-1.5 border bg-primary hover:bg-primary-light text-white font-bold rounded"
               >
