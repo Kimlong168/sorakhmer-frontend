@@ -27,7 +27,7 @@ const HeroSection = () => {
         <span className="block mb-4 text-xs md:text-sm text-primary font-medium">
           Explore quality and value with us
         </span>
-        <h3 className="text-4xl md:text-6xl">
+        <h3 className="text-4xl md:text-5xl lg:text-6xl">
           <div className=" font-primary">
             <TypeAnimation
               speed={50}
@@ -35,7 +35,7 @@ const HeroSection = () => {
               sequence={[
                 "សូមស្វាគមន៍មកកាន់",
                 2000,
-                "WELCOME TO",
+                "Welcome to",
                 2000,
                 "へようこそ",
                 2000,
@@ -46,7 +46,7 @@ const HeroSection = () => {
             />
             <span className="invisible">I</span>
           </div>
-          <div className="mt-2  font-primary-bold">
+          <div className="mt-2 font-primary-bold">
             SORA KHMER<span className="text-primary font-bold">.</span>
           </div>
         </h3>

@@ -6,20 +6,19 @@ import {
   LineShareButton,
   LineIcon,
   TwitterShareButton,
-  TwitterIcon,
+  XIcon,
 } from "react-share";
 import PropType from "prop-types";
 const SharingBtn = ({ url, title }) => {
   return (
     <div>
-    
       <div className="flex gap-2 justify-center p-2">
-        <TelegramShareButton url={url} title={`====${title}====`}>
+        <TelegramShareButton url={url} title={`====${title}====`} className="">
           <TelegramIcon size={32} round={true} />
         </TelegramShareButton>
         <FacebookShareButton
           url={url}
-          hashtag="#kimlong"
+          hashtag="#sorakhmer"
           quote={`====${title}====`}
         >
           <FacebookIcon size={32} round={true} />
@@ -28,7 +27,7 @@ const SharingBtn = ({ url, title }) => {
           <LineIcon size={32} round={true} />
         </LineShareButton>
         <TwitterShareButton url={url} title={`====${title}====`}>
-          <TwitterIcon size={32} round={true} />
+          <XIcon size={32} round={true} />
         </TwitterShareButton>
       </div>
     </div>

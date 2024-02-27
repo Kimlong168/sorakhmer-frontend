@@ -18,17 +18,17 @@ const RelatedProduct = ({ relatedProduct }) => {
           </div>
 
           {/* related content blog card for big screen */}
-          <div className="grid sm:hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-auto gap-7 mt-5">
+          <div className="grid md:hidden lg:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-auto gap-7 mt-5">
             <RelatedProductContainer
-              numberToShow={3}
+              numberToShow={4}
               relatedProduct={relatedProduct}
             />
           </div>
 
           {/* related content blog card for small screen */}
-          <div className="hidden sm:grid lg:hidden grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-auto gap-7 mt-5">
+          <div className="hidden md:grid lg:hidden grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-auto gap-7 mt-5">
             <RelatedProductContainer
-              numberToShow={4}
+              numberToShow={3}
               relatedProduct={relatedProduct}
             />
           </div>

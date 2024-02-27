@@ -188,12 +188,19 @@ const ProductListSection = () => {
           </DrawOutlineButton>
         </div>
 
+        {/* result search for text */}
         {isSearched && searchKeyword.length !== 0 && (
           <div className="mt-8 ">
             Search result for{" "}
             <span className="text-primary font-bold">
               &quot;{searchKeyword}&ldquo;
             </span>
+          </div>
+        )}
+
+        {maxPrice != priceRange && (
+          <div className="mt-8 flex items-center gap-2">
+            Result for price <TbMathEqualLower /> {priceRange} $
           </div>
         )}
 

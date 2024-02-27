@@ -25,10 +25,10 @@ const ProductCard = ({ product }) => {
 
       <div className="flex flex-col justify-between gap-2 p-4 h-full">
         <div>
-          <h3 className="text-xl font-bold line-clamp-2 group-hover:text-primary">
+          <h3 className="text-xl font-bold line-clamp-1 group-hover:text-primary">
             {product.name}
           </h3>
-          <p className="text-sm line-clamp-2 mt-1.5 mb-2 text-gray-500">
+          <p className="text-sm line-clamp-1 mt-1.5 mb-2 text-gray-500">
             {product.description}
           </p>
         </div>
@@ -36,7 +36,7 @@ const ProductCard = ({ product }) => {
           <p className="text-xl font-extrabold text-primary">
             $ {`${product.price}${!product.price.includes(".") ? ".00" : ""}`}
           </p>
-          <span className="hover:text-primary">
+          <span className="hover:text-primary text-gray-800">
             <FaShoppingCart size={24} />
           </span>
         </div>
