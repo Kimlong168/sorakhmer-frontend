@@ -19,6 +19,7 @@ import LinkIcon from "./ui/LinkIcon";
 import convertToPhoneNumber from "../utils/convertToPhoneNumber ";
 const Header = () => {
   const { contact } = useContext(DataContext);
+  const { cartItems } = useContext(DataContext);
   const contactInfo = contact.map((item) => item)[0];
   const [showSideBar, setShowSideBar] = useState(false);
   return (
@@ -102,7 +103,14 @@ const Header = () => {
             {/* light and dark mode icon */}
             <ToggleLightDarkMode />
             {/* shopping cart icon */}
-            <FaShoppingCart className="cursor-pointer hover:text-primary" />
+            <Link to="/cart">
+              <div className="relative">
+                <FaShoppingCart className="cursor-pointer hover:text-primary" />
+                <div className="text-xs bg-red-500 w-4 h-4 rounded-full grid place-content-center absolute -top-1 -right-2">
+                  {cartItems.length > 0 && cartItems.length}
+                </div>
+              </div>
+            </Link>
             {/* menu icon */}
             <div
               className="lg:hidden"

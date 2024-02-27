@@ -9,7 +9,7 @@ import PropType from "prop-types";
 import { motion } from "framer-motion";
 // vartants
 import { fadeIn } from "../../variants";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 const ProductListSection = () => {
   const { productList, productCategoryList } = useContext(DataContext);
   const [maxPrice, setMaxPrice] = useState(100);
@@ -209,9 +209,7 @@ const ProductListSection = () => {
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-8">
             {activeProduct.length > 0 ? (
               activeProduct.map((product) => (
-                <Link to={`/product/${product.id}`} key={product.id}>
-                  <ProductCard product={product} />
-                </Link>
+                <ProductCard product={product} key={product.id} />
               ))
             ) : (
               <div className="text-center col-span-4 h-[100px]">

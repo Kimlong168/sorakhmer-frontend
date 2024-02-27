@@ -1,8 +1,6 @@
 import BackToPrevBtn from "../../components/ui/BackToPrevBtn";
 import GoToTop from "../../components/ui/GoToTop";
 import PropType from "prop-types";
-import scrollTop from "../../utils/scrollTop";
-import { Link } from "react-router-dom";
 import ProductCard from "../../components/ui/ProductCard";
 
 const RelatedProduct = ({ relatedProduct }) => {
@@ -51,10 +49,8 @@ const RelatedProductContainer = ({ relatedProduct, numberToShow }) => {
     <>
       {relatedProduct.slice(0, numberToShow).map((data) => {
         return (
-          <div key={data.id} onClick={scrollTop}>
-            <Link to={`/product/${data.id}`}>
-              <ProductCard product={data} />
-            </Link>
+          <div key={data.id}>
+            <ProductCard product={data} />
           </div>
         );
       })}

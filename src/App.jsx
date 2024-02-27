@@ -14,6 +14,7 @@ import Error404 from "./pages/Error404";
 import Distillery from "./pages/Distillery";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
+import Cart from "./pages/cart";
 
 export default function App() {
   const [productCategoryList, setProductCategoryList] = useState([]);
@@ -27,7 +28,16 @@ export default function App() {
   const [processList, setProcessList] = useState([]);
   const [storeList, setStoreList] = useState([]);
   const [galleryList, setGalleryList] = useState([]);
+  const [cartItems, setCartItems] = useState(() => {
+    const storedCartItems = localStorage.getItem("cartItems");
+    return storedCartItems ? JSON.parse(storedCartItems) : [];
+  });
 
+  // Update local storage when cartItems state changes
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+  
   // fetch all the data from database
   useEffect(() => {
     const productCollectionRef = collection(db, "products");
@@ -108,6 +118,16 @@ export default function App() {
     console.log("fetch data");
   }, []);
 
+  // add to cart
+  const addToCart = (product) => {
+    // Update state
+    setCartItems((prevCartItems) => [...prevCartItems, product]);
+
+    // Update local storage
+    const updatedCartItems = [...cartItems, product];
+    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+  };
+
   return (
     <>
       <DataContext.Provider
@@ -123,6 +143,9 @@ export default function App() {
           processList,
           storeList,
           galleryList,
+          cartItems,
+          setCartItems,
+          addToCart,
         }}
       >
         <Router>
@@ -137,6 +160,7 @@ export default function App() {
             <Route path="/thank" element={<Thank />} />
             <Route path="/process" element={<Process />} />
             <Route path="/distillery" element={<Distillery />} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="*" element={<Error404 />} />
           </Routes>
         </Router>

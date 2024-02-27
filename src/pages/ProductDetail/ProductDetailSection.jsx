@@ -59,6 +59,7 @@ const ProductDetailSection = () => {
       <div className="mt-3 md:mt-5 flex justify-between items-center">
         <DetailProductCard
           {...data}
+          id={productParams}
           productCategoryList={productCategoryList}
         />
       </div>

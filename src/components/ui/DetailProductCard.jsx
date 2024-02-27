@@ -1,14 +1,16 @@
 import PropTypes from "prop-types";
 import { MdOutlineOpenWith } from "react-icons/md";
 import PopupImage from "./PopupImage";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ContentDisplay from "./ContentDisplay";
 import SharingBtn from "./SharingBtn";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { FaLink, FaMoneyBill, FaShoppingCart } from "react-icons/fa";
 import { AnimatePresence } from "framer-motion";
 import Notification from "./Notification";
+import { DataContext } from "../../contexts/DataContext";
 const DetailProductCard = ({
+  id,
   name,
   price,
   image,
@@ -17,9 +19,11 @@ const DetailProductCard = ({
   description,
   productCategoryList,
 }) => {
+  const { addToCart } = useContext(DataContext);
   const [showImage, setShowImage] = useState(false);
   const [showDetail, setShowDetail] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [isAddedtoCart, setIsAddedtoCart] = useState(false);
   //   get current url
   const currentURL = window.location.href;
   return (
@@ -123,8 +127,15 @@ const DetailProductCard = ({
               <button className="flex items-center gap-2 px-2 py-1.5 border bg-green-600 hover:bg-green-500 text-white font-bold rounded">
                 Buy Now <FaMoneyBill />
               </button>
-              <button className="flex items-center gap-2 px-2 py-1.5 border bg-primary hover:bg-primary-light text-white font-bold rounded">
-                Add to Cart <FaShoppingCart />
+              <button
+                onClick={() => {
+                  addToCart({ id, name, price });
+                  setIsAddedtoCart(true);
+                }}
+                className="flex items-center gap-2 px-2 py-1.5 border bg-primary hover:bg-primary-light text-white font-bold rounded"
+              >
+                Add to Cart
+                <FaShoppingCart />
               </button>
 
               <CopyToClipboard
@@ -153,6 +164,22 @@ const DetailProductCard = ({
                 text="Product link is copied!"
                 removeNotif={() => setCopied(false)}
                 id={currentURL}
+                bg="bg-blue-500"
+              />
+            </AnimatePresence>
+          </div>
+        )}
+
+        {/* copy link notification */}
+
+        {isAddedtoCart && (
+          <div className="flex flex-col gap-1 w-72 fixed top-1 right-2 z-50 pointer-events-none">
+            <AnimatePresence>
+              <Notification
+                text={`${name} is added to cart!`}
+                removeNotif={() => setIsAddedtoCart(false)}
+                id={id}
+                bg="bg-primary"
               />
             </AnimatePresence>
           </div>
@@ -169,6 +196,7 @@ const DetailProductCard = ({
   );
 };
 DetailProductCard.propTypes = {
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   productCode: PropTypes.string.isRequired,
