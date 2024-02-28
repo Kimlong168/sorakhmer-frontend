@@ -9,6 +9,7 @@ import { useContext, useState } from "react";
 import { DataContext } from "../../contexts/DataContext";
 import { Link } from "react-router-dom";
 import Notification from "./Notification";
+import { IoCheckmarkDoneCircle } from "react-icons/io5";
 const ProductCard = ({ product }) => {
   const { addToCart } = useContext(DataContext);
   const { id, name, price, image } = product;
@@ -56,12 +57,17 @@ const ProductCard = ({ product }) => {
           </Link>
           <span
             onClick={() => {
-              const isAdded = addToCart({ id, name, price , image});
-              setIsAddedtoCart(isAdded);
+              // const isAdded = addToCart({ id, name, price, image });
+              addToCart({ id, name, price, image });
+              setIsAddedtoCart(true);
             }}
-            className="hover:text-primary text-gray-800 p-4 pt-0"
+            className="hover:text-primary text-gray-800 p-4 pt-0 relative"
           >
-            <FaShoppingCart size={24} />
+            {isAddedtoCart ? (
+              <IoCheckmarkDoneCircle size={24} />
+            ) : (
+              <FaShoppingCart size={24} />
+            )}
           </span>
         </div>
       </div>

@@ -42,13 +42,13 @@ const Footer = () => {
               to="/products"
               className="hover:text-primary-light hover:underline"
             >
-              Product
+              Products
             </Link>
             <Link
               to="/blogs"
               className="hover:text-primary-light hover:underline"
             >
-              Blog
+              Blogs
             </Link>
             <Link
               to="/process"

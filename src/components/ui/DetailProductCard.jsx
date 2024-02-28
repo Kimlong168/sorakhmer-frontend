@@ -9,6 +9,7 @@ import { FaLink, FaMoneyBill, FaShoppingCart } from "react-icons/fa";
 import { AnimatePresence } from "framer-motion";
 import Notification from "./Notification";
 import { DataContext } from "../../contexts/DataContext";
+import { IoCheckmarkDoneCircle } from "react-icons/io5";
 const DetailProductCard = ({
   id,
   name,
@@ -130,13 +131,14 @@ const DetailProductCard = ({
               </button>
               <button
                 onClick={() => {
-                  const isAdded = addToCart({ id, name, price, image });
-                  setIsAddedtoCart(isAdded);
+                  // const isAdded = addToCart({ id, name, price, image });
+                  addToCart({ id, name, price, image });
+                  setIsAddedtoCart(true);
                 }}
                 className="flex items-center gap-2 px-2 py-1.5 border bg-primary hover:bg-primary-light text-white font-bold rounded"
               >
                 Add to Cart
-                <FaShoppingCart />
+                {isAddedtoCart ? <IoCheckmarkDoneCircle /> : <FaShoppingCart />}
               </button>
 
               <CopyToClipboard
@@ -171,7 +173,7 @@ const DetailProductCard = ({
           </div>
         )}
 
-        {/* copy link notification */}
+        {/* add to cart notification */}
 
         {isAddedtoCart && (
           <div className="flex flex-col gap-1 w-72 fixed top-1 right-2 z-50 pointer-events-none">

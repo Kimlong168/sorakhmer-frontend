@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import { DataContext } from "../contexts/DataContext";
 import LinkIcon from "./ui/LinkIcon";
 import convertToPhoneNumber from "../utils/convertToPhoneNumber ";
+import scrollTop from "../utils/scrollTop";
 const Header = () => {
   const { contact } = useContext(DataContext);
   const { cartItems } = useContext(DataContext);
@@ -99,12 +100,12 @@ const Header = () => {
             </ul>
           </div>
 
-          <div className="flex items-center gap-5 md:text-2xl">
+          <div className="flex items-center gap-5 text-xl md:text-2xl">
             {/* light and dark mode icon */}
             <ToggleLightDarkMode />
             {/* shopping cart icon */}
             <Link to="/cart">
-              <div className="relative">
+              <div onClick={scrollTop} className="relative">
                 <FaShoppingCart className="cursor-pointer hover:text-primary" />
 
                 {cartItems.length > 0 && (
@@ -119,7 +120,7 @@ const Header = () => {
               className="lg:hidden"
               onClick={() => setShowSideBar((prev) => !prev)}
             >
-              <HiOutlineMenuAlt3 className="cursor-pointer text-xl md:text-3xl hover:text-primary" />
+              <HiOutlineMenuAlt3 className="cursor-pointer text-2xl md:text-3xl hover:text-primary" />
             </div>
           </div>
         </nav>

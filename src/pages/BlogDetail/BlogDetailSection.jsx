@@ -192,7 +192,7 @@ const BlogDetailSection = () => {
         </div>
 
         {/* right side of the content  */}
-        <div
+        <aside
           className={`${
             showSercchBar ? "flex " : "hidden "
           } lg:w-[25%] w-[100%] lg:flex  justify-center items-center lg:justify-start lg:items-start shadow-xl fixed lg:static inset-0 z-[100] lg:z-[1] md:min-h-screen bg-black/50 lg:bg-white`}
@@ -303,7 +303,7 @@ const BlogDetailSection = () => {
               )}
             </div>
           </div>
-        </div>
+        </aside>
       </div>
 
       {/* related contents */}
