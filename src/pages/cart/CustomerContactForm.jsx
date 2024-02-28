@@ -1,5 +1,6 @@
 import { FaWindowClose } from "react-icons/fa";
 import PropType from "prop-types";
+import RedStar from "../../components/ui/RedStar";
 import "../../App.css";
 const CustomerContactForm = ({
   setIsOpenForm,
@@ -21,7 +22,7 @@ const CustomerContactForm = ({
   return (
     <div className="fixed inset-0 bg-black/30  z-10 grid place-content-center ">
       <div
-        className="sticky top-0 overflow-auto my-10 p-6 w-fit bg-white  rounded"
+        className="overflow-auto my-10 p-6 w-fit bg-white  rounded"
         id="placeOrder"
       >
         <div className=" md:w-[600px] lg:w-[700px]">
@@ -37,10 +38,11 @@ const CustomerContactForm = ({
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label
+                title="required"
                 htmlFor="fullName"
                 className="block text-sm font-medium text-gray-700"
               >
-                Full Name
+                Full Name <RedStar />
               </label>
               <input
                 type="text"
@@ -49,14 +51,16 @@ const CustomerContactForm = ({
                 value={formData.fullName}
                 onChange={handleChange}
                 className="mt-1 p-2 border border-gray-300 rounded-md  w-full"
+                required
               />
             </div>
             <div className="mb-4">
               <label
+                title="required"
                 htmlFor="phoneNumber"
                 className="block text-sm font-medium text-gray-700"
               >
-                Phone Number
+                Phone Number <RedStar />
               </label>
               <input
                 type="tel"
@@ -65,22 +69,7 @@ const CustomerContactForm = ({
                 value={formData.phoneNumber}
                 onChange={handleChange}
                 className="mt-1 p-2 border w-full border-gray-300 rounded-md"
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="mt-1 p-2 border w-full border-gray-300 rounded-md"
+                required
               />
             </div>
             <div className="mb-4">
@@ -101,6 +90,23 @@ const CustomerContactForm = ({
             </div>
             <div className="mb-4">
               <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="mt-1 p-2 border w-full border-gray-300 rounded-md"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label
                 htmlFor="line"
                 className="block text-sm font-medium text-gray-700"
               >
@@ -118,10 +124,11 @@ const CustomerContactForm = ({
 
             <div className="mb-4">
               <label
+                title="required"
                 htmlFor="address"
                 className="block text-sm font-medium text-gray-700"
               >
-                Address
+                Address <RedStar />
               </label>
               <input
                 type="text"
@@ -130,6 +137,7 @@ const CustomerContactForm = ({
                 value={formData.address}
                 onChange={handleChange}
                 className="mt-1 p-2 border w-full border-gray-300 rounded-md"
+                required
               />
             </div>
             <div className="mb-4">
@@ -156,7 +164,17 @@ const CustomerContactForm = ({
               </p>
             </div>
             <button
-              onClick={sendToTelegram}
+              onClick={() => {
+                if (
+                  formData.fullName &&
+                  formData.phoneNumber &&
+                  formData.address
+                ) {
+                  sendToTelegram();
+                } else {
+                  alert("Please fill the required fields");
+                }
+              }}
               type="submit"
               className="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark"
             >

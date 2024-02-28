@@ -141,19 +141,23 @@ const CartItemsSection = () => {
             // Send customer contact and information to telegram
             try {
               const send = async () => {
-                const messageToSend = `
-               \n===== New Order ===== \n
-                Name: ${formData.fullName} \n
-                Phone Number: ${formData.phoneNumber} \n
-                Email: ${formData.email} \n
-                Telegram: ${formData.telegram} \n
-                Line: ${formData.line} \n
-                Address: ${formData.address} \n
-                Message: ${formData.message} \n
-                Total: ${total} \n
-                Data: ${new Date().toLocaleString()}\n
-                Order id: 0001
-               `;
+                const messageToSend = `===== New Order =====\n\nOrder id: 0001\nDate: ${new Date().toLocaleString()}
+                \n------------------------------------------${
+                  formData.fullName ? `\nName: ${formData.fullName}` : ""
+                }
+                ${
+                  formData.phoneNumber
+                    ? `\nPhone Number: ${formData.phoneNumber}`
+                    : ""
+                }
+                ${formData.address ? `\nAddress: ${formData.address}` : ""}
+                ${formData.telegram ? `\nTelegram: ${formData.telegram}` : ""}
+                ${formData.email ? `\nEmail: ${formData.email}` : ""}
+                ${formData.line ? `\nLine: ${formData.line}` : ""}
+                ${formData.message ? `\nMessage: ${formData.message}` : ""}
+                \n-----------------------------------------
+                \nTotal: ${total} $
+                \n-----------------------------------------`;
 
                 await axios.post(
                   `https://api.telegram.org/bot${telegram_bot_id}/sendMessage`,
@@ -189,14 +193,22 @@ const CartItemsSection = () => {
           </span>
         </div>
         <div id="message">
+          {isOpenForm && (
+            <h2 className="text-center text-3xl font-bold">
+              ===== New Order =====
+            </h2>
+          )}
           <div className="w-100 overflow-auto my-8" id="cart">
             <table className="border-collapse w-full">
               <thead>
                 <tr>
                   {!isOpenForm && <th className={thStyle}>Image</th>}
-                  <th className={thStyle}>Product</th>
+                  <th className={thStyle}>Name</th>
                   <th className={thStyle}>Price</th>
-                  <th className={thStyle}>Quantity</th>
+                  <th className={thStyle}>
+                    <span className="md:hidden">Qty</span>
+                    <span className="hidden md:block">Quantity</span>
+                  </th>
                   <th className={thStyle}>Total</th>
                   {!isOpenForm && <th className={thStyle}>Remove</th>}
                 </tr>

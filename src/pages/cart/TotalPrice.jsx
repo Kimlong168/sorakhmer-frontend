@@ -17,7 +17,7 @@ const TotalPrice = ({
   const contactInfo = contact.map((item) => item)[0];
   return (
     <div className="flex flex-col md:flex-row gap-5 mb-8 ">
-      <div className="w-full mb-4 ml-4">
+      <div className="w-full md:mb-4 md:ml-4">
         <table className="border-collapse w-full">
           <thead>
             <th
@@ -136,72 +136,88 @@ const TotalPrice = ({
           </div>
         </div>
       ) : (
-        <div className="w-full p-6 pt-0 border border-gray-500 rounded mb-4 mr-4">
+        <div className="w-full p-6 pt-0 border border-gray-500 rounded  md:mb-4 md:mr-4">
           <h4 className="text-primary font-bold text-2xl mb-4">
             Customer Information
           </h4>
           <table>
             <tbody>
-              <tr>
-                <td>
-                  <span className="font-bold pr-3">Full Name:</span>
-                </td>
-                <td>
-                  <span>{formData.fullName}</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span className="font-bold pr-3">Phone Number:</span>
-                </td>
-                <td>
-                  <span>{formData.phoneNumber}</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span className="font-bold pr-3">Email:</span>
-                </td>
-                <td>
-                  <span>{formData.email}</span>
-                </td>
-              </tr>
+              {formData.fullName && (
+                <tr>
+                  <td>
+                    <span className="font-bold pr-3">Full Name:</span>
+                  </td>
+                  <td>
+                    <span>{formData.fullName}</span>
+                  </td>
+                </tr>
+              )}
 
-              <tr>
-                <td>
-                  <span className="font-bold pr-3">Telegram:</span>
-                </td>
-                <td>
-                  <span>{formData.telegram}</span>
-                </td>
-              </tr>
+              {formData.phoneNumber && (
+                <tr>
+                  <td>
+                    <span className="font-bold pr-3">Phone Number:</span>
+                  </td>
+                  <td>
+                    <span>{formData.phoneNumber}</span>
+                  </td>
+                </tr>
+              )}
 
-              <tr>
-                <td>
-                  <span className="font-bold pr-3">Line:</span>
-                </td>
-                <td>
-                  <span>{formData.line}</span>
-                </td>
-              </tr>
+              {formData.email && (
+                <tr>
+                  <td>
+                    <span className="font-bold pr-3">Email:</span>
+                  </td>
+                  <td>
+                    <span>{formData.email}</span>
+                  </td>
+                </tr>
+              )}
 
-              <tr>
-                <td>
-                  <span className="font-bold pr-3">Address:</span>
-                </td>
-                <td>
-                  <span>{formData.address}</span>
-                </td>
-              </tr>
+              {formData.telegram && (
+                <tr>
+                  <td>
+                    <span className="font-bold pr-3">Telegram:</span>
+                  </td>
+                  <td>
+                    <span>{formData.telegram}</span>
+                  </td>
+                </tr>
+              )}
 
-              <tr>
-                <td>
-                  <span className="font-bold pr-3">Message:</span>
-                </td>
-                <td>
-                  <span>{formData.message}</span>
-                </td>
-              </tr>
+              {formData.line && (
+                <tr>
+                  <td>
+                    <span className="font-bold pr-3">Line:</span>
+                  </td>
+                  <td>
+                    <span>{formData.line}</span>
+                  </td>
+                </tr>
+              )}
+
+              {formData.address && (
+                <tr>
+                  <td>
+                    <span className="font-bold pr-3">Address:</span>
+                  </td>
+                  <td>
+                    <span>{formData.address}</span>
+                  </td>
+                </tr>
+              )}
+
+              {formData.message && (
+                <tr>
+                  <td>
+                    <span className="font-bold pr-3">Message:</span>
+                  </td>
+                  <td>
+                    <span>{formData.message}</span>
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
