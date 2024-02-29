@@ -75,7 +75,7 @@ const CartItemsSection = () => {
   var telegram_bot_id = "6882060062:AAFvZvxBHu1kqu_n5BgPpsx4V1dGoSqHXBw";
   //chat id
   // var chat_id = 1344640111;
-  var chat_id = "@test_sorakhmer";
+  var chat_id = "@sorakhmerCustomerOrder";
   // Function to convert base64 data URL to Blob
   const dataURItoBlob = (dataURI) => {
     var byteString = atob(dataURI.split(",")[1]);
