@@ -12,12 +12,13 @@ const TotalPrice = ({
   isOpenForm,
   setIsOpenForm,
   formData,
+  orderId
 }) => {
-  const { contact } = useContext(DataContext);
-  const contactInfo = contact.map((item) => item)[0];
+  const { contactList } = useContext(DataContext);
+  const contactInfo = contactList.map((item) => item)[0];
   return (
     <div className="flex flex-col md:flex-row gap-5 mb-8">
-      <div className={`w-full ${isOpenForm && " mb-4 ml-4"}`}>
+      <div className={`w-full ${isOpenForm && " md:mb-4 md:ml-4"}`}>
         <table className="border-collapse w-full">
           <thead>
             <th
@@ -142,6 +143,16 @@ const TotalPrice = ({
           </h4>
           <table>
             <tbody>
+              {orderId && (
+                <tr>
+                  <td>
+                    <span className="font-bold pr-3">Order Id:</span>
+                  </td>
+                  <td>
+                    <span>{orderId}</span>
+                  </td>
+                </tr>
+              )}
               {formData.fullName && (
                 <tr>
                   <td>
@@ -207,6 +218,16 @@ const TotalPrice = ({
                   </td>
                 </tr>
               )}
+
+              {/* today date */}
+              <tr>
+                <td>
+                  <span className="font-bold pr-3">Date:</span>
+                </td>
+                <td>
+                  <span>{new Date().toLocaleString()}</span>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -222,6 +243,7 @@ TotalPrice.propTypes = {
   isOpenForm: PropType.bool,
   setIsOpenForm: PropType.func,
   formData: PropType.object,
+  orderId: PropType.string,
 };
 
 export default TotalPrice;

@@ -15,8 +15,8 @@ import { DataContext } from "../contexts/DataContext";
 import LinkIcon from "./ui/LinkIcon";
 import convertToPhoneNumber from "../utils/convertToPhoneNumber ";
 const Footer = () => {
-  const { contact } = useContext(DataContext);
-  const contactInfo = contact.map((item) => item)[0];
+  const { contactList } = useContext(DataContext);
+  const contactInfo = contactList.map((item) => item)[0];
   return (
     <div className=" bg-primary-content">
       <footer className="container text-white  flex flex-col lg:flex-row items-start lg:justify-between gap-12 py-10 px-6">

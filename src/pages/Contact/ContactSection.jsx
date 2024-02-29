@@ -6,8 +6,8 @@ import { DataContext } from "../../contexts/DataContext";
 import convertToPhoneNumber from "../../utils/convertToPhoneNumber ";
 const ContactSection = () => {
   // get user email to cc to the user when they submit the contact form
-  const { contact } = useContext(DataContext);
-  const contactInfo = contact.map((item) => item)[0];
+  const { contactList } = useContext(DataContext);
+  const contactInfo = contactList.map((item) => item)[0];
   const [userEmail, setUserEmail] = useState("");
 
   return (

@@ -24,7 +24,7 @@ export default function App() {
   const [authorList, setAuthorList] = useState([]);
   const [partnerList, setPartnerList] = useState([]);
   const [awardList, setAwardList] = useState([]);
-  const [contact, setContact] = useState([]);
+  const [contactList, setContactList] = useState([]);
   const [processList, setProcessList] = useState([]);
   const [storeList, setStoreList] = useState([]);
   const [galleryList, setGalleryList] = useState([]);
@@ -94,7 +94,7 @@ export default function App() {
 
       //fetch contact data
       const contact = await getDocs(contactCollectionRef);
-      setContact(contact.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      setContactList(contact.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
 
       //fetch process data
       const process = await getDocs(processCollectionRef);
@@ -149,7 +149,7 @@ export default function App() {
           authorList,
           awardList,
           partnerList,
-          contact,
+          contactList,
           processList,
           storeList,
           galleryList,

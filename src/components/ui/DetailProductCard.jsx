@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import ContentDisplay from "./ContentDisplay";
 import SharingBtn from "./SharingBtn";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { FaLink, FaMoneyBill, FaShoppingCart } from "react-icons/fa";
+import { FaLink, FaShoppingCart } from "react-icons/fa";
 import { AnimatePresence } from "framer-motion";
 import Notification from "./Notification";
 import { DataContext } from "../../contexts/DataContext";
@@ -126,9 +126,9 @@ const DetailProductCard = ({
             {/* buying and add to cart button */}
 
             <div className="flex items-center gap-4  mt-8">
-              <button className="flex items-center gap-2 px-2 py-1.5 border bg-green-600 hover:bg-green-500 text-white font-bold rounded">
+              {/* <button className="flex items-center gap-2 px-2 py-1.5 border bg-green-600 hover:bg-green-500 text-white font-bold rounded">
                 Buy Now <FaMoneyBill />
-              </button>
+              </button> */}
               <button
                 onClick={() => {
                   // const isAdded = addToCart({ id, name, price, image });

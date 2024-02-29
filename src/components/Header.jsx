@@ -19,9 +19,9 @@ import LinkIcon from "./ui/LinkIcon";
 import convertToPhoneNumber from "../utils/convertToPhoneNumber ";
 import scrollTop from "../utils/scrollTop";
 const Header = () => {
-  const { contact } = useContext(DataContext);
+  const { contactList } = useContext(DataContext);
   const { cartItems } = useContext(DataContext);
-  const contactInfo = contact.map((item) => item)[0];
+  const contactInfo = contactList.map((item) => item)[0];
   const [showSideBar, setShowSideBar] = useState(false);
   return (
     <>

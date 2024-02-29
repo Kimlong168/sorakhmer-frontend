@@ -11,10 +11,16 @@ import { Link } from "react-router-dom";
 import axios from "axios"; // Make sure axios is installed via npm or yarn
 import html2canvas from "html2canvas";
 import { storage } from "../../firebase-config";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import {
+  deleteObject,
+  getDownloadURL,
+  ref,
+  uploadBytes,
+} from "firebase/storage";
 import CustomerContactForm from "./CustomerContactForm";
 const CartItemsSection = () => {
-  const { cartItems, setCartItems } = useContext(DataContext);
+  const { cartItems, setCartItems, contactList } = useContext(DataContext);
+
   const [showImage, setShowImage] = useState({
     id: "",
     show: false,
@@ -35,14 +41,13 @@ const CartItemsSection = () => {
     address: "",
     message: "",
   });
+  const [orderId, setOrderId] = useState("");
+  const contactInfo = contactList.map((item) => item)[0];
 
-  const thStyle =
-    "p-3 font-bold uppercase bg-primary  border border-gray-300  table-cell";
-
-  const tdStyle = "p-3 border border-gray-300 text-gray-700 table-cell";
-
-  const trStyle =
-    "bg-white lg:hover:bg-gray-100 flex table-row text-center flex-row flex-wrap flex-no-wrap mb-0";
+  // generate order id
+  useEffect(() => {
+    setOrderId(`${formData.fullName}_${Date.now().toString()}`);
+  }, [formData.fullName]);
 
   // handle remove product from <cart></cart>
   const handleRemove = (id) => {
@@ -72,22 +77,12 @@ const CartItemsSection = () => {
 
   // handle send message to telegram
   //bot token
-  var telegram_bot_id = "6882060062:AAFvZvxBHu1kqu_n5BgPpsx4V1dGoSqHXBw";
+  var telegram_bot_id = contactInfo
+    ? contactInfo.telegramBotId
+    : "6882060062:AAFvZvxBHu1kqu_n5BgPpsx4V1dGoSqHXBw";
   //chat id
-  // var chat_id = 1344640111; //user id
   // var chat_id = "@sorakhmerCustomerOrder"; //can only send to the public channel
-  var chat_id = -1002126940474; //channel id : we can send to both private and public channel
-
-  // Function to convert base64 data URL to Blob
-  const dataURItoBlob = (dataURI) => {
-    var byteString = atob(dataURI.split(",")[1]);
-    var ab = new ArrayBuffer(byteString.length);
-    var ia = new Uint8Array(ab);
-    for (var i = 0; i < byteString.length; i++) {
-      ia[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([ab], { type: "image/png" });
-  };
+  var chat_id = contactInfo ? contactInfo.chatId : "-1002126940474"; //channel id : we can send to both private and public channel
 
   const sendToTelegram = () => {
     html2canvas(document.querySelector("#message")).then(function (canvas) {
@@ -106,14 +101,12 @@ const CartItemsSection = () => {
 
       // Concatenate full name and timestamp to create the ID
 
-      const imageRef = ref(storage, `cart/cartImage`);
+      const imageRef = ref(storage, `cart/cartImage_${orderId}`);
       uploadBytes(imageRef, imageBlob).then(() => {
         // Get the download URL for the uploaded image
         getDownloadURL(imageRef)
           .then((downloadURL) => {
-            console.log("profile image URL:", downloadURL);
             //send cart image to telegram
-
             try {
               const form = new FormData();
               form.append("chat_id", chat_id);
@@ -139,10 +132,15 @@ const CartItemsSection = () => {
               console.error("Error sending image:", error);
             }
 
+            // Delete the cart image after 10s to save storage space
+            setTimeout(() => {
+              deleteImageFromStorage(imageRef);
+            }, 10000); // 10s
+
             // Send customer contact and information to telegram
             try {
               const send = async () => {
-                const messageToSend = `===== New Order =====\n\nOrder id: 0001\nDate: ${new Date().toLocaleString()}
+                const messageToSend = `===== New Order =====\n\nOrder id: ${orderId}\nDate: ${new Date().toLocaleString()}
                 \n------------------------------------------${
                   formData.fullName ? `\nName: ${formData.fullName}` : ""
                 }
@@ -165,12 +163,12 @@ const CartItemsSection = () => {
                   {
                     chat_id: chat_id,
                     text: messageToSend,
-                    // parse_mode: "MarkdownV2", // Specify HTML parsing mode
                   }
                 );
                 console.log("Message sent successfully!");
               };
 
+              // excute function to send message to telegram
               send();
             } catch (error) {
               console.error("Error sending message:", error);
@@ -183,6 +181,38 @@ const CartItemsSection = () => {
       });
     });
   };
+
+  // delete cart image from firebase storage after 10s
+  const deleteImageFromStorage = (imageRef) => {
+    // Delete the old image
+    deleteObject(imageRef)
+      .then(() => {
+        console.log("cart image deleted successfully");
+      })
+      .catch((error) => {
+        console.error("Error deleting image:", error);
+      });
+  };
+
+  // Function to convert base64 data URL to Blob
+  const dataURItoBlob = (dataURI) => {
+    var byteString = atob(dataURI.split(",")[1]);
+    var ab = new ArrayBuffer(byteString.length);
+    var ia = new Uint8Array(ab);
+    for (var i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([ab], { type: "image/png" });
+  };
+
+  // tailwind class style
+  const thStyle =
+    "p-3 font-bold uppercase bg-primary  border border-gray-300  table-cell";
+
+  const tdStyle = "p-3 border border-gray-300 text-gray-700 table-cell";
+
+  const trStyle =
+    "bg-white lg:hover:bg-gray-100 flex table-row text-center flex-row flex-wrap flex-no-wrap mb-0";
 
   return (
     <section className="container p-8 md:p-0">
@@ -419,6 +449,7 @@ const CartItemsSection = () => {
               isOpenForm={isOpenForm}
               setIsOpenForm={setIsOpenForm}
               formData={formData}
+              orderId={orderId}
             />
           )}
         </div>
