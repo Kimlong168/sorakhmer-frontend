@@ -74,8 +74,9 @@ const CartItemsSection = () => {
   //bot token
   var telegram_bot_id = "6882060062:AAFvZvxBHu1kqu_n5BgPpsx4V1dGoSqHXBw";
   //chat id
-  // var chat_id = 1344640111;
-  var chat_id = "@sorakhmerCustomerOrder";
+  // var chat_id = 1344640111; //user id
+  // var chat_id = "@sorakhmerCustomerOrder"; //can only send to the public channel
+  var chat_id = -1002126940474; //channel id : we can send to both private and public channel
 
   // Function to convert base64 data URL to Blob
   const dataURItoBlob = (dataURI) => {
