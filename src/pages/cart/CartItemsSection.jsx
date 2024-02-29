@@ -32,7 +32,6 @@ const CartItemsSection = () => {
     phoneNumber: "",
     email: "",
     telegram: "",
-    line: "",
     address: "",
     message: "",
   });
@@ -75,8 +74,8 @@ const CartItemsSection = () => {
   //bot token
   var telegram_bot_id = "6882060062:AAFvZvxBHu1kqu_n5BgPpsx4V1dGoSqHXBw";
   //chat id
-  var chat_id = 1344640111;
-
+  // var chat_id = 1344640111;
+  var chat_id = "@test_sorakhmer";
   // Function to convert base64 data URL to Blob
   const dataURItoBlob = (dataURI) => {
     var byteString = atob(dataURI.split(",")[1]);
@@ -95,7 +94,7 @@ const CartItemsSection = () => {
       a.href = canvas.toDataURL("image/png");
       console.log(a.href, "and", a);
       a.download = `link_tree_${name}.png`;
-      a.click();
+      // a.click();
 
       // Convert canvas to base64 data URL
       var imageData = canvas.toDataURL("image/png");

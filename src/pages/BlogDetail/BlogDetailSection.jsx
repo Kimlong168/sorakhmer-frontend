@@ -18,7 +18,7 @@ import { motion } from "framer-motion";
 // vartants
 import { fadeIn } from "../../variants";
 import scrollTop from "../../utils/scrollTop";
-import Modal from "../../components/ui/Modal";
+import WarningModal from "../../components/ui/WarningModal";
 import "../../App.css";
 const BlogDetailSection = () => {
   const { id: blogParams } = useParams();
@@ -314,7 +314,7 @@ const BlogDetailSection = () => {
 
       {/* warning modal */}
       <div>
-        <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
+        <WarningModal isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
     </section>
   );

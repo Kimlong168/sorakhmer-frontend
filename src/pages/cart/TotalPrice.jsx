@@ -16,8 +16,8 @@ const TotalPrice = ({
   const { contact } = useContext(DataContext);
   const contactInfo = contact.map((item) => item)[0];
   return (
-    <div className="flex flex-col md:flex-row gap-5 mb-8 ">
-      <div className="w-full md:mb-4 md:ml-4">
+    <div className="flex flex-col md:flex-row gap-5 mb-8">
+      <div className={`w-full ${isOpenForm && " mb-4 ml-4"}`}>
         <table className="border-collapse w-full">
           <thead>
             <th
@@ -164,17 +164,6 @@ const TotalPrice = ({
                 </tr>
               )}
 
-              {formData.email && (
-                <tr>
-                  <td>
-                    <span className="font-bold pr-3">Email:</span>
-                  </td>
-                  <td>
-                    <span>{formData.email}</span>
-                  </td>
-                </tr>
-              )}
-
               {formData.telegram && (
                 <tr>
                   <td>
@@ -186,17 +175,6 @@ const TotalPrice = ({
                 </tr>
               )}
 
-              {formData.line && (
-                <tr>
-                  <td>
-                    <span className="font-bold pr-3">Line:</span>
-                  </td>
-                  <td>
-                    <span>{formData.line}</span>
-                  </td>
-                </tr>
-              )}
-
               {formData.address && (
                 <tr>
                   <td>
@@ -204,6 +182,17 @@ const TotalPrice = ({
                   </td>
                   <td>
                     <span>{formData.address}</span>
+                  </td>
+                </tr>
+              )}
+
+              {formData.email && (
+                <tr>
+                  <td>
+                    <span className="font-bold pr-3">Email:</span>
+                  </td>
+                  <td>
+                    <span>{formData.email}</span>
                   </td>
                 </tr>
               )}

@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FiAlertCircle } from "react-icons/fi";
 import PropType from "prop-types";
 
-const Modal = ({ isOpen, setIsOpen }) => {
+const WarningModal = ({ isOpen, setIsOpen }) => {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -48,9 +48,9 @@ const Modal = ({ isOpen, setIsOpen }) => {
   );
 };
 
-Modal.propTypes = {
+WarningModal.propTypes = {
   isOpen: PropType.bool,
   setIsOpen: PropType.func,
 };
 
-export default Modal;
+export default WarningModal;
