@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../contexts/DataContext";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import dragon from "../../assets/images/dragon.png";
+import logo from "../../assets/images/sorakhmer-logo.png";
 import "../../App.css";
 import PopupImage from "../../components/ui/PopupImage";
 import { AnimatePresence } from "framer-motion";
@@ -81,25 +82,21 @@ const CartItemsSection = () => {
     ? contactInfo.telegramBotId
     : "6882060062:AAFvZvxBHu1kqu_n5BgPpsx4V1dGoSqHXBw";
   //chat id
-  // var chat_id = "@sorakhmerCustomerOrder"; //can only send to the public channel
   var chat_id = contactInfo ? contactInfo.chatId : "-1002126940474"; //channel id : we can send to both private and public channel
 
   const sendToTelegram = () => {
     html2canvas(document.querySelector("#message")).then(function (canvas) {
-      // download the image
+      // download the cart image
       var a = document.createElement("a");
       a.href = canvas.toDataURL("image/png");
-      console.log(a.href, "and", a);
-      a.download = `link_tree_${name}.png`;
-      // a.click();
+      a.download = `Invoice_${orderId}.png`;
+      a.click();
 
       // Convert canvas to base64 data URL
       var imageData = canvas.toDataURL("image/png");
 
       // Convert base64 data URL to Blob
       var imageBlob = dataURItoBlob(imageData);
-
-      // Concatenate full name and timestamp to create the ID
 
       const imageRef = ref(storage, `cart/cartImage_${orderId}`);
       uploadBytes(imageRef, imageBlob).then(() => {
@@ -109,10 +106,27 @@ const CartItemsSection = () => {
             //send cart image to telegram
             try {
               const form = new FormData();
+              const messageToSend = `===== New Order =====\n\nOrder id: ${orderId}\nDate: ${new Date().toLocaleString()}
+                \n----------------------------------${
+                  formData.fullName ? `\nName: ${formData.fullName}` : ""
+                }
+                ${
+                  formData.phoneNumber
+                    ? `\nPhone Number: ${formData.phoneNumber}`
+                    : ""
+                }
+                ${formData.address ? `\nAddress: ${formData.address}` : ""}
+                ${formData.telegram ? `\nTelegram: ${formData.telegram}` : ""}
+                ${formData.email ? `\nEmail: ${formData.email}` : ""}
+                ${formData.line ? `\nLine: ${formData.line}` : ""}
+                ${formData.message ? `\nMessage: ${formData.message}` : ""}
+                \n----------------------------------
+                \nTotal: ${total} $
+                \n----------------------------------`;
               form.append("chat_id", chat_id);
               form.append("photo", downloadURL);
               // Optionally, you can include a caption for the image
-              // form.append('caption', 'Optional caption for the image');
+              form.append("caption", messageToSend);
 
               const send = async () => {
                 const response = await axios.post(
@@ -132,52 +146,14 @@ const CartItemsSection = () => {
               console.error("Error sending image:", error);
             }
 
-            // Delete the cart image after 10s to save storage space
+            // Delete the cart image after 1mn to save storage space
             setTimeout(() => {
               deleteImageFromStorage(imageRef);
-            }, 10000); // 10s
-
-            // Send customer contact and information to telegram
-            try {
-              const send = async () => {
-                const messageToSend = `===== New Order =====\n\nOrder id: ${orderId}\nDate: ${new Date().toLocaleString()}
-                \n------------------------------------------${
-                  formData.fullName ? `\nName: ${formData.fullName}` : ""
-                }
-                ${
-                  formData.phoneNumber
-                    ? `\nPhone Number: ${formData.phoneNumber}`
-                    : ""
-                }
-                ${formData.address ? `\nAddress: ${formData.address}` : ""}
-                ${formData.telegram ? `\nTelegram: ${formData.telegram}` : ""}
-                ${formData.email ? `\nEmail: ${formData.email}` : ""}
-                ${formData.line ? `\nLine: ${formData.line}` : ""}
-                ${formData.message ? `\nMessage: ${formData.message}` : ""}
-                \n-----------------------------------------
-                \nTotal: ${total} $
-                \n-----------------------------------------`;
-
-                await axios.post(
-                  `https://api.telegram.org/bot${telegram_bot_id}/sendMessage`,
-                  {
-                    chat_id: chat_id,
-                    text: messageToSend,
-                  }
-                );
-                console.log("Message sent successfully!");
-              };
-
-              // excute function to send message to telegram
-              send();
-            } catch (error) {
-              console.error("Error sending message:", error);
-            }
+            }, 60000); // 1mn
           })
           .catch((error) => {
             console.error("Error getting download URL:", error);
           });
-        console.log("author image uploaded");
       });
     });
   };
@@ -225,8 +201,14 @@ const CartItemsSection = () => {
         </div>
         <div id="message">
           {isOpenForm && (
-            <h2 className="text-center text-3xl font-bold">
-              ===== New Order =====
+            <h2 className="text-center text-3xl font-bold relative">
+              <img
+                className="w-[70px] md:w-[100px] absolute top-2 md:top-0 left-0"
+                src={logo}
+                alt="logo"
+              />{" "}
+              <span className="md:block hidden">===== New Order =====</span>
+              <span className="md:hidden">New Order</span>
             </h2>
           )}
           <div className="w-100 overflow-auto my-8" id="cart">
@@ -260,7 +242,7 @@ const CartItemsSection = () => {
                             }
                           >
                             <img
-                              className="w-[100px] h-[120px] min-w-[100px] min-h-[120px] block mx-auto rounded-xs object-cover cursor-pointer hover:scale-110 transition-all"
+                              className="w-[100px] h-[100px] md:h-[120px] min-w-[80px] min-h-[100px] block mx-auto rounded-xs object-cover cursor-pointer hover:scale-110 transition-all"
                               src={item.image}
                               alt="product-image"
                             />

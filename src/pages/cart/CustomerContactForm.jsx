@@ -4,6 +4,7 @@ import RedStar from "../../components/ui/RedStar";
 import "../../App.css";
 import { useState } from "react";
 import SuccessModal from "../../components/ui/SuccessModal";
+import WarningModal from "../../components/ui/WarningModal";
 const CustomerContactForm = ({
   setIsOpenForm,
   formData,
@@ -14,6 +15,7 @@ const CustomerContactForm = ({
     showForm: true,
     showAlert: false,
   });
+  const [isShowWarning, setIsShowWarning] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -28,7 +30,7 @@ const CustomerContactForm = ({
   return (
     <div>
       {isSubmitted.showForm && (
-        <div className="fixed inset-0 bg-black/30  z-10 grid place-content-center ">
+        <div className="fixed inset-0 bg-slate-900/20 backdrop-blur z-10 grid place-content-center ">
           <div
             className="overflow-auto my-10 p-6 pt-0 w-fit bg-white rounded relative"
             id="placeOrder"
@@ -44,7 +46,6 @@ const CustomerContactForm = ({
                 </div>
               </div>
               <form onSubmit={handleSubmit}>
-                
                 <div className="mb-4">
                   <label
                     title="required"
@@ -172,7 +173,7 @@ const CustomerContactForm = ({
                         showAlert: true,
                       });
                     } else {
-                      alert("Please fill the required fields");
+                      setIsShowWarning(true);
                     }
                   }}
                   type="submit"
@@ -186,19 +187,27 @@ const CustomerContactForm = ({
         </div>
       )}
 
+      {/* fill required information alert */}
+      <WarningModal
+        isOpen={isShowWarning}
+        setIsOpen={setIsShowWarning}
+        title="Fill Required Information!"
+        description="Please fill the required fields with * mark. Thank you!"
+      />
+
       {/* submiting successfully alert */}
-      {isSubmitted.showAlert && (
-        <SuccessModal
-          isOpen={isSubmitted.showAlert}
-          setIsOpen={() => {
-            setIsSubmitted({
-              showForm: false,
-              showAlert: false,
-            });
-            setIsOpenForm(false);
-          }}
-        />
-      )}
+      <SuccessModal
+        isOpen={isSubmitted.showAlert}
+        setIsOpen={() => {
+          setIsSubmitted({
+            showForm: false,
+            showAlert: false,
+          });
+          setIsOpenForm(false);
+        }}
+        title="You have ordered successfully!"
+        description="We will contact to you as soon as possible. Thank you for your patience."
+      />
     </div>
   );
 };

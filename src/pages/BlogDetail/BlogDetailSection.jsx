@@ -314,7 +314,12 @@ const BlogDetailSection = () => {
 
       {/* warning modal */}
       <div>
-        <WarningModal isOpen={isOpen} setIsOpen={setIsOpen} />
+        <WarningModal
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          title="No Result Found!"
+          description="Please Enter a Keyword to Search"
+        />
       </div>
     </section>
   );

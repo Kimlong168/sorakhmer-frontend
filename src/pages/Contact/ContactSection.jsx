@@ -4,11 +4,97 @@ import { Link } from "react-router-dom";
 import LinkIcon from "../../components/ui/LinkIcon";
 import { DataContext } from "../../contexts/DataContext";
 import convertToPhoneNumber from "../../utils/convertToPhoneNumber ";
+import SuccessModal from "../../components/ui/SuccessModal";
+import axios from "axios"; // Make sure axios is installed via npm or yarn
+import WarningModal from "../../components/ui/WarningModal";
+import RedStar from "../../components/ui/RedStar";
 const ContactSection = () => {
   // get user email to cc to the user when they submit the contact form
   const { contactList } = useContext(DataContext);
   const contactInfo = contactList.map((item) => item)[0];
-  const [userEmail, setUserEmail] = useState("");
+  const [formData, setFormData] = useState({
+    fullname: "",
+    phone: "",
+    address: "",
+    description: "",
+    email: "",
+    socialMediaLink: "",
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isShowWarning, setIsShowWarning] = useState(false);
+
+  // handle send message to telegram
+  //bot token
+  var telegram_bot_id = contactInfo
+    ? contactInfo.telegramBotId
+    : "6882060062:AAFvZvxBHu1kqu_n5BgPpsx4V1dGoSqHXBw";
+  //chat id
+  // var chat_id = "@sorakhmerCustomerOrder"; //can only send to the public channel
+  var chat_id = contactInfo ? contactInfo.chatId : "-1002126940474"; //channel id : we can send to both private and public channel
+
+  const sendToTelegram = (e) => {
+    e.preventDefault();
+
+    if (
+      !formData.fullname ||
+      !formData.socialMediaLink ||
+      !formData.description
+    ) {
+      setIsShowWarning(true);
+      return;
+    }
+
+    // Send customer contact and information to telegram
+    try {
+      const send = async () => {
+        const messageToSend = `===== New Message =====\n\nDate: ${new Date().toLocaleString()}
+          ${formData.fullname ? `\nName: ${formData.fullname}` : ""}
+          ${
+            formData.socialMediaLink
+              ? `\nSocial Media: ${formData.socialMediaLink}`
+              : ""
+          }
+          ${formData.phone ? `\nPhone Number: ${formData.phone}` : ""}
+          ${formData.address ? `\nAddress: ${formData.address}` : ""}
+          ${formData.email ? `\nEmail: ${formData.email}` : ""}
+          ${formData.description ? `\nMessage: ${formData.description}` : ""}
+       `;
+
+        await axios.post(
+          `https://api.telegram.org/bot${telegram_bot_id}/sendMessage`,
+          {
+            chat_id: chat_id,
+            text: messageToSend,
+          }
+        );
+        console.log("Message sent successfully!");
+      };
+
+      // excute function to send message to telegram
+      send();
+
+      // set submitted to true to show success modal
+      setIsSubmitted(true);
+
+      // clear form data
+      setFormData({
+        fullname: "",
+        phone: "",
+        address: "",
+        description: "",
+        email: "",
+        socialMediaLink: "",
+      });
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
+  };
+
+  // handle input change
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   return (
     <section className="container p-8 md:p-0">
@@ -143,77 +229,77 @@ const ContactSection = () => {
           </h3>
 
           {/* form submit message */}
-          <form
-            action="https://formsubmit.co/kimlong5244@gmail.com"
-            method="POST"
-          >
-            {/* subject of the email */}
-            <input
-              type="hidden"
-              name="_subject"
-              value="New message from a customer of Sorakhmer.com"
-            />
-            {/* templete of the email */}
-            <input type="hidden" name="_template" value="table"></input>
-            <input type="hidden" name="_captcha" value="false" />
-            {/* cc of the email */}
-            <input type="hidden" name="_cc" value={userEmail}></input>
-
-            {/* next url after sumbit successfully */}
-            <input
-              type="hidden"
-              name="_next"
-              value="http://localhost:5173/thank"
-            />
-            <div className="flex flex-col gap-3.5 mt-5 md:mt-8">
-              <div className="flex flex-col gap-1">
+          <form onSubmit={(e) => sendToTelegram(e)}>
+            <div className="flex flex-col gap-3 mt-5 md:mt-8">
+              <div className="flex flex-col gap-0.5">
                 {/* input fullname */}
-                <label>Fullname</label>
+                <label>
+                  Fullname <RedStar />
+                </label>
                 <input
-                  className="border border-border focus:border-primary outline-none p-2.5"
+                  className="border border-border focus:border-primary outline-none p-2 rounded"
                   type="text"
-                  name="Fullname"
+                  name="fullname"
+                  onChange={(e) => handleOnChange(e)}
                 />
               </div>
 
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-0.5">
+                {/* input social media  */}
+                <label>
+                  Social media (Telegram, Line, Facebook,...) <RedStar />
+                </label>
+                <input
+                  className="border border-border focus:border-primary outline-none p-2 rounded"
+                  type="url"
+                  name="socialMediaLink"
+                  onChange={(e) => handleOnChange(e)}
+                />
+              </div>
+
+              <div className="flex flex-col gap-0.5">
                 {/* input email */}
                 <label>Email</label>
                 <input
-                  className="border border-border focus:border-primary outline-none p-2.5"
+                  className="border border-border focus:border-primary outline-none p-2 rounded"
                   type="email"
-                  name="Email"
-                  onChange={(e) => setUserEmail(e.target.value)}
+                  name="email"
+                  onChange={(e) => handleOnChange(e)}
                 />
               </div>
 
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-0.5">
                 {/* input phone */}
                 <label>Phone</label>
                 <input
-                  className="border border-border focus:border-primary outline-none p-2.5"
+                  className="border border-border focus:border-primary outline-none p-2 rounded"
                   type="tel"
-                  name="Phone"
+                  name="phone"
+                  onChange={(e) => handleOnChange(e)}
                 />
               </div>
 
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-0.5">
                 {/* input country */}
-                <label>Country</label>
+                <label>Address</label>
                 <input
-                  className="border border-border focus:border-primary outline-none p-2.5"
+                  className="border border-border focus:border-primary outline-none p-2 rounded"
                   type="text"
-                  name="Country"
+                  name="address"
+                  onChange={(e) => handleOnChange(e)}
                 />
               </div>
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-0.5">
                 {/* input message */}
-                <label>Message</label>
+                <label>
+                  Message <RedStar />
+                </label>
                 <textarea
-                  className="border border-border focus:border-primary outline-none p-2.5"
-                  name="Description"
+                  className="border border-border focus:border-primary outline-none p-2 rounded"
+                  name="description"
                   cols="30"
-                  rows="5"
+                  rows="4"
+                  onChange={(e) => handleOnChange(e)}
                 ></textarea>
               </div>
 
@@ -226,6 +312,24 @@ const ContactSection = () => {
               </button>
             </div>
           </form>
+
+          {/* fill required information alert */}
+          <WarningModal
+            isOpen={isShowWarning}
+            setIsOpen={setIsShowWarning}
+            title="Fill Required Information!"
+            description="Please fill the required fields with * mark. Thank you!"
+          />
+
+          {/* submiting successfully alert */}
+          <SuccessModal
+            isOpen={isSubmitted}
+            setIsOpen={() => {
+              setIsSubmitted(false);
+            }}
+            title="Message Sent!"
+            description="Thank you for reaching out to us. We will get back to you as soon as possible."
+          />
         </div>
       </div>
     </section>

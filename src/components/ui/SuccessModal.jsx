@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
 import PropType from "prop-types";
 
-const WarningModal = ({ isOpen, setIsOpen }) => {
+const WarningModal = ({ isOpen, setIsOpen, title, description }) => {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -27,11 +27,10 @@ const WarningModal = ({ isOpen, setIsOpen }) => {
                 <FaCheckCircle />
               </div>
               <h3 className="text-3xl font-bold text-center mb-2">
-                You have ordered successfully!
+                {title ? title : "Success"}
               </h3>
               <p className="text-center mb-6">
-                We will contact to you as soon as possible. Thank you for your
-                patience.
+                {description ? description : ""}
               </p>
               <div className="flex gap-2">
                 <button
@@ -52,6 +51,8 @@ const WarningModal = ({ isOpen, setIsOpen }) => {
 WarningModal.propTypes = {
   isOpen: PropType.bool,
   setIsOpen: PropType.func,
+  title: PropType.string,
+  description: PropType.string,
 };
 
 export default WarningModal;

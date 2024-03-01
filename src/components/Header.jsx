@@ -23,6 +23,7 @@ const Header = () => {
   const { cartItems } = useContext(DataContext);
   const contactInfo = contactList.map((item) => item)[0];
   const [showSideBar, setShowSideBar] = useState(false);
+
   return (
     <>
       {/* telephone and social media icon */}

@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FiAlertCircle } from "react-icons/fi";
 import PropType from "prop-types";
 
-const WarningModal = ({ isOpen, setIsOpen }) => {
+const WarningModal = ({ isOpen, setIsOpen, title, description }) => {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -27,10 +27,10 @@ const WarningModal = ({ isOpen, setIsOpen }) => {
                 <FiAlertCircle />
               </div>
               <h3 className="text-3xl font-bold text-center mb-2">
-                No Result Found!
+                {title ? title : "Warning"}
               </h3>
               <p className="text-center mb-6">
-                Please Enter a Keyword to Search
+                {description ? description : "Something went wrong!"}
               </p>
               <div className="flex gap-2">
                 <button
@@ -51,6 +51,8 @@ const WarningModal = ({ isOpen, setIsOpen }) => {
 WarningModal.propTypes = {
   isOpen: PropType.bool,
   setIsOpen: PropType.func,
+  title: PropType.string,
+  description: PropType.string,
 };
 
 export default WarningModal;
