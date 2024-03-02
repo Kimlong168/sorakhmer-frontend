@@ -4,7 +4,7 @@ import PrimaryButton from "../../components/ui/PrimaryButton";
 const IntroSection = () => {
   return (
     <section className="container p-8 md:p-0">
-      <div className="pt-12 md:py-12 flex flex-col md:flex-row gap-8 md:gap-24">
+      <div className="pt-12 md:py-12 flex flex-col md:flex-row gap-8 mg:gap-24">
         <div className="w-full">
           <h3 className="font-primary-bold text-4xl md:text-5xl">
             Visit Our{" "}
@@ -18,7 +18,7 @@ const IntroSection = () => {
             />
             <span className="text-primary">.</span>
           </h3>
-          <div className="w-full md:w-4/5 mt-8">
+          <div className="w-full lg:w-4/5 mt-8">
             <p className="text-lg md:text-xl">
               Our distillery is located in northwestern Cambodia, where we have
               been producing Sorakhmer since 2008. We warmly welcome visitors to
@@ -36,7 +36,7 @@ const IntroSection = () => {
           <img
             src={cambodiaMap}
             alt="map of cambodia"
-            className="w-full h-full  shadow-2xl rounded-lg"
+            className="w-full shadow-2xl rounded-lg"
           />
         </div>
 

@@ -76,7 +76,7 @@ const TotalPrice = ({
         </table>
       </div>
       {!isOpenForm ? (
-        <div className="w-full h-[100%] inline-block bg-black/90 p-4 text-white relative pt-12  md:pt-4 ">
+        <div className="w-full h-[100%] inline-block bg-black/90 p-4 text-white relative pt-14  md:pt-4 ">
           {language === "us" ? (
             <div>
               <h4 className="text-white text-center text-2xl mb-4">
@@ -217,7 +217,7 @@ const TotalPrice = ({
               {formData.phoneNumber && (
                 <tr>
                   <td>
-                    <span className="font-bold pr-3">Phone Number:</span>
+                    <span className="font-bold pr-3">Phone:</span>
                   </td>
                   <td>
                     <span>{formData.phoneNumber}</span>

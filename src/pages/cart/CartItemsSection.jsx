@@ -19,6 +19,7 @@ import {
   uploadBytes,
 } from "firebase/storage";
 import CustomerContactForm from "./CustomerContactForm";
+import checkSocialMedia from "../../utils/checkSocialMedia";
 const CartItemsSection = () => {
   const { cartItems, setCartItems, contactList } = useContext(DataContext);
 
@@ -111,14 +112,17 @@ const CartItemsSection = () => {
                   formData.fullName ? `\nName: ${formData.fullName}` : ""
                 }
                 ${
-                  formData.phoneNumber
-                    ? `\nPhone Number: ${formData.phoneNumber}`
-                    : ""
+                  formData.phoneNumber ? `\nPhone: ${formData.phoneNumber}` : ""
                 }
                 ${formData.address ? `\nAddress: ${formData.address}` : ""}
-                ${formData.telegram ? `\nTelegram: ${formData.telegram}` : ""}
+                ${
+                  formData.telegram
+                    ? `\n${checkSocialMedia(formData.telegram)}: ${
+                        formData.telegram
+                      }`
+                    : ""
+                }
                 ${formData.email ? `\nEmail: ${formData.email}` : ""}
-                ${formData.line ? `\nLine: ${formData.line}` : ""}
                 ${formData.message ? `\nMessage: ${formData.message}` : ""}
                 \n----------------------------------
                 \nTotal: ${total} $

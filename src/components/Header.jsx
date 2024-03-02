@@ -101,13 +101,16 @@ const Header = () => {
             </ul>
           </div>
 
-          <div className="flex items-center gap-5 text-xl md:text-2xl">
+          <div className="flex items-center gap-6 md:gap-5 text-xl md:text-2xl">
             {/* light and dark mode icon */}
             <ToggleLightDarkMode />
             {/* shopping cart icon */}
             <Link to="/cart">
               <div onClick={scrollTop} className="relative">
-                <FaShoppingCart className="cursor-pointer hover:text-primary" />
+                <FaShoppingCart
+                  size={28}
+                  className="cursor-pointer hover:text-primary"
+                />
 
                 {cartItems.length > 0 && (
                   <div className="text-xs bg-red-500 w-4 h-4 rounded-full grid place-content-center absolute -top-1 -right-2">
@@ -121,7 +124,10 @@ const Header = () => {
               className="lg:hidden"
               onClick={() => setShowSideBar((prev) => !prev)}
             >
-              <HiOutlineMenuAlt3 className="cursor-pointer text-2xl md:text-3xl hover:text-primary" />
+              <HiOutlineMenuAlt3
+                size={32}
+                className="cursor-pointer text-2xl md:text-3xl hover:text-primary"
+              />
             </div>
           </div>
         </nav>
