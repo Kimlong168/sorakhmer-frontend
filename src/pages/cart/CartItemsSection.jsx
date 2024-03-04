@@ -119,7 +119,6 @@ const CartItemsSection = () => {
                       }`
                     : ""
                 }
-                ${formData.email ? `\nEmail: ${formData.email}` : ""}
                 ${formData.message ? `\nMessage: ${formData.message}` : ""}
                 \n----------------------------------
                 \nTotal: ${total} $

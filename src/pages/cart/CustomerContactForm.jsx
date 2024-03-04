@@ -1,11 +1,12 @@
-import { FaWindowClose } from "react-icons/fa";
-import PropType from "prop-types";
-import RedStar from "../../components/ui/RedStar";
-import "../../App.css";
 import { useEffect, useState } from "react";
+import PropType from "prop-types";
+import { Html5QrcodeScanner } from "html5-qrcode";
+import RedStar from "../../components/ui/RedStar";
 import SuccessModal from "../../components/ui/SuccessModal";
 import WarningModal from "../../components/ui/WarningModal";
 import LoadingWithPercentage from "../../components/ui/LoadingWithPercentage";
+import { FaWindowClose } from "react-icons/fa";
+import "../../App.css";
 const CustomerContactForm = ({
   setIsOpenForm,
   formData,
@@ -17,13 +18,17 @@ const CustomerContactForm = ({
     showForm: true,
     showAlert: false,
   });
+  const [inputLinkType, setInputLinkType] = useState("url");
+  // const [scannerResult, setScannerResult] = useState(null);
   const [isShowWarning, setIsShowWarning] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [isSending, setIsSending] = useState(false);
+
+  // handle change of input
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-  const [progress, setProgress] = useState(0);
-  const [isSending, setIsSending] = useState(false);
 
   // handle loading with percentage
   useEffect(() => {
@@ -37,6 +42,32 @@ const CustomerContactForm = ({
       return () => clearInterval(interval);
     }, 1000);
   }, [isSending]);
+
+  // qr code scanner
+
+  useEffect(() => {
+    const scanner = new Html5QrcodeScanner("reader", {
+      qrbox: {
+        width: "100%",
+        height: "10px",
+      },
+      fps: 10,
+    });
+
+    // render the scanner when the inputLinkType is qr-code
+    scanner.render(success, error);
+
+    function success(result) {
+      scanner.clear();
+      // setScannerResult(result);
+      setFormData({ ...formData, telegram: result });
+      setInputLinkType("url");
+    }
+
+    function error() {
+      console.warn("error");
+    }
+  }, [inputLinkType]);
 
   return (
     <div>
@@ -97,24 +128,6 @@ const CustomerContactForm = ({
                   </div>
                   <div className="mb-4">
                     <label
-                      htmlFor="telegram"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Telegram, Line, Facebook or other <RedStar />
-                    </label>
-                    <input
-                      type="url"
-                      id="telegram"
-                      name="telegram"
-                      placeholder="example: https://t.me/kimlong_chann"
-                      value={formData.telegram}
-                      onChange={handleChange}
-                      className="mt-1 p-2 border w-full border-gray-300 rounded-md"
-                    />
-                  </div>
-
-                  <div className="mb-4">
-                    <label
                       title="required"
                       htmlFor="address"
                       className="block text-sm font-medium text-gray-700"
@@ -131,8 +144,63 @@ const CustomerContactForm = ({
                       required
                     />
                   </div>
-
                   <div className="mb-4">
+                    <label
+                      htmlFor="telegram"
+                      className="text-sm font-medium text-gray-700 flex items-center gap-4 mb-1"
+                    >
+                      <div>
+                        Telegram, Line, Facebook or other <RedStar />
+                      </div>
+                      <div className="flex gap-2 items-center">
+                        <span
+                          className={`cursor-pointer px-4 py-1  text-xs rounded  ${
+                            inputLinkType == "url"
+                              ? "text-white bg-green-500"
+                              : "text-gray-900 border"
+                          } `}
+                          onClick={() => setInputLinkType("url")}
+                        >
+                          Url
+                        </span>
+                        <span
+                          className={`cursor-pointer px-4 py-1  text-xs rounded  ${
+                            inputLinkType == "qrcode"
+                              ? "text-white bg-green-500"
+                              : "text-gray-900 border"
+                          } `}
+                          onClick={() => setInputLinkType("qrcode")}
+                        >
+                          Qrcode
+                        </span>
+                      </div>
+                    </label>
+                    {inputLinkType === "url" ? (
+                      <div>
+                        <input
+                          type="url"
+                          id="telegram"
+                          name="telegram"
+                          placeholder="example: https://t.me/kimlong_chann"
+                          value={formData.telegram}
+                          onChange={handleChange}
+                          className="mt-1 p-2 border w-full border-gray-300 rounded-md"
+                        />
+
+                        {/* to get rid of error unknown id="reader" */}
+                        <div className="hidden" id="reader"></div>
+                      </div>
+                    ) : (
+                      <div className="mt-2">
+                        <div className="rounded" id="reader"></div>
+                        <p className="text-center text-gray-500">
+                          Please scan the qr-code to get the link
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* <div className="mb-4">
                     <label
                       htmlFor="email"
                       className="block text-sm font-medium text-gray-700"
@@ -147,7 +215,7 @@ const CustomerContactForm = ({
                       onChange={handleChange}
                       className="mt-1 p-2 border w-full border-gray-300 rounded-md"
                     />
-                  </div>
+                  </div> */}
                   <div className="mb-4">
                     <label
                       htmlFor="message"
@@ -159,18 +227,9 @@ const CustomerContactForm = ({
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      rows="4"
+                      rows="3"
                       className="mt-1 p-2 border w-full border-gray-300 rounded-md"
                     />
-                  </div>
-
-                  <div className="mb-4">
-                    <p>
-                      <span className="font-bold rounded mr-2">Note:</span> We
-                      will reach out to you via Telegram promptly. Once we
-                      confirm your order, we will proceed to process the
-                      checkout. Thank you for your patience
-                    </p>
                   </div>
 
                   <div
@@ -202,9 +261,20 @@ const CustomerContactForm = ({
                         setIsShowWarning(true);
                       }
                     }}
-                    className="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark w-fit cursor-pointer"
+                    className="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark w-fit cursor-pointer font-bold"
                   >
                     Order Now
+                  </div>
+
+                  {/* note */}
+                  <div className="my-4">
+                    <hr />
+                    <p className="mt-2">
+                      <span className="font-bold rounded mr-2">Note:</span> We
+                      will reach out to you via your contact or Telegram
+                      promptly. Once we confirm your order, we will proceed to
+                      process the checkout. Thank you for your patience
+                    </p>
                   </div>
                 </form>
               ) : (
