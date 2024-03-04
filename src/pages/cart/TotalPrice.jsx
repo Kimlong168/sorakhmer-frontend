@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 import { DataContext } from "../../contexts/DataContext";
 import cambodiaFlag from "../../assets/images/cambodiaFlag.png";
 import usFlag from "../../assets/images/us-flag.png";
+import QRCode from "react-qr-code";
 import { FaShoppingCart } from "react-icons/fa";
 const TotalPrice = ({
   subtotal,
@@ -20,6 +21,7 @@ const TotalPrice = ({
   const { contactList } = useContext(DataContext);
   const contactInfo = contactList.map((item) => item)[0];
   const [language, setLanguage] = useState("us");
+
   return (
     <div className="flex flex-col lg:flex-row gap-5 mb-8">
       {/* show when there is at least one product in the cart */}
@@ -214,94 +216,121 @@ const TotalPrice = ({
           <h4 className="text-primary font-bold text-2xl mb-4">
             Customer Information
           </h4>
-          <table>
-            <tbody className="break-all">
-              {orderId && (
-                <tr>
-                  <td className="flex items-start">
-                    <span className="font-bold pr-3 break-keep">Order Id:</span>
-                  </td>
-                  <td>
-                    <span>{orderId}</span>
-                  </td>
-                </tr>
-              )}
-              {/* today date */}
-              <tr>
-                <td className="flex items-start">
-                  <span className="font-bold pr-3 break-keep">Date:</span>
-                </td>
-                <td>
-                  <span>{new Date().toLocaleString()}</span>
-                </td>
-              </tr>
-              {formData.fullName && (
-                <tr>
-                  <td className="flex items-start">
-                    <span className="font-bold pr-3 break-keep">Fullname:</span>
-                  </td>
-                  <td>
-                    <span>{formData.fullName}</span>
-                  </td>
-                </tr>
-              )}
+          <div className="flex flex-col md:flex-row md:justify-between items-center gap-8 lg:gap-2">
+            <div className="w-full">
+              <table className="w-full ">
+                <tbody className="break-all">
+                  {orderId && (
+                    <tr>
+                      <td className="flex items-start">
+                        <span className="font-bold pr-3 break-keep">
+                          Order Id:
+                        </span>
+                      </td>
+                      <td>
+                        <span>{orderId}</span>
+                      </td>
+                    </tr>
+                  )}
+                  {/* today date */}
+                  <tr>
+                    <td className="flex items-start">
+                      <span className="font-bold pr-3 break-keep">Date:</span>
+                    </td>
+                    <td>
+                      <span>{new Date().toLocaleString()}</span>
+                    </td>
+                  </tr>
+                  {formData.fullName && (
+                    <tr>
+                      <td className="flex items-start">
+                        <span className="font-bold pr-3 break-keep">
+                          Fullname:
+                        </span>
+                      </td>
+                      <td>
+                        <span>{formData.fullName}</span>
+                      </td>
+                    </tr>
+                  )}
 
-              {formData.phoneNumber && (
-                <tr>
-                  <td className="flex items-start">
-                    <span className="font-bold pr-3 break-keep">Phone:</span>
-                  </td>
-                  <td>
-                    <span>{formData.phoneNumber}</span>
-                  </td>
-                </tr>
-              )}
+                  {formData.phoneNumber && (
+                    <tr>
+                      <td className="flex items-start">
+                        <span className="font-bold pr-3 break-keep">
+                          Phone:
+                        </span>
+                      </td>
+                      <td>
+                        <span>{formData.phoneNumber}</span>
+                      </td>
+                    </tr>
+                  )}
 
-              {formData.telegram && (
-                <tr>
-                  <td className="flex items-start">
-                    <span className="font-bold pr-3 break-keep">Telegram:</span>
-                  </td>
-                  <td>
-                    <span>{formData.telegram}</span>
-                  </td>
-                </tr>
-              )}
+                  {formData.telegram && (
+                    <tr>
+                      <td className="flex items-start">
+                        <span className="font-bold pr-3 break-keep">
+                          Telegram:
+                        </span>
+                      </td>
+                      <td>
+                        <span>{formData.telegram}</span>
+                      </td>
+                    </tr>
+                  )}
 
-              {formData.address && (
-                <tr>
-                  <td className="flex items-start">
-                    <span className="font-bold pr-3 break-keep">Address:</span>
-                  </td>
-                  <td>
-                    <span>{formData.address}</span>
-                  </td>
-                </tr>
-              )}
+                  {formData.address && (
+                    <tr>
+                      <td className="flex items-start">
+                        <span className="font-bold pr-3 break-keep">
+                          Address:
+                        </span>
+                      </td>
+                      <td>
+                        <span>{formData.address}</span>
+                      </td>
+                    </tr>
+                  )}
 
-              {formData.email && (
-                <tr>
-                  <td className="flex items-start">
-                    <span className="font-bold pr-3 break-keep">Email:</span>
-                  </td>
-                  <td>
-                    <span>{formData.email}</span>
-                  </td>
-                </tr>
-              )}
+                  {formData.email && (
+                    <tr>
+                      <td className="flex items-start">
+                        <span className="font-bold pr-3 break-keep">
+                          Email:
+                        </span>
+                      </td>
+                      <td>
+                        <span>{formData.email}</span>
+                      </td>
+                    </tr>
+                  )}
 
-              {formData.message && (
-                <tr>
-                  <td className="flex items-start">
-                    <span className="font-bold pr-3 break-keep">Message:</span>
-                  </td>
-                  <td>
-                    <span>{formData.message}</span>
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+                  {formData.message && (
+                    <tr>
+                      <td className="flex items-start">
+                        <span className="font-bold pr-3 break-keep">
+                          Message:
+                        </span>
+                      </td>
+                      <td>
+                        <span>{formData.message}</span>
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+            <div className="w-full lg:w-[40%] flex flex-col justify-center items-center">
+              <QRCode
+                value={`https://admin.sorakhmer.com/order/${orderId}`}
+                size={100}
+                fgColor="#000000"
+                bgColor="#FFFFFF"
+              />
+              <p>Order information</p>
+            </div>
+          </div>
         </div>
       )}
     </div>

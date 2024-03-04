@@ -46,6 +46,7 @@ const CartItemsSection = () => {
   const [orderId, setOrderId] = useState("");
   const contactInfo = contactList.map((item) => item)[0];
   const [changeContent, setChangeContent] = useState(false);
+
   // generate order id
   useEffect(() => {
     const fullNameWithoutSpaces = formData.fullName.replace(/\s/g, "");
