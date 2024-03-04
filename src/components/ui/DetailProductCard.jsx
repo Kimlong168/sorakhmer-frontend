@@ -9,7 +9,7 @@ import { FaLink, FaShoppingCart } from "react-icons/fa";
 import { AnimatePresence } from "framer-motion";
 import Notification from "./Notification";
 import { DataContext } from "../../contexts/DataContext";
-import { IoCheckmarkDoneCircle } from "react-icons/io5";
+import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 const DetailProductCard = ({
   id,
   name,
@@ -135,10 +135,14 @@ const DetailProductCard = ({
                   addToCart({ id, name, price, image });
                   setIsAddedtoCart(true);
                 }}
-                className="flex items-center gap-2 px-2 py-1.5 border bg-primary hover:bg-primary-light text-white font-bold rounded"
+                className="flex items-center gap-2 p-2.5 border bg-primary hover:bg-primary-light text-white font-bold rounded"
               >
                 Add to Cart
-                {isAddedtoCart ? <IoCheckmarkDoneCircle /> : <FaShoppingCart />}
+                {isAddedtoCart ? (
+                  <IoMdCheckmarkCircleOutline className="animate-ping" />
+                ) : (
+                  <FaShoppingCart />
+                )}
               </button>
 
               <CopyToClipboard
@@ -150,8 +154,13 @@ const DetailProductCard = ({
                   }, 5000); // 5s
                 }}
               >
-                <button className="flex items-center gap-2 px-2 py-1.5 border font-bold rounded bg-blue-500 hover:bg-blue-600 text-white">
-                  Copy Link <FaLink />
+                <button className="flex items-center gap-2 p-2.5 border font-bold rounded bg-blue-500 hover:bg-blue-600 text-white">
+                  Copy Link
+                  {copied ? (
+                    <IoMdCheckmarkCircleOutline className="animate-ping" />
+                  ) : (
+                    <FaLink />
+                  )}
                 </button>
               </CopyToClipboard>
             </div>

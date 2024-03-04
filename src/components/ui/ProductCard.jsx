@@ -9,7 +9,7 @@ import { useContext, useState } from "react";
 import { DataContext } from "../../contexts/DataContext";
 import { Link } from "react-router-dom";
 import Notification from "./Notification";
-import { IoCheckmarkDoneCircle } from "react-icons/io5";
+import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 const ProductCard = ({ product }) => {
   const { addToCart } = useContext(DataContext);
   const { id, name, price, image } = product;
@@ -64,7 +64,7 @@ const ProductCard = ({ product }) => {
             className="hover:text-primary text-gray-800 p-4 pt-0 relative"
           >
             {isAddedtoCart ? (
-              <IoCheckmarkDoneCircle size={24} />
+              <IoMdCheckmarkCircleOutline size={24} />
             ) : (
               <FaShoppingCart size={24} />
             )}

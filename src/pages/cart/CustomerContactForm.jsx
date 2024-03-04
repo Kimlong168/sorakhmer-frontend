@@ -2,14 +2,16 @@ import { FaWindowClose } from "react-icons/fa";
 import PropType from "prop-types";
 import RedStar from "../../components/ui/RedStar";
 import "../../App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SuccessModal from "../../components/ui/SuccessModal";
 import WarningModal from "../../components/ui/WarningModal";
+import LoadingWithPercentage from "../../components/ui/LoadingWithPercentage";
 const CustomerContactForm = ({
   setIsOpenForm,
   formData,
   setFormData,
   sendToTelegram,
+  setChangeContent,
 }) => {
   const [isSubmitted, setIsSubmitted] = useState({
     showForm: true,
@@ -20,12 +22,25 @@ const CustomerContactForm = ({
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+  const [progress, setProgress] = useState(0);
+  const [isSending, setIsSending] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // You can handle form submission logic here, such as sending the data to a server
     console.log(formData);
   };
+
+  // handle loading with percentage
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress((prevProgress) =>
+        prevProgress < 92 ? prevProgress + 9 : 100
+      );
+    }, 300);
+
+    return () => clearInterval(interval);
+  }, [isSubmitted]);
 
   return (
     <div>
@@ -167,11 +182,20 @@ const CustomerContactForm = ({
                       formData.address &&
                       formData.telegram
                     ) {
-                      sendToTelegram();
-                      setIsSubmitted({
-                        showForm: false,
-                        showAlert: true,
-                      });
+                      setIsSending(true);
+                      // this function is used to prevent user from changing the content of the page epsecially the price, and quantity to make us screenshot the wrong data
+                      setChangeContent();
+                      // delay 1.5s to make sure the content is changed and the image is taken
+                      setTimeout(() => {
+                        sendToTelegram();
+                      }, 2000);
+                      // delay 3s to make sure the image is uploaded and deleted after 5s
+                      setTimeout(() => {
+                        setIsSubmitted({
+                          showForm: false,
+                          showAlert: true,
+                        });
+                      }, 3000);
                     } else {
                       setIsShowWarning(true);
                     }
@@ -179,7 +203,14 @@ const CustomerContactForm = ({
                   type="submit"
                   className="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark"
                 >
-                  Order Now
+                  {!isSending ? (
+                    "Order Now"
+                  ) : (
+                    <div className="flex items-center gap-3">
+                      Sending
+                      <LoadingWithPercentage percentage={progress} />
+                    </div>
+                  )}
                 </button>
               </form>
             </div>
@@ -217,6 +248,7 @@ CustomerContactForm.propTypes = {
   formData: PropType.object.isRequired,
   setFormData: PropType.func.isRequired,
   sendToTelegram: PropType.func.isRequired,
+  setChangeContent: PropType.func.isRequired,
 };
 
 export default CustomerContactForm;

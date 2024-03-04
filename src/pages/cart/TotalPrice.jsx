@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 import { DataContext } from "../../contexts/DataContext";
 import cambodiaFlag from "../../assets/images/cambodiaFlag.png";
 import usFlag from "../../assets/images/us-flag.png";
+import { FaShoppingCart } from "react-icons/fa";
 const TotalPrice = ({
   subtotal,
   otherPrice,
@@ -14,67 +15,75 @@ const TotalPrice = ({
   setIsOpenForm,
   formData,
   orderId,
+  changeContent,
 }) => {
   const { contactList } = useContext(DataContext);
   const contactInfo = contactList.map((item) => item)[0];
   const [language, setLanguage] = useState("us");
   return (
     <div className="flex flex-col lg:flex-row gap-5 mb-8">
-      <div className={`w-full ${isOpenForm && " lg:mb-4 lg:ml-4"}`}>
-        <table className="border-collapse w-full">
-          <thead>
-            <th
-              colSpan={2}
-              className="p-3 text-left font-bold pr-3 uppercase bg-primary border border-gray-300  table-cell"
-            >
-              Total Price
-            </th>
-          </thead>
-          <tbody className="text-left">
-            <tr className="bg-white lg:hover:bg-gray-100">
-              <td className="p-3 border-l border-gray-300 text-gray-700 table-cell">
-                Subtotal:
-              </td>
-              <td className="p-3 border-r border-gray-300 text-gray-700 table-cell">
-                $ {`${subtotal}${!subtotal.includes(".") ? ".00" : ""}`}
-              </td>
-            </tr>
-            <tr className="bg-white lg:hover:bg-gray-100">
-              <td className="p-3 border-l  border-gray-300 text-gray-700 table-cell">
-                Other:
-              </td>
-              <td className="p-3 border-r border-gray-300 text-gray-700 table-cell">
-                $ {`${otherPrice}${!otherPrice.includes(".") ? ".00" : ""}`}
-              </td>
-            </tr>
-            <tr className="bg-white lg:hover:bg-gray-100  ">
-              <td className="p-3 border border-r-0 border-gray-300 text-gray-700 table-cell">
-                Total:
-              </td>
-              <td className="p-3 border border-l-0 border-gray-300 text-gray-700 table-cell  font-bold pr-3">
-                $ {`${total}${!total.includes(".") ? ".00" : ""}`}
-              </td>
-            </tr>
-            {!isOpenForm && (
-              <tr className="bg-white lg:hover:bg-gray-100  ">
-                <td
-                  colSpan={2}
-                  className="p-3 border text-center border-gray-300 text-gray-700 table-cell"
-                >
-                  <button
-                    onClick={() => {
-                      setIsOpenForm(true);
-                    }}
-                    className="bg-primary text-white font-bold pr-3 w-full h-full block py-2 rounded hover:bg-primary-dark"
-                  >
-                    Place Order
-                  </button>
+      {/* show when there is at least one product in the cart */}
+      {total !== "0" && (
+        <div className={`w-full ${isOpenForm && " lg:mb-4 lg:ml-4"}`}>
+          <table className="border-collapse w-full">
+            <thead>
+              <th
+                colSpan={2}
+                className="p-3 text-left font-bold pr-3 break-keep uppercase bg-primary border border-gray-300  table-cell"
+              >
+                Total Price
+              </th>
+            </thead>
+            <tbody className="text-left">
+              <tr className="bg-white lg:hover:bg-gray-100">
+                <td className="p-3 border-l border-gray-300 text-gray-700 table-cell">
+                  Subtotal:
+                </td>
+                <td className="p-3 border-r border-gray-300 text-gray-700 table-cell">
+                  ${!changeContent && subtotal}
+                  {changeContent && subtotal}
+                  {!subtotal.includes(".") ? ".00" : ""}
                 </td>
               </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+              <tr className="bg-white lg:hover:bg-gray-100">
+                <td className="p-3 border-l  border-gray-300 text-gray-700 table-cell">
+                  Other:
+                </td>
+                <td className="p-3 border-r border-gray-300 text-gray-700 table-cell">
+                  $ {`${otherPrice}${!otherPrice.includes(".") ? ".00" : ""}`}
+                </td>
+              </tr>
+              <tr className="bg-white lg:hover:bg-gray-100  ">
+                <td className="p-3 border border-r-0 border-gray-300 text-gray-700 table-cell">
+                  Total:
+                </td>
+                <td className="p-3 border border-l-0 border-gray-300 text-gray-700 table-cell  font-bold pr-3 break-keep">
+                  $ {!changeContent && total}
+                  {changeContent && total}
+                  {!total.includes(".") ? ".00" : ""}
+                </td>
+              </tr>
+              {!isOpenForm && (
+                <tr className="bg-white lg:hover:bg-gray-100  ">
+                  <td
+                    colSpan={2}
+                    className="p-3 border text-center border-gray-300 text-gray-700 table-cell"
+                  >
+                    <button
+                      onClick={() => {
+                        setIsOpenForm(true);
+                      }}
+                      className="bg-primary text-white font-bold pr-3 break-keep w-full h-full py-2 rounded hover:bg-primary-dark flex items-center justify-center gap-2"
+                    >
+                      Place Order <FaShoppingCart />
+                    </button>
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      )}
       {!isOpenForm ? (
         <div className="w-full h-[100%] inline-block bg-black/90 p-4 text-white relative pt-14  md:pt-4 ">
           {language === "us" ? (
@@ -83,18 +92,21 @@ const TotalPrice = ({
                 How to buy our products?
               </h4>
               <p className="mb-2">
-                1. Click on place order button to order the products.
+                1. Add products that you want to buy to cart
               </p>
               <p className="mb-2">
-                2. Fill required information such as your name, your contact and
+                2. Click on place order button to order the products.
+              </p>
+              <p className="mb-2">
+                3. Fill required information such as your name, your contact and
                 location etc.
               </p>
               <p className="mb-2">
-                3. Click on order now button and wait for our call or message to
+                4. Click on order now button and wait for our call or message to
                 confirm your order and process the payment.
               </p>
               <p className="mb-2">
-                4. After payment, we will deliver the products to your location.
+                5. After payment, we will deliver the products to your location.
               </p>
 
               <p className="mt-4">
@@ -108,18 +120,21 @@ const TotalPrice = ({
                 របៀបទិញផលិតផលរបស់យើង
               </h4>
               <p className="mb-2">
-                ១. ចុចលើប៊ូតុង Place Order ដើម្បីបញ្ជាទិញទំនិញ។
+                ១. ជ្រើសរើសទំនិញដែលអ្នកចង់ទិញដាក់ទៅក្នុងកន្រ្តក(Cart)របស់អ្នក។
               </p>
               <p className="mb-2">
-                ២. បំពេញព័ត៌មានដែលត្រូវការដូចជាឈ្មោះរបស់អ្នក, លេខទូរសព្ទ,
+                ២. ចុចលើប៊ូតុង Place Order ដើម្បីបញ្ជាទិញទំនិញ។
+              </p>
+              <p className="mb-2">
+                ៣. បំពេញព័ត៌មានដែលត្រូវការដូចជាឈ្មោះរបស់អ្នក, លេខទូរសព្ទ,
                 Telegram និងទីតាំងរបស់អ្នក។
               </p>
               <p className="mb-2">
-                ៣. ចុចលើប៊ូតុង Order Now និងរងចាំការទាក់ទងរបស់យើង តាមរយ:
+                ៤. ចុចលើប៊ូតុង Order Now និងរងចាំការទាក់ទងរបស់យើង តាមរយ:
                 លេខទូរសព្ទ, Line, Messager ឬ Telegram (បើអ្នកបានបំពេញ Telegram)។
               </p>
               <p className="mb-2">
-                ៤. បន្ទាប់ពីយើងទាក់ទងគ្នារួច
+                ៥. បន្ទាប់ពីយើងទាក់ទងគ្នារួច
                 យើងនឹងដឹកជញ្ជូនទំនិញទៅកាន់ទីតាំងរបស់អ្នក។
               </p>
 
@@ -130,7 +145,7 @@ const TotalPrice = ({
           )}
 
           <div className="mt-5 flex gap-4 items-center">
-            Contact us for more detail:{" "}
+            Contact Us:{" "}
             <div className="flex items-center gap-3">
               {contactInfo ? (
                 contactInfo.socialMedia.map((item, index) => (
@@ -192,21 +207,30 @@ const TotalPrice = ({
             Customer Information
           </h4>
           <table>
-            <tbody>
+            <tbody className="break-all">
               {orderId && (
                 <tr>
-                  <td>
-                    <span className="font-bold pr-3">Order Id:</span>
+                  <td className="flex items-start">
+                    <span className="font-bold pr-3 break-keep">Order Id:</span>
                   </td>
                   <td>
                     <span>{orderId}</span>
                   </td>
                 </tr>
               )}
+              {/* today date */}
+              <tr>
+                <td className="flex items-start">
+                  <span className="font-bold pr-3 break-keep">Date:</span>
+                </td>
+                <td>
+                  <span>{new Date().toLocaleString()}</span>
+                </td>
+              </tr>
               {formData.fullName && (
                 <tr>
-                  <td>
-                    <span className="font-bold pr-3">Full Name:</span>
+                  <td className="flex items-start">
+                    <span className="font-bold pr-3 break-keep">Fullname:</span>
                   </td>
                   <td>
                     <span>{formData.fullName}</span>
@@ -216,8 +240,8 @@ const TotalPrice = ({
 
               {formData.phoneNumber && (
                 <tr>
-                  <td>
-                    <span className="font-bold pr-3">Phone:</span>
+                  <td className="flex items-start">
+                    <span className="font-bold pr-3 break-keep">Phone:</span>
                   </td>
                   <td>
                     <span>{formData.phoneNumber}</span>
@@ -227,8 +251,8 @@ const TotalPrice = ({
 
               {formData.telegram && (
                 <tr>
-                  <td>
-                    <span className="font-bold pr-3">Telegram:</span>
+                  <td className="flex items-start">
+                    <span className="font-bold pr-3 break-keep">Telegram:</span>
                   </td>
                   <td>
                     <span>{formData.telegram}</span>
@@ -238,8 +262,8 @@ const TotalPrice = ({
 
               {formData.address && (
                 <tr>
-                  <td>
-                    <span className="font-bold pr-3">Address:</span>
+                  <td className="flex items-start">
+                    <span className="font-bold pr-3 break-keep">Address:</span>
                   </td>
                   <td>
                     <span>{formData.address}</span>
@@ -249,8 +273,8 @@ const TotalPrice = ({
 
               {formData.email && (
                 <tr>
-                  <td>
-                    <span className="font-bold pr-3">Email:</span>
+                  <td className="flex items-start">
+                    <span className="font-bold pr-3 break-keep">Email:</span>
                   </td>
                   <td>
                     <span>{formData.email}</span>
@@ -260,24 +284,14 @@ const TotalPrice = ({
 
               {formData.message && (
                 <tr>
-                  <td>
-                    <span className="font-bold pr-3">Message:</span>
+                  <td className="flex items-start">
+                    <span className="font-bold pr-3 break-keep">Message:</span>
                   </td>
                   <td>
                     <span>{formData.message}</span>
                   </td>
                 </tr>
               )}
-
-              {/* today date */}
-              <tr>
-                <td>
-                  <span className="font-bold pr-3">Date:</span>
-                </td>
-                <td>
-                  <span>{new Date().toLocaleString()}</span>
-                </td>
-              </tr>
             </tbody>
           </table>
         </div>
@@ -294,6 +308,7 @@ TotalPrice.propTypes = {
   setIsOpenForm: PropType.func,
   formData: PropType.object,
   orderId: PropType.string,
+  changeContent: PropType.bool,
 };
 
 export default TotalPrice;

@@ -45,10 +45,11 @@ const CartItemsSection = () => {
   });
   const [orderId, setOrderId] = useState("");
   const contactInfo = contactList.map((item) => item)[0];
-
+  const [changeContent, setChangeContent] = useState(false);
   // generate order id
   useEffect(() => {
-    setOrderId(`${formData.fullName}_${Date.now().toString()}`);
+    const fullNameWithoutSpaces = formData.fullName.replace(/\s/g, "");
+    setOrderId(`${fullNameWithoutSpaces}_${Date.now().toString()}`);
   }, [formData.fullName]);
 
   // handle remove product from <cart></cart>
@@ -83,8 +84,9 @@ const CartItemsSection = () => {
     ? contactInfo.telegramBotId
     : "6882060062:AAFvZvxBHu1kqu_n5BgPpsx4V1dGoSqHXBw";
   //chat id
-  var chat_id = contactInfo ? contactInfo.chatId : "-1002126940474"; //channel id : we can send to both private and public channel
+  var chat_id = contactInfo ? contactInfo.chatId : "-1002126940474"; //channel id : we can send to both private and public channels
 
+  // screenshot the cart image and send to telegram
   const sendToTelegram = () => {
     html2canvas(document.querySelector("#message")).then(function (canvas) {
       // download the cart image
@@ -104,7 +106,8 @@ const CartItemsSection = () => {
         // Get the download URL for the uploaded image
         getDownloadURL(imageRef)
           .then((downloadURL) => {
-            //send cart image to telegram
+            //get the download url
+
             try {
               const form = new FormData();
               const messageToSend = `===== New Order =====\n\nOrder id: ${orderId}\nDate: ${new Date().toLocaleString()}
@@ -149,11 +152,10 @@ const CartItemsSection = () => {
             } catch (error) {
               console.error("Error sending image:", error);
             }
-
-            // Delete the cart image after 1mn to save storage space
+            // Delete the cart image after 5s to save storage space
             setTimeout(() => {
               deleteImageFromStorage(imageRef);
-            }, 60000); // 1mn
+            }, 5000); // 5s
           })
           .catch((error) => {
             console.error("Error getting download URL:", error);
@@ -162,7 +164,7 @@ const CartItemsSection = () => {
     });
   };
 
-  // delete cart image from firebase storage after 10s
+  // delete cart image from firebase storage after 10
   const deleteImageFromStorage = (imageRef) => {
     // Delete the old image
     deleteObject(imageRef)
@@ -203,6 +205,8 @@ const CartItemsSection = () => {
             Shopping cart
           </span>
         </div>
+
+        {/*cart table */}
         <div id="message">
           {isOpenForm && (
             <h2 className="text-center text-3xl font-bold relative">
@@ -260,16 +264,16 @@ const CartItemsSection = () => {
                             title="see product detail"
                             className="hover:text-blue-500 hover:underline"
                           >
-                            {item.name}
+                            {!changeContent && item.name}
+                            {changeContent && item.name}
                           </span>
                         </Link>
                       </td>
                       {/* product price */}
                       <td className={tdStyle}>
-                        ${" "}
-                        {`${item.price}${
-                          !item.price.includes(".") ? ".00" : ""
-                        }`}
+                        {!changeContent && <span>$ {item.price}</span>}
+                        {changeContent && <span>$ {item.price}</span>}
+                        {!item.price.includes(".") ? ".00" : ""}
                       </td>
                       {/* product quantity */}
                       <td className={tdStyle}>
@@ -369,15 +373,20 @@ const CartItemsSection = () => {
                             </div>
                           </div>
                         ) : (
-                          <span>{item.quantity}</span>
+                          <span>
+                            {!changeContent && item.quantity}
+                            {changeContent && item.quantity}
+                          </span>
                         )}
                       </td>
                       {/* total price for each product */}
                       <td className={tdStyle}>
                         ${" "}
-                        {`${
-                          parseFloat(item.price) * parseFloat(item.quantity)
-                        }${!item.price.includes(".") ? ".00" : ""}`}
+                        {!changeContent &&
+                          parseFloat(item.price) * parseFloat(item.quantity)}
+                        {changeContent &&
+                          parseFloat(item.price) * parseFloat(item.quantity)}
+                        {!item.price.includes(".") ? ".00" : ""}
                       </td>
                       {/* action remove item form cart */}
                       {!isOpenForm && (
@@ -427,7 +436,8 @@ const CartItemsSection = () => {
           </div>
 
           {/* total price */}
-          {cartItems.length > 0 && (
+
+          <div>
             <TotalPrice
               subtotal={subtotal.toString()}
               otherPrice={otherPrice.toString()}
@@ -436,8 +446,9 @@ const CartItemsSection = () => {
               setIsOpenForm={setIsOpenForm}
               formData={formData}
               orderId={orderId}
+              changeContent={changeContent}
             />
-          )}
+          </div>
         </div>
       </div>
 
@@ -464,6 +475,9 @@ const CartItemsSection = () => {
           formData={formData}
           setFormData={setFormData}
           sendToTelegram={sendToTelegram}
+          setChangeContent={() => {
+            setChangeContent((prev) => !prev);
+          }}
         />
       )}
     </section>

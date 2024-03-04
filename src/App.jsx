@@ -94,7 +94,9 @@ export default function App() {
 
       //fetch contact data
       const contact = await getDocs(contactCollectionRef);
-      setContactList(contact.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      setContactList(
+        contact.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+      );
 
       //fetch process data
       const process = await getDocs(processCollectionRef);
@@ -156,6 +158,7 @@ export default function App() {
           cartItems,
           setCartItems,
           addToCart,
+
         }}
       >
         <Router>
