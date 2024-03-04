@@ -9,7 +9,7 @@ const LoadingWithPercentage = ({ percentage }) => {
       >
         <div
           className={`absolute top-0 left-0 h-full bg-blue-500  ${
-            percentage == 100 ? "" : " w-full "
+            percentage == 100 ? " w-full " : ""
           } transition-all  ease-in-out`}
           style={{ width: `${percentage}%` }}
         ></div>
