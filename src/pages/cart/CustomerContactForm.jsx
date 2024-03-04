@@ -48,8 +48,8 @@ const CustomerContactForm = ({
   useEffect(() => {
     const scanner = new Html5QrcodeScanner("reader", {
       qrbox: {
-        width: "100%",
-        height: "10px",
+        width: 250,
+        height: 250,
       },
       fps: 10,
     });
