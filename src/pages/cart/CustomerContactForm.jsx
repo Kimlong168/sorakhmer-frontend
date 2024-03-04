@@ -22,19 +22,21 @@ const CustomerContactForm = ({
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-  const [progress, setProgress] = useState(-30);
+  const [progress, setProgress] = useState(0);
   const [isSending, setIsSending] = useState(false);
 
   // handle loading with percentage
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prevProgress) =>
-        prevProgress < 90 ? prevProgress + 8 : 100
-      );
-    }, 300);
+    setTimeout(() => {
+      const interval = setInterval(() => {
+        setProgress((prevProgress) =>
+          prevProgress < 90 ? prevProgress + 8 : 100
+        );
+      }, 300);
 
-    return () => clearInterval(interval);
-  }, []);
+      return () => clearInterval(interval);
+    }, 1000);
+  }, [isSending]);
 
   return (
     <div>
@@ -54,121 +56,122 @@ const CustomerContactForm = ({
                   <FaWindowClose size={18} />
                 </div>
               </div>
-              <form>
-                <div className="mb-4">
-                  <label
-                    title="required"
-                    htmlFor="fullName"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Full Name <RedStar />
-                  </label>
-                  <input
-                    type="text"
-                    id="fullName"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleChange}
-                    className="mt-1 p-2 border border-gray-300 rounded-md  w-full"
-                    required
-                  />
-                </div>
-                <div className="mb-4">
-                  <label
-                    title="required"
-                    htmlFor="phoneNumber"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Phone Number <RedStar />
-                  </label>
-                  <input
-                    type="tel"
-                    id="phoneNumber"
-                    name="phoneNumber"
-                    value={formData.phoneNumber}
-                    onChange={handleChange}
-                    className="mt-1 p-2 border w-full border-gray-300 rounded-md"
-                    required
-                  />
-                </div>
-                <div className="mb-4">
-                  <label
-                    htmlFor="telegram"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Telegram, Line, Facebook or other <RedStar />
-                  </label>
-                  <input
-                    type="url"
-                    id="telegram"
-                    name="telegram"
-                    placeholder="example: https://t.me/kimlong_chann"
-                    value={formData.telegram}
-                    onChange={handleChange}
-                    className="mt-1 p-2 border w-full border-gray-300 rounded-md"
-                  />
-                </div>
+              {!isSending ? (
+                <form>
+                  <div className="mb-4">
+                    <label
+                      title="required"
+                      htmlFor="fullName"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Full Name <RedStar />
+                    </label>
+                    <input
+                      type="text"
+                      id="fullName"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleChange}
+                      className="mt-1 p-2 border border-gray-300 rounded-md  w-full"
+                      required
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label
+                      title="required"
+                      htmlFor="phoneNumber"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Phone Number <RedStar />
+                    </label>
+                    <input
+                      type="tel"
+                      id="phoneNumber"
+                      name="phoneNumber"
+                      value={formData.phoneNumber}
+                      onChange={handleChange}
+                      className="mt-1 p-2 border w-full border-gray-300 rounded-md"
+                      required
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label
+                      htmlFor="telegram"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Telegram, Line, Facebook or other <RedStar />
+                    </label>
+                    <input
+                      type="url"
+                      id="telegram"
+                      name="telegram"
+                      placeholder="example: https://t.me/kimlong_chann"
+                      value={formData.telegram}
+                      onChange={handleChange}
+                      className="mt-1 p-2 border w-full border-gray-300 rounded-md"
+                    />
+                  </div>
 
-                <div className="mb-4">
-                  <label
-                    title="required"
-                    htmlFor="address"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Address <RedStar />
-                  </label>
-                  <input
-                    type="text"
-                    id="address"
-                    name="address"
-                    value={formData.address}
-                    onChange={handleChange}
-                    className="mt-1 p-2 border w-full border-gray-300 rounded-md"
-                    required
-                  />
-                </div>
+                  <div className="mb-4">
+                    <label
+                      title="required"
+                      htmlFor="address"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Address <RedStar />
+                    </label>
+                    <input
+                      type="text"
+                      id="address"
+                      name="address"
+                      value={formData.address}
+                      onChange={handleChange}
+                      className="mt-1 p-2 border w-full border-gray-300 rounded-md"
+                      required
+                    />
+                  </div>
 
-                <div className="mb-4">
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="mt-1 p-2 border w-full border-gray-300 rounded-md"
-                  />
-                </div>
-                <div className="mb-4">
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows="4"
-                    className="mt-1 p-2 border w-full border-gray-300 rounded-md"
-                  />
-                </div>
+                  <div className="mb-4">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="mt-1 p-2 border w-full border-gray-300 rounded-md"
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      rows="4"
+                      className="mt-1 p-2 border w-full border-gray-300 rounded-md"
+                    />
+                  </div>
 
-                <div className="mb-4">
-                  <p>
-                    <span className="font-bold rounded mr-2">Note:</span> We
-                    will reach out to you via Telegram promptly. Once we confirm
-                    your order, we will proceed to process the checkout. Thank
-                    you for your patience
-                  </p>
-                </div>
-                {!isSending ? (
+                  <div className="mb-4">
+                    <p>
+                      <span className="font-bold rounded mr-2">Note:</span> We
+                      will reach out to you via Telegram promptly. Once we
+                      confirm your order, we will proceed to process the
+                      checkout. Thank you for your patience
+                    </p>
+                  </div>
+
                   <div
                     onClick={() => {
                       if (
@@ -178,6 +181,7 @@ const CustomerContactForm = ({
                         formData.telegram
                       ) {
                         setIsSending(true);
+
                         // this function is used to prevent user from changing the content of the page epsecially the price, and quantity to make us screenshot the wrong data
                         setChangeContent();
                         // delay 1.5s to make sure the content is changed and the image is taken
@@ -190,9 +194,9 @@ const CustomerContactForm = ({
                             showForm: false,
                             showAlert: true,
                           });
-                          // reset the percentage value
-                          setProgress(0);
                         }, 3000);
+                        // reset the percentage value
+                        setProgress(0);
                       } else {
                         setIsShowWarning(true);
                       }
@@ -201,15 +205,19 @@ const CustomerContactForm = ({
                   >
                     Order Now
                   </div>
-                ) : (
-                  <div className="bg-green-500 text-white py-2 px-4 rounded-md  w-fit">
-                    <div className="flex items-center gap-3">
-                      Sending
-                      <LoadingWithPercentage percentage={progress} />
-                    </div>
+                </form>
+              ) : (
+                <div className="  rounded-md flex flex-col gap-5 items-center justify-center">
+                  <p>
+                    Please wait a moment, we are sending your order to our
+                    system
+                  </p>
+                  <div className="flex items-center gap-3 bg-green-500 w-fit  py-2 px-4 rounded-sm">
+                    <span className="font-bold text-white">Sending</span>
+                    <LoadingWithPercentage percentage={progress} />
                   </div>
-                )}
-              </form>
+                </div>
+              )}
             </div>
           </div>
         </div>

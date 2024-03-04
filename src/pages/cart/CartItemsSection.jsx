@@ -89,12 +89,6 @@ const CartItemsSection = () => {
   // screenshot the cart image and send to telegram
   const sendToTelegram = () => {
     html2canvas(document.querySelector("#message")).then(function (canvas) {
-      // download the cart image
-      var a = document.createElement("a");
-      a.href = canvas.toDataURL("image/png");
-      a.download = `Invoice_${orderId}.png`;
-      a.click();
-
       // Convert canvas to base64 data URL
       var imageData = canvas.toDataURL("image/png");
 
@@ -148,6 +142,7 @@ const CartItemsSection = () => {
                 console.log("Image sent successfully!", response);
               };
 
+              // excute send function
               send();
             } catch (error) {
               console.error("Error sending image:", error);
@@ -161,6 +156,12 @@ const CartItemsSection = () => {
             console.error("Error getting download URL:", error);
           });
       });
+
+      // download the cart image
+      var a = document.createElement("a");
+      a.href = canvas.toDataURL("image/png");
+      a.download = `Invoice_${orderId}.png`;
+      a.click();
     });
 
     // reset the form
@@ -168,7 +169,6 @@ const CartItemsSection = () => {
       ...formData,
       fullName: "",
     });
-    
   };
 
   // delete cart image from firebase storage after 10
