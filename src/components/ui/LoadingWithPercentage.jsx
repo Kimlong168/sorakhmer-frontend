@@ -8,7 +8,9 @@ const LoadingWithPercentage = ({ percentage }) => {
         } relative`}
       >
         <div
-          className="absolute top-0 left-0 h-full bg-blue-500  transition-all  ease-in-out"
+          className={`absolute top-0 left-0 h-full bg-blue-500  ${
+            percentage == 100 ? "" : " w-full "
+          } transition-all  ease-in-out`}
           style={{ width: `${percentage}%` }}
         ></div>
         <div className="absolute  top-0 left-0 w-full h-full flex items-center justify-center text-white font-bold text-sm">
