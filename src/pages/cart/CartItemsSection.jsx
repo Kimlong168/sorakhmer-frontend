@@ -164,7 +164,7 @@ const CartItemsSection = () => {
       a.click();
     });
 
-    // reset the form
+    // reset the fullName to avoid dubplicate order id bcoz we user fullName to generate order id
     setFormData({
       ...formData,
       fullName: "",
@@ -442,8 +442,7 @@ const CartItemsSection = () => {
             </table>
           </div>
 
-          {/* total price */}
-
+          {/* total price section*/}
           <div>
             <TotalPrice
               subtotal={subtotal.toString()}
@@ -459,6 +458,19 @@ const CartItemsSection = () => {
         </div>
       </div>
 
+      {/* customer contact form */}
+      {isOpenForm && (
+        <CustomerContactForm
+          setIsOpenForm={setIsOpenForm}
+          formData={formData}
+          setFormData={setFormData}
+          sendToTelegram={sendToTelegram}
+          setChangeContent={() => {
+            setChangeContent((prev) => !prev);
+          }}
+        />
+      )}
+
       {/* remove notification */}
       {showRemoveNotification.show && (
         <div className="flex flex-col gap-1 w-72 fixed top-1 right-2 z-50 pointer-events-none">
@@ -473,19 +485,6 @@ const CartItemsSection = () => {
             />
           </AnimatePresence>
         </div>
-      )}
-
-      {/* customer contact form */}
-      {isOpenForm && (
-        <CustomerContactForm
-          setIsOpenForm={setIsOpenForm}
-          formData={formData}
-          setFormData={setFormData}
-          sendToTelegram={sendToTelegram}
-          setChangeContent={() => {
-            setChangeContent((prev) => !prev);
-          }}
-        />
       )}
     </section>
   );

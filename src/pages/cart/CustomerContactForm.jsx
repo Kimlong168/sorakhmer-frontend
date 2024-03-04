@@ -57,6 +57,7 @@ const CustomerContactForm = ({
                 </div>
               </div>
               {!isSending ? (
+                // form for user to input their information
                 <form>
                   <div className="mb-4">
                     <label
@@ -207,6 +208,7 @@ const CustomerContactForm = ({
                   </div>
                 </form>
               ) : (
+                // loading with percentage
                 <div className="  rounded-md flex flex-col gap-5 items-center justify-center">
                   <p>
                     Please wait a moment, we are sending your order to our

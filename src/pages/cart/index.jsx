@@ -5,7 +5,6 @@ const Cart = () => {
   return (
     <Layout>
       <CartItemsSection />
-  
     </Layout>
   );
 };

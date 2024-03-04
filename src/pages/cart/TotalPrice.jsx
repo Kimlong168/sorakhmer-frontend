@@ -36,6 +36,7 @@ const TotalPrice = ({
             </thead>
             <tbody className="text-left">
               <tr className="bg-white lg:hover:bg-gray-100">
+                {/* subtotal */}
                 <td className="p-3 border-l border-gray-300 text-gray-700 table-cell">
                   Subtotal:
                 </td>
@@ -45,6 +46,7 @@ const TotalPrice = ({
                   {!subtotal.includes(".") ? ".00" : ""}
                 </td>
               </tr>
+              {/* other price = 0 */}
               <tr className="bg-white lg:hover:bg-gray-100">
                 <td className="p-3 border-l  border-gray-300 text-gray-700 table-cell">
                   Other:
@@ -53,6 +55,7 @@ const TotalPrice = ({
                   $ {`${otherPrice}${!otherPrice.includes(".") ? ".00" : ""}`}
                 </td>
               </tr>
+              {/* total price */}
               <tr className="bg-white lg:hover:bg-gray-100  ">
                 <td className="p-3 border border-r-0 border-gray-300 text-gray-700 table-cell">
                   Total:
@@ -63,6 +66,7 @@ const TotalPrice = ({
                   {!total.includes(".") ? ".00" : ""}
                 </td>
               </tr>
+              {/* place order button */}
               {!isOpenForm && (
                 <tr className="bg-white lg:hover:bg-gray-100  ">
                   <td
@@ -84,8 +88,10 @@ const TotalPrice = ({
           </table>
         </div>
       )}
+
       {!isOpenForm ? (
         <div className="w-full h-[100%] inline-block bg-black/90 p-4 text-white relative pt-14  md:pt-4 ">
+          {/* how to buy introduction */}
           {language === "us" ? (
             <div>
               <h4 className="text-white text-center text-2xl mb-4">
@@ -144,6 +150,7 @@ const TotalPrice = ({
             </div>
           )}
 
+          {/* social media icon */}
           <div className="mt-5 flex gap-4 items-center">
             Contact Us:{" "}
             <div className="flex items-center gap-3">
@@ -181,7 +188,7 @@ const TotalPrice = ({
               )}
             </div>
           </div>
-
+          {/* flag KH and US */}
           <div className="mx-8 shadow  text-xs h-10 mt-4 flex gap-2 p-1 absolute top-0 -right-4 items-center">
             <div
               onClick={() => setLanguage("kh")}
@@ -202,6 +209,7 @@ const TotalPrice = ({
           </div>
         </div>
       ) : (
+        // show when the form is open to take screenshot
         <div className="w-full p-6 pt-0 border border-gray-500 md:rounded  md:mb-4 md:mr-4">
           <h4 className="text-primary font-bold text-2xl mb-4">
             Customer Information
