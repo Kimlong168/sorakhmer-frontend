@@ -162,6 +162,13 @@ const CartItemsSection = () => {
           });
       });
     });
+
+    // reset the form
+    setFormData({
+      ...formData,
+      fullName: "",
+    });
+    
   };
 
   // delete cart image from firebase storage after 10

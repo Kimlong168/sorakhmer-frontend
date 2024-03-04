@@ -22,25 +22,19 @@ const CustomerContactForm = ({
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(-30);
   const [isSending, setIsSending] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // You can handle form submission logic here, such as sending the data to a server
-    console.log(formData);
-  };
 
   // handle loading with percentage
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress((prevProgress) =>
-        prevProgress < 96 ? prevProgress + 4 : 100
+        prevProgress < 90 ? prevProgress + 8 : 100
       );
-    }, 250);
+    }, 300);
 
     return () => clearInterval(interval);
-  }, [isSending]);
+  }, []);
 
   return (
     <div>
@@ -60,7 +54,7 @@ const CustomerContactForm = ({
                   <FaWindowClose size={18} />
                 </div>
               </div>
-              <form onSubmit={handleSubmit}>
+              <form>
                 <div className="mb-4">
                   <label
                     title="required"
@@ -174,44 +168,47 @@ const CustomerContactForm = ({
                     you for your patience
                   </p>
                 </div>
-                <button
-                  onClick={() => {
-                    if (
-                      formData.fullName &&
-                      formData.phoneNumber &&
-                      formData.address &&
-                      formData.telegram
-                    ) {
-                      setIsSending(true);
-                      // this function is used to prevent user from changing the content of the page epsecially the price, and quantity to make us screenshot the wrong data
-                      setChangeContent();
-                      // delay 1.5s to make sure the content is changed and the image is taken
-                      setTimeout(() => {
-                        sendToTelegram();
-                      }, 2000);
-                      // delay 3s to make sure the image is uploaded and also deleted after sending to telegram successfully
-                      setTimeout(() => {
-                        setIsSubmitted({
-                          showForm: false,
-                          showAlert: true,
-                        });
-                      }, 3000);
-                    } else {
-                      setIsShowWarning(true);
-                    }
-                  }}
-                  type="submit"
-                  className="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark"
-                >
-                  {!isSending ? (
-                    "Order Now"
-                  ) : (
+                {!isSending ? (
+                  <div
+                    onClick={() => {
+                      if (
+                        formData.fullName &&
+                        formData.phoneNumber &&
+                        formData.address &&
+                        formData.telegram
+                      ) {
+                        setIsSending(true);
+                        // this function is used to prevent user from changing the content of the page epsecially the price, and quantity to make us screenshot the wrong data
+                        setChangeContent();
+                        // delay 1.5s to make sure the content is changed and the image is taken
+                        setTimeout(() => {
+                          sendToTelegram();
+                        }, 2000);
+                        // delay 3s to make sure the image is uploaded and also deleted after sending to telegram successfully
+                        setTimeout(() => {
+                          setIsSubmitted({
+                            showForm: false,
+                            showAlert: true,
+                          });
+                          // reset the percentage value
+                          setProgress(0);
+                        }, 3000);
+                      } else {
+                        setIsShowWarning(true);
+                      }
+                    }}
+                    className="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark w-fit cursor-pointer"
+                  >
+                    Order Now
+                  </div>
+                ) : (
+                  <div className="bg-green-500 text-white py-2 px-4 rounded-md  w-fit">
                     <div className="flex items-center gap-3">
                       Sending
                       <LoadingWithPercentage percentage={progress} />
                     </div>
-                  )}
-                </button>
+                  </div>
+                )}
               </form>
             </div>
           </div>
