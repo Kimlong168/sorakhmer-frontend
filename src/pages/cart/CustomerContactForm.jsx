@@ -35,12 +35,12 @@ const CustomerContactForm = ({
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress((prevProgress) =>
-        prevProgress < 92 ? prevProgress + 9 : 100
+        prevProgress < 96 ? prevProgress + 4 : 100
       );
-    }, 300);
+    }, 250);
 
     return () => clearInterval(interval);
-  }, [isSubmitted]);
+  }, [isSending]);
 
   return (
     <div>
@@ -189,7 +189,7 @@ const CustomerContactForm = ({
                       setTimeout(() => {
                         sendToTelegram();
                       }, 2000);
-                      // delay 3s to make sure the image is uploaded and deleted after 5s
+                      // delay 3s to make sure the image is uploaded and also deleted after sending to telegram successfully
                       setTimeout(() => {
                         setIsSubmitted({
                           showForm: false,
