@@ -1,12 +1,7 @@
 import PropType from "prop-types";
 import LinkIcon from "../../components/ui/LinkIcon";
 import { Link } from "react-router-dom";
-import {
-  FaFacebook,
-  FaTelegram,
-  FaYoutube,
-
-} from "react-icons/fa";
+import { FaFacebook, FaTelegram, FaYoutube } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { DataContext } from "../../contexts/DataContext";
 import cambodiaFlag from "../../assets/images/cambodiaFlag.png";
@@ -347,7 +342,7 @@ const TotalPrice = ({
         )}
       </div>
       {isOpenForm && (
-        <div className="mx-4">
+        <div className="mx-4 mt-4">
           {/*company contact information on invoice*/}
           <div className="flex justify-between items-center gap-4">
             <div className="hidden md:block">
@@ -358,7 +353,7 @@ const TotalPrice = ({
                 &#127760; www.sorakhmer.com
               </div>
               <div className="flex items-center gap-2 ">
-                &#128222;
+                &#128222;{" "}
                 {contactInfo && convertToPhoneNumber(contactInfo.phoneNumber)}
               </div>
             </div>

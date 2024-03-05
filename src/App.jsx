@@ -8,7 +8,6 @@ import Product from "./pages/Product";
 import ProductDetail from "./pages/ProductDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import Thank from "./pages/Contact/Thank";
 import Process from "./pages/Process";
 import Error404 from "./pages/Error404";
 import Distillery from "./pages/Distillery";
@@ -170,7 +169,6 @@ export default function App() {
             <Route path="/blog/:id" element={<BlogDetail />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/thank" element={<Thank />} />
             <Route path="/process" element={<Process />} />
             <Route path="/distillery" element={<Distillery />} />
             <Route path="/cart" element={<Cart />} />
