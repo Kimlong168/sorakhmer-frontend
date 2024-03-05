@@ -6,10 +6,11 @@ import { useContext, useState } from "react";
 import { DataContext } from "../../contexts/DataContext";
 import cambodiaFlag from "../../assets/images/cambodiaFlag.png";
 import usFlag from "../../assets/images/us-flag.png";
-import QRCode from "react-qr-code";
 import checkSocialMedia from "../../utils/checkSocialMedia";
 import { FaShoppingCart } from "react-icons/fa";
 import convertToPhoneNumber from "../../utils/convertToPhoneNumber";
+import abaQr from "../../assets/images/aba-us.jpg";
+import KHQRLogo from "../../assets/images/KHQR-logo.webp";
 const TotalPrice = ({
   subtotal,
   otherPrice,
@@ -217,11 +218,11 @@ const TotalPrice = ({
           </div>
         ) : (
           // show when the form is open to take screenshot
-          <div className="w-full p-6 pt-0 border border-gray-500 md:rounded  md:mb-4 md:mr-4">
+          <div className="w-full p-6  pt-0 border border-gray-500 md:mb-4 md:mr-4">
             <h4 className="text-primary font-bold text-2xl mb-4">
               Customer Information
             </h4>
-            <div className="flex flex-col md:flex-row md:justify-between items-center gap-8 lg:gap-2">
+            <div className="flex flex-col md:flex-row md:justify-between items-center  gap-8 lg:gap-2">
               <div className="w-full">
                 <table className="w-full ">
                   <tbody className="break-all">
@@ -326,29 +327,26 @@ const TotalPrice = ({
                   </tbody>
                 </table>
               </div>
-              <div className="w-full lg:w-[40%] flex flex-col justify-center items-center ">
-                <div className="bg-white relative z-10 p-2">
-                  <QRCode
-                    value={`https://admin.sorakhmer.com/order/${orderId}`}
-                    size={100}
-                    fgColor="#000000"
-                    bgColor="#FFFFFF"
-                  />
+              <div className="w-full flex flex-col justify-end items-center ">
+                <div className="bg-white relative z-2">
+                  <img src={abaQr} alt="abaQr" />
                 </div>
-                <p>Order information</p>
+                <div className="mt-5">
+                  <img className="w-[50px]" src={KHQRLogo} alt="khqrlogo" />
+                </div>
               </div>
             </div>
           </div>
         )}
       </div>
       {isOpenForm && (
-        <div className="mx-4 mt-4">
+        <div className="mx-4 mt-2 md:mt-4">
           {/*company contact information on invoice*/}
-          <div className="flex justify-between items-center gap-4">
-            <div className="hidden md:block">
+          <div className="flex justify-between items-center md:gap-4">
+            <div className="hidden md:block w-full">
               © 2024 Sorakhmer. All rights reserved.
             </div>
-            <div className="flex gap-4 items-center">
+            <div className="flex flex-col sm:flex-row gap-2 items-center sm:justify-end w-full">
               <div className="flex items-center gap-2 ">
                 &#127760; www.sorakhmer.com
               </div>

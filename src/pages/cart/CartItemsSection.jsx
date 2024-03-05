@@ -102,10 +102,10 @@ const CartItemsSection = () => {
         getDownloadURL(imageRef)
           .then((downloadURL) => {
             //get the download url
-
+            // https://admin.sorakhmer.com/order/${orderId}
             try {
               const form = new FormData();
-              const messageToSend = `===== New Order =====\n\nOrder id: ${orderId}\nDate: ${new Date().toLocaleString()}
+              const messageToSend = `===== New Order =====\n\nOrder id: ${orderId}\nDate: ${new Date().toLocaleString()}\nUpdate Status: https://admin.sorakhmer.com/order/${orderId}
                 \n----------------------------------${
                   formData.fullName ? `\nName: ${formData.fullName}` : ""
                 }
@@ -227,7 +227,7 @@ const CartItemsSection = () => {
                 />
               </div>
               <span className="md:block hidden">===== New Order =====</span>
-              <span className="md:hidden">New Order</span>
+              <span className="md:hidden text-md">New Order</span>
             </h2>
           )}
           <div className="w-100 overflow-auto my-8" id="cart">
