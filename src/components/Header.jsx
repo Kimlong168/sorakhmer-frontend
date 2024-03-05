@@ -16,7 +16,7 @@ import scrollToTop from "../utils/scrollTop";
 import { Link } from "react-router-dom";
 import { DataContext } from "../contexts/DataContext";
 import LinkIcon from "./ui/LinkIcon";
-import convertToPhoneNumber from "../utils/convertToPhoneNumber ";
+import convertToPhoneNumber from "../utils/convertToPhoneNumber";
 import scrollTop from "../utils/scrollTop";
 const Header = () => {
   const { contactList } = useContext(DataContext);

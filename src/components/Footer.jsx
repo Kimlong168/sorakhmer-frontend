@@ -13,7 +13,7 @@ import scrollToTop from "../utils/scrollTop";
 import { useContext } from "react";
 import { DataContext } from "../contexts/DataContext";
 import LinkIcon from "./ui/LinkIcon";
-import convertToPhoneNumber from "../utils/convertToPhoneNumber ";
+import convertToPhoneNumber from "../utils/convertToPhoneNumber";
 const Footer = () => {
   const { contactList } = useContext(DataContext);
   const contactInfo = contactList.map((item) => item)[0];

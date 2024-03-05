@@ -217,8 +217,9 @@ const CartItemsSection = () => {
         <div id="message" className="relative overflow-hidden">
           {isOpenForm && (
             <h2 className="text-center text-3xl font-bold">
-              {/* className="w-[70px] md:w-[100px] lg:w-[80%] w-full rotate-45 absolute top-2 md:top-0 left-0 inset-0  h-full object-cover opacity-10" */}
+              {/* className="w-[70px] md:w-[100px] absolute top-2 md:top-0 left-0 */}
               <div>
+                {/* water mark */}
                 <img
                   className="w-full top-[50%] -translate-y-[50%] translate-x-[7%] rotate-[30deg] lg:translate-y-0 lg:h-full lg:inset-0 lg:rotate-45 absolute object-cover opacity-10"
                   src={logo}
