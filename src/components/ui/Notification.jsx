@@ -3,7 +3,7 @@ import { FiCheckSquare, FiX } from "react-icons/fi";
 import { motion } from "framer-motion";
 import PropType from "prop-types";
 
-const NOTIFICATION_TTL = 3000;
+const NOTIFICATION_TTL = 1500;
 
 const Notification = ({ text, id, removeNotif, bg }) => {
   useEffect(() => {

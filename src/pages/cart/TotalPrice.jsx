@@ -7,6 +7,7 @@ import { DataContext } from "../../contexts/DataContext";
 import cambodiaFlag from "../../assets/images/cambodiaFlag.png";
 import usFlag from "../../assets/images/us-flag.png";
 import QRCode from "react-qr-code";
+import checkSocialMedia from "../../utils/checkSocialMedia";
 import { FaShoppingCart } from "react-icons/fa";
 const TotalPrice = ({
   subtotal,
@@ -271,7 +272,7 @@ const TotalPrice = ({
                     <tr>
                       <td className="flex items-start">
                         <span className="font-bold pr-3 break-keep">
-                          Telegram:
+                          {checkSocialMedia(formData.telegram)}:
                         </span>
                       </td>
                       <td>
@@ -321,13 +322,15 @@ const TotalPrice = ({
                 </tbody>
               </table>
             </div>
-            <div className="w-full lg:w-[40%] flex flex-col justify-center items-center">
-              <QRCode
-                value={`https://admin.sorakhmer.com/order/${orderId}`}
-                size={100}
-                fgColor="#000000"
-                bgColor="#FFFFFF"
-              />
+            <div className="w-full lg:w-[40%] flex flex-col justify-center items-center ">
+              <div className="bg-white relative z-10 p-2">
+                <QRCode
+                  value={`https://admin.sorakhmer.com/order/${orderId}`}
+                  size={100}
+                  fgColor="#000000"
+                  bgColor="#FFFFFF"
+                />
+              </div>
               <p>Order information</p>
             </div>
           </div>
