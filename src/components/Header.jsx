@@ -36,7 +36,7 @@ const Header = () => {
               (855) {convertToPhoneNumber(contactInfo.phoneNumber)}
             </Link>
           ) : (
-            <Link to="tel:123-456-7890">(855) 123-456-7890</Link>
+            <Link to="tel:012739573">(855) 012 739 573</Link>
           )}
         </div>
 
@@ -50,7 +50,7 @@ const Header = () => {
             ))
           ) : (
             <>
-              <Link to="#">
+              <Link to="https://www.facebook.com/sorakhmer1">
                 <FaFacebook />
               </Link>
 

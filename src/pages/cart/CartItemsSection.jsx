@@ -11,7 +11,7 @@ import TotalPrice from "./TotalPrice";
 import { Link } from "react-router-dom";
 import axios from "axios"; // Make sure axios is installed via npm or yarn
 import html2canvas from "html2canvas";
-import { storage } from "../../firebase-config";
+import { db, storage } from "../../firebase-config";
 import {
   deleteObject,
   getDownloadURL,
@@ -20,6 +20,7 @@ import {
 } from "firebase/storage";
 import CustomerContactForm from "./CustomerContactForm";
 import checkSocialMedia from "../../utils/checkSocialMedia";
+import { addDoc, collection } from "firebase/firestore";
 const CartItemsSection = () => {
   const { cartItems, setCartItems, contactList } = useContext(DataContext);
 
@@ -50,7 +51,9 @@ const CartItemsSection = () => {
   // generate order id
   useEffect(() => {
     const fullNameWithoutSpaces = formData.fullName.replace(/\s/g, "");
-    setOrderId(`${fullNameWithoutSpaces}_${Date.now().toString()}`);
+    setOrderId(
+      `${fullNameWithoutSpaces}_${Math.floor(Date.now() / 1000).toString()}`
+    );
   }, [formData.fullName]);
 
   // handle remove product from <cart></cart>
@@ -105,7 +108,7 @@ const CartItemsSection = () => {
             // https://admin.sorakhmer.com/order/${orderId}
             try {
               const form = new FormData();
-              const messageToSend = `===== New Order =====\n\nOrder id: ${orderId}\nDate: ${new Date().toLocaleString()}\nUpdate Status: https://admin.sorakhmer.com/order/${orderId}
+              const messageToSend = `===== New Order =====\n\nOrder id: ${orderId}\nDate: ${new Date().toLocaleString()}\nUpdate Status: https://sorakhmer-backend.netlify.app/order/${orderId}
                 \n----------------------------------${
                   formData.fullName ? `\nName: ${formData.fullName}` : ""
                 }
@@ -142,8 +145,9 @@ const CartItemsSection = () => {
                 console.log("Image sent successfully!", response);
               };
 
-              // excute send function
+              // excute send function and record order to database
               send();
+              recordOrder();
             } catch (error) {
               console.error("Error sending image:", error);
             }
@@ -192,6 +196,27 @@ const CartItemsSection = () => {
       ia[i] = byteString.charCodeAt(i);
     }
     return new Blob([ab], { type: "image/png" });
+  };
+
+  // record order to firestore database
+  const recordOrder = () => {
+    // data to be recorded
+    const order = {
+      orderId: orderId,
+      fullName: formData.fullName,
+      phoneNumber: formData.phoneNumber,
+      email: formData.email,
+      telegram: formData.telegram,
+      address: formData.address,
+      message: formData.message,
+      cartItems: cartItems,
+      total: total,
+      status: "pending",
+      date: new Date().toLocaleString(),
+    };
+
+    const postCollectionRef = collection(db, "orders");
+    addDoc(postCollectionRef, order);
   };
 
   // tailwind class style

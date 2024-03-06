@@ -163,15 +163,15 @@ const ContactSection = () => {
                 <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
                   {/* phone */}
                   <p>
-                    Phone: <Link to="tel:+1234567890">123-456-7890</Link>
+                    Phone: <Link to="tel:012739573">012 739 573</Link>
                   </p>
                 </div>
                 <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
                   {/* email */}
                   <p>
                     Email:{" "}
-                    <Link to="mailto:example@example.com">
-                      example@example.com
+                    <Link to="mailto:hongmean2002@yahoo.com">
+                      hongmean2002@yahoo.com
                     </Link>
                   </p>
                 </div>
@@ -199,23 +199,24 @@ const ContactSection = () => {
               ) : (
                 <>
                   <Link
-                    to="/"
+                    to="https://www.facebook.com/sorakhmer1"
                     className="hover:text-primary-light hover:underline"
                   >
-                    <FaFacebook />
+                    <FaFacebook size={32} />
                   </Link>
                   <Link
                     to="/"
                     className="hover:text-primary-light hover:underline"
                   >
-                    <FaYoutube />
+                    <FaYoutube size={32} />
                   </Link>
                   <Link
                     to="/"
                     className="hover:text-primary-light hover:underline"
                   >
-                    <FaTelegram />
+                    <FaTelegram size={32} />
                   </Link>
+                 
                 </>
               )}
             </div>

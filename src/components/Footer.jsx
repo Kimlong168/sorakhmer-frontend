@@ -7,6 +7,7 @@ import {
   FaTelegram,
   FaYoutube,
   FaMapMarkerAlt,
+
 } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import scrollToTop from "../utils/scrollTop";
@@ -103,18 +104,18 @@ const Footer = () => {
             ) : (
               <>
                 <Link
-                  to="tel:+1234567890"
+                  to="tel:012739573"
                   className="flex items-center gap-2 hover:text-primary-light hover:underline"
                 >
                   <FaPhoneSquareAlt />
-                  <span>(855) 123-456-7890</span>
+                  <span>(855) 012 739 573</span>
                 </Link>
                 <Link
-                  to="mailto:example@example.com"
+                  to="mailto:hongmean2002@yahoo.com"
                   className="flex items-center gap-2 hover:text-primary-light hover:underline"
                 >
                   <MdEmail />
-                  <span>example@example.com</span>
+                  <span>hongmean2002@yahoo.com</span>
                 </Link>
               </>
             )}
@@ -146,7 +147,7 @@ const Footer = () => {
             ) : (
               <>
                 <Link
-                  to="/"
+                  to="https://www.facebook.com/sorakhmer1"
                   className="hover:text-primary-light hover:underline"
                 >
                   <FaFacebook />
