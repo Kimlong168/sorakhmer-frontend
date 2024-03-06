@@ -205,14 +205,15 @@ const CartItemsSection = () => {
       orderId: orderId,
       fullName: formData.fullName,
       phoneNumber: formData.phoneNumber,
-      email: formData.email,
-      telegram: formData.telegram,
+      contactLink: formData.telegram,
       address: formData.address,
       message: formData.message,
       cartItems: cartItems,
       total: total,
       status: "pending",
+      paymentMethod: "default",
       date: new Date().toLocaleString(),
+      timeStamp: new Date().getTime(),
     };
 
     const postCollectionRef = collection(db, "orders");
