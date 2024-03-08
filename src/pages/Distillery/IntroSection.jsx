@@ -3,7 +3,7 @@ import cambodiaMap from "../../assets/images/cambodia-map.png";
 import PrimaryButton from "../../components/ui/PrimaryButton";
 const IntroSection = () => {
   return (
-    <section className="container p-8 md:p-0">
+    <section className="container p-8 md:pt-0">
       <div className="pt-12 md:py-12 flex flex-col md:flex-row gap-8 mg:gap-24">
         <div className="w-full">
           <h3 className="font-primary-bold text-4xl md:text-5xl">

@@ -97,8 +97,8 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="container p-8 md:p-0">
-      <div className="flex flex-col md:flex-row gap-12 md:gap-18 lg:gap-24 pt-12 md:py-12">
+    <section className="container p-8 md:pt-0">
+      <div className="flex flex-col lg:flex-row gap-12 md:gap-18 lg:gap-24 pt-12 md:py-12">
         {/* contact information */}
         <div className="w-full">
           {/* map */}
@@ -117,7 +117,7 @@ const ContactSection = () => {
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2376179.8368609776!2d103.5552563901511!3d12.003517282077828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3104b5c321b14653%3A0x37f19d875254fa2b!2sKhmer%20Jyoryu%20company!5e0!3m2!1skm!2skh!4v1707702223808!5m2!1skm!2skh"
                 className="w-full lg:w-[75%]"
-                height="300"
+                height="310"
                 style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
@@ -216,7 +216,6 @@ const ContactSection = () => {
                   >
                     <FaTelegram size={32} />
                   </Link>
-                 
                 </>
               )}
             </div>

@@ -230,7 +230,7 @@ const CartItemsSection = () => {
     "bg-white lg:hover:bg-gray-100 flex table-row text-center flex-row flex-wrap flex-no-wrap mb-0";
 
   return (
-    <section className="container p-8 md:p-0">
+    <section className="container p-8 md:pt-0">
       <div className="pt-8">
         <div className="flex items-end">
           <img width={60} height={150} src={dragon} alt="dragon" />

@@ -9,7 +9,7 @@ import { DataContext } from "../../contexts/DataContext";
 const ProductSection = () => {
   return (
     <>
-      <section className="container p-8 md:p-0 flex flex-col md:flex-row items-center justify-between  gap-8 md:gap-24 md:h-screen md:-mt-36">
+      <section className="container p-8 md:pt-0 flex flex-col md:flex-row items-center justify-between  gap-8 md:gap-24 md:h-screen md:-mt-36">
         <div className="w-full sm:w-[80%] md:w-[500px]  md:min-w-[400px] shadow-2xl rounded-lg order-2 md:order-1 hover:rounded-lg overflow-hidden">
           <ProductCarousel />
         </div>

@@ -14,7 +14,7 @@ const VisitorSection = () => {
   const imageRow3 = galleryList.slice(2 * imgLength, galleryList.length);
 
   return (
-    <section className="">
+    <section>
       <div className="pt-12 pb-1">
         {/* title */}
         <h3>

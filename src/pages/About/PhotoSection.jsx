@@ -20,7 +20,7 @@ const PhotoSection = () => {
   };
 
   return (
-    <section className="container">
+    <section className="container p-8 md:pt-0">
       <div className="md:pt-12 flex justify-center">
         <div className="w-[95%] md:w-[90%]  lg:w-[100%]">
           <Slider {...settings}>

@@ -10,6 +10,7 @@ import { DataContext } from "../../contexts/DataContext";
 import { Link } from "react-router-dom";
 import Notification from "./Notification";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+
 const ProductCard = ({ product }) => {
   const { addToCart } = useContext(DataContext);
   const { id, name, price, image } = product;

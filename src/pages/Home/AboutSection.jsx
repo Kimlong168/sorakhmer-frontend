@@ -4,7 +4,7 @@ import sora1 from "../../assets/images/sora5.webp";
 import { TypeAnimation } from "react-type-animation";
 const AboutSection = () => {
   return (
-    <section className="container p-8 md:p-0 flex flex-col md:flex-row items-center justify-between  gap-8 md:gap-24 md:h-screen">
+    <section className="container p-8 md:pt-0 flex flex-col md:flex-row items-center justify-between  gap-8 md:gap-24 md:h-screen">
       <div>
         <Title />
         <h3 className="font-primary-bold text-4xl md:text-5xl py-8">

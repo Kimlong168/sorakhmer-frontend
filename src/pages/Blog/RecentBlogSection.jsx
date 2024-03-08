@@ -9,7 +9,7 @@ const RecentBlogSection = () => {
   //   return nothing if there is no active blog
   if (activeBlog.length === 0) return null;
   return (
-    <section className="container p-8 md:p-0">
+    <section className="container p-8 md:pt-0">
       <div className="pt-12 md:py-12 ">
         <div className="mb-10">
           <h3 className="text-nowrap font-primary-bold text-4xl md:text-5xl ">

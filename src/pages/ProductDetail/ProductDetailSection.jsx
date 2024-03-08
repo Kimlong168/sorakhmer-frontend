@@ -54,7 +54,7 @@ const ProductDetailSection = () => {
   }
 
   return (
-    <section className="container p-4 md:p-0">
+    <section className="container p-4 md:pt-0">
       {/* detail product */}
       <div className="mt-3 md:mt-5 flex justify-between items-center">
         <DetailProductCard

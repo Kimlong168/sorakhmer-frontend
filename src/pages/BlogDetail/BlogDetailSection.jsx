@@ -117,7 +117,7 @@ const BlogDetailSection = () => {
   //   if data is not available
   if (!data) return <Loading />;
   return (
-    <section className="container px-4 md:p-0 min-h-screen">
+    <section className="container px-4 md:pt-0 min-h-screen">
       {/* back button */}
       <div className="mt-3 md:mt-5 flex justify-between items-center">
         <Link to="/blogs">

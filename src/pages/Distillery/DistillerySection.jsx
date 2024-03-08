@@ -7,7 +7,7 @@ import sora14 from "../../assets/images/sora14.jpeg";
 const DistillerySection = () => {
   const imageList = [sora16, sora15, sora13, sora14];
   return (
-    <section className="container p-8 md:p-0">
+    <section className="container p-8 md:pt-0">
       <div className="pt-12 md:py-12">
         <h3>
           <div className="flex items-end justify-center">

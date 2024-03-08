@@ -1,7 +1,7 @@
 import adminProfile from "../../assets/images/founder.jpg";
 const FounderSection = () => {
   return (
-    <section className="container p-8 md:p-0">
+    <section className="container p-8 md:pt-0">
       <div className="flex flex-col md:flex-row items-center gap-5 md:gap-24 py-12">
         <div className="md:w-[40%]">
           {/* profile image */}

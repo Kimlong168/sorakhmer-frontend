@@ -11,7 +11,7 @@ const BlogSection = () => {
   const activeBlog = blogList.filter((blog) => blog.isActive);
 
   return (
-    <section className="container p-8 md:p-0 mb-12">
+    <section className="container p-8 md:pt-0 mb-12">
       <h3 className="font-primary-bold text-4xl md:text-5xl py-8 uppercase text-center mb-4">
         Blogs <span className="text-primary">&</span> Events
         <span className="text-primary">.</span>

@@ -108,7 +108,7 @@ const ProductListSection = () => {
   }, [priceRange, productList]);
 
   return (
-    <section className="container p-8 md:p-0">
+    <section className="container p-8 md:pt-0">
       <div className="pt-12 md:py-12">
         {/* all buttons */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 border-b border-border pb-4  text-lg font-bold">

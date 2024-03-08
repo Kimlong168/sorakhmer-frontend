@@ -16,7 +16,7 @@ const ProcessSection = () => {
   if (!processList) return null;
   
   return (
-    <section className="container p-8 md:p-0">
+    <section className="container p-8 md:pt-0">
       <div className="pt-12 md:py-12">
         <h3 className="text-nowrap text-center font-primary-bold text-4xl md:text-5xl ">
           Our Process<span className="text-primary font-bold">.</span>

@@ -26,7 +26,7 @@ const TotalPrice = ({
   const [language, setLanguage] = useState("us");
 
   return (
-    <div className=" mb-8">
+    <div className="mb-8">
       <div className="flex flex-col lg:flex-row gap-5">
         {/* show when there is at least one product in the cart */}
         {total !== "0" && (

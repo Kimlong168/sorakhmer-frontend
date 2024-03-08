@@ -1,7 +1,7 @@
 import PrimaryButton from "../../components/ui/PrimaryButton";
 const VideoSection = () => {
   return (
-    <section className="container p-8 md:p-0 md:mt-12">
+    <section className="container p-8 md:pt-0 md:mt-12">
       <div className="flex flex-col md:flex-row gap-8 md:gap-24 pt-12 md:py-12">
         <div className="w-full">
           <h3 className="text-nowrap font-primary-bold text-4xl md:text-5xl">
