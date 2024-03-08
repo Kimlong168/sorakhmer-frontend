@@ -5,9 +5,8 @@ import {
   FaFacebook,
   FaPhoneSquareAlt,
   FaTelegram,
-  FaYoutube,
   FaMapMarkerAlt,
-
+  FaLine,
 } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import scrollToTop from "../utils/scrollTop";
@@ -153,13 +152,13 @@ const Footer = () => {
                   <FaFacebook />
                 </Link>
                 <Link
-                  to="/"
+                  to="https://line.me/ti/p/KqXNVPfm2p"
                   className="hover:text-primary-light hover:underline"
                 >
-                  <FaYoutube />
+                  <FaLine />
                 </Link>
                 <Link
-                  to="/"
+                  to="https://t.me/+85512739573"
                   className="hover:text-primary-light hover:underline"
                 >
                   <FaTelegram />

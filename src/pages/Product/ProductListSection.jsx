@@ -251,7 +251,7 @@ function PriceRangeFilter({
         <input
           type="range"
           min={1}
-          max={maxPrice}
+          max={maxPrice + 1}
           value={priceRange}
           onChange={handleChange}
           className="slider appearance-none w-24 md:w-48 h-1 md:h-2 bg-primary rounded-full outline-none cursor-pointer"

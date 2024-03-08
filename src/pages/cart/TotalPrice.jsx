@@ -1,7 +1,7 @@
 import PropType from "prop-types";
 import LinkIcon from "../../components/ui/LinkIcon";
 import { Link } from "react-router-dom";
-import { FaFacebook, FaTelegram, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaLine, FaTelegram } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { DataContext } from "../../contexts/DataContext";
 import cambodiaFlag from "../../assets/images/cambodiaFlag.png";
@@ -175,19 +175,19 @@ const TotalPrice = ({
                 ) : (
                   <>
                     <Link
-                      to="/"
+                      to="https://www.facebook.com/sorakhmer1"
                       className="hover:text-primary-light hover:underline"
                     >
                       <FaFacebook />
                     </Link>
                     <Link
-                      to="/"
+                      to="https://line.me/ti/p/KqXNVPfm2p"
                       className="hover:text-primary-light hover:underline"
                     >
-                      <FaYoutube />
+                      <FaLine />
                     </Link>
                     <Link
-                      to="/"
+                      to="https://t.me/+85512739573"
                       className="hover:text-primary-light hover:underline"
                     >
                       <FaTelegram />
@@ -247,6 +247,7 @@ const TotalPrice = ({
                         <span>{new Date().toLocaleString()}</span>
                       </td>
                     </tr>
+                    {/* fullname */}
                     {formData.fullName && (
                       <tr>
                         <td className="flex items-start">
@@ -259,7 +260,7 @@ const TotalPrice = ({
                         </td>
                       </tr>
                     )}
-
+                    {/* phone number */}
                     {formData.phoneNumber && (
                       <tr>
                         <td className="flex items-start">
@@ -272,7 +273,7 @@ const TotalPrice = ({
                         </td>
                       </tr>
                     )}
-
+                    {/* telegram */}
                     {formData.telegram && (
                       <tr>
                         <td className="flex items-start">
@@ -285,7 +286,7 @@ const TotalPrice = ({
                         </td>
                       </tr>
                     )}
-
+                    {/* address */}
                     {formData.address && (
                       <tr>
                         <td className="flex items-start">
@@ -299,19 +300,7 @@ const TotalPrice = ({
                       </tr>
                     )}
 
-                    {formData.email && (
-                      <tr>
-                        <td className="flex items-start">
-                          <span className="font-bold pr-3 break-keep">
-                            Email:
-                          </span>
-                        </td>
-                        <td>
-                          <span>{formData.email}</span>
-                        </td>
-                      </tr>
-                    )}
-
+                    {/* message */}
                     {formData.message && (
                       <tr>
                         <td className="flex items-start">
@@ -327,6 +316,8 @@ const TotalPrice = ({
                   </tbody>
                 </table>
               </div>
+
+              {/* aba qr code and sorakhmer logo */}
               <div className="w-full flex flex-col justify-end items-center ">
                 <div className="bg-white relative z-2">
                   <img src={abaQr} alt="abaQr" />
@@ -339,9 +330,10 @@ const TotalPrice = ({
           </div>
         )}
       </div>
+
+      {/*company contact information on invoice*/}
       {isOpenForm && (
         <div className="mx-4 mt-2 md:mt-4">
-          {/*company contact information on invoice*/}
           <div className="flex justify-between items-center md:gap-4">
             <div className="hidden md:block w-full">
               © 2024 Sorakhmer. All rights reserved.

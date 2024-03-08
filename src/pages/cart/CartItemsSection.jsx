@@ -23,28 +23,39 @@ import checkSocialMedia from "../../utils/checkSocialMedia";
 import { addDoc, collection } from "firebase/firestore";
 const CartItemsSection = () => {
   const { cartItems, setCartItems, contactList } = useContext(DataContext);
-
+  // show popup image
   const [showImage, setShowImage] = useState({
     id: "",
     show: false,
   });
+
+  // show remove notification
   const [showRemoveNotification, setShowRemoveNotification] = useState({
     name: "",
     show: false,
   });
+
+  // show customer contact form
   const [isOpenForm, setIsOpenForm] = useState(false);
+
+  // total price
   const [subtotal, setSubtotal] = useState(0);
   const [otherPrice, setOtherPrice] = useState(0);
   const [total, setTotal] = useState(0);
+
+  // form data for customer contact
   const [formData, setFormData] = useState({
     fullName: "",
     phoneNumber: "",
-    email: "",
     telegram: "",
     address: "",
     message: "",
   });
+
+  // order id
   const [orderId, setOrderId] = useState("");
+
+  // contact info
   const contactInfo = contactList.map((item) => item)[0];
   const [changeContent, setChangeContent] = useState(false);
 
@@ -108,6 +119,8 @@ const CartItemsSection = () => {
             // https://admin.sorakhmer.com/order/${orderId}
             try {
               const form = new FormData();
+
+              // caption for the image to send to telegram
               const messageToSend = `===== New Order =====\n\nOrder id: ${orderId}\nDate: ${new Date().toLocaleString()}\nUpdate Status: https://sorakhmer-backend.netlify.app/order/${orderId}
                 \n----------------------------------${
                   formData.fullName ? `\nName: ${formData.fullName}` : ""
@@ -127,9 +140,11 @@ const CartItemsSection = () => {
                 \n----------------------------------
                 \nTotal: ${total} $
                 \n----------------------------------`;
+
               form.append("chat_id", chat_id);
+              // url of image to send
               form.append("photo", downloadURL);
-              // Optionally, you can include a caption for the image
+              // caption for the image
               form.append("caption", messageToSend);
 
               const send = async () => {
@@ -147,6 +162,7 @@ const CartItemsSection = () => {
 
               // excute send function and record order to database
               send();
+              // record order to database
               recordOrder();
             } catch (error) {
               console.error("Error sending image:", error);
@@ -161,7 +177,7 @@ const CartItemsSection = () => {
           });
       });
 
-      // download the cart image
+      // download the cart image to user device
       var a = document.createElement("a");
       a.href = canvas.toDataURL("image/png");
       a.download = `Invoice_${orderId}.png`;
@@ -256,8 +272,11 @@ const CartItemsSection = () => {
               <span className="md:hidden text-md">New Order</span>
             </h2>
           )}
+
+          {/* cart table  */}
           <div className="w-100 overflow-auto my-8" id="cart">
             <table className="border-collapse w-full">
+              {/* table head */}
               <thead>
                 <tr>
                   {!isOpenForm && <th className={thStyle}>Image</th>}
@@ -271,6 +290,8 @@ const CartItemsSection = () => {
                   {!isOpenForm && <th className={thStyle}>Remove</th>}
                 </tr>
               </thead>
+
+              {/* table body */}
               <tbody>
                 {cartItems.length > 0 ? (
                   cartItems.map((item) => (
@@ -461,9 +482,16 @@ const CartItemsSection = () => {
                   ))
                 ) : (
                   <tr className={trStyle}>
+                    {/* if no items in the card */}
                     <td className={tdStyle} colSpan="6">
                       <span className="text-lg font-bold">
-                        No items in the cart
+                        No items in the cart. <br />{" "}
+                        <Link
+                          to="/products"
+                          className="text-blue-400 hover:underline hover:text-blue-600"
+                        >
+                          Shop now
+                        </Link>
                       </span>
                     </td>
                   </tr>

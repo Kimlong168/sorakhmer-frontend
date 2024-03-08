@@ -1,4 +1,4 @@
-import { FaFacebook, FaTelegram, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaLine, FaTelegram } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import LinkIcon from "../../components/ui/LinkIcon";
@@ -178,7 +178,8 @@ const ContactSection = () => {
                 <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
                   {/* telegram */}
                   <p>
-                    Telegram: <Link to="/contact">@sorakhmer</Link>
+                    Telegram:{" "}
+                    <Link to="https://t.me/+85512739573">@sorakhmer</Link>
                   </p>
                 </div>
               </div>
@@ -205,13 +206,13 @@ const ContactSection = () => {
                     <FaFacebook size={32} />
                   </Link>
                   <Link
-                    to="/"
+                    to="https://line.me/ti/p/KqXNVPfm2p"
                     className="hover:text-primary-light hover:underline"
                   >
-                    <FaYoutube size={32} />
+                    <FaLine size={32} />
                   </Link>
                   <Link
-                    to="/"
+                    to="https://t.me/+85512739573"
                     className="hover:text-primary-light hover:underline"
                   >
                     <FaTelegram size={32} />

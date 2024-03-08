@@ -78,6 +78,7 @@ const CustomerContactForm = ({
             id="placeOrder"
           >
             <div className=" md:w-[600px] lg:w-[700px]">
+              {/* title */}
               <div className="sticky top-0 left-5 right-5 pb-3 pt-6 mb-4 border-b-4 border-gray-400  bg-white flex justify-between items-center gap-4">
                 <h2 className="text-2xl font-bold">Place Order</h2>
                 <div
@@ -90,6 +91,7 @@ const CustomerContactForm = ({
               {!isSending ? (
                 // form for user to input their information
                 <form>
+                  {/* fullname */}
                   <div className="mb-4">
                     <label
                       title="required"
@@ -108,6 +110,7 @@ const CustomerContactForm = ({
                       required
                     />
                   </div>
+                  {/* phone number */}
                   <div className="mb-4">
                     <label
                       title="required"
@@ -126,6 +129,7 @@ const CustomerContactForm = ({
                       required
                     />
                   </div>
+                  {/* address */}
                   <div className="mb-4">
                     <label
                       title="required"
@@ -144,6 +148,8 @@ const CustomerContactForm = ({
                       required
                     />
                   </div>
+
+                  {/* contact link */}
                   <div className="mb-4">
                     <label
                       htmlFor="telegram"
@@ -152,6 +158,8 @@ const CustomerContactForm = ({
                       <div>
                         Telegram, Line, Facebook or other <RedStar />
                       </div>
+
+                      {/* button option qrcode and url */}
                       <div className="flex gap-2 items-center">
                         <span
                           className={`cursor-pointer px-4 py-1  text-xs rounded  ${
@@ -175,8 +183,10 @@ const CustomerContactForm = ({
                         </span>
                       </div>
                     </label>
+
                     {inputLinkType === "url" ? (
                       <div>
+                        {/* input url */}
                         <input
                           type="url"
                           id="telegram"
@@ -192,6 +202,7 @@ const CustomerContactForm = ({
                       </div>
                     ) : (
                       <div className="mt-2">
+                        {/* qrcode scanner */}
                         <div className="rounded" id="reader"></div>
                         <p className="text-center text-gray-500">
                           Please scan the qr-code to get the link
@@ -200,22 +211,7 @@ const CustomerContactForm = ({
                     )}
                   </div>
 
-                  {/* <div className="mb-4">
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="mt-1 p-2 border w-full border-gray-300 rounded-md"
-                    />
-                  </div> */}
+                  {/* message */}
                   <div className="mb-4">
                     <label
                       htmlFor="message"
@@ -232,6 +228,7 @@ const CustomerContactForm = ({
                     />
                   </div>
 
+                  {/* order now button */}
                   <div
                     onClick={() => {
                       if (

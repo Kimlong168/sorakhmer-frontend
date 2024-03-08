@@ -1,8 +1,9 @@
 import {
+  FaLine,
   FaPhoneSquareAlt,
   FaShoppingCart,
   FaTelegram,
-  FaYoutube,
+
 } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import logo from "../assets/images/sorakhmer-logo.png";
@@ -54,11 +55,11 @@ const Header = () => {
                 <FaFacebook />
               </Link>
 
-              <Link to="#">
-                <FaYoutube />
+              <Link to="https://line.me/ti/p/KqXNVPfm2p">
+                <FaLine />
               </Link>
 
-              <Link to="#">
+              <Link to="https://t.me/+85512739573">
                 <FaTelegram />
               </Link>
             </>
