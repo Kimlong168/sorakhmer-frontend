@@ -121,7 +121,7 @@ const CartItemsSection = () => {
               const form = new FormData();
 
               // caption for the image to send to telegram
-              const messageToSend = `===== New Order =====\n\nOrder id: ${orderId}\nDate: ${new Date().toLocaleString()}\nUpdate Status: https://sorakhmer-backend.netlify.app/order/${orderId}
+              const messageToSend = `===== New Order =====\n\nOrder id: ${orderId}\nDate: ${new Date().toLocaleString()}\nUpdate Status: https://sorakhmer-backend.netlify.app/orderDetail/${orderId}
                 \n----------------------------------${
                   formData.fullName ? `\nName: ${formData.fullName}` : ""
                 }
