@@ -26,7 +26,7 @@ const BlogListSection = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     setFilter("default");
-    const searchedBlog = blogList.filter((blog) =>
+    const searchedBlog = activeBlog.filter((blog) =>
       blog.title.toLowerCase().includes(searchKeyword.toLowerCase().trim())
     );
     setActiveBlog(searchedBlog);

@@ -103,8 +103,10 @@ const BlogDetailSection = () => {
       return;
     }
 
-    const searchedBlog = blogList.filter((blog) =>
-      blog.title.toLowerCase().includes(searchKeyword.toLowerCase().trim())
+    const searchedBlog = blogList.filter(
+      (blog) =>
+        blog.isActive &&
+        blog.title.toLowerCase().includes(searchKeyword.toLowerCase().trim())
     );
     setResultBlog(searchedBlog);
     setIsSearched(true);

@@ -29,6 +29,7 @@ const ProductListSection = () => {
   const [searchKeyword, setSearchKeyword] = useState("");
   const [isSearched, setIsSearched] = useState(false);
   const [priceRange, setPriceRange] = useState(maxPrice || 100);
+  
   // search product
   const handleSearch = (e) => {
     e.preventDefault();
@@ -38,7 +39,7 @@ const ProductListSection = () => {
 
     // seach product base on name, productCode or price
     if (!isNaN(searchKeyword)) {
-      searchedproduct = productList.filter(
+      searchedproduct = activeProduct.filter(
         (product) =>
           product.price
             .toString()
@@ -47,7 +48,7 @@ const ProductListSection = () => {
             searchKeyword.toLowerCase().trim()
       );
     } else {
-      searchedproduct = productList.filter((product) =>
+      searchedproduct = activeProduct.filter((product) =>
         product.name
           .toLowerCase()
           .includes(
