@@ -1,21 +1,17 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import sora1 from "../../assets/images/sora1.jpg";
-import sora2 from "../../assets/images/sora2.jpg";
-import sora3 from "../../assets/images/sora3.jpg";
-import sora4 from "../../assets/images/sora4.jpg";
-import sora5 from "../../assets/images/sora5.webp";
-import sora6 from "../../assets/images/sora6.webp";
-import sora7 from "../../assets/images/sora7.jpg";
-import sora8 from "../../assets/images/sora8.jpg";
-import sora9 from "../../assets/images/sora9.jpg";
-import sora10 from "../../assets/images/sora10.jpg";
-import sora11 from "../../assets/images/sora11.jpg";
-import sora12 from "../../assets/images/sora12.jpg";
-import sora13 from "../../assets/images/sora13.jpeg";
-import sora14 from "../../assets/images/sora14.jpeg";
-import sora15 from "../../assets/images/sora15.jpeg";
-import sora16 from "../../assets/images/sora16.jpeg";
+import herophoto1 from "../../assets/images/heroPhoto/heroPhoto1.jpg";
+import herophoto2 from "../../assets/images/heroPhoto/heroPhoto2.jpg";
+import herophoto3 from "../../assets/images/heroPhoto/heroPhoto3.jpg";
+import herophoto4 from "../../assets/images/heroPhoto/heroPhoto4.jpg";
+import herophoto5 from "../../assets/images/heroPhoto/heroPhoto5.jpg";
+import herophoto6 from "../../assets/images/heroPhoto/heroPhoto6.jpg";
+// import herophoto7 from "../../assets/images/heroPhoto/heroPhoto7.jpg";
+import herophoto8 from "../../assets/images/heroPhoto/heroPhoto8.jpg";
+import herophoto9 from "../../assets/images/heroPhoto/heroPhoto9.jpg";
+import herophoto10 from "../../assets/images/heroPhoto/heroPhoto10.jpg";
+
+
 import PrimaryButton from "../../components/ui/PrimaryButton";
 import { TypeAnimation } from "react-type-animation";
 // import dragon from "../../assets/images/dragon.png";
@@ -86,68 +82,43 @@ const shuffle = (array) => {
 const squareData = [
   {
     id: 1,
-    src: sora1,
+    src: herophoto1,
   },
   {
     id: 2,
-    src: sora2,
+    src: herophoto2,
   },
   {
     id: 3,
-    src: sora3,
+    src: herophoto3,
   },
   {
     id: 4,
-    src: sora4,
+    src: herophoto4,
   },
   {
     id: 5,
-    src: sora5,
+    src: herophoto5,
   },
   {
     id: 6,
-    src: sora6,
+    src: herophoto6,
   },
-  {
-    id: 7,
-    src: sora7,
-  },
+ 
   {
     id: 8,
-    src: sora13,
+    src: herophoto8,
   },
   {
     id: 9,
-    src: sora14,
+    src: herophoto9,
   },
   {
     id: 10,
-    src: sora15,
+    src: herophoto10,
   },
-  {
-    id: 11,
-    src: sora16,
-  },
-  {
-    id: 12,
-    src: sora12,
-  },
-  {
-    id: 13,
-    src: sora8,
-  },
-  {
-    id: 14,
-    src: sora9,
-  },
-  {
-    id: 15,
-    src: sora10,
-  },
-  {
-    id: 16,
-    src: sora11,
-  },
+ 
+
 ];
 
 const generateSquares = () => {

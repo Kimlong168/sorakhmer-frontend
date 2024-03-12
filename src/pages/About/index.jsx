@@ -15,8 +15,8 @@ const About = () => {
         <HistorySection />
         <MissionAndVisionSection />
         <FounderSection />
-        <PhotoSection />
         <VideoSection />
+        <PhotoSection />
         <AwardSection />
         <PartnerSection />
       </Layout>

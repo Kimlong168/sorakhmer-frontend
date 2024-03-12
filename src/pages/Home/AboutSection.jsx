@@ -1,6 +1,6 @@
 import PrimaryButton from "../../components/ui/PrimaryButton";
 import Title from "../../components/ui/Title";
-import sora1 from "../../assets/images/sora5.webp";
+import allPrducts from "../../assets/images/allProducts.jpg";
 import { TypeAnimation } from "react-type-animation";
 const AboutSection = () => {
   return (
@@ -42,7 +42,7 @@ const AboutSection = () => {
       <div className="w-full md:w-[500px] shadow-2xl overflow-hidden rounded-lg transition-all">
         <img
           className="scale-105 hover:scale-125 transition-all cursor-pointer w-full h-full object-cover object-center"
-          src={sora1}
+          src={allPrducts}
           alt="about-image"
         />
       </div>

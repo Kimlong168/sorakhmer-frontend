@@ -65,6 +65,7 @@ function AwardCarousel() {
   );
 }
 
+// next arrow
 const NextArrow = (props) => {
   const { onClick } = props;
   return (
@@ -77,6 +78,7 @@ const NextArrow = (props) => {
   );
 };
 
+// prev arrow
 const PrevArrow = (props) => {
   const { onClick } = props;
   return (

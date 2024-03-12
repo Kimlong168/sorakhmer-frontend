@@ -1,32 +1,30 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useContext } from "react";
 import { FiMoon, FiSun } from "react-icons/fi";
 import PropTypes from "prop-types";
+import { DataContext } from "../../contexts/DataContext";
 const TOGGLE_CLASSES =
   "text-sm font-medium flex items-center gap-2 px-3 md:pl-3 md:pr-3.5 py-3 md:py-1.5 transition-colors relative z-10";
 
 const ToggleLightDarkMode = () => {
-  const [selected, setSelected] = useState("light");
+  const { handleThemeSwitch, theme } = useContext(DataContext);
+
   return (
-    <div
-      className={`grid  place-content-center transition-colors ${
-        selected === "light" ? "bg-black" : "bg-black"
-      }`}
-    >
-      <SliderToggle selected={selected} setSelected={setSelected} />
+    <div className={`grid  place-content-center transition-colors `}>
+      <SliderToggle handleThemeSwitch={handleThemeSwitch} theme={theme} />
     </div>
   );
 };
 
-const SliderToggle = ({ selected, setSelected }) => {
+const SliderToggle = ({ handleThemeSwitch, theme }) => {
   return (
     <div className="relative flex w-fit items-center rounded-full">
       <button
         className={`${TOGGLE_CLASSES} ${
-          selected === "light" ? "text-white" : "text-slate-300"
+          theme === "light" ? "text-white" : "text-slate-300"
         }`}
         onClick={() => {
-          setSelected("light");
+          handleThemeSwitch("light");
         }}
       >
         <FiMoon className="relative z-10 text-sm " />
@@ -34,10 +32,10 @@ const SliderToggle = ({ selected, setSelected }) => {
       </button>
       <button
         className={`${TOGGLE_CLASSES} ${
-          selected === "dark" ? "text-white" : "text-white"
+          theme === "dark" ? "text-white" : "text-white"
         }`}
         onClick={() => {
-          setSelected("dark");
+          handleThemeSwitch("dark");
         }}
       >
         <FiSun className="relative z-10 text-sm " />
@@ -45,7 +43,7 @@ const SliderToggle = ({ selected, setSelected }) => {
       </button>
       <div
         className={`absolute inset-0 z-0 flex ${
-          selected === "dark" ? "justify-end" : "justify-start"
+          theme === "dark" ? "justify-end" : "justify-start"
         }`}
       >
         <motion.span
@@ -58,7 +56,7 @@ const SliderToggle = ({ selected, setSelected }) => {
   );
 };
 SliderToggle.propTypes = {
-  selected: PropTypes.string,
-  setSelected: PropTypes.func,
+  theme: PropTypes.string,
+  handleThemeSwitch: PropTypes.func,
 };
 export default ToggleLightDarkMode;

@@ -16,6 +16,9 @@ import BlogDetail from "./pages/BlogDetail";
 import Cart from "./pages/cart";
 
 export default function App() {
+  const [theme, setTheme] = useState(
+    localStorage.getItem("mode") ? localStorage.getItem("mode") : "dark"
+  );
   const [productCategoryList, setProductCategoryList] = useState([]);
   const [productList, setProductList] = useState([]);
   const [blogCategoryList, setBlogCategoryList] = useState([]);
@@ -139,6 +142,26 @@ export default function App() {
     return false;
   };
 
+  // dark mode and light mode
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
+
+  const handleThemeSwitch = (newMode) => {
+    if (theme === "dark" && newMode === "light") {
+      localStorage.setItem("mode", "light");
+      setTheme("light");
+    } else if (theme === "light" && newMode === "dark") {
+      localStorage.setItem("mode", "dark");
+      setTheme("dark");
+    }
+  };
+
   return (
     <>
       <DataContext.Provider
@@ -157,7 +180,8 @@ export default function App() {
           cartItems,
           setCartItems,
           addToCart,
-
+          theme,
+          handleThemeSwitch,
         }}
       >
         <Router>

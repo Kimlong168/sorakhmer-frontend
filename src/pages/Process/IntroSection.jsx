@@ -6,7 +6,7 @@ const IntroSection = () => {
       <div className="pt-12 md:py-12 flex flex-col lg:flex-row gap-8 lg:gap-24">
         <div className="w-full">
           <h3 className="font-primary-bold text-4xl md:text-5xl ">
-            We make what{" "}
+            <span className="text-primary"> We make what </span>
             <TypeAnimation
               speed={50}
               cursor={false}

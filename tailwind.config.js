@@ -52,6 +52,7 @@ export default {
       },
       backgroundImage: {
         pageTitle: "url('./assets/images/pageTitle.jpg')",
+        pageTitleSmall: "url('./assets/images/pageTitle-small.jpg')",
       },
     },
   },

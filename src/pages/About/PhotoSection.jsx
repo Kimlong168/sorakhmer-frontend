@@ -2,12 +2,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../../App.css";
-import sora12 from "../../assets/images/sora12.jpg";
-import sora13 from "../../assets/images/sora13.jpeg";
-import sora14 from "../../assets/images/sora14.jpeg";
-import sora15 from "../../assets/images/sora15.jpeg";
+
+import awardOnProducts from "../../assets/images/awardOnProducts.jpg";
+import awardProductsFront from "../../assets/images/awardProductFront.jpg";
 const PhotoSection = () => {
-  const imageList = [sora12, sora13, sora14, sora15];
+  const imageList = [awardOnProducts, awardProductsFront];
   const settings = {
     dots: true,
     infinite: true,

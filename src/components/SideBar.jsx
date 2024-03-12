@@ -3,7 +3,7 @@ import { useRef } from "react";
 import PropTypes from "prop-types";
 import { FiArrowRight } from "react-icons/fi";
 import sora1 from "../assets/images/sora1.jpg";
-import sora2 from "../assets/images/sora2.jpg";
+import sora7 from "../assets/images/sora7.jpg";
 import sora3 from "../assets/images/sora3.jpg";
 import sora4 from "../assets/images/sora4.jpg";
 import sora14 from "../assets/images/sora14.jpeg";
@@ -33,7 +33,7 @@ const SideBar = ({ setShowSideBar, showSideBar }) => {
           <LinkContainer
             heading="Products"
             subheading="Explore our amazing products"
-            imgSrc={sora2}
+            imgSrc={sora7}
             href="/products"
           />
           <LinkContainer

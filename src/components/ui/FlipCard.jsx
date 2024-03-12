@@ -34,7 +34,7 @@ const FlipCard = ({
       onMouseEnter={handleMouseEnter}
     >
       <div className="absolute inset-0 flex justify-center items-center ">
-        <div className="w-full p-2">
+        <div className="w-full p-2 ">
           {isFlipped ? (
             <div className="[transform:rotateY(180deg)] p-6 h-[300px] border">
               {/* back side */}
@@ -44,7 +44,9 @@ const FlipCard = ({
               <table>
                 {/* award name */}
                 <tr className="mb-1">
-                  <td className="font-bold pr-2">Award name:</td>
+                  <td className="font-bold pr-2  whitespace-no-wrap break-keep">
+                    Award name:
+                  </td>
                   <td>{awardName}</td>
                 </tr>
                 {/* awarded by */}

@@ -3,10 +3,10 @@ import {
   FaPhoneSquareAlt,
   FaShoppingCart,
   FaTelegram,
-
 } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import logo from "../assets/images/sorakhmer-logo.png";
+import logoLight from "../assets/images/logoLight.png";
 import SideBar from "./SideBar";
 import { useContext, useState } from "react";
 import ToggleLightDarkMode from "./ui/ToggleLightDarkMode";
@@ -19,7 +19,9 @@ import { DataContext } from "../contexts/DataContext";
 import LinkIcon from "./ui/LinkIcon";
 import convertToPhoneNumber from "../utils/convertToPhoneNumber";
 import scrollTop from "../utils/scrollTop";
+
 const Header = () => {
+  const { theme } = useContext(DataContext);
   const { contactList } = useContext(DataContext);
   const { cartItems } = useContext(DataContext);
   const contactInfo = contactList.map((item) => item)[0];
@@ -76,8 +78,12 @@ const Header = () => {
           >
             {/* logo */}
             <Link to="/">
-              <div className="w-[80px] md:w-[100px]">
-                <img src={logo} alt="logo" />
+              <div className="w-[80px]  md:w-[100px]">
+                {theme !== "light" ? (
+                  <img src={logoLight} alt="logo" />
+                ) : (
+                  <img src={logo} alt="logo" />
+                )}
               </div>
             </Link>
 
