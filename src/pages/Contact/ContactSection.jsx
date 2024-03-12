@@ -107,10 +107,10 @@ const ContactSection = () => {
               Our Company<span className="text-primary font-bold">.</span>
             </h3>
             {/* company address */}
-            <p className="pt-8 pb-2">
+            <div className="pt-8 pb-2 porse lg:prose-xl ">
               #45, st. 59, Au anlok village, Tasen commune, Kamrieng district,
               Battambang Province, Cambodia.
-            </p>
+            </div>
 
             <div>
               {/* google map */}
@@ -132,55 +132,55 @@ const ContactSection = () => {
             </h3>
 
             {contactInfo ? (
-              <div className="pt-6 pb-3">
+              <div className="pt-6 pb-3 porse lg:prose-xl ">
                 <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
                   {/* phone */}
-                  <p>
+                  <div>
                     Phone:{" "}
                     <Link to={`tel:${contactInfo.phoneNumber}`}>
                       {convertToPhoneNumber(contactInfo.phoneNumber)}
                     </Link>
-                  </p>
+                  </div>
                 </div>
                 <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
                   {/* email */}
-                  <p>
+                  <div>
                     Email:{" "}
                     <Link to={`mailto:${contactInfo.email}`}>
                       {contactInfo.email}
                     </Link>
-                  </p>
+                  </div>
                 </div>
                 <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
                   {/* telegram */}
-                  <p>
+                  <div>
                     Telegram: <Link to={contactInfo.telegram}>@sorakhmer</Link>
-                  </p>
+                  </div>
                 </div>
               </div>
             ) : (
               <div className="pt-6 pb-3">
                 <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
                   {/* phone */}
-                  <p>
+                  <div>
                     Phone: <Link to="tel:012739573">012 739 573</Link>
-                  </p>
+                  </div>
                 </div>
                 <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
                   {/* email */}
-                  <p>
+                  <div>
                     Email:{" "}
                     <Link to="mailto:hongmean2002@yahoo.com">
                       hongmean2002@yahoo.com
                     </Link>
-                  </p>
+                  </div>
                 </div>
                 <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
                   {/* telegram */}
-                  <p>
+                  <div>
                     Telegram:{" "}
                     <Link to="https://t.me/+85512739573">@sorakhmer</Link>
-                  </p>
+                  </div>
                 </div>
               </div>
             )}
@@ -231,7 +231,7 @@ const ContactSection = () => {
 
           {/* form submit message */}
           <form onSubmit={(e) => sendToTelegram(e)}>
-            <div className="flex flex-col gap-3 mt-5 md:mt-8">
+            <div className="flex flex-col gap-3 mt-5 md:mt-8 ">
               <div className="flex flex-col gap-0.5">
                 {/* input fullname */}
                 <label>
@@ -299,7 +299,7 @@ const ContactSection = () => {
                   className="border border-border focus:border-primary outline-none p-2 rounded"
                   name="description"
                   cols="30"
-                  rows="4"
+                  rows="5"
                   onChange={(e) => handleOnChange(e)}
                 ></textarea>
               </div>

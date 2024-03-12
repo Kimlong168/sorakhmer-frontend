@@ -1,11 +1,19 @@
 import dragon from "../../assets/images/dragon.png";
 import ImagesCarousel from "../../components/ui/ImagesCarousel";
-import sora16 from "../../assets/images/sora16.jpeg";
-import sora15 from "../../assets/images/sora14.jpeg";
-import sora13 from "../../assets/images/sora13.jpeg";
-import sora14 from "../../assets/images/sora14.jpeg";
+import distilery_1 from "../../assets/images/distilery_1.webp";
+import distilery_2 from "../../assets/images/distilery_2.webp";
+import distilery_3 from "../../assets/images/distilery_3.webp";
+import distilery_4 from "../../assets/images/distilery_4.webp";
+import distilery_5 from "../../assets/images/distilery_5.webp";
+
 const DistillerySection = () => {
-  const imageList = [sora16, sora15, sora13, sora14];
+  const imageList = [
+    distilery_1,
+    distilery_2,
+    distilery_3,
+    distilery_5,
+    distilery_4,
+  ];
   return (
     <section className="container p-8 md:pt-0">
       <div className="pt-12 md:py-12">
@@ -18,10 +26,10 @@ const DistillerySection = () => {
           </div>
         </h3>
         <p className="mx-auto text-center mt-6  prose lg:prose-xl">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel iste
-          quasi veniam dicta deserunt ipsa mollitia perferendis vitae similique
-          incidunt ipsum nostrum facilis adipisci velit eveniet illum quae,
-          dolore exercitationem?
+          At Sorakhmer, we are all about crafting exceptional spirits. From
+          selecting the finest ingredients to our careful distillation process,
+          each bottle reflects our commitment to quality and tradition. Come
+          join us in celebrating the art of making great products.
         </p>
         <div>
           <ImagesCarousel imageList={imageList} />

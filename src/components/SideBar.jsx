@@ -2,13 +2,13 @@ import { useMotionValue, motion, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import PropTypes from "prop-types";
 import { FiArrowRight } from "react-icons/fi";
-import sora1 from "../assets/images/sora1.jpg";
-import sora7 from "../assets/images/sora7.jpg";
-import sora3 from "../assets/images/sora3.jpg";
-import sora4 from "../assets/images/sora4.jpg";
-import sora14 from "../assets/images/sora14.jpeg";
-import sora10 from "../assets/images/sora10.jpg";
-import sora11 from "../assets/images/sora11.jpg";
+import about_1 from "../assets/images/about_1.jpg";
+import process_1 from "../assets/images/process_1.webp";
+import distilery_5 from "../assets/images/distilery_5.webp";
+import farm_1 from "../assets/images/farm_1.jpeg";
+import allProducts from "../assets/images/allProducts.jpg";
+import heroPhoto3 from "../assets/images/heroPhoto/heroPhoto3.jpg";
+import heroPhoto9 from "../assets/images/heroPhoto/heroPhoto9.jpg";
 import { IoMdClose } from "react-icons/io";
 import { Link } from "react-router-dom";
 import "../App.css";
@@ -27,43 +27,43 @@ const SideBar = ({ setShowSideBar, showSideBar }) => {
           <LinkContainer
             heading="Home"
             subheading="Welcome to Sora Khmer"
-            imgSrc={sora1}
+            imgSrc={about_1}
             href="/"
           />
           <LinkContainer
             heading="Products"
             subheading="Explore our amazing products"
-            imgSrc={sora7}
+            imgSrc={allProducts}
             href="/products"
           />
           <LinkContainer
             heading="Blogs"
             subheading="Read our latest blogs"
-            imgSrc={sora3}
+            imgSrc={heroPhoto3}
             href="/blogs"
           />
           <LinkContainer
             heading="Process"
             subheading="Our work speaks for itself"
-            imgSrc={sora4}
+            imgSrc={process_1}
             href="/process"
           />
           <LinkContainer
             heading="Distillery"
             subheading="Learn about our distillery"
-            imgSrc={sora14}
+            imgSrc={farm_1}
             href="/distillery"
           />
           <LinkContainer
             heading="About"
             subheading="Learn what we do here"
-            imgSrc={sora10}
+            imgSrc={heroPhoto9}
             href="/about"
           />
           <LinkContainer
             heading="Contact"
             subheading="Incase you want to contact us"
-            imgSrc={sora11}
+            imgSrc={distilery_5}
             href="/contact"
           />
         </div>

@@ -21,7 +21,7 @@ const ProcessSection = () => {
         <h3 className="text-nowrap text-center font-primary-bold text-4xl md:text-5xl ">
           Our Process<span className="text-primary font-bold">.</span>
         </h3>
-        <p className="text-center mb-8 mt-2">
+        <p className="text-center mb-8 mt-2 porse lg:prose-xl">
           Discover how we create our products and explore their ingredients
           below
         </p>

@@ -1,6 +1,6 @@
 import PrimaryButton from "../../components/ui/PrimaryButton";
 import Title from "../../components/ui/Title";
-import sora1 from "../../assets/images/sora1.jpg";
+import about_1 from "../../assets/images/about_1.jpg";
 import { TypeAnimation } from "react-type-animation";
 const AboutSection = () => {
   return (
@@ -31,7 +31,7 @@ const AboutSection = () => {
           {/* </div> */}
           <span className="text-primary font-bold">.</span>
         </h3>
-        <p className="md:mb-10">
+        <p className="md:mb-10 porse lg:prose-xl">
           We create fine spirits that support post-demining sustainable
           community development<span className="text-primary font-bold">.</span>
         </p>
@@ -42,7 +42,7 @@ const AboutSection = () => {
       <div className="w-full md:w-[500px] shadow-2xl overflow-hidden rounded-lg transition-all">
         <img
           className="scale-105 hover:scale-125 transition-all cursor-pointer w-full h-full object-cover object-center"
-          src={sora1}
+          src={about_1}
           alt="about-image"
         />
       </div>

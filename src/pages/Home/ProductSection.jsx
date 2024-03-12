@@ -38,7 +38,7 @@ const ProductSection = () => {
 
             <span className="text-primary font-bold">.</span>
           </h3>
-          <p className="md:mb-10">
+          <p className="md:mb-10 porse lg:prose-xl">
             Sora Khmer envisions building peace for the world by supporting
             post-demining sustainable community development
             <span className="text-primary font-bold">.</span>

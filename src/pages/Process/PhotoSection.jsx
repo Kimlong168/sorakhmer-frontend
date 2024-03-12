@@ -1,9 +1,8 @@
 // import ImagesCarousel from "../../components/ui/ImagesCarousel";
-import sora11 from "../../assets/images/sora11.jpg";
-import sora3 from "../../assets/images/sora3.jpg";
-import sora1 from "../../assets/images/sora1.jpg";
-import sora7 from "../../assets/images/sora7.jpg";
-import sora10 from "../../assets/images/sora10.jpg";
+import farm_1 from "../../assets/images/farm_1.jpeg";
+import farm_2 from "../../assets/images/farm_2.jpeg";
+import farm_3 from "../../assets/images/farm_3.jpeg";
+import farm_4 from "../../assets/images/farm_4.jpeg";
 
 import herophoto1 from "../../assets/images/heroPhoto/heroPhoto1.jpg";
 import herophoto2 from "../../assets/images/heroPhoto/heroPhoto2.jpg";
@@ -21,11 +20,6 @@ import awardProductsFront from "../../assets/images/awardProductFront.jpg";
 import HoverMe from "../../components/ui/HoverMe";
 const PhotoSection = () => {
   const imageList = [
-    sora11,
-    sora3,
-    sora7,
-    sora1,
-    sora10,
     herophoto1,
     herophoto2,
     herophoto3,
@@ -39,6 +33,10 @@ const PhotoSection = () => {
     allProducts,
     awardOnProducts,
     awardProductsFront,
+    farm_1,
+    farm_2,
+    farm_3,
+    farm_4,
   ];
   return (
     <section className="p-0">

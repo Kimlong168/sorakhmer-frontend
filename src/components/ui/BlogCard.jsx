@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
 import { BiSolidUser } from "react-icons/bi";
 import { BsArrowRight } from "react-icons/bs";
-import noImage from "../../assets/images/sora1.jpg";
 import scrollTop from "../../utils/scrollTop";
 import PropType from "prop-types";
 const BlogCard = ({
@@ -27,7 +26,7 @@ const BlogCard = ({
         {/* cover image */}
         <img
           className="w-full h-full  group-hover:scale-110 transition-all"
-          src={coverImage ? coverImage : noImage}
+          src={coverImage}
         />
       </div>
       <div className="-mt-[40px] px-4 md:px-7 flex gap-4 md:gap-7 items-end  relative">

@@ -1,11 +1,12 @@
 import dragon from "../../assets/images/dragon.png";
 import ImagesCarousel from "../../components/ui/ImagesCarousel";
-import sora16 from "../../assets/images/sora10.jpg";
-import sora15 from "../../assets/images/sora11.jpg";
 
-import sora14 from "../../assets/images/sora4.jpg";
+import farm_1 from "../../assets/images/farm_1.jpeg";
+import farm_2 from "../../assets/images/farm_2.jpeg";
+import farm_3 from "../../assets/images/farm_3.jpeg";
+import farm_4 from "../../assets/images/farm_4.jpeg";
 const EstateSection = () => {
-  const imageList = [sora16, sora15, sora14];
+  const imageList = [farm_1, farm_2, farm_3, farm_4];
   return (
     <section className="container p-8 md:pt-0">
       <div className="pt-12 md:py-12">
@@ -18,10 +19,10 @@ const EstateSection = () => {
           </div>
         </h3>
         <p className="mx-auto text-center mt-6  prose lg:prose-xl">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel iste
-          quasi veniam dicta deserunt ipsa mollitia perferendis vitae similique
-          incidunt ipsum nostrum facilis adipisci velit eveniet illum quae,
-          dolore exercitationem?
+          Located in Battambang, Cambodia, Sorakhmer is a haven of natural
+          beauty and innovation. Discover our commitment to quality and
+          sustainability as we invite you to explore our grounds. Welcome to
+          excellence.
         </p>
         <div>
           <ImagesCarousel imageList={imageList} />

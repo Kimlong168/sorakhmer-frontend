@@ -1,4 +1,4 @@
-import sora1 from "../../assets/images/sora1.jpg";
+import about_1 from "../../assets/images/about_1.jpg";
 import { TypeAnimation } from "react-type-animation";
 const HistorySection = () => {
   return (
@@ -27,11 +27,11 @@ const HistorySection = () => {
             <span className="text-primary font-bold">.</span>
           </h3>
         </div>
-        <div className="flex flex-col md:flex-row gap-8 md:gap-14 lg:gap-24">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-14 lg:gap-24"> 
           <div className="pt-3 md:w-[90%]">
             <img
               className="w-full  object-cover shadow-2xl rounded-lg"
-              src={sora1}
+              src={about_1}
               alt="history"
             />
           </div>

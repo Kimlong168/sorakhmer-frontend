@@ -45,7 +45,7 @@ const HeroSection = () => {
             SORA KHMER<span className="text-primary font-bold">.</span>
           </div>
         </h3>
-        <p className="text-base md:text-lg text-slate-700 my-4 md:my-6">
+        <p className="text-base md:text-lg text-slate-700 my-4 md:my-6 porse lg:prose-xl">
           Fine spirits supporting post-demining sustainable community
           development<span className="text-primary font-bold">.</span>
         </p>

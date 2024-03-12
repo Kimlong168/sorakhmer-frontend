@@ -1,5 +1,5 @@
 import { TypeAnimation } from "react-type-animation";
-import processImage from "../../assets/images/sora5.webp";
+import process_1 from "../../assets/images/process_1.webp";
 const IntroSection = () => {
   return (
     <section className="container p-8 md:pt-0">
@@ -17,11 +17,11 @@ const IntroSection = () => {
             />
             <span className="text-primary font-bold">.</span>
           </h3>
-          <div className="mt-8 porse lg:prose-xl text">
+          <div className="mt-8 porse lg:prose-xl ">
             <p>
-              Reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+              Welcome to Sorakhmer&rsquo;s products process journey! Explore
+              the magic behind our products – from concept to reality. Join us
+              as we unveil the creativity and dedication driving our innovation.
             </p>
           </div>
         </div>
@@ -29,7 +29,7 @@ const IntroSection = () => {
         <div className="w-full ">
           <img
             className="mx-auto block w-full lg:w-auto rounded-lg shadow-2xl"
-            src={processImage}
+            src={process_1}
             alt="processImage"
           />
         </div>
