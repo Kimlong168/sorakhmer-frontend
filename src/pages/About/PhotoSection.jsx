@@ -5,8 +5,10 @@ import "../../App.css";
 
 import awardOnProducts from "../../assets/images/awardOnProducts.jpg";
 import awardProductsFront from "../../assets/images/awardProductFront.jpg";
+import pageTitle from "../../assets/images/pageTitle.jpg";
+
 const PhotoSection = () => {
-  const imageList = [awardOnProducts, awardProductsFront];
+  const imageList = [awardOnProducts, awardProductsFront, pageTitle];
   const settings = {
     dots: true,
     infinite: true,

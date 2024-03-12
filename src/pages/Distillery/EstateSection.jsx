@@ -2,10 +2,10 @@ import dragon from "../../assets/images/dragon.png";
 import ImagesCarousel from "../../components/ui/ImagesCarousel";
 import sora16 from "../../assets/images/sora10.jpg";
 import sora15 from "../../assets/images/sora11.jpg";
-import sora13 from "../../assets/images/sora12.jpg";
+
 import sora14 from "../../assets/images/sora4.jpg";
 const EstateSection = () => {
-  const imageList = [sora16, sora15, sora13, sora14];
+  const imageList = [sora16, sora15, sora14];
   return (
     <section className="container p-8 md:pt-0">
       <div className="pt-12 md:py-12">

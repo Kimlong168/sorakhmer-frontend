@@ -1,5 +1,5 @@
 import { TypeAnimation } from "react-type-animation";
-import processImage from "../../assets/images/processImage.png";
+import processImage from "../../assets/images/sora5.webp";
 const IntroSection = () => {
   return (
     <section className="container p-8 md:pt-0">

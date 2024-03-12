@@ -1,4 +1,4 @@
-import sora3 from "../../assets/images/sora3.jpg";
+import sora1 from "../../assets/images/sora1.jpg";
 import { TypeAnimation } from "react-type-animation";
 const HistorySection = () => {
   return (
@@ -31,7 +31,7 @@ const HistorySection = () => {
           <div className="pt-3 md:w-[90%]">
             <img
               className="w-full  object-cover shadow-2xl rounded-lg"
-              src={sora3}
+              src={sora1}
               alt="history"
             />
           </div>

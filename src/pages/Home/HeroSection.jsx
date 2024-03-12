@@ -6,11 +6,10 @@ import herophoto3 from "../../assets/images/heroPhoto/heroPhoto3.jpg";
 import herophoto4 from "../../assets/images/heroPhoto/heroPhoto4.jpg";
 import herophoto5 from "../../assets/images/heroPhoto/heroPhoto5.jpg";
 import herophoto6 from "../../assets/images/heroPhoto/heroPhoto6.jpg";
-// import herophoto7 from "../../assets/images/heroPhoto/heroPhoto7.jpg";
+import herophoto7 from "../../assets/images/heroPhoto/heroPhoto7.jpg";
 import herophoto8 from "../../assets/images/heroPhoto/heroPhoto8.jpg";
 import herophoto9 from "../../assets/images/heroPhoto/heroPhoto9.jpg";
 import herophoto10 from "../../assets/images/heroPhoto/heroPhoto10.jpg";
-
 
 import PrimaryButton from "../../components/ui/PrimaryButton";
 import { TypeAnimation } from "react-type-animation";
@@ -104,7 +103,11 @@ const squareData = [
     id: 6,
     src: herophoto6,
   },
- 
+  {
+    id: 7,
+    src: herophoto7,
+  },
+
   {
     id: 8,
     src: herophoto8,
@@ -117,8 +120,6 @@ const squareData = [
     id: 10,
     src: herophoto10,
   },
- 
-
 ];
 
 const generateSquares = () => {
