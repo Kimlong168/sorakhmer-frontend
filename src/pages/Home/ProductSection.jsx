@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { fadeIn } from "../../variants";
 import PrimaryButton from "../../components/ui/PrimaryButton";
 import Title from "../../components/ui/Title";
 import { TypeAnimation } from "react-type-animation";
@@ -10,10 +12,22 @@ const ProductSection = () => {
   return (
     <>
       <section className="container p-8 md:pt-0 flex flex-col md:flex-row items-center justify-between  gap-8 md:gap-24 md:h-screen md:-mt-36">
-        <div className="w-full sm:w-[60%] md:w-[390px]  md:min-w-[330px] shadow-2xl rounded-lg order-2 md:order-1 hover:rounded-lg overflow-hidden">
+        <motion.div
+          variants={fadeIn("right", 0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: true, amount: 0.7 }}
+          className="w-full sm:w-[60%] md:w-[390px]  md:min-w-[330px] shadow-2xl rounded-lg order-2 md:order-1 hover:rounded-lg overflow-hidden"
+        >
           <ProductCarousel />
-        </div>
-        <div className="order-1 md:order-2">
+        </motion.div>
+        <motion.div
+          variants={fadeIn("left", 0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: true, amount: 0.7 }}
+          className="order-1 md:order-2"
+        >
           <Title />
           <h3 className="font-primary-bold text-4xl md:text-5xl py-8">
             <TypeAnimation
@@ -46,7 +60,7 @@ const ProductSection = () => {
           <div className="hidden md:block">
             <PrimaryButton content="View Products" href="/products" />
           </div>
-        </div>
+        </motion.div>
         <div className="md:hidden block w-full order-3">
           <PrimaryButton content="View Products" href="/products" />
         </div>

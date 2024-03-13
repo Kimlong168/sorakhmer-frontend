@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { fadeIn } from "../../variants";
 import { useEffect, useRef, useState } from "react";
 import herophoto1 from "../../assets/images/heroPhoto/heroPhoto1.jpg";
 import herophoto2 from "../../assets/images/heroPhoto/heroPhoto2.jpg";
@@ -18,7 +19,12 @@ const HeroSection = () => {
   return (
     // items-center
     <section className="w-full px-8 py-10 sm:py-20 grid grid-cols-1 md:grid-cols-2  gap-8 md:gap-24  mx-auto container">
-      <div>
+      <motion.div
+        variants={fadeIn("down", 0.2)}
+        initial="hidden"
+        whileInView={"show"}
+        viewport={{ once: true, amount: 0.7 }}
+      >
         <span className="block mb-4 text-xs md:text-sm text-primary font-medium">
           Explore quality and value with us
         </span>
@@ -52,8 +58,15 @@ const HeroSection = () => {
         <div className="hidden md:block">
           <PrimaryButton content="Contact Us" href="/contact" />
         </div>
-      </div>
-      <ShuffleGrid />
+      </motion.div>
+      <motion.div
+        variants={fadeIn("up", 0.2)}
+        initial="hidden"
+        whileInView={"show"}
+        viewport={{ once: true, amount: 0.7 }}
+      >
+        <ShuffleGrid />
+      </motion.div>
       <div className="md:hidden block">
         <PrimaryButton content="Contact Us" href="/contact" />
       </div>
