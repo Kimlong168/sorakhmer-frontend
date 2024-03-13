@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { fadeIn } from "../../variants";
 import PropTypes from "prop-types";
 import { useContext, useState } from "react";
 import { FaArrowDown, FaArrowRight } from "react-icons/fa";
@@ -14,7 +16,7 @@ const ProcessSection = () => {
 
   // if there is no process list, return null
   if (!processList) return null;
-  
+
   return (
     <section className="container p-8 md:pt-0">
       <div className="pt-12 md:py-12">
@@ -30,13 +32,20 @@ const ProcessSection = () => {
           {processList &&
             processList.map((process) => {
               return (
-                <Collapsible
+                <motion.div
+                  variants={fadeIn("right", 0.2)}
+                  initial="hidden"
+                  whileInView={"show"}
+                  viewport={{ once: true, amount: 0.3 }}
                   key={process.id}
-                  title={process.processName}
-                  description={process.description}
-                  isOpen={openItemIndex === process.id}
-                  onToggle={() => toggleCollapse(process.id)}
-                />
+                >
+                  <Collapsible
+                    title={process.processName}
+                    description={process.description}
+                    isOpen={openItemIndex === process.id}
+                    onToggle={() => toggleCollapse(process.id)}
+                  />
+                </motion.div>
               );
             })}
         </div>

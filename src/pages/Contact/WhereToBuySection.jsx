@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { fadeIn } from "../../variants";
 import { useContext } from "react";
 import { DataContext } from "../../contexts/DataContext";
 import { FaMapMarkerAlt } from "react-icons/fa";
@@ -45,20 +47,27 @@ const WhereToBuySection = () => {
                   </h4>
                   <div className="flex flex-col gap-3.5">
                     {cityStores.map((store) => (
-                      <Collapsible
+                      <motion.div
+                        variants={fadeIn("right", 0.2)}
+                        initial="hidden"
+                        whileInView={"show"}
+                        viewport={{ once: true, amount: 0.3 }}
                         key={store.id}
-                        title={store.storeName}
-                        content={{
-                          mapLink: store.mapLink,
-                          description: store.description,
-                          country: store.country,
-                          address: store.address,
-                          phone: store.phone,
-                          storeName: store.storeName,
-                        }}
-                        isOpen={openItemIndex === store.id}
-                        onToggle={() => toggleCollapse(store.id)}
-                      />
+                      >
+                        <Collapsible
+                          title={store.storeName}
+                          content={{
+                            mapLink: store.mapLink,
+                            description: store.description,
+                            country: store.country,
+                            address: store.address,
+                            phone: store.phone,
+                            storeName: store.storeName,
+                          }}
+                          isOpen={openItemIndex === store.id}
+                          onToggle={() => toggleCollapse(store.id)}
+                        />
+                      </motion.div>
                     ))}
                   </div>
                 </div>

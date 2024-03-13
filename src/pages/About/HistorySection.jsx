@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { fadeIn } from "../../variants";
 import about_1 from "../../assets/images/about_1.jpg";
 import { TypeAnimation } from "react-type-animation";
 const HistorySection = () => {
@@ -27,14 +29,20 @@ const HistorySection = () => {
             <span className="text-primary font-bold">.</span>
           </h3>
         </div>
-        <div className="flex flex-col md:flex-row gap-8 md:gap-14 lg:gap-24"> 
-          <div className="pt-3 md:w-[90%]">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-14 lg:gap-24">
+          <motion.div
+            variants={fadeIn("up", 0.2)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.3 }}
+            className="pt-3 md:w-[90%]"
+          >
             <img
               className="w-full  object-cover shadow-2xl rounded-lg"
               src={about_1}
               alt="history"
             />
-          </div>
+          </motion.div>
 
           <div className="flex items-end w-full">
             <article className="prose lg:prose-xl text-justify">

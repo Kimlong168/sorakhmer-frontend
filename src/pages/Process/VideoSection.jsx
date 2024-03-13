@@ -1,8 +1,10 @@
+import { motion } from "framer-motion";
+import { fadeIn } from "../../variants";
 import PrimaryButton from "../../components/ui/PrimaryButton";
 const VideoSection = () => {
   return (
-    <section className="container p-8 md:pt-0 md:mt-12">
-      <div className="flex flex-col md:flex-row gap-8 md:gap-24 pt-12 md:py-12">
+    <section className="container p-8 md:pt-0 md:mt-32">
+      <div className="flex flex-col md:flex-row gap-8 md:gap-24 py-12">
         <div className="w-full">
           <h3 className="text-nowrap font-primary-bold text-4xl md:text-5xl">
             Our Video<span className="text-primary font-bold">.</span>
@@ -18,7 +20,13 @@ const VideoSection = () => {
             <PrimaryButton content="View more" href="/" />
           </div>
         </div>
-        <div className="w-full overflow-hidden hover:rounded-lg hover:shadow-lg">
+        <motion.div
+          variants={fadeIn("left", 0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: true, amount: 0.3 }}
+          className="w-full overflow-hidden hover:rounded-lg hover:shadow-lg"
+        >
           <iframe
             width="100%"
             height="400"
@@ -28,7 +36,7 @@ const VideoSection = () => {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
-        </div>
+        </motion.div>
 
         <div className="md:hidden block">
           <PrimaryButton content="View more" href="/" />
@@ -36,7 +44,13 @@ const VideoSection = () => {
       </div>
 
       <div className="flex flex-col md:flex-row gap-8 md:gap-24 py-12">
-        <div className="w-full order-3 md:order-1 overflow-hidden hover:rounded-lg hover:shadow-lg">
+        <motion.div
+          variants={fadeIn("right", 0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: true, amount: 0.3 }}
+          className="w-full order-3 md:order-1 overflow-hidden hover:rounded-lg hover:shadow-lg"
+        >
           <iframe
             width="100%"
             height="400"
@@ -46,7 +60,7 @@ const VideoSection = () => {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
-        </div>
+        </motion.div>
 
         <div className="w-full order-1 md:order-2">
           <h3 className="text-nowrap font-primary-bold text-4xl md:text-5xl">

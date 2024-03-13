@@ -1,16 +1,16 @@
 import PropTypes from "prop-types";
 import { MdOutlineOpenWith } from "react-icons/md";
-import PopupImage from "./PopupImage";
+import PopupImage from "../../components/ui/PopupImage";
 import { useContext, useState } from "react";
-import ContentDisplay from "./ContentDisplay";
-import SharingBtn from "./SharingBtn";
+import ContentDisplay from "../../components/ui/ContentDisplay";
+import SharingBtn from "../../components/ui/SharingBtn";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { FaLink, FaShoppingCart } from "react-icons/fa";
 import { AnimatePresence } from "framer-motion";
-import Notification from "./Notification";
+import Notification from "../../components/ui/Notification";
 import { DataContext } from "../../contexts/DataContext";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
-const DetailProductCard = ({
+const ProductDetailCard = ({
   id,
   name,
   price,
@@ -43,7 +43,7 @@ const DetailProductCard = ({
                 className="h-full w-full rounded object-cover  cursor-zoom-in"
               />
               {/* open button */}
-              <div className="absolute top-0 rounded text-white cursor-pointer bg-primary grid place-content-center w-[30px] h-[30px]">
+              <div className="absolute top-0  rounded text-white cursor-pointer bg-primary grid place-content-center w-[30px] h-[30px]">
                 <MdOutlineOpenWith />
               </div>
             </div>
@@ -207,7 +207,7 @@ const DetailProductCard = ({
     </div>
   );
 };
-DetailProductCard.propTypes = {
+ProductDetailCard.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
@@ -220,4 +220,4 @@ DetailProductCard.propTypes = {
   productCategoryList: PropTypes.array.isRequired,
   productParams: PropTypes.string.isRequired,
 };
-export default DetailProductCard;
+export default ProductDetailCard;

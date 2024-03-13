@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { fadeIn } from "../../variants";
 import dragon from "../../assets/images/dragon.png";
 import ImagesCarousel from "../../components/ui/ImagesCarousel";
 import distilery_1 from "../../assets/images/distilery_1.webp";
@@ -17,14 +19,19 @@ const DistillerySection = () => {
   return (
     <section className="container p-8 md:pt-0">
       <div className="pt-12 md:py-12">
-        <h3>
+        <motion.h3
+          variants={fadeIn("right", 0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <div className="flex items-end justify-center">
             <img width={40} height={100} src={dragon} alt="dragon" />
             <span className=" first-line:font-semibold text-2xl  border-b-2 rounded-br-xl border-primary -ml-3 mb-[2.2px] pr-3">
               About Our Distillery
             </span>
           </div>
-        </h3>
+        </motion.h3>
         <p className="mx-auto text-center mt-6  prose lg:prose-xl">
           At Sorakhmer, we are all about crafting exceptional spirits. From
           selecting the finest ingredients to our careful distillation process,

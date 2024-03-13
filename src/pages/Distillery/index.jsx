@@ -9,11 +9,13 @@ const Distillery = () => {
   return (
     <>
       <Layout>
-        <PageTitle text="Distillery" />
-        <IntroSection />
-        <DistillerySection />
-        <EstateSection />
-        <VisitorSection />
+        <div className="overflow-x-hidden">
+          <PageTitle text="Distillery" />
+          <IntroSection />
+          <DistillerySection />
+          <EstateSection />
+          <VisitorSection />
+        </div>
       </Layout>
     </>
   );

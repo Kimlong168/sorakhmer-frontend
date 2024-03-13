@@ -7,11 +7,13 @@ import PhotoSection from "./PhotoSection";
 const Process = () => {
   return (
     <Layout>
-      <PageTitle text="Process" />
-      <IntroSection />
-      <ProcessSection />
-      <VideoSection />
-      <PhotoSection />
+      <div className="overflow-x-hidden">
+        <PageTitle text="Process" />
+        <IntroSection />
+        <ProcessSection />
+        <VideoSection />
+        <PhotoSection />
+      </div>
     </Layout>
   );
 };

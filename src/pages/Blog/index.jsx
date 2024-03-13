@@ -5,14 +5,16 @@ import BlogListSection from "./BlogListSection";
 const Blog = () => {
   return (
     <Layout>
-      <div className="md:hidden">
-        <PageTitle text="Blogs" />
+      <div className="overflow-x-hidden">
+        <div className="md:hidden">
+          <PageTitle text="Blogs" />
+        </div>
+        <div className="hidden md:block">
+          <PageTitle text="Blogs & Events" />
+        </div>
+        <RecentBlogSection />
+        <BlogListSection />
       </div>
-      <div className="hidden md:block">
-        <PageTitle text="Blogs & Events" />
-      </div>
-      <RecentBlogSection />
-      <BlogListSection />
     </Layout>
   );
 };

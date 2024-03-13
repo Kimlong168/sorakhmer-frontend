@@ -79,11 +79,13 @@ const Header = () => {
             {/* logo */}
             <Link to="/">
               <div className="w-[80px]  md:w-[100px]">
-                {theme !== "light" ? (
+                {/* {theme !== "light" ? (
                   <img src={logoLight} alt="logo" />
                 ) : (
                   <img src={logo} alt="logo" />
-                )}
+                )} */}
+
+                <img src={logo} alt="logo" />
               </div>
             </Link>
 

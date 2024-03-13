@@ -1,9 +1,17 @@
+import { motion } from "framer-motion";
+import { fadeIn } from "../../variants";
 import adminProfile from "../../assets/images/founder.jpg";
 const FounderSection = () => {
   return (
     <section className="container p-8 md:pt-0">
       <div className="flex flex-col md:flex-row items-center gap-5 md:gap-24 py-12">
-        <div className="md:w-[40%]">
+        <motion.div
+          variants={fadeIn("up", 0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: true, amount: 0.3 }}
+          className="md:w-[40%]"
+        >
           {/* profile image */}
           <img
             className="w-[250px] h-[250px]  block mx-auto rounded-full"
@@ -15,7 +23,7 @@ const FounderSection = () => {
             <h5 className="font-bold uppercase text-xl">Hong Sokmean</h5>
             <p className="text-gray-700">Founder of SORAKHMER</p>
           </div>
-        </div>
+        </motion.div>
 
         {/* description */}
         <div className="porse lg:prose-xl text-justify md:w-[60%]">

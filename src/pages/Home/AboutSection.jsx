@@ -11,7 +11,7 @@ const AboutSection = () => {
         variants={fadeIn("right", 0.2)}
         initial="hidden"
         whileInView={"show"}
-        viewport={{ once: true, amount: 0.7 }}
+        viewport={{ once: true, amount: 0.5 }}
       >
         <Title />
         <h3 className="font-primary-bold text-4xl md:text-5xl py-8">
@@ -47,10 +47,10 @@ const AboutSection = () => {
         </div>
       </motion.div>
       <motion.div
-        variants={fadeIn("left", 0.4)}
+        variants={fadeIn("left", 0.2)}
         initial="hidden"
         whileInView={"show"}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.5 }}
         className="w-full md:w-[500px] shadow-2xl overflow-hidden rounded-lg transition-all"
       >
         <img

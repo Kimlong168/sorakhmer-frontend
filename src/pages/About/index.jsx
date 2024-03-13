@@ -11,14 +11,16 @@ const About = () => {
   return (
     <div>
       <Layout>
-        <PageTitle text="About us" />
-        <HistorySection />
-        <MissionAndVisionSection />
-        <FounderSection />
-        <VideoSection />
-        <PhotoSection />
-        <AwardSection />
-        <PartnerSection />
+        <div className="overflow-x-hidden">
+          <PageTitle text="About us" />
+          <HistorySection />
+          <MissionAndVisionSection />
+          <FounderSection />
+          <VideoSection />
+          <PhotoSection />
+          <AwardSection />
+          <PartnerSection />
+        </div>
       </Layout>
     </div>
   );

@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { fadeIn } from "../../variants";
 import PrimaryButton from "../../components/ui/PrimaryButton";
 import { TypeAnimation } from "react-type-animation";
 import { useContext } from "react";
@@ -30,7 +32,13 @@ const RecentBlogSection = () => {
             activeBlog.slice(0, 1).map((blog) => (
               <>
                 {/* text */}
-                <div className="w-full">
+                <motion.div
+                  variants={fadeIn("up", 0.2)}
+                  initial="hidden"
+                  whileInView={"show"}
+                  viewport={{ once: true, amount: 0.3 }}
+                  className="w-full"
+                >
                   <h3 className="text-3xl font-bold hover:text-primary">
                     {blog.title}
                   </h3>
@@ -43,15 +51,21 @@ const RecentBlogSection = () => {
                       href={`/blog/${blog.id}`}
                     />
                   </div>
-                </div>
+                </motion.div>
                 {/* cover image */}
-                <div className="w-full">
+                <motion.div
+                  variants={fadeIn("down", 0.2)}
+                  initial="hidden"
+                  whileInView={"show"}
+                  viewport={{ once: true, amount: 0.5 }}
+                  className="w-full"
+                >
                   <img
                     className="w-full lg:w-4/5 max-h-[330px] shadow-2xl  ml-auto  rounded-lg"
                     src={blog.coverImage}
                     alt="coverImage"
                   />
-                </div>
+                </motion.div>
 
                 {/* buuton */}
                 <div className="md:hidden block mt-4">

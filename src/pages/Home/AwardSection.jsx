@@ -13,7 +13,7 @@ const AwardSection = () => {
         variants={fadeIn("up", 0.2)}
         initial="hidden"
         whileInView={"show"}
-        viewport={{ once: true, amount: 0.7 }}
+        viewport={{ once: true, amount: 0.5 }}
       >
         <AwardCarousel />
       </motion.div>

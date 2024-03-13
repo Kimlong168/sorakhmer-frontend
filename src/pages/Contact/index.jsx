@@ -6,10 +6,12 @@ import PhotoSection from "./PhotoSection";
 const Contact = () => {
   return (
     <Layout>
-      <PageTitle text="Contact" />
-      <ContactForm />
-      <WhereToBuy />
-      <PhotoSection />
+      <div className="overflow-x-hidden">
+        <PageTitle text="Contact" />
+        <ContactForm />
+        <WhereToBuy />
+        <PhotoSection />
+      </div>
     </Layout>
   );
 };

@@ -3,7 +3,7 @@ import { DataContext } from "../../contexts/DataContext";
 import { useParams } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase-config";
-import DetailProductCard from "../../components/ui/DetailProductCard";
+import ProductDetailCard from "./ProductDetailCard";
 import RelatedProduct from "./RelatedProduct";
 import Loading from "../../components/ui/Loading";
 const ProductDetailSection = () => {
@@ -57,7 +57,7 @@ const ProductDetailSection = () => {
     <section className="container p-4 md:pt-0">
       {/* detail product */}
       <div className="mt-3 md:mt-5 flex justify-between items-center">
-        <DetailProductCard
+        <ProductDetailCard
           {...data}
           id={productParams}
           productCategoryList={productCategoryList}

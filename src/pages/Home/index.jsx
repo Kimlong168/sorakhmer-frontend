@@ -9,12 +9,14 @@ const Home = () => {
   return (
     <>
       <Layout>
-        <HeroSection />
-        <AboutSection />
-        <ProductSection />
-        <BlogSection />
-        <AwardSection />
-        <PartnerSection />
+        <div className="overflow-x-hidden">
+          <HeroSection />
+          <AboutSection />
+          <ProductSection />
+          <BlogSection />
+          <AwardSection />
+          <PartnerSection />
+        </div>
       </Layout>
     </>
   );

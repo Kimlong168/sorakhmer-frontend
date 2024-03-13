@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { fadeIn } from "../../variants";
 import { TypeAnimation } from "react-type-animation";
 import cambodiaMap from "../../assets/images/cambodia-map.png";
 import PrimaryButton from "../../components/ui/PrimaryButton";
@@ -18,27 +20,45 @@ const IntroSection = () => {
             />
             <span className="text-primary">.</span>
           </h3>
-          <div className="w-full lg:w-4/5 mt-8">
+          <motion.div
+            variants={fadeIn("right", 0.2)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.3 }}
+            className="w-full lg:w-4/5 mt-8"
+          >
             <p className="text-lg md:text-xl">
               Our distillery is located in northwestern Cambodia, where we have
               been producing Sorakhmer since 2008. We warmly welcome visitors to
               our distillery and offer tours and tastings.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="mt-8 hidden md:block">
+          <motion.div
+            variants={fadeIn("right", 0.2)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.3 }}
+            className="mt-8 hidden md:block"
+          >
             <PrimaryButton content="Contact us" href="/contact" />
-          </div>
+          </motion.div>
         </div>
 
         {/* combodia map image */}
-        <div className="w-full  md:w-4/5">
+        <motion.div
+          variants={fadeIn("left", 0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: true, amount: 0.3 }}
+          className="w-full  md:w-4/5"
+        >
           <img
             src={cambodiaMap}
             alt="map of cambodia"
             className="w-full shadow-2xl rounded-lg"
           />
-        </div>
+        </motion.div>
 
         <div className="mt-2 md:hidden block">
           <PrimaryButton content="Contact us" href="/contact" />

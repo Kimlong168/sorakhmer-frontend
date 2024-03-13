@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 // this is the main layout of the website
 const Layout = ({ children }) => {
   return (
-    <div className="overflow-x-hidden">
+    <div>
       <Header />
       {children}
       <Footer />

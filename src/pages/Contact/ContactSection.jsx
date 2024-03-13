@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { fadeIn } from "../../variants";
 import { FaFacebook, FaLine, FaTelegram } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
@@ -35,11 +37,7 @@ const ContactSection = () => {
   const sendToTelegram = (e) => {
     e.preventDefault();
 
-    if (
-      !formData.fullname ||
-      !formData.socialMediaLink ||
-      !formData.description
-    ) {
+    if (!formData.fullname || !formData.description) {
       setIsShowWarning(true);
       return;
     }
@@ -106,24 +104,31 @@ const ContactSection = () => {
             <h3 className="text-nowrap font-primary-bold text-4xl md:text-5xl ">
               Our Company<span className="text-primary font-bold">.</span>
             </h3>
-            {/* company address */}
-            <div className="pt-8 pb-2 porse lg:prose-xl ">
-              #45, st. 59, Au anlok village, Tasen commune, Kamrieng district,
-              Battambang Province, Cambodia.
-            </div>
+            <motion.div
+              variants={fadeIn("right", 0.2)}
+              initial="hidden"
+              whileInView={"show"}
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              {/* company address */}
+              <div className="pt-8 pb-2 porse lg:prose-xl ">
+                #45, st. 59, Au anlok village, Tasen commune, Kamrieng district,
+                Battambang Province, Cambodia.
+              </div>
 
-            <div>
-              {/* google map */}
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2376179.8368609776!2d103.5552563901511!3d12.003517282077828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3104b5c321b14653%3A0x37f19d875254fa2b!2sKhmer%20Jyoryu%20company!5e0!3m2!1skm!2skh!4v1707702223808!5m2!1skm!2skh"
-                className="w-full lg:w-[75%]"
-                height="310"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
+              <div>
+                {/* google map */}
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2376179.8368609776!2d103.5552563901511!3d12.003517282077828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3104b5c321b14653%3A0x37f19d875254fa2b!2sKhmer%20Jyoryu%20company!5e0!3m2!1skm!2skh!4v1707702223808!5m2!1skm!2skh"
+                  className="w-full lg:w-[75%]"
+                  height="310"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </motion.div>
           </div>
           {/* contact info */}
           <div className="mt-10">
@@ -132,7 +137,13 @@ const ContactSection = () => {
             </h3>
 
             {contactInfo ? (
-              <div className="pt-6 pb-3 porse lg:prose-xl ">
+              <motion.div
+                variants={fadeIn("right", 0.2)}
+                initial="hidden"
+                whileInView={"show"}
+                viewport={{ once: true, amount: 0.3 }}
+                className="pt-6 pb-3 porse lg:prose-xl "
+              >
                 <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
                   {/* phone */}
                   <div>
@@ -157,7 +168,7 @@ const ContactSection = () => {
                     Telegram: <Link to={contactInfo.telegram}>@sorakhmer</Link>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ) : (
               <div className="pt-6 pb-3">
                 <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
@@ -230,7 +241,13 @@ const ContactSection = () => {
           </h3>
 
           {/* form submit message */}
-          <form onSubmit={(e) => sendToTelegram(e)}>
+          <motion.form
+            variants={fadeIn("left", 0.2)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.3 }}
+            onSubmit={(e) => sendToTelegram(e)}
+          >
             <div className="flex flex-col gap-3 mt-5 md:mt-8 ">
               <div className="flex flex-col gap-0.5">
                 {/* input fullname */}
@@ -247,9 +264,7 @@ const ContactSection = () => {
 
               <div className="flex flex-col gap-0.5">
                 {/* input social media  */}
-                <label>
-                  Social media (Telegram, Line, Facebook,...) <RedStar />
-                </label>
+                <label>Social media (Telegram, Line, Facebook,...)</label>
                 <input
                   className="border border-border focus:border-primary outline-none p-2 rounded"
                   type="url"
@@ -312,7 +327,7 @@ const ContactSection = () => {
                 Send
               </button>
             </div>
-          </form>
+          </motion.form>
 
           {/* fill required information alert */}
           <WarningModal
