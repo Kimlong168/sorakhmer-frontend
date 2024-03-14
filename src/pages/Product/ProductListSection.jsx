@@ -248,12 +248,12 @@ const ProductListSection = () => {
   );
 };
 
-function PriceRangeFilter({
+const PriceRangeFilter = ({
   minPrice = 1,
   maxPrice = 300,
   priceRange,
   setPriceRange,
-}) {
+}) => {
   const handleChange = (event) => {
     setPriceRange(parseInt(event.target.value));
   };
@@ -268,7 +268,7 @@ function PriceRangeFilter({
           max={maxPrice}
           value={priceRange}
           onChange={(event) => handleChange(event)}
-          className="slider appearance-none w-24 md:w-48 h-1 md:h-2 bg-primary rounded-full outline-none cursor-pointer"
+          className=" appearance-none w-24 md:w-48 h-1 md:h-2 bg-primary rounded-full outline-none cursor-pointer"
         />
         <span className="ml-2 flex items-center gap-2 whitespace-pre">
           <TbMathEqualLower /> {priceRange} $
@@ -276,7 +276,7 @@ function PriceRangeFilter({
       </div>
     </div>
   );
-}
+};
 
 PriceRangeFilter.propTypes = {
   minPrice: PropType.number,

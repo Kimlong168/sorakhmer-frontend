@@ -7,13 +7,10 @@ const VideoSection = () => {
       <div className="flex flex-col md:flex-row gap-8 md:gap-24 py-12">
         <div className="w-full">
           <h3 className="text-nowrap font-primary-bold text-4xl md:text-5xl">
-            Our Video<span className="text-primary font-bold">.</span>
+            Kura master<span className="text-primary font-bold">.</span>
           </h3>
           <p className="md:my-8 mt-8 porse lg:prose-xl">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iste sit
-            exercitationem quae dolor magnam libero nam, repellat aliquam,
-            provident debitis et natus quisquam laboriosam voluptas molestiae
-            sed nulla praesentium.
+            Sora Khmer won grand medal in Paris
           </p>
 
           <div className="hidden md:block">
@@ -30,11 +27,10 @@ const VideoSection = () => {
           <iframe
             width="100%"
             height="400"
-            src="https://www.youtube.com/embed/tgbNymZ7vqY"
+            src="https://www.youtube-nocookie.com/embed/z7qbwhekJq8?si=_bihtZcMMa5uHTYW&amp;start=46"
             title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
           ></iframe>
         </motion.div>
 
