@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { fadeIn } from "../../variants";
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../contexts/DataContext";
 import { MdOutlineDeleteOutline } from "react-icons/md";
@@ -240,10 +242,11 @@ const CartItemsSection = () => {
   const thStyle =
     "p-3 font-bold uppercase bg-primary  border border-gray-300  table-cell";
 
-  const tdStyle = "p-3 border border-gray-300 text-gray-700 table-cell";
+  const tdStyle =
+    "p-3 border border-gray-300 text-gray-700 dark:bg-gray-950 dark:text-white/80 table-cell";
 
   const trStyle =
-    "bg-white lg:hover:bg-gray-100 flex table-row text-center flex-row flex-wrap flex-no-wrap mb-0";
+    "bg-white lg:hover:bg-gray-100 flex table-row text-center flex-row flex-wrap flex-no-wrap mb-0 ";
 
   return (
     <section className="container p-8 md:pt-0">
@@ -258,7 +261,7 @@ const CartItemsSection = () => {
         {/*cart table */}
         <div id="message" className="relative overflow-hidden">
           {isOpenForm && (
-            <h2 className="text-center text-3xl font-bold">
+            <h2 className="text-center text-3xl font-bold dark:text-black">
               {/* className="w-[70px] md:w-[100px] absolute top-2 md:top-0 left-0 */}
               <div>
                 {/* water mark */}
@@ -295,7 +298,14 @@ const CartItemsSection = () => {
               <tbody>
                 {cartItems.length > 0 ? (
                   cartItems.map((item) => (
-                    <tr className={trStyle} key={item.id}>
+                    <motion.tr
+                      variants={fadeIn("right", 0.2)}
+                      initial="hidden"
+                      whileInView={"show"}
+                      viewport={{ once: true, amount: 0.3 }}
+                      className={trStyle}
+                      key={item.id}
+                    >
                       {/* product image */}
                       {!isOpenForm && (
                         <td className={tdStyle}>
@@ -478,7 +488,7 @@ const CartItemsSection = () => {
                           />
                         </div>
                       )}
-                    </tr>
+                    </motion.tr>
                   ))
                 ) : (
                   <tr className={trStyle}>

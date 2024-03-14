@@ -45,7 +45,7 @@ const HistorySection = () => {
           </motion.div>
 
           <div className="flex items-end w-full">
-            <article className="prose lg:prose-xl text-justify">
+            <article className="prose lg:prose-xl text-justify dark:text-white/90">
               <p>
                 The idea of Sora Khmer started in 2008 when Sokmean and Tayakama
                 were working together to improve people’s lives by removing

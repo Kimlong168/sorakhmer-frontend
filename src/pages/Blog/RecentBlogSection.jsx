@@ -42,7 +42,7 @@ const RecentBlogSection = () => {
                   <h3 className="text-3xl font-bold hover:text-primary">
                     {blog.title}
                   </h3>
-                  <p className="prose lg:prose-xl mt-4 md:mb-8 line-clamp-3">
+                  <p className="prose lg:prose-xl mt-4 md:mb-8 line-clamp-3 dark:text-white/70">
                     {blog.description}
                   </p>
                   <div className="hidden md:block">

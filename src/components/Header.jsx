@@ -6,7 +6,7 @@ import {
 } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import logo from "../assets/images/sorakhmer-logo.png";
-import logoLight from "../assets/images/logoLight.png";
+// import logoLight from "../assets/images/logoLight.png";
 import SideBar from "./SideBar";
 import { useContext, useState } from "react";
 import ToggleLightDarkMode from "./ui/ToggleLightDarkMode";
@@ -21,7 +21,7 @@ import convertToPhoneNumber from "../utils/convertToPhoneNumber";
 import scrollTop from "../utils/scrollTop";
 
 const Header = () => {
-  const { theme } = useContext(DataContext);
+
   const { contactList } = useContext(DataContext);
   const { cartItems } = useContext(DataContext);
   const contactInfo = contactList.map((item) => item)[0];

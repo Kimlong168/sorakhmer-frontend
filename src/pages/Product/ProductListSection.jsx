@@ -29,7 +29,7 @@ const ProductListSection = () => {
   const [searchKeyword, setSearchKeyword] = useState("");
   const [isSearched, setIsSearched] = useState(false);
   const [priceRange, setPriceRange] = useState(maxPrice || 100);
-  
+
   // search product
   const handleSearch = (e) => {
     e.preventDefault();
@@ -168,7 +168,7 @@ const ProductListSection = () => {
               <div className="flex items-center gap-3 px-4 py-2 border">
                 {/* search input */}
                 <input
-                  className="outline-none border-none p-1 w-full"
+                  className="outline-none border-none p-1 w-full bg-transparent"
                   type="text"
                   placeholder="Search..."
                   name="search"

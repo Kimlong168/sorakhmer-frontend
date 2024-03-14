@@ -25,7 +25,7 @@ const EstateSection = () => {
             </span>
           </div>
         </motion.h3>
-        <p className="mx-auto text-center mt-6  prose lg:prose-xl">
+        <p className="mx-auto text-center mt-6  prose lg:prose-xl dark:text-white/90">
           Located in Battambang, Cambodia, Sorakhmer is a haven of natural
           beauty and innovation. Discover our commitment to quality and
           sustainability as we invite you to explore our grounds. Welcome to

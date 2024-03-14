@@ -32,7 +32,7 @@ const DistillerySection = () => {
             </span>
           </div>
         </motion.h3>
-        <p className="mx-auto text-center mt-6  prose lg:prose-xl">
+        <p className="mx-auto text-center mt-6  prose lg:prose-xl dark:text-white/90">
           At Sorakhmer, we are all about crafting exceptional spirits. From
           selecting the finest ingredients to our careful distillation process,
           each bottle reflects our commitment to quality and tradition. Come

@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
       initial="hidden"
       whileInView={"show"}
       viewport={{ once: true, amount: 0.3 }}
-      className="flex flex-col shadow-xl group cursor-pointer"
+      className="flex flex-col shadow-xl group cursor-pointer border border-white/70"
     >
       <div
         onClick={scrollTop}
@@ -42,7 +42,7 @@ const ProductCard = ({ product }) => {
             <h3 className="text-xl font-bold line-clamp-1 group-hover:text-primary">
               {product.name}
             </h3>
-            <p className="text-sm line-clamp-1 mt-1.5 mb-2 text-gray-500">
+            <p className="text-sm line-clamp-1 mt-1.5 mb-2 dark:text-white/70 text-gray-500">
               {product.description}
             </p>
           </div>
@@ -62,7 +62,7 @@ const ProductCard = ({ product }) => {
               addToCart({ id, name, price, image });
               setIsAddedtoCart(true);
             }}
-            className="hover:text-primary text-gray-800 p-4 pt-0 relative"
+            className="dark:text-white/70 text-gray-800 hover:text-primary p-4 pt-0 relative"
           >
             {isAddedtoCart ? (
               <IoMdCheckmarkCircleOutline size={24} />

@@ -72,14 +72,14 @@ const CustomerContactForm = ({
   return (
     <div>
       {isSubmitted.showForm && (
-        <div className="fixed inset-0 bg-slate-900/20 backdrop-blur z-10 grid place-content-center ">
+        <div className="fixed inset-0 bg-slate-900/20 backdrop-blur z-10 grid place-content-center text-black">
           <div
             className="overflow-auto my-10 p-6 pt-0 w-fit bg-white rounded relative"
             id="placeOrder"
           >
             <div className=" md:w-[600px] lg:w-[700px]">
               {/* title */}
-              <div className="sticky top-0 left-5 right-5 pb-3 pt-6 mb-4 border-b-4 border-gray-400  bg-white flex justify-between items-center gap-4">
+              <div className="sticky top-0 left-5 right-5 pb-3 pt-6 mb-4 border-b-4 border-gray-400  bg-white  flex justify-between items-center gap-4">
                 <h2 className="text-2xl font-bold">Place Order</h2>
                 <div
                   onClick={() => setIsOpenForm(false)}

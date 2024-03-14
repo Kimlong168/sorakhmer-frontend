@@ -106,7 +106,7 @@ const BlogListSection = () => {
               <div className="flex items-center gap-3 px-4 py-2 border">
                 {/* search input */}
                 <input
-                  className="outline-none border-none p-1 w-full"
+                  className="outline-none border-none p-1 w-ful bg-transparent"
                   type="text"
                   placeholder="Search..."
                   name="search"
@@ -168,7 +168,7 @@ const BlogListSection = () => {
             <div className="flex justify-center mt-5">
               <button
                 onClick={() => setVisible1((prev) => prev + 3)}
-                className="flex group  items-center gap-2 border-2 border-dashed border-primary bg-white px-6 py-3 font-semibold uppercase text-primary transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-xl hover:shadow-[4px_4px_0px_rgb(245,156,0)] active:translate-x-[0px] active:translate-y-[0px] active:rounded-lg active:shadow-none"
+                className="flex group  items-center gap-2 border-2 border-dashed border-primary  px-6 py-3 font-semibold uppercase text-primary transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-xl hover:shadow-[4px_4px_0px_rgb(245,156,0)] active:translate-x-[0px] active:translate-y-[0px] active:rounded-lg active:shadow-none"
               >
                 Load More{" "}
                 <span className="group-hover:block hidden animate-ping">
@@ -187,7 +187,7 @@ const BlogListSection = () => {
             <div className="flex justify-center mt-5">
               <button
                 onClick={() => setVisible2((prev) => prev + 2)}
-                className="flex group  items-center gap-2 border-2 border-dashed border-primary bg-white px-6 py-3 font-semibold uppercase text-primary transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-xl hover:shadow-[4px_4px_0px_rgb(245,156,0)] active:translate-x-[0px] active:translate-y-[0px] active:rounded-lg active:shadow-none"
+                className="flex group  items-center gap-2 border-2 border-dashed border-primary  px-6 py-3 font-semibold uppercase text-primary transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-xl hover:shadow-[4px_4px_0px_rgb(245,156,0)] active:translate-x-[0px] active:translate-y-[0px] active:rounded-lg active:shadow-none"
               >
                 Load More{" "}
                 <span className="group-hover:block hidden animate-ping">

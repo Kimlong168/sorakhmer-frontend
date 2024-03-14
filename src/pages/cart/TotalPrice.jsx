@@ -31,42 +31,42 @@ const TotalPrice = ({
         {/* show when there is at least one product in the cart */}
         {total !== "0" && (
           <div className={`w-full ${isOpenForm && " lg:mb-4 lg:ml-4"}`}>
-            <table className="border-collapse w-full">
+            <table className="border-collapse w-full dark:bg-gray-950">
               <thead>
                 <th
                   colSpan={2}
-                  className="p-3 text-left font-bold pr-3 break-keep uppercase bg-primary border border-gray-300  table-cell"
+                  className="p-3 text-left font-bold pr-3 break-keep uppercase bg-primary  border border-gray-300  table-cell"
                 >
                   Total Price
                 </th>
               </thead>
-              <tbody className="text-left">
-                <tr className="bg-white lg:hover:bg-gray-100">
+              <tbody className="text-left ">
+                <tr>
                   {/* subtotal */}
-                  <td className="p-3 border-l border-gray-300 text-gray-700 table-cell">
+                  <td className="p-3 border-l border-gray-300 text-gray-700 table-cell dark:text-white">
                     Subtotal:
                   </td>
-                  <td className="p-3 border-r border-gray-300 text-gray-700 table-cell">
+                  <td className="p-3 border-r border-gray-300 text-gray-700 table-cell dark:text-white">
                     ${!changeContent && subtotal}
                     {changeContent && subtotal}
                     {!subtotal.includes(".") ? ".00" : ""}
                   </td>
                 </tr>
                 {/* other price = 0 */}
-                <tr className="bg-white lg:hover:bg-gray-100">
-                  <td className="p-3 border-l  border-gray-300 text-gray-700 table-cell">
+                <tr>
+                  <td className="p-3 border-l  border-gray-300 text-gray-700 table-cell dark:text-white">
                     Other:
                   </td>
-                  <td className="p-3 border-r border-gray-300 text-gray-700 table-cell">
+                  <td className="p-3 border-r border-gray-300 text-gray-700 table-cell dark:text-white">
                     $ {`${otherPrice}${!otherPrice.includes(".") ? ".00" : ""}`}
                   </td>
                 </tr>
                 {/* total price */}
-                <tr className="bg-white lg:hover:bg-gray-100  ">
-                  <td className="p-3 border border-r-0 border-gray-300 text-gray-700 table-cell">
+                <tr>
+                  <td className="p-3 border border-r-0 border-gray-300 text-gray-700 table-cell dark:text-white">
                     Total:
                   </td>
-                  <td className="p-3 border border-l-0 border-gray-300 text-gray-700 table-cell  font-bold pr-3 break-keep">
+                  <td className="p-3 border border-l-0 border-gray-300 text-gray-700 table-cell dark:text-white  font-bold pr-3 break-keep">
                     $ {!changeContent && total}
                     {changeContent && total}
                     {!total.includes(".") ? ".00" : ""}
@@ -74,10 +74,10 @@ const TotalPrice = ({
                 </tr>
                 {/* place order button */}
                 {!isOpenForm && (
-                  <tr className="bg-white lg:hover:bg-gray-100  ">
+                  <tr>
                     <td
                       colSpan={2}
-                      className="p-3 border text-center border-gray-300 text-gray-700 table-cell"
+                      className="p-3 border text-center border-gray-300 text-gray-700 table-cell dark:text-white"
                     >
                       <button
                         onClick={() => {
@@ -218,7 +218,7 @@ const TotalPrice = ({
           </div>
         ) : (
           // show when the form is open to take screenshot
-          <div className="w-full p-6  pt-0 border border-gray-500 md:mb-4 md:mr-4">
+          <div className="w-full p-6  pt-0 border border-gray-500 md:mb-4 md:mr-4 dark:text-black">
             <h4 className="text-primary font-bold text-2xl mb-4">
               Customer Information
             </h4>
@@ -333,7 +333,7 @@ const TotalPrice = ({
 
       {/*company contact information on invoice*/}
       {isOpenForm && (
-        <div className="mx-4 mt-2 md:mt-4">
+        <div className="mx-4 mt-2 md:mt-4 dark:text-black">
           <div className="flex justify-between items-center md:gap-4">
             <div className="hidden md:block w-full">
               © 2024 Sorakhmer. All rights reserved.

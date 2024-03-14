@@ -23,7 +23,7 @@ const HeroSection = () => {
         variants={fadeIn("down", 0.2)}
         initial="hidden"
         whileInView={"show"}
-        viewport={{ once: true, amount: 0.7 }}
+        viewport={{ once: true, amount: 0.4 }}
       >
         <span className="block mb-4 text-xs md:text-sm text-primary font-medium">
           Explore quality and value with us
@@ -51,7 +51,7 @@ const HeroSection = () => {
             SORA KHMER<span className="text-primary font-bold">.</span>
           </div>
         </h3>
-        <p className="text-base md:text-lg text-slate-700 my-4 md:my-6 porse lg:prose-xl">
+        <p className="text-base md:text-lg  my-4 md:my-6 porse lg:prose-xl">
           Fine spirits supporting post-demining sustainable community
           development<span className="text-primary font-bold">.</span>
         </p>

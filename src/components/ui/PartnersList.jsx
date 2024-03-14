@@ -5,7 +5,6 @@ import { DataContext } from "../../contexts/DataContext";
 import { Link } from "react-router-dom";
 const PartnersList = ({ direction = "left" }) => {
   const { partnerList } = useContext(DataContext);
-
   if (!partnerList) return null;
   return (
     <>
@@ -19,7 +18,7 @@ const PartnersList = ({ direction = "left" }) => {
           gradient={true}
           gradientWidth={0}
           direction={direction}
-          className="flex justify-between items-center py-3 w-full bg-primary border-[3px] border-black"
+          className="flex justify-between items-center py-3 w-full bg-primary border-[3px] dark:border-white border-black"
         >
           {partnerList.map((partner, index) => {
             return (

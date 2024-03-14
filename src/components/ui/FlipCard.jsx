@@ -84,7 +84,7 @@ const FlipCard = ({
                 alt="award"
               />
               {/* award name */}
-              <div className="text-center font-bold  uppercase pb-3 text-primary">
+              <div className="text-center font-bold  uppercase pb-3 my-3 text-primary">
                 {awardName}
               </div>
             </>

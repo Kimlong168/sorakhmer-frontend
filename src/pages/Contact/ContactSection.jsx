@@ -142,7 +142,7 @@ const ContactSection = () => {
                 initial="hidden"
                 whileInView={"show"}
                 viewport={{ once: true, amount: 0.3 }}
-                className="pt-6 pb-3 porse lg:prose-xl "
+                className="pt-6 pb-3 porse lg:prose-xl"
               >
                 <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
                   {/* phone */}
@@ -255,7 +255,7 @@ const ContactSection = () => {
                   Fullname <RedStar />
                 </label>
                 <input
-                  className="border border-border focus:border-primary outline-none p-2 rounded"
+                  className="border border-border focus:border-primary outline-none p-2 rounded dark:bg-transparent"
                   type="text"
                   name="fullname"
                   onChange={(e) => handleOnChange(e)}
@@ -266,7 +266,7 @@ const ContactSection = () => {
                 {/* input social media  */}
                 <label>Social media (Telegram, Line, Facebook,...)</label>
                 <input
-                  className="border border-border focus:border-primary outline-none p-2 rounded"
+                  className="border border-border focus:border-primary outline-none p-2 rounded dark:bg-transparent"
                   type="url"
                   name="socialMediaLink"
                   onChange={(e) => handleOnChange(e)}
@@ -277,7 +277,7 @@ const ContactSection = () => {
                 {/* input email */}
                 <label>Email</label>
                 <input
-                  className="border border-border focus:border-primary outline-none p-2 rounded"
+                  className="border border-border focus:border-primary outline-none p-2 rounded dark:bg-transparent"
                   type="email"
                   name="email"
                   onChange={(e) => handleOnChange(e)}
@@ -288,7 +288,7 @@ const ContactSection = () => {
                 {/* input phone */}
                 <label>Phone</label>
                 <input
-                  className="border border-border focus:border-primary outline-none p-2 rounded"
+                  className="border border-border focus:border-primary outline-none p-2 rounded dark:bg-transparent"
                   type="tel"
                   name="phone"
                   onChange={(e) => handleOnChange(e)}
@@ -299,7 +299,7 @@ const ContactSection = () => {
                 {/* input country */}
                 <label>Address</label>
                 <input
-                  className="border border-border focus:border-primary outline-none p-2 rounded"
+                  className="border border-border focus:border-primary outline-none p-2 rounded dark:bg-transparent"
                   type="text"
                   name="address"
                   onChange={(e) => handleOnChange(e)}
@@ -311,7 +311,7 @@ const ContactSection = () => {
                   Message <RedStar />
                 </label>
                 <textarea
-                  className="border border-border focus:border-primary outline-none p-2 rounded"
+                  className="border border-border focus:border-primary outline-none p-2 rounded dark:bg-transparent"
                   name="description"
                   cols="30"
                   rows="5"
@@ -322,7 +322,7 @@ const ContactSection = () => {
               {/* submit button */}
               <button
                 type="submit"
-                className="border-2 border-dashed border-primary bg-white px-6 py-3 font-semibold uppercase text-primary transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-xl hover:shadow-[4px_4px_0px_rgb(245,156,0)] active:translate-x-[0px] active:translate-y-[0px] active:rounded-lg active:shadow-none"
+                className="border-2 border-dashed border-primarypx-6 py-3 font-semibold uppercase text-primary transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-xl hover:shadow-[4px_4px_0px_rgb(245,156,0)] active:translate-x-[0px] active:translate-y-[0px] active:rounded-lg active:shadow-none"
               >
                 Send
               </button>

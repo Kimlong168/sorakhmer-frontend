@@ -21,7 +21,7 @@ const FounderSection = () => {
           {/* founder name */}
           <div className="text-center mt-5">
             <h5 className="font-bold uppercase text-xl">Hong Sokmean</h5>
-            <p className="text-gray-700">Founder of SORAKHMER</p>
+            <p className="text-gray-700 dark:text-primary">Founder of SORAKHMER</p>
           </div>
         </motion.div>
 
