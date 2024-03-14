@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-import { fadeIn } from "../../variants";
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../contexts/DataContext";
 import { MdOutlineDeleteOutline } from "react-icons/md";
@@ -298,14 +296,7 @@ const CartItemsSection = () => {
               <tbody>
                 {cartItems.length > 0 ? (
                   cartItems.map((item) => (
-                    <motion.tr
-                      variants={fadeIn("right", 0.2)}
-                      initial="hidden"
-                      whileInView={"show"}
-                      viewport={{ once: true, amount: 0.3 }}
-                      className={trStyle}
-                      key={item.id}
-                    >
+                    <tr className={trStyle} key={item.id}>
                       {/* product image */}
                       {!isOpenForm && (
                         <td className={tdStyle}>
@@ -488,7 +479,7 @@ const CartItemsSection = () => {
                           />
                         </div>
                       )}
-                    </motion.tr>
+                    </tr>
                   ))
                 ) : (
                   <tr className={trStyle}>
