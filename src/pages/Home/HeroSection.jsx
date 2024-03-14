@@ -23,7 +23,7 @@ const HeroSection = () => {
         variants={fadeIn("down", 0.2)}
         initial="hidden"
         whileInView={"show"}
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: 0.5 }}
       >
         <span className="block mb-4 text-xs md:text-sm text-primary font-medium">
           Explore quality and value with us

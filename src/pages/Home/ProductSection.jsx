@@ -14,7 +14,7 @@ const ProductSection = () => {
       <section className="container p-8 md:pt-0 flex flex-col md:flex-row items-center justify-between  gap-8 md:gap-24 md:h-screen md:-mt-36">
         <motion.div
           variants={fadeIn("right", 0.2)}
-          initial="hidden"
+          initial="hidden" 
           whileInView={"show"}
           viewport={{ once: true, amount: 0.5 }}
           className="w-full sm:w-[60%] md:w-[390px]  md:min-w-[330px] shadow-2xl rounded-lg order-2 md:order-1 hover:rounded-lg overflow-hidden"

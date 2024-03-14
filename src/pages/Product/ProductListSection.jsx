@@ -12,14 +12,27 @@ import { fadeIn } from "../../variants";
 // import { Link } from "react-router-dom";
 const ProductListSection = () => {
   const { productList, productCategoryList } = useContext(DataContext);
-  const [maxPrice, setMaxPrice] = useState(100);
+  const [maxMinPrice, setMaxMinPrice] = useState({
+    max: 300,
+    min: 1,
+  });
 
   useEffect(() => {
     if (productList && productList.length > 0) {
       let maxPrice = Math.max(
         ...productList.map((product) => parseFloat(product.price))
       );
-      setMaxPrice(maxPrice);
+      let minPrice = Math.min(
+        ...productList.map((product) => parseFloat(product.price))
+      );
+
+      console.log("maxPrice", maxPrice);
+      console.log("minPrice", minPrice);
+
+      setMaxMinPrice({
+        max: parseInt(maxPrice + 1),
+        min: parseInt(minPrice + 1),
+      });
     }
   }, [productList]);
 
@@ -28,13 +41,13 @@ const ProductListSection = () => {
   const [activeCategory, setActiveCategory] = useState(productCategoryList);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [isSearched, setIsSearched] = useState(false);
-  const [priceRange, setPriceRange] = useState(maxPrice || 100);
+  const [priceRange, setPriceRange] = useState(maxMinPrice.max || 100);
 
   // search product
   const handleSearch = (e) => {
     e.preventDefault();
     setFilter("default");
-    setPriceRange(maxPrice);
+    setPriceRange(maxMinPrice.max);
     let searchedproduct = [];
 
     // seach product base on name, productCode or price
@@ -90,8 +103,8 @@ const ProductListSection = () => {
       setActiveProduct(activeProducts);
     }
     setSearchKeyword("");
-    setPriceRange(maxPrice);
-  }, [filter, productList, maxPrice]);
+    setPriceRange(maxMinPrice.max);
+  }, [filter, productList, maxMinPrice]);
 
   // filter product base on price
 
@@ -125,7 +138,7 @@ const ProductListSection = () => {
                     setActiveProduct(activeProduct);
                     setFilter("default");
                     setSearchKeyword("");
-                    setPriceRange(maxPrice);
+                    setPriceRange(maxMinPrice.max);
                   }}
                   className="px-4 py-2 font-bold"
                 >
@@ -154,7 +167,8 @@ const ProductListSection = () => {
             <DrawOutlineButton>
               <div className="px-4 py-2 ">
                 <PriceRangeFilter
-                  maxPrice={maxPrice}
+                  minPrice={maxMinPrice.min}
+                  maxPrice={maxMinPrice.max}
                   priceRange={priceRange}
                   setPriceRange={setPriceRange}
                 />
@@ -199,7 +213,7 @@ const ProductListSection = () => {
           </div>
         )}
 
-        {maxPrice != priceRange && (
+        {maxMinPrice.max != priceRange && (
           <div className="mt-8 flex items-center gap-2">
             Result for price <TbMathEqualLower /> {priceRange} $
           </div>
@@ -235,14 +249,13 @@ const ProductListSection = () => {
 };
 
 function PriceRangeFilter({
+  minPrice = 1,
   maxPrice = 300,
-  onChange,
   priceRange,
   setPriceRange,
 }) {
   const handleChange = (event) => {
-    setPriceRange(event.target.value.split(",").map(Number));
-    onChange(event.target.value.split(",").map(Number));
+    setPriceRange(parseInt(event.target.value));
   };
 
   return (
@@ -251,10 +264,10 @@ function PriceRangeFilter({
         <label className="mr-2 font-bold whitespace-pre">Price Range:</label>
         <input
           type="range"
-          min={1}
-          max={maxPrice + 1}
+          min={minPrice}
+          max={maxPrice}
           value={priceRange}
-          onChange={handleChange}
+          onChange={(event) => handleChange(event)}
           className="slider appearance-none w-24 md:w-48 h-1 md:h-2 bg-primary rounded-full outline-none cursor-pointer"
         />
         <span className="ml-2 flex items-center gap-2 whitespace-pre">
@@ -266,8 +279,8 @@ function PriceRangeFilter({
 }
 
 PriceRangeFilter.propTypes = {
+  minPrice: PropType.number,
   maxPrice: PropType.number,
-  onChange: PropType.func,
   priceRange: PropType.number,
   setPriceRange: PropType.func,
 };
