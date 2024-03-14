@@ -12,11 +12,16 @@ import { fadeIn } from "../../variants";
 // import { Link } from "react-router-dom";
 const ProductListSection = () => {
   const { productList, productCategoryList } = useContext(DataContext);
+  const [filter, setFilter] = useState("default");
+  const [activeProduct, setActiveProduct] = useState(productList);
+  const [activeCategory, setActiveCategory] = useState(productCategoryList);
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const [isSearched, setIsSearched] = useState(false);
   const [maxMinPrice, setMaxMinPrice] = useState({
     max: 300,
     min: 1,
   });
-
+  const [priceRange, setPriceRange] = useState(maxMinPrice.max || 100);
   useEffect(() => {
     if (productList && productList.length > 0) {
       let maxPrice = Math.max(
@@ -35,13 +40,6 @@ const ProductListSection = () => {
       });
     }
   }, [productList]);
-
-  const [filter, setFilter] = useState("default");
-  const [activeProduct, setActiveProduct] = useState(productList);
-  const [activeCategory, setActiveCategory] = useState(productCategoryList);
-  const [searchKeyword, setSearchKeyword] = useState("");
-  const [isSearched, setIsSearched] = useState(false);
-  const [priceRange, setPriceRange] = useState(maxMinPrice.max || 100);
 
   // search product
   const handleSearch = (e) => {
