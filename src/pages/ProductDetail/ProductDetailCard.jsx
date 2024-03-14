@@ -31,11 +31,11 @@ const ProductDetailCard = ({
   return (
     <div className=" w-full mt-5">
       <div className="flex items-center justify-center w-full">
-        <div className="border p-4 md:p-8 flex flex-col w-full md:flex-row gap-5 md:gap-24 rounded  bg-white  text-gray-700 shadow-md">
+        <div className="border p-4 md:p-8 flex flex-col w-full md:flex-row gap-5 md:gap-24 rounded    text-gray-700 dark:text-white shadow-md">
           <div className="w-full md:w-2/5 ">
             <div
               onClick={() => setShowImage(true)}
-              className="relative m-0 shadow-xl overflow-hidden rounded  bg-white  text-gray-700"
+              className="relative m-0 shadow-xl overflow-hidden rounded   text-gray-700"
             >
               {/* product image */}
               <img
@@ -64,14 +64,16 @@ const ProductDetailCard = ({
               </h6>
 
               {/* category */}
-              <h4 className="mb-5 block text-blue-gray-900 ">
+              <h4 className="mb-5 text-blue-gray-900 flex items-center gap-2">
                 <span>Category: </span>
-                {productCategoryList &&
-                  productCategoryList.map((data) => {
-                    if (data.id == categoryId) {
-                      return data.categoryName;
-                    }
-                  })}
+                <div className="text-primary">
+                  {productCategoryList &&
+                    productCategoryList.map((data) => {
+                      if (data.id == categoryId) {
+                        return data.categoryName;
+                      }
+                    })}
+                </div>
               </h4>
 
               {/* description and detail */}
@@ -82,7 +84,7 @@ const ProductDetailCard = ({
                     className={` ${
                       !showDetail &&
                       "hover:text-primary border-b-2 border-primary "
-                    } cursor-pointer text-black`}
+                    } cursor-pointer dark:text-white/70`}
                   >
                     Description
                   </div>
@@ -91,7 +93,7 @@ const ProductDetailCard = ({
                     className={` ${
                       showDetail &&
                       "hover:text-primary border-b-2 border-primary "
-                    } cursor-pointer text-black`}
+                    } cursor-pointer dark:text-white/70`}
                   >
                     Detail
                   </div>

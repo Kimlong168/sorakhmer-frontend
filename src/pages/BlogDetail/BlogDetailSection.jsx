@@ -139,9 +139,9 @@ const BlogDetailSection = () => {
       </div>
 
       {/* content */}
-      <div className=" flex flex-col md:flex-row gap-2 mt-3 ">
-        <div className="w-full lg:w-[75%] mt-4 bg-white dark:bg-black dark:text-white border border-white/20 shadow-xl p-6 min-h-screen">
-          <div className="text-gray-900 dark:text-white font-bold text-2xl md:text-3xl">
+      <div className=" flex flex-col md:flex-row gap-2 mt-7">
+        <div className="w-full lg:w-[75%] bg-white dark:bg-transparent dark:text-white/90 border border-white/20 shadow-xl p-6 min-h-screen">
+          <div className="text-gray-900 dark:text-white/80  font-bold text-2xl md:text-3xl">
             {data.title}
           </div>
           <div className="flex items-center gap-5 md:gap-8 py-5 mb-3">
@@ -169,7 +169,7 @@ const BlogDetailSection = () => {
           </div>
 
           {/* blog content */}
-          <div className="prose lg:prose-xl prose-img:w-full lg:prose-img:w-auto lg:prose-img:mx-auto lg:prose-img:block prose-a:text-blue-600 prose-a:hover:text-blue-400  min-w-full">
+          <div className="prose lg:prose-xl prose-img:w-full lg:prose-img:w-auto lg:prose-img:mx-auto lg:prose-img:block prose-a:text-blue-600 prose-a:hover:text-blue-400 dark:prose-blockquote:text-white/70  min-w-full dark:text-white/80">
             <ContentDisplay htmlString={data.content} />
           </div>
 
@@ -197,14 +197,14 @@ const BlogDetailSection = () => {
         <aside
           className={`${
             showSercchBar ? "flex " : "hidden "
-          } lg:w-[25%] w-[100%] lg:flex  justify-center items-center lg:justify-start lg:items-start shadow-xl fixed lg:static inset-0 z-[100] lg:z-[1] md:min-h-screen bg-black/50 lg:bg-white`}
+          } lg:w-[25%] w-[100%] lg:flex  justify-center items-center lg:justify-start lg:items-start shadow-xl fixed lg:static bg-black/50 inset-0 z-[100] lg:z-[1] md:min-h-screen lg:bg-transparent dark:border border-white/20`}
         >
           <div
             id="searchResult"
             className="flex flex-col gap-2 mt-4 p-6 w-[90%]  sm:w-[70%] lg:w-full text-xl font-semibold h-[100%]  overflow-auto lg:overflow-hidden bg-white lg:bg-transparent"
           >
             {/* search bar header */}
-            <div className="flex justify-between items-center gap-4">
+            <div className="flex justify-between items-center gap-4 text-black lg:dark:text-white">
               <span>Search</span>
               <FaWindowClose
                 className="cursor-pointer lg:hidden hover:text-primary"
@@ -218,7 +218,7 @@ const BlogDetailSection = () => {
                 <div className="flex items-center gap-3 px-4 py-2 border">
                   {/* search input */}
                   <input
-                    className="outline-none border-none p-1 w-full"
+                    className="outline-none border-none p-1 w-full bg-transparent "
                     type="text"
                     placeholder="find blogs..."
                     name="search"
@@ -242,7 +242,7 @@ const BlogDetailSection = () => {
             <hr className="mt-1 mb-3" />
 
             {/* result blog display */}
-            <div className="flex flex-col gap-5 text-sm">
+            <div className="flex flex-col gap-5 text-sm text-black">
               {resultBlog.length !== 0 ? (
                 resultBlog.map((blog) => {
                   // get category name for each blog
@@ -296,7 +296,7 @@ const BlogDetailSection = () => {
                       initial="hidden"
                       whileInView={"show"}
                       viewport={{ once: true, amount: 0.3 }}
-                      className="text-center"
+                      className="text-center dark:text-white"
                     >
                       No blog found
                     </motion.div>
