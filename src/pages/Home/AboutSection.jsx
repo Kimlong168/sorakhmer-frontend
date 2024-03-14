@@ -13,7 +13,7 @@ const AboutSection = () => {
         whileInView={"show"}
         viewport={{ once: true, amount: 0.5 }}
       >
-        <Title />
+        <Title text="about"/>
         <h3 className="font-primary-bold text-4xl md:text-5xl py-8">
           {/* <div className="mb-6 text-[36px] lg:text-[40px] font-secondary font-semibold uppercase leading-[1]"> */}
           <TypeAnimation

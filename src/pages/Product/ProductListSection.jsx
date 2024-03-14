@@ -22,6 +22,8 @@ const ProductListSection = () => {
     min: 1,
   });
   const [priceRange, setPriceRange] = useState(maxMinPrice.max || 100);
+
+  // find min and max price of product
   useEffect(() => {
     if (productList && productList.length > 0) {
       let maxPrice = Math.max(

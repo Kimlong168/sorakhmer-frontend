@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../contexts/DataContext";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase-config";
 import ProductDetailCard from "./ProductDetailCard";
 import RelatedProduct from "./RelatedProduct";
 import Loading from "../../components/ui/Loading";
+import DrawOutlineButton from "../../components/ui/DrawOutlineButton";
+import { IoIosArrowBack } from "react-icons/io";
 const ProductDetailSection = () => {
   const { id: productParams } = useParams();
   const { productList, productCategoryList } = useContext(DataContext);
@@ -55,8 +57,18 @@ const ProductDetailSection = () => {
 
   return (
     <section className="container p-4 md:pt-0">
+      {/* back button */}
+      <div className="mt-4">
+        <Link to="/products">
+          <DrawOutlineButton>
+            <button className="group text-primary font-bold rounded px-3 py-1.5  flex items-center justify-center gap-1 ">
+              <IoIosArrowBack className="group-hover:block hidden" /> Back
+            </button>
+          </DrawOutlineButton>
+        </Link>
+      </div>
       {/* detail product */}
-      <div className="mt-3 md:mt-5 flex justify-between items-center">
+      <div className="flex justify-between items-center">
         <ProductDetailCard
           {...data}
           id={productParams}

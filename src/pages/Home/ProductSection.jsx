@@ -28,7 +28,7 @@ const ProductSection = () => {
           viewport={{ once: true, amount: 0.5 }}
           className="order-1 md:order-2"
         >
-          <Title />
+          <Title text="Popular Products"/>
           <h3 className="font-primary-bold text-4xl md:text-5xl py-8">
             <TypeAnimation
               speed={50}

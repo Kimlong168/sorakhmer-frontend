@@ -120,7 +120,7 @@ const BlogDetailSection = () => {
   if (!data) return <Loading />;
   return (
     <section className="container px-4 md:pt-0 min-h-screen">
-      {/* back button */}
+      {/* back button and search */}
       <div className="mt-3 md:mt-5 flex justify-between items-center">
         <Link to="/blogs">
           <DrawOutlineButton>
