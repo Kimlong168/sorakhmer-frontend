@@ -20,7 +20,7 @@ const BlogCard = ({
       initial="hidden"
       whileInView={"show"}
       viewport={{ once: true, amount: 0.3 }}
-      className="group mb-2 cursor-pointer shadow-xl h-[470px] md:h-[500px] min-w-[270px] md:min-w-min bg-white dark:bg-transparent dark:border dark:border-white/70 w-full"
+      className="group mb-2 cursor-pointer shadow-xl h-[470px] md:h-[500px] min-w-[270px] md:min-w-min dark:border dark:hover:border-primary dark:border-white/20 w-full"
     >
       <div className="w-full h-[240px] overflow-hidden">
         {/* cover image */}

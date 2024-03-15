@@ -169,7 +169,7 @@ const BlogDetailSection = () => {
           </div>
 
           {/* blog content */}
-          <div className="prose lg:prose-xl prose-img:w-full lg:prose-img:w-auto lg:prose-img:mx-auto lg:prose-img:block prose-a:text-blue-600 prose-a:hover:text-blue-400 dark:prose-blockquote:text-white/70  min-w-full dark:text-white/80">
+          <div className="prose lg:prose-xl prose-img:w-full lg:prose-img:w-auto lg:prose-img:mx-auto lg:prose-img:block prose-a:text-blue-600 prose-a:hover:text-blue-400 dark:prose-blockquote:text-white/70 dark:prose-strong:text-white/90 dark:prose-h1:text-white/90 dark:prose-h2:text-white/90  dark:prose-h3:text-white/90  dark:prose-h4:text-white/90  min-w-full dark:text-white/80">
             <ContentDisplay htmlString={data.content} />
           </div>
 
@@ -223,7 +223,6 @@ const BlogDetailSection = () => {
                     placeholder="find blogs..."
                     name="search"
                     value={searchKeyword}
-                    // onBlur={() => setIsSearched(false)}
                     onChange={(e) => {
                       setSearchKeyword(e.target.value);
                       setResultBlog([]);
@@ -241,15 +240,26 @@ const BlogDetailSection = () => {
 
             <hr className="mt-1 mb-3" />
 
+            <div>
+              {/* search result for text */}
+              {resultBlog.length !== 0 && searchKeyword.length !== 0 && (
+                <div className="mb-2 text-sm text-black lg:dark:text-white">
+                  Found{" "}
+                  <span className="text-primary font-bold">
+                    {resultBlog.length}
+                  </span>{" "}
+                  {resultBlog.length === 1 ? " blog" : "blogs"} for{" "}
+                  <span className="text-primary font-bold">
+                    &quot;{searchKeyword}&ldquo;
+                  </span>
+                </div>
+              )}
+            </div>
+
             {/* result blog display */}
             <div className="flex flex-col gap-5 text-sm text-black">
               {resultBlog.length !== 0 ? (
                 resultBlog.map((blog) => {
-                  // get category name for each blog
-                  // const category = blogCategoryList.filter(
-                  //   (category) => category.id === blog.categoryId
-                  // )[0];
-
                   return (
                     <Link to={`/blog/${blog.id}`} key={blog.id}>
                       <motion.div
@@ -273,13 +283,12 @@ const BlogDetailSection = () => {
                         </div>
                         <div className="w-[100%] lg:w-[70%]">
                           {/* blog title */}
-                          <div className="line-clamp-2 font-semibold group-hover:text-primary">
+                          <div className="line-clamp-2 font-semibold group-hover:text-primary  lg:dark:text-white/80">
                             {blog.title}
                           </div>
                           {/* publish date */}
-                          <div className="line-clamp-1 font-light mt-0.5">
+                          <div className="line-clamp-1 font-light mt-0.5 lg:dark:text-white/50">
                             {blog.publicationDate}
-                            {/* <span className="mr-2">{category.categoryName}</span> */}
                           </div>
                         </div>
                       </motion.div>
@@ -296,7 +305,7 @@ const BlogDetailSection = () => {
                       initial="hidden"
                       whileInView={"show"}
                       viewport={{ once: true, amount: 0.3 }}
-                      className="text-center dark:text-white"
+                      className="text-center lg:dark:text-white"
                     >
                       No blog found
                     </motion.div>

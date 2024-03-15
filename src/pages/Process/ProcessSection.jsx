@@ -60,17 +60,19 @@ const Collapsible = ({ title, description, isOpen, onToggle }) => {
       <div className={`border rounded w-full ${isOpen && "border-primary"}`}>
         <button
           onClick={onToggle}
-          className="w-full px-4 py-2.5  font-semibold focus:outline-none flex justify-between items-center"
+          className={`w-full px-4 py-2.5  font-semibold focus:outline-none flex justify-between items-center  ${
+            isOpen && "bg-primary text-white"
+          }`}
         >
           {title}
           <span className="text-primary">
-            {isOpen ? <FaArrowDown /> : <FaArrowRight />}
+            {isOpen ? <FaArrowDown className="text-white" /> : <FaArrowRight />}
           </span>
         </button>
 
         {isOpen && (
-          <div className="bg-gray-200/50">
-            <div className="prose lg:prose-xl mx-auto p-4 md:px-8 py-1  ">
+          <div>
+            <div className="mx-auto p-4 md:px-8 py-1  prose lg:prose-xl prose-img:w-full lg:prose-img:w-auto lg:prose-img:mx-auto lg:prose-img:block prose-a:text-blue-600 prose-a:hover:text-blue-400 dark:prose-blockquote:text-white/70 dark:prose-strong:text-white/90 dark:prose-h1:text-white/90 dark:prose-h2:text-white/90  dark:prose-h3:text-white/90  dark:prose-h4:text-white/90  min-w-full dark:text-white/80">
               <ContentDisplay htmlString={description} />
             </div>
           </div>

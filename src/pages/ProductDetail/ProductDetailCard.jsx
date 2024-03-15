@@ -128,16 +128,13 @@ const ProductDetailCard = ({
             {/* buying and add to cart button */}
 
             <div className="flex items-center gap-4  mt-8">
-              {/* <button className="flex items-center gap-2 px-2 py-1.5 border bg-green-600 hover:bg-green-500 text-white font-bold rounded">
-                Buy Now <FaMoneyBill />
-              </button> */}
+       
               <button
                 onClick={() => {
-                  // const isAdded = addToCart({ id, name, price, image });
                   addToCart({ id, name, price, image });
                   setIsAddedtoCart(true);
                 }}
-                className="flex items-center gap-2 p-2.5 border bg-primary hover:bg-primary-light text-white font-bold rounded"
+                className="flex items-center gap-2 p-2.5 bg-primary hover:bg-primary-light text-white font-bold rounded"
               >
                 Add to Cart
                 {isAddedtoCart ? (
@@ -156,7 +153,7 @@ const ProductDetailCard = ({
                   }, 5000); // 5s
                 }}
               >
-                <button className="flex items-center gap-2 p-2.5 border font-bold rounded bg-blue-500 hover:bg-blue-600 text-white">
+                <button className="flex items-center gap-2 p-2.5 font-bold rounded bg-blue-500 hover:bg-blue-600 text-white">
                   Copy Link
                   {copied ? (
                     <IoMdCheckmarkCircleOutline className="animate-ping" />

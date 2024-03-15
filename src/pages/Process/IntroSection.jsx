@@ -9,10 +9,11 @@ const IntroSection = () => {
         <div className="w-full">
           <h3 className="font-primary-bold text-4xl md:text-5xl ">
             <span className="text-primary"> We make what </span>
+            <span className="md:hidden"><br /></span>
             <TypeAnimation
               speed={50}
               cursor={false}
-              sequence={["we love", 3000, "you desire", 3000]}
+              sequence={["We love", 3000, "You desire", 3000]}
               className="text-accent"
               wrapper="span"
               repeat={Infinity}

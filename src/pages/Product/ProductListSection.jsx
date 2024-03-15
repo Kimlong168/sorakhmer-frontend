@@ -43,42 +43,6 @@ const ProductListSection = () => {
     }
   }, [productList]);
 
-  // search product
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setFilter("default");
-    setPriceRange(maxMinPrice.max);
-    let searchedproduct = [];
-
-    // seach product base on name, productCode or price
-    if (!isNaN(searchKeyword)) {
-      searchedproduct = activeProduct.filter(
-        (product) =>
-          product.price
-            .toString()
-            .includes(searchKeyword.toLowerCase().trim()) ||
-          product.productCode.toLowerCase() ===
-            searchKeyword.toLowerCase().trim()
-      );
-    } else {
-      searchedproduct = activeProduct.filter((product) =>
-        product.name
-          .toLowerCase()
-          .includes(
-            searchKeyword.toLowerCase().trim() ||
-              product.productCode.toLowerCase() ===
-                searchKeyword.toLowerCase().trim()
-          )
-      );
-    }
-
-    setActiveProduct(searchedproduct);
-    setIsSearched(true);
-    if (searchedproduct.length === 0) {
-      setSearchKeyword("");
-    }
-  };
-
   // get the category which has active product
   useEffect(() => {
     const activeCategory = productCategoryList.filter((category) => {
@@ -107,7 +71,6 @@ const ProductListSection = () => {
   }, [filter, productList, maxMinPrice]);
 
   // filter product base on price
-
   useEffect(() => {
     let filteredProduct = productList.filter(
       (product) =>
@@ -120,6 +83,42 @@ const ProductListSection = () => {
     setSearchKeyword("");
     setFilter("default");
   }, [priceRange, productList]);
+
+  // search product
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setFilter("default");
+    setPriceRange(maxMinPrice.max);
+    let searchedproduct = [];
+
+    // seach product base on name, productCode or price
+    if (!isNaN(searchKeyword)) {
+      searchedproduct = productList.filter(
+        (product) =>
+          (product.isActive &&
+            product.price
+              .toString()
+              .includes(searchKeyword.toLowerCase().trim())) ||
+          product.productCode.toLowerCase() ===
+            searchKeyword.toLowerCase().trim()
+      );
+    } else {
+      searchedproduct = productList.filter(
+        (product) =>
+          product.isActive &&
+          product.name
+            .toLowerCase()
+            .includes(
+              searchKeyword.toLowerCase().trim() ||
+                product.productCode.toLowerCase() ===
+                  searchKeyword.toLowerCase().trim()
+            )
+      );
+    }
+
+    setActiveProduct(searchedproduct);
+    setIsSearched(true);
+  };
 
   return (
     <section className="container p-8 md:pt-0">
@@ -165,7 +164,7 @@ const ProductListSection = () => {
 
             {/* price range */}
             <DrawOutlineButton>
-              <div className="px-4 py-2 ">
+              <div className="px-4 py-3 border lg:border-none flex w-full">
                 <PriceRangeFilter
                   minPrice={maxMinPrice.min}
                   maxPrice={maxMinPrice.max}
@@ -178,7 +177,7 @@ const ProductListSection = () => {
 
           {/* search bar */}
           <DrawOutlineButton>
-            <form className="w-full lg:w-auto " onSubmit={handleSearch}>
+            <form className="w-full lg:w-auto" onSubmit={handleSearch}>
               <div className="flex items-center gap-3 px-4 py-2 border">
                 {/* search input */}
                 <input
@@ -187,10 +186,9 @@ const ProductListSection = () => {
                   placeholder="Search..."
                   name="search"
                   value={searchKeyword}
-                  // onBlur={() => setIsSearched(false)}
                   onChange={(e) => {
                     setSearchKeyword(e.target.value);
-                    // setIsSearched(false);
+                    setIsSearched(false);
                   }}
                 />
 
@@ -259,7 +257,7 @@ const PriceRangeFilter = ({
   };
 
   return (
-    <div className="flex items-center justify-center ">
+    <div className="flex items-center justify-center">
       <div className="flex items-center">
         <label className="mr-2 font-bold whitespace-pre">Price Range:</label>
         <input
@@ -268,7 +266,7 @@ const PriceRangeFilter = ({
           max={maxPrice}
           value={priceRange}
           onChange={(event) => handleChange(event)}
-          className=" appearance-none w-24 md:w-48 h-1 md:h-2 bg-primary rounded-full outline-none cursor-pointer"
+          className=" appearance-none w-[100%] lg:w-36 h-1 md:h-2 bg-primary rounded-full outline-none cursor-pointer"
         />
         <span className="ml-2 flex items-center gap-2 whitespace-pre">
           <TbMathEqualLower /> {priceRange} $

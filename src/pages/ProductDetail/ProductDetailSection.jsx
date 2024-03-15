@@ -37,14 +37,18 @@ const ProductDetailSection = () => {
     fetchData();
   }, [productParams, productCategoryList]);
 
-  //   get related content
-  const relatedProduct = productList.filter((product) => {
+  //  get related content
+  const filteredProducts = productList.filter((product) => {
     return (
       product.categoryId === data?.categoryId &&
       product.id !== productParams &&
       product.isActive
     );
   });
+
+  const relatedProduct = filteredProducts
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 4);
 
   // if the data is not fetched yet
   if (!data) {

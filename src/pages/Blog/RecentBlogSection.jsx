@@ -39,10 +39,10 @@ const RecentBlogSection = () => {
                   viewport={{ once: true, amount: 0.3 }}
                   className="w-full"
                 >
-                  <h3 className="text-3xl font-bold hover:text-primary">
+                  <h3 className="text-3xl font-bold hover:text-primary line-clamp-3">
                     {blog.title}
                   </h3>
-                  <p className="prose lg:prose-xl mt-4 md:mb-8 line-clamp-3 dark:text-white/70">
+                  <p className="prose lg:prose-xl mt-4 md:mb-8 line-clamp-2 dark:text-white/70">
                     {blog.description}
                   </p>
                   <div className="hidden md:block">

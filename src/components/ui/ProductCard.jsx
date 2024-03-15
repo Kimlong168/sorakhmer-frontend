@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
       initial="hidden"
       whileInView={"show"}
       viewport={{ once: true, amount: 0.3 }}
-      className="flex flex-col shadow-xl group cursor-pointer border border-white/70"
+      className="flex flex-col shadow-xl group cursor-pointer border border-white/20 dark:hover:border-primary"
     >
       <div
         onClick={scrollTop}

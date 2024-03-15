@@ -14,7 +14,7 @@ const ProductSection = () => {
       <section className="container p-8 md:pt-0 flex flex-col md:flex-row items-center justify-between  gap-8 md:gap-24 md:h-screen md:-mt-36">
         <motion.div
           variants={fadeIn("right", 0.2)}
-          initial="hidden" 
+          initial="hidden"
           whileInView={"show"}
           viewport={{ once: true, amount: 0.5 }}
           className="w-full sm:w-[60%] md:w-[390px]  md:min-w-[330px] shadow-2xl rounded-lg order-2 md:order-1 hover:rounded-lg overflow-hidden"
@@ -28,7 +28,7 @@ const ProductSection = () => {
           viewport={{ once: true, amount: 0.5 }}
           className="order-1 md:order-2"
         >
-          <Title text="Popular Products"/>
+          <Title text="Popular Products" />
           <h3 className="font-primary-bold text-4xl md:text-5xl py-8">
             <TypeAnimation
               speed={50}
@@ -72,6 +72,13 @@ const ProductSection = () => {
 // ProductCarousel component
 const ProductCarousel = () => {
   const { productList } = useContext(DataContext);
+
+  // randomly select 8 product for the productlist
+  const activeProduct = productList.filter((item) => item.isActive);
+  const products = activeProduct
+    .sort(() => Math.random() - Math.random())
+    .slice(0, 8);
+
   return (
     <div className="w-full h-full">
       <Carousel
@@ -85,8 +92,8 @@ const ProductCarousel = () => {
         interval={4000}
         transitionTime={500}
       >
-        {productList &&
-          productList.slice(0, 8).map((item) => (
+        {products &&
+          products.map((item) => (
             <div className="w-full h-[330px] md:h-[390px]" key={item.id}>
               <img className="h-full w-full" src={item.image} alt={item.name} />
             </div>

@@ -22,20 +22,6 @@ const BlogListSection = () => {
   const [searchKeyword, setSearchKeyword] = useState("");
   const [isSearched, setIsSearched] = useState(false);
 
-  // search blog
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setFilter("default");
-    const searchedBlog = activeBlog.filter((blog) =>
-      blog.title.toLowerCase().includes(searchKeyword.toLowerCase().trim())
-    );
-    setActiveBlog(searchedBlog);
-    setIsSearched(true);
-    if (searchedBlog.length === 0) {
-      setSearchKeyword("");
-    }
-  };
-
   // get the category which has active blog
   useEffect(() => {
     const activeCategory = blogCategoryList.filter((category) => {
@@ -61,6 +47,18 @@ const BlogListSection = () => {
     }
     setSearchKeyword("");
   }, [blogList, filter]);
+
+  // search blog
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setFilter("default");
+    const searchedBlog = blogList.filter((blog) =>
+      blog.title.toLowerCase().includes(searchKeyword.toLowerCase().trim()) && blog.isActive
+    );
+    setActiveBlog(searchedBlog);
+    setIsSearched(true);
+   
+  };
 
   return (
     <section className="container p-8 md:pt-0">
@@ -102,16 +100,15 @@ const BlogListSection = () => {
 
           {/* search bar */}
           <DrawOutlineButton>
-            <form className="w-full sm:w-auto" onSubmit={handleSearch}>
+            <form className="w-full lg:w-auto" onSubmit={handleSearch}>
               <div className="flex items-center gap-3 px-4 py-2 border">
                 {/* search input */}
                 <input
-                  className="outline-none border-none p-1 w-ful bg-transparent"
+                  className="outline-none border-none p-1 w-full bg-transparent"
                   type="text"
                   placeholder="Search..."
                   name="search"
                   value={searchKeyword}
-                  // onBlur={() => setIsSearched(false)}
                   onChange={(e) => {
                     setSearchKeyword(e.target.value);
                     setIsSearched(false);
