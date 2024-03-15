@@ -13,7 +13,7 @@ const IntroSection = () => {
             <TypeAnimation
               speed={50}
               cursor={false}
-              sequence={["Distillery", 3000, "Estate", 3000]}
+              sequence={["Distillery", 3000, "Farm", 3000]}
               className="text-accent"
               wrapper="span"
               repeat={Infinity}

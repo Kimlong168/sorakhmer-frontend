@@ -2,7 +2,7 @@ import PageTitle from "../../components/ui/PageTitle";
 import Layout from "../../layouts/Layout";
 import IntroSection from "./IntroSection";
 import DistillerySection from "./DistillerySection";
-import EstateSection from "./EstateSection";
+import FarmSection from "./FarmSection";
 import VisitorSection from "./VisitorSection";
 
 const Distillery = () => {
@@ -13,7 +13,7 @@ const Distillery = () => {
           <PageTitle text="Distillery" />
           <IntroSection />
           <DistillerySection />
-          <EstateSection />
+          <FarmSection />
           <VisitorSection />
         </div>
       </Layout>

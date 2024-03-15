@@ -21,7 +21,7 @@ const EstateSection = () => {
           <div className="flex items-end justify-center">
             <img width={40} height={100} src={dragon} alt="dragon" />
             <span className=" first-line:font-semibold text-2xl border-b-2 rounded-br-xl border-primary -ml-3 mb-[2.2px] pr-3">
-              About Our Estate
+              About Our Farm
             </span>
           </div>
         </motion.h3>
