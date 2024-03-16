@@ -8,6 +8,7 @@ import RelatedProduct from "./RelatedProduct";
 import Loading from "../../components/ui/Loading";
 import DrawOutlineButton from "../../components/ui/DrawOutlineButton";
 import { IoIosArrowBack } from "react-icons/io";
+
 const ProductDetailSection = () => {
   const { id: productParams } = useParams();
   const { productList, productCategoryList } = useContext(DataContext);
@@ -83,6 +84,7 @@ const ProductDetailSection = () => {
       {/* related container */}
 
       <RelatedProduct relatedProduct={relatedProduct} />
+ 
     </section>
   );
 };

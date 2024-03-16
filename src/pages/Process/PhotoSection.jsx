@@ -14,9 +14,20 @@ import herophoto7 from "../../assets/images/heroPhoto/heroPhoto7.jpg";
 import herophoto8 from "../../assets/images/heroPhoto/heroPhoto8.jpg";
 import herophoto9 from "../../assets/images/heroPhoto/heroPhoto9.jpg";
 import herophoto10 from "../../assets/images/heroPhoto/heroPhoto10.jpg";
+
+import sora1 from "../../assets/images/sora1.jpg";
+import sora2 from "../../assets/images/sora2.jpg";
+import sora3 from "../../assets/images/sora3.jpg";
+import sora4 from "../../assets/images/sora4.jpg";
+import sora5 from "../../assets/images/sora5.jpg";
+import sora6 from "../../assets/images/sora6.jpg";
+import sora7 from "../../assets/images/sora7.jpg";
+import sora8 from "../../assets/images/sora8.jpg";
+
 import allProducts from "../../assets/images/allProducts.jpg";
 import awardOnProducts from "../../assets/images/awardOnProducts.jpg";
 import awardProductsFront from "../../assets/images/awardProductFront.jpg";
+
 import HoverMe from "../../components/ui/HoverMe";
 const PhotoSection = () => {
   const imageList = [
@@ -37,6 +48,14 @@ const PhotoSection = () => {
     farm_2,
     farm_3,
     farm_4,
+    sora1,
+    sora2,
+    sora3,
+    sora4,
+    sora5,
+    sora6,
+    sora7,
+    sora8,
   ];
   return (
     <section className="p-0">

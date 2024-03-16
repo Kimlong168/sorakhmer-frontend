@@ -98,7 +98,7 @@ const CustomerContactForm = ({
                       htmlFor="fullName"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Full Name <RedStar />
+                      Fullname <RedStar />
                     </label>
                     <input
                       type="text"
@@ -156,7 +156,7 @@ const CustomerContactForm = ({
                       className="text-sm font-medium text-gray-700 flex items-center gap-4 mb-1"
                     >
                       <div>
-                        Telegram, Line, Facebook or other <RedStar />
+                        Telegram, Line, Facebook or other 
                       </div>
 
                       {/* button option qrcode and url */}
@@ -234,8 +234,7 @@ const CustomerContactForm = ({
                       if (
                         formData.fullName &&
                         formData.phoneNumber &&
-                        formData.address &&
-                        formData.telegram
+                        formData.address
                       ) {
                         setIsSending(true);
 

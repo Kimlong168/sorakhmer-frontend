@@ -12,6 +12,13 @@ import herophoto8 from "../../assets/images/heroPhoto/heroPhoto8.jpg";
 import herophoto9 from "../../assets/images/heroPhoto/heroPhoto9.jpg";
 import herophoto10 from "../../assets/images/heroPhoto/heroPhoto10.jpg";
 
+import sora1 from "../../assets/images/sora1.jpg";
+import sora2 from "../../assets/images/sora2.jpg";
+import sora3 from "../../assets/images/sora3.jpg";
+import sora4 from "../../assets/images/sora4.jpg";
+import sora5 from "../../assets/images/sora5.jpg";
+import sora8 from "../../assets/images/sora8.jpg";
+
 import PrimaryButton from "../../components/ui/PrimaryButton";
 import { TypeAnimation } from "react-type-animation";
 // import dragon from "../../assets/images/dragon.png";
@@ -132,6 +139,30 @@ const squareData = [
   {
     id: 10,
     src: herophoto10,
+  },
+  {
+    id: 11,
+    src: sora1,
+  },
+  {
+    id: 12,
+    src: sora2,
+  },
+  {
+    id: 13,
+    src: sora3,
+  },
+  {
+    id: 14,
+    src: sora4,
+  },
+  {
+    id: 15,
+    src: sora5,
+  },
+  {
+    id: 18,
+    src: sora8,
   },
 ];
 

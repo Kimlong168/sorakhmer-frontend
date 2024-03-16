@@ -10,6 +10,8 @@ import { AnimatePresence } from "framer-motion";
 import Notification from "../../components/ui/Notification";
 import { DataContext } from "../../contexts/DataContext";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import ViewCartButton from "../../components/ui/ViewCartButton";
+
 const ProductDetailCard = ({
   id,
   name,
@@ -64,7 +66,7 @@ const ProductDetailCard = ({
               </h6>
 
               {/* category */}
-              <h4 className="mb-5 text-blue-gray-900 flex items-center gap-2">
+              <h4 className="mb-5 text-blue-gray-900 text-sm flex items-center gap-2">
                 <span>Category: </span>
                 <div className="text-primary">
                   {productCategoryList &&
@@ -77,23 +79,21 @@ const ProductDetailCard = ({
               </h4>
 
               {/* description and detail */}
-              <div className="pb-8 ">
-                <div className="flex gap-10 items-center w-full font-bold text-xl">
+              <div className="pb-8 mt-10">
+                <div className="flex gap-10 items-center w-full font-bold text-md">
                   <div
                     onClick={() => setShowDetail(false)}
                     className={` ${
-                      !showDetail &&
-                      "hover:text-primary border-b-2 border-primary "
-                    } cursor-pointer dark:text-white/70`}
+                      !showDetail && "text-primary border-b-2 border-primary "
+                    } cursor-pointer `}
                   >
                     Description
                   </div>
                   <div
                     onClick={() => setShowDetail(true)}
                     className={` ${
-                      showDetail &&
-                      "hover:text-primary border-b-2 border-primary "
-                    } cursor-pointer dark:text-white/70`}
+                      showDetail && "text-primary border-b-2 border-primary "
+                    } cursor-pointer `}
                   >
                     Detail
                   </div>
@@ -128,7 +128,6 @@ const ProductDetailCard = ({
             {/* buying and add to cart button */}
 
             <div className="flex items-center gap-4  mt-8">
-       
               <button
                 onClick={() => {
                   addToCart({ id, name, price, image });
@@ -202,6 +201,9 @@ const ProductDetailCard = ({
             <PopupImage image={image} setShowImage={setShowImage} />
           </div>
         )}
+
+        {/* view cart button */}
+        {isAddedtoCart && <ViewCartButton />}
       </div>
     </div>
   );

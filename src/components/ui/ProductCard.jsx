@@ -10,7 +10,7 @@ import { DataContext } from "../../contexts/DataContext";
 import { Link } from "react-router-dom";
 import Notification from "./Notification";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
-
+import ViewCartButton from "./ViewCartButton";
 const ProductCard = ({ product }) => {
   const { addToCart } = useContext(DataContext);
   const { id, name, price, image } = product;
@@ -87,6 +87,9 @@ const ProductCard = ({ product }) => {
           </AnimatePresence>
         </div>
       )}
+
+      {/* view cart button */}
+      {isAddedtoCart && <ViewCartButton />}
     </motion.div>
   );
 };
