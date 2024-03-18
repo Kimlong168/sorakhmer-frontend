@@ -20,6 +20,7 @@ import { fadeIn } from "../../variants";
 import scrollTop from "../../utils/scrollTop";
 import WarningModal from "../../components/ui/WarningModal";
 import "../../App.css";
+import MetadataHeader from "../../components/ui/MetadataHeader";
 const BlogDetailSection = () => {
   const { id: blogParams } = useParams();
   const { blogList, authorList, blogCategoryList } = useContext(DataContext);
@@ -120,6 +121,12 @@ const BlogDetailSection = () => {
   if (!data) return <Loading />;
   return (
     <section className="container px-4 md:pt-0 min-h-screen">
+      {/* metadata header */}
+      <MetadataHeader
+        title={`Blog | ${data.title}`}
+        description={data.description}
+        image={data.coverImage}
+      />
       {/* back button and search */}
       <div className="mt-3 md:mt-5 flex justify-between items-center">
         <Link to="/blogs">

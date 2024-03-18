@@ -14,7 +14,7 @@ import { fadeIn } from "../../variants";
 import { Link } from "react-router-dom";
 const BlogListSection = () => {
   const { blogList, authorList, blogCategoryList } = useContext(DataContext);
-  const [visible1, setVisible1] = useState(3);
+  const [visible1, setVisible1] = useState(6);
   const [visible2, setVisible2] = useState(4);
   const [filter, setFilter] = useState("default");
   const [activeBlog, setActiveBlog] = useState(blogList);

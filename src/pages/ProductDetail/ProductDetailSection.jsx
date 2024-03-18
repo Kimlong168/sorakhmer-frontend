@@ -62,6 +62,8 @@ const ProductDetailSection = () => {
 
   return (
     <section className="container p-4 md:pt-0">
+
+
       {/* back button */}
       <div className="mt-4">
         <Link to="/products">
@@ -84,7 +86,6 @@ const ProductDetailSection = () => {
       {/* related container */}
 
       <RelatedProduct relatedProduct={relatedProduct} />
- 
     </section>
   );
 };

@@ -4,9 +4,14 @@ import IntroSection from "./IntroSection";
 import ProcessSection from "./ProcessSection";
 import VideoSection from "./VideoSection";
 import PhotoSection from "./PhotoSection";
+import MetadataHeader from "../../components/ui/MetadataHeader";
 const Process = () => {
   return (
     <Layout>
+      <MetadataHeader
+        title="Production Process"
+        description="Welcome to Sorakhmer"
+      />
       <div className="overflow-x-hidden">
         <PageTitle text="Process" />
         <IntroSection />

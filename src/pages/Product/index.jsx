@@ -1,10 +1,12 @@
 import PageTitle from "../../components/ui/PageTitle";
 import ProductListSection from "./ProductListSection";
 import Layout from "../../layouts/Layout";
+import MetadataHeader from "../../components/ui/MetadataHeader";
 const Product = () => {
   return (
-    <div>
+    <>
       <Layout>
+        <MetadataHeader title="Products" description="Welcome to Sorakhmer" />
         <div className="md:hidden">
           <PageTitle text="Products" />
         </div>
@@ -13,7 +15,7 @@ const Product = () => {
         </div>
         <ProductListSection />
       </Layout>
-    </div>
+    </>
   );
 };
 

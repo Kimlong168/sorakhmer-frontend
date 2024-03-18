@@ -5,7 +5,6 @@ const ProductDetail = () => {
   return (
     <Layout>
       <ProductDetailSection />
-    
     </Layout>
   );
 };

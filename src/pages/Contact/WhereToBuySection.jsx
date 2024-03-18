@@ -91,13 +91,19 @@ const Collapsible = ({ title, content, isOpen, onToggle }) => {
         >
           {/* title */}
           {title}
-          <span className="text-primary">
+          <span className="text-primary"> 
             {isOpen ? <FaArrowDown className="text-white" /> : <FaArrowRight />}
           </span>
         </button>
 
         {isOpen && (
-          <div className="px-4 py-5 ">
+          <motion.div
+            variants={fadeIn("down", 0.2)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.3 }}
+            className="px-4 py-5 "
+          >
             {/* Content of the collapsible item */}
             {content ? (
               <div className="flex flex-col gap-2">
@@ -127,16 +133,17 @@ const Collapsible = ({ title, content, isOpen, onToggle }) => {
 
                 {/* map */}
                 <div>
-                  <span className="font-semibold">Map:</span>{" "}
-                  {content.mapLink ? (
-                    <Link
-                      to={content.mapLink}
-                      className="underline text-blue-400"
-                    >
-                      Open map
-                    </Link>
-                  ) : (
-                    "No map link"
+                  {content.mapLink && (
+                    <>
+                      <span className="font-semibold">Map:</span>
+
+                      <Link
+                        to={content.mapLink}
+                        className="underline text-blue-400"
+                      >
+                        Open map
+                      </Link>
+                    </>
                   )}
                 </div>
                 {/* <div className="bg-gray-500 w-full h-[1px] mt-5 mb-2"></div> */}
@@ -152,7 +159,7 @@ const Collapsible = ({ title, content, isOpen, onToggle }) => {
             ) : (
               "No content"
             )}
-          </div>
+          </motion.div>
         )}
       </div>
     </div>

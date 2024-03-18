@@ -7,10 +7,12 @@ import AwardSection from "./AwardSection";
 import PartnerSection from "./PartnerSection";
 import PhotoSection from "./PhotoSection";
 import VideoSection from "./VideoSection";
+import MetadataHeader from "../../components/ui/MetadataHeader";
 const About = () => {
   return (
     <div>
       <Layout>
+        <MetadataHeader title="About Us" description="Welcome to Sorakhmer" />
         <div className="overflow-x-hidden">
           <PageTitle text="About us" />
           <HistorySection />

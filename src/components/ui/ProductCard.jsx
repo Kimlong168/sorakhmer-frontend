@@ -10,9 +10,9 @@ import { DataContext } from "../../contexts/DataContext";
 import { Link } from "react-router-dom";
 import Notification from "./Notification";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
-import ViewCartButton from "./ViewCartButton";
+
 const ProductCard = ({ product }) => {
-  const { addToCart } = useContext(DataContext);
+  const { addToCart, setShowViewCartBtn } = useContext(DataContext);
   const { id, name, price, image } = product;
   const [isAddedtoCart, setIsAddedtoCart] = useState(false);
   return (
@@ -61,6 +61,14 @@ const ProductCard = ({ product }) => {
               // const isAdded = addToCart({ id, name, price, image });
               addToCart({ id, name, price, image });
               setIsAddedtoCart(true);
+
+              // show view cart button
+              setShowViewCartBtn(true);
+
+              // hide view cart button after 2s
+              setTimeout(() => {
+                setShowViewCartBtn(false);
+              }, 2000);
             }}
             className="dark:text-white/70 text-gray-800 hover:text-primary p-4 pt-0 relative"
           >
@@ -87,9 +95,6 @@ const ProductCard = ({ product }) => {
           </AnimatePresence>
         </div>
       )}
-
-      {/* view cart button */}
-      {isAddedtoCart && <ViewCartButton />}
     </motion.div>
   );
 };

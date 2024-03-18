@@ -13,7 +13,7 @@ import Error404 from "./pages/Error404";
 import Distillery from "./pages/Distillery";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
-import Cart from "./pages/cart";
+import Cart from "./pages/Cart";
 
 export default function App() {
   const [theme, setTheme] = useState(
@@ -34,6 +34,7 @@ export default function App() {
     const storedCartItems = localStorage.getItem("cartItems");
     return storedCartItems ? JSON.parse(storedCartItems) : [];
   });
+  const [showViewCartBtn, setShowViewCartBtn] = useState(false);
 
   // Update local storage when cartItems state changes
   useEffect(() => {
@@ -182,6 +183,8 @@ export default function App() {
           addToCart,
           theme,
           handleThemeSwitch,
+          showViewCartBtn,
+          setShowViewCartBtn,
         }}
       >
         <Router>
