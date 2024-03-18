@@ -1,7 +1,7 @@
 import Layout from "../../layouts/Layout";
 import CartItemsSection from "./CartItemsSection";
 import MetadataHeader from "../../components/ui/MetadataHeader";
-const Cart = () => {
+const ShoppingCart = () => {
   return (
     <Layout>
       <MetadataHeader
@@ -13,4 +13,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default ShoppingCart;

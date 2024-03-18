@@ -13,7 +13,7 @@ import Error404 from "./pages/Error404";
 import Distillery from "./pages/Distillery";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
-import Cart from "./pages/Cart";
+import ShoppingCart from "./pages/ShoppingCart";
 
 export default function App() {
   const [theme, setTheme] = useState(
@@ -198,7 +198,7 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/process" element={<Process />} />
             <Route path="/distillery" element={<Distillery />} />
-            <Route path="/cart" element={<Cart />} />
+            <Route path="/cart" element={<ShoppingCart />} />
             <Route path="*" element={<Error404 />} />
           </Routes>
         </Router>
