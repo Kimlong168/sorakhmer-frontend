@@ -69,13 +69,12 @@ const VideoSection = () => {
 
         <div className="w-full order-1 lg:order-2">
           <h3 className=" font-primary-bold text-4xl md:text-5xl">
-            Citronella oil and Tea
+            Khmer Jyoryu Co., Ltd
             <span className="text-primary font-bold">.</span>
           </h3>
           <p className="md:my-8 mt-8 porse lg:prose-xl">
             We&apos;ve spent years perfecting our products and expanding our
-            offerings. We are commited to produce the best quality of citronella
-            oil and tea.
+            offerings. We are commited to produce the best quality of our products.
           </p>
 
           <div className="hidden lg:block">
