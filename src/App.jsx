@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { db } from "./firebase-config";
 import { getDocs, collection, query, orderBy } from "firebase/firestore";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  // Redirect,
+} from "react-router-dom";
 import { DataContext } from "./contexts/DataContext";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
@@ -14,6 +19,7 @@ import Distillery from "./pages/Distillery";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
 import ShoppingCart from "./pages/ShoppingCart";
+import GotoAdminDashboard from "./pages/GotoAdminDashboard";
 
 export default function App() {
   const [theme, setTheme] = useState(
@@ -200,6 +206,7 @@ export default function App() {
             <Route path="/distillery" element={<Distillery />} />
             <Route path="/cart" element={<ShoppingCart />} />
             <Route path="*" element={<Error404 />} />
+            <Route path="/admin" element={<GotoAdminDashboard />} />
           </Routes>
         </Router>
       </DataContext.Provider>
