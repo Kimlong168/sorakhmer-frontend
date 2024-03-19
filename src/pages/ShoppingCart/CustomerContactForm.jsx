@@ -65,7 +65,7 @@ const CustomerContactForm = ({
     }
 
     function error() {
-      console.warn("error");
+      return;
     }
   }, [inputLinkType]);
 

@@ -160,8 +160,9 @@ const CartItemsSection = () => {
                 console.log("Image sent successfully!", response);
               };
 
-              // excute send function and record order to database
+              // excute send function and record order to database and get the post link
               send();
+
               // record order to database
               recordOrder();
             } catch (error) {
@@ -181,7 +182,7 @@ const CartItemsSection = () => {
       var a = document.createElement("a");
       a.href = canvas.toDataURL("image/png");
       a.download = `Invoice_${orderId}.png`;
-      a.click();
+      // a.click();
     });
 
     // reset the fullName to avoid dubplicate order id bcoz we user fullName to generate order id
@@ -228,7 +229,7 @@ const CartItemsSection = () => {
       total: total,
       status: "pending",
       paymentMethod: "default",
-      date: new Date().toLocaleString('en-GB'),
+      date: new Date().toLocaleString("en-GB"),
       timeStamp: new Date().getTime(),
     };
 

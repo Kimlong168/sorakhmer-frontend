@@ -58,11 +58,11 @@ const ProductSection = () => {
             <span className="text-primary font-bold">.</span>
           </p>
           <div className="hidden md:block">
-            <PrimaryButton content="View Products" href="/products" />
+            <PrimaryButton content="Shop Now" href="/products" />
           </div>
         </motion.div>
         <div className="md:hidden block w-full order-3">
-          <PrimaryButton content="View Products" href="/products" />
+          <PrimaryButton content="Shop Now" href="/products" />
         </div>
       </section>
     </>
