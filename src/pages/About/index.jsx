@@ -12,7 +12,7 @@ const About = () => {
   return (
     <div>
       <Layout>
-        <MetadataHeader title="About Us" description="Welcome to Sorakhmer" />
+        <MetadataHeader title="Sorakhmer | About Us" description="Welcome to Sorakhmer" />
         <div className="overflow-x-hidden">
           <PageTitle text="About us" />
           <HistorySection />

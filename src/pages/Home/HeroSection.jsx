@@ -55,9 +55,9 @@ const HeroSection = () => {
             />
             <span className="invisible">I</span>
           </div>
-          <div className="mt-2 font-primary-bold">
+          <h1 className="mt-2 font-primary-bold">
             SORA KHMER<span className="text-primary font-bold">.</span>
-          </div>
+          </h1>
         </h3>
         <p className="text-base md:text-lg  my-4 md:my-6 porse lg:prose-xl">
           Fine spirits supporting post-demining sustainable community

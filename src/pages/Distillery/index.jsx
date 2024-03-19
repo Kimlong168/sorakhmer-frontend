@@ -9,7 +9,7 @@ const Distillery = () => {
   return (
     <>
       <Layout>
-        <MetadataHeader title="Distillery" description="Welcome to Sorakhmer" />
+        <MetadataHeader title="Sorakhmer | Distillery" description="Welcome to Sorakhmer" />
         <div className="overflow-x-hidden">
           <PageTitle text="Distillery" />
           <IntroSection />

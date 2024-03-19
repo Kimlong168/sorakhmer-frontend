@@ -6,7 +6,7 @@ const Product = () => {
   return (
     <>
       <Layout>
-        <MetadataHeader title="Products" description="Welcome to Sorakhmer" />
+        <MetadataHeader title="Sorakhmer | Products" description="Welcome to Sorakhmer" />
         <div className="md:hidden">
           <PageTitle text="Products" />
         </div>

@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <>
       <Layout>
-        <MetadataHeader title="SORA KHMER" description="Welcome to Sorakhmer" />
+        <MetadataHeader title="Sorakhmer" description="Welcome to Sorakhmer" />
         <div className="overflow-x-hidden">
           <HeroSection />
           <AboutSection />

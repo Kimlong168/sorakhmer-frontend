@@ -1,11 +1,12 @@
-// import { Helmet } from "react-helmet";
+import MetadataHeader from "../../components/ui/MetadataHeader";
 import { Link } from "react-router-dom";
 const Error404 = () => {
   return (
     <div className="overflow-hidden bg-gray-950">
-      {/* <Helmet>
-        <title>Boyloy-News| Error page not found!</title>
-      </Helmet> */}
+      <MetadataHeader
+        title="Sorakhmer | Error 404"
+        description="Welcome to Sorakhmer"
+      />
       <div className="flex items-center justify-center min-h-screen bg-fixed bg-bottom">
         <div className="container">
           <div className="row">

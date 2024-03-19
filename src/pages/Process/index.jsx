@@ -9,7 +9,7 @@ const Process = () => {
   return (
     <Layout>
       <MetadataHeader
-        title="Production Process"
+        title="Sorakhmer | Production Process"
         description="Welcome to Sorakhmer"
       />
       <div className="overflow-x-hidden">

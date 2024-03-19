@@ -5,7 +5,7 @@ const ShoppingCart = () => {
   return (
     <Layout>
       <MetadataHeader
-        title="Shopping Cart"
+        title="Sorakhmer | Shopping Cart"
         description="Welcome to Sorakhmer"
       />
       <CartItemsSection />

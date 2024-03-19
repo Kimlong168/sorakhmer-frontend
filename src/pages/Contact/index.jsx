@@ -7,7 +7,7 @@ import MetadataHeader from "../../components/ui/MetadataHeader";
 const Contact = () => {
   return (
     <Layout>
-      <MetadataHeader title="Contact Us" description="Welcome to Sorakhmer" />
+      <MetadataHeader title="Sorakhmer | Contact Us" description="Welcome to Sorakhmer" />
       <div className="overflow-x-hidden">
         <PageTitle text="Contact" />
         <ContactForm />
