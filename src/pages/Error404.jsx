@@ -1,4 +1,4 @@
-import MetadataHeader from "../../components/ui/MetadataHeader";
+import MetadataHeader from "../components/ui/MetadataHeader";
 import { Link } from "react-router-dom";
 const Error404 = () => {
   return (
