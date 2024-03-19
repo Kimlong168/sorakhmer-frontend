@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 const Error404 = () => {
   return (
-    <div className="overflow-hidden bg-[#eee]">
+    <div className="overflow-hidden bg-gray-950">
       {/* <Helmet>
         <title>Boyloy-News| Error page not found!</title>
       </Helmet> */}
@@ -11,26 +11,26 @@ const Error404 = () => {
           <div className="row">
             <div className="col-sm-8 offset-sm-2 text-red-600 text-center -mt-52">
               <div className="relative ">
-                <h1 className="relative text-9xl tracking-tighter-less text-shadow font-sans font-bold">
+                <h1 className="relative text-9xl tracking-tighter-less text-shadow font-sans font-bold animate-bounce">
                   <span>4</span>
                   <span>0</span>
                   <span>4</span>
                 </h1>
-                <span className="absolute  top-0   -ml-12  text-red-700 font-semibold">
+                <span className="absolute  top-0   -ml-12  text-primary font-semibold">
                   Oops!
                 </span>
               </div>
-              <h5 className="text-red-700 font-semibold -mr-10 -mt-3">
+              <h5 className="text-primary font-semibold -mr-10 -mt-3">
                 Page not found
               </h5>
-              <p className=" mt-2 mb-6">
+              <p className="text-primary mt-2 mb-12">
                 We are sorry, but the page you requested was not found
               </p>
               <Link
                 to="/"
-                className="border px-5 py-3 text-sm shadow-lg font-medium tracking-wider text-red-600 rounded-full hover:shadow-xl btn btn-sm "
+                className="border border-primary px-5 py-3 text-sm shadow-lg font-medium tracking-wider text-primary hover:text-white hover:bg-primary rounded-full hover:shadow-xl btn btn-sm "
               >
-                Got to Home
+                Go to Home Page
               </Link>
             </div>
           </div>

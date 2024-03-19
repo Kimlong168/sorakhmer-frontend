@@ -42,7 +42,7 @@ const Footer = () => {
               to="/products"
               className="hover:text-primary-light hover:underline"
             >
-              Products
+              Shop
             </Link>
             <Link
               to="/blogs"

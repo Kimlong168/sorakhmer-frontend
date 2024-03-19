@@ -31,7 +31,7 @@ const SideBar = ({ setShowSideBar, showSideBar }) => {
             href="/"
           />
           <LinkContainer
-            heading="Products"
+            heading="Shop"
             subheading="Explore our amazing products"
             imgSrc={allProducts}
             href="/products"

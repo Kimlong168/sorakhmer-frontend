@@ -95,7 +95,7 @@ const Header = () => {
                 <NavLink href="/" title="Home" />
               </li>
               <li className="cursor-pointer">
-                <NavLink href="/products" title="Products" />
+                <NavLink href="/products" title="Shop" />
               </li>
               <li className="cursor-pointer">
                 <NavLink href="/blogs" title="Blogs" />

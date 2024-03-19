@@ -228,7 +228,7 @@ const CartItemsSection = () => {
       total: total,
       status: "pending",
       paymentMethod: "default",
-      date: new Date().toLocaleString(),
+      date: new Date().toLocaleString('en-GB'),
       timeStamp: new Date().getTime(),
     };
 
