@@ -7,7 +7,6 @@ function MetadataHeader({
 }) {
   return (
     <Helmet>
-      <title>My Awesome Website</title>
       <meta name="description" content={description} />
       <link rel="canonical" href="https://www.sorakhmer.com" />
       <title>{title}</title>

@@ -8,13 +8,19 @@ import PartnerSection from "./PartnerSection";
 import PhotoSection from "./PhotoSection";
 import VideoSection from "./VideoSection";
 import MetadataHeader from "../../components/ui/MetadataHeader";
+import { useContext } from "react";
+import { DataContext } from "../../contexts/DataContext";
 const About = () => {
+  const { language } = useContext(DataContext);
   return (
     <div>
       <Layout>
-        <MetadataHeader title="Sorakhmer | About Us" description="Welcome to Sorakhmer" />
+        <MetadataHeader
+          title="Sorakhmer | About Us"
+          description="Welcome to Sorakhmer"
+        />
         <div className="overflow-x-hidden">
-          <PageTitle text="About us" />
+          <PageTitle text={language == "en" ? "About us" : "អំពីយើង"} />
           <HistorySection />
           <MissionAndVisionSection />
           <FounderSection />

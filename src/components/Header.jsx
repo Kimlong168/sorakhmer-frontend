@@ -19,11 +19,11 @@ import { DataContext } from "../contexts/DataContext";
 import LinkIcon from "./ui/LinkIcon";
 import convertToPhoneNumber from "../utils/convertToPhoneNumber";
 import scrollTop from "../utils/scrollTop";
+import LanguageSwitchButton from "./ui/LanguageSwitchButton";
 
 const Header = () => {
+  const { contactList, cartItems, language } = useContext(DataContext);
 
-  const { contactList } = useContext(DataContext);
-  const { cartItems } = useContext(DataContext);
   const contactInfo = contactList.map((item) => item)[0];
   const [showSideBar, setShowSideBar] = useState(false);
 
@@ -73,36 +73,46 @@ const Header = () => {
       <header className="text-primary-content sticky top-0 bg-white z-[10] shadow-xl">
         <nav className="flex justify-between items-center gap-5 px-6 md:px-8 p-2 bg-primary-content text-white">
           <div
-            className="flex item-center gap-10 md:gap-24"
+            className="flex item-center gap-10 md:gap-20"
             onClick={scrollToTop}
           >
             {/* logo */}
             <Link to="/">
               <div className="w-[80px]  md:w-[100px]">
-                {/* {theme !== "light" ? (
-                  <img src={logoLight} alt="logo" />
-                ) : (
-                  <img src={logo} alt="logo" />
-                )} */}
-
                 <img src={logo} alt="logo" />
               </div>
             </Link>
 
             {/* tab */}
-            <ul className="hidden lg:flex items-center gap-8 font-bold uppercase">
+            <ul
+              className={`hidden lg:flex items-center gap-8 font-bold uppercase  ${
+                language !== "en" && "text-lg"
+              }`}
+            >
               <li className="cursor-pointer">
-                <NavLink href="/" title="Home" />
+                <NavLink
+                  href="/"
+                  title={`${language == "en" ? "Home" : "ទំព័រដើម"}`}
+                />
               </li>
               <li className="cursor-pointer">
-                <NavLink href="/products" title="Shop" />
+                <NavLink
+                  href="/products"
+                  title={`${language == "en" ? "Shop" : "ទិញទំនិញ"}`}
+                />
               </li>
               <li className="cursor-pointer">
-                <NavLink href="/blogs" title="Blogs" />
+                <NavLink
+                  href="/blogs"
+                  title={`${language == "en" ? "Blogs" : "អត្ថបទ"}`}
+                />
               </li>
 
               <li className="cursor-pointer">
-                <NavLink href="/contact" title="Contact" />
+                <NavLink
+                  href="/contact"
+                  title={`${language == "en" ? "Contact" : "ទំនាក់ទំនង"}`}
+                />
               </li>
               <li className="cursor-pointer">
                 <NavLinkDropdown />
@@ -111,6 +121,8 @@ const Header = () => {
           </div>
 
           <div className="flex items-center gap-6 md:gap-5 text-xl md:text-2xl">
+            {/* language switch button */}
+            <LanguageSwitchButton />
             {/* light and dark mode icon */}
             <ToggleLightDarkMode />
             {/* shopping cart icon */}

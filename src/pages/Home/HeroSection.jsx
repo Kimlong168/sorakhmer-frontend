@@ -1,29 +1,30 @@
 import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
-import { useEffect, useRef, useState } from "react";
-import herophoto1 from "../../assets/images/heroPhoto/heroPhoto1.jpg";
+import { useContext, useEffect, useRef, useState } from "react";
+// import herophoto1 from "../../assets/images/heroPhoto/heroPhoto1.jpg";
 import herophoto2 from "../../assets/images/heroPhoto/heroPhoto2.jpg";
-import herophoto3 from "../../assets/images/heroPhoto/heroPhoto3.jpg";
+// import herophoto3 from "../../assets/images/heroPhoto/heroPhoto3.jpg";
 import herophoto4 from "../../assets/images/heroPhoto/heroPhoto4.jpg";
 import herophoto5 from "../../assets/images/heroPhoto/heroPhoto5.jpg";
 import herophoto6 from "../../assets/images/heroPhoto/heroPhoto6.jpg";
 import herophoto7 from "../../assets/images/heroPhoto/heroPhoto7.jpg";
 import herophoto8 from "../../assets/images/heroPhoto/heroPhoto8.jpg";
-import herophoto9 from "../../assets/images/heroPhoto/heroPhoto9.jpg";
+// import herophoto9 from "../../assets/images/heroPhoto/heroPhoto9.jpg";
 import herophoto10 from "../../assets/images/heroPhoto/heroPhoto10.jpg";
 
-import sora2 from "../../assets/images/sora2.jpg";
-import sora3 from "../../assets/images/sora3.jpg";
+import sora1 from "../../assets/images/sora1.jpg";
 import sora4 from "../../assets/images/sora4.jpg";
 import sora5 from "../../assets/images/sora5.jpg";
-import sora8 from "../../assets/images/sora8.jpg";
+import sora7 from "../../assets/images/sora7.jpg";
 
 import allProducts from "../../assets/images/allProducts.jpg";
 
 import PrimaryButton from "../../components/ui/PrimaryButton";
 import { TypeAnimation } from "react-type-animation";
+import { DataContext } from "../../contexts/DataContext";
 // import dragon from "../../assets/images/dragon.png";
 const HeroSection = () => {
+  const { language } = useContext(DataContext);
   return (
     // items-center
     <section className="w-full px-8 py-10 sm:py-20 grid grid-cols-1 md:grid-cols-2  gap-8 md:gap-24  mx-auto container">
@@ -34,7 +35,9 @@ const HeroSection = () => {
         viewport={{ once: true, amount: 0.5 }}
       >
         <span className="block mb-4 text-xs md:text-sm text-primary font-medium">
-          Explore quality and value with us
+          {language == "en"
+            ? "Explore quality and value with us"
+            : "ស្វែងយល់ពីគុណភាព និងគុណតម្លៃរបស់យើង"}
         </span>
         <h3 className="text-4xl md:text-5xl lg:text-6xl">
           <div className=" font-primary">
@@ -46,25 +49,33 @@ const HeroSection = () => {
                 2000,
                 "Welcome to",
                 2000,
-                "へようこそ",
+                "ようこそ",
                 2000,
               ]}
               className="text-accent"
               wrapper="span"
               repeat={Infinity}
             />
+
             <span className="invisible">I</span>
           </div>
-          <h1 className="mt-2 font-primary-bold">
-            SORA KHMER<span className="text-primary font-bold">.</span>
+          <h1 className="mt-4 font-primary-bold">
+            {language == "en" ? "SORAKHMER" : "សុរាខ្មែរ"}
+            <span className="text-primary font-bold">.</span>
           </h1>
         </h3>
-        <p className="text-base md:text-lg  my-4 md:my-6 porse lg:prose-xl">
-          Fine spirits supporting post-demining sustainable community
-          development<span className="text-primary font-bold">.</span>
+        <p className=" my-4 md:my-6 lg:prose-xl">
+          {language == "en"
+            ? "Fine spirits supporting post-demining sustainable community development"
+            : "យើងមានស្មារតីគាំទ្រដល់ការអភិវឌ្ឍន៍សហគមន៍ប្រកបដោយនិរន្តរភាពក្រោយការដោះមីន"}
+
+          <span className="text-primary font-bold">.</span>
         </p>
         <div className="hidden md:block">
-          <PrimaryButton content="Contact Us" href="/contact" />
+          <PrimaryButton
+            content={language == "en" ? "contact us" : "ទំនាក់ទំនងយើង"}
+            href="/contact"
+          />
         </div>
       </motion.div>
       <motion.div
@@ -102,16 +113,16 @@ const shuffle = (array) => {
 const squareData = [
   {
     id: 1,
-    src: herophoto1,
+    src: sora1,
   },
   {
     id: 2,
     src: herophoto2,
   },
-  {
-    id: 3,
-    src: herophoto3,
-  },
+  // {
+  //   id: 3,
+  //   src: sora2,
+  // },
   {
     id: 4,
     src: herophoto4,
@@ -133,10 +144,10 @@ const squareData = [
     id: 8,
     src: herophoto8,
   },
-  {
-    id: 9,
-    src: herophoto9,
-  },
+  // {
+  //   id: 9,
+  //   src: sora3,
+  // },
   {
     id: 10,
     src: herophoto10,
@@ -145,14 +156,14 @@ const squareData = [
     id: 11,
     src: allProducts,
   },
-  {
-    id: 12,
-    src: sora2,
-  },
-  {
-    id: 13,
-    src: sora3,
-  },
+  // {
+  //   id: 12,
+  //   src: sora2,
+  // },
+  // {
+  //   id: 13,
+  //   src: sora3,
+  // },
   {
     id: 14,
     src: sora4,
@@ -163,7 +174,7 @@ const squareData = [
   },
   {
     id: 18,
-    src: sora8,
+    src: sora7,
   },
 ];
 

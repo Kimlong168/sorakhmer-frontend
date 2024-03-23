@@ -8,12 +8,16 @@ const PageTitle = ({ text = "About" }) => {
   var screenHeight = window.innerHeight;
 
   // Subtract 250 pixels from the screen height
-  var adjustedHeight = screenHeight - 250;
+  var adjustedHeight = screenHeight - 200;
 
   return (
-    <section className="relative">
-      <div className="absolute bg-pageTitleSmall md:bg-pageTitle brightness-[0.5] bg-repeat-round inset-0"></div>
-      <div className="relative z-2" style={{ height: adjustedHeight }}>
+    <section className="relative -mb-6">
+      <div className="absolute bg-pageTitleSmall md:bg-pageTitle brightness-[0.7]  inset-0 bg-cover bg-center bg-no-repeat  xl:bg-contain xl:bg-left xl:bg-repeat-round 2xl:bg-cover 2xl:bg-center 2xl:bg-no-repeat"></div>
+      {/* bg-repeat-round */}
+      <div
+        className="relative z-2 overflow-hidden"
+        style={{ height: adjustedHeight }}
+      >
         <div
           style={{ height: adjustedHeight }}
           className="container mx-auto flex justify-center items-center"

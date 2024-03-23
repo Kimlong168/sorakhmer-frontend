@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import { FaArrowDown, FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const WhereToBuySection = () => {
-  const { storeList } = useContext(DataContext);
+  const { storeList, language } = useContext(DataContext);
   const [cityList, setCityList] = useState([]);
   const [openItemIndex, setOpenItemIndex] = useState(null);
 
@@ -30,7 +30,8 @@ const WhereToBuySection = () => {
     <section className="container p-8 md:pt-0">
       <div className="pt-12 md:py-12">
         <h3 className="text-nowrap text-center font-primary-bold text-4xl md:text-5xl ">
-          Where To Buy<span className="text-primary font-bold">.</span>
+          {language == "en" ? "Where To Buy" : "ទិញផលិតផលយើងនៅ"}
+          <span className="text-primary font-bold">.</span>
         </h3>
         <div className="mt-8">
           {cityList &&
@@ -55,6 +56,7 @@ const WhereToBuySection = () => {
                         key={store.id}
                       >
                         <Collapsible
+                          language={language}
                           title={store.storeName}
                           content={{
                             mapLink: store.mapLink,
@@ -79,7 +81,7 @@ const WhereToBuySection = () => {
   );
 };
 
-const Collapsible = ({ title, content, isOpen, onToggle }) => {
+const Collapsible = ({ title, content, isOpen, onToggle, language }) => {
   return (
     <div className="w-full mx-auto">
       <div className={`border rounded w-full ${isOpen && "border-primary"}`}>
@@ -91,7 +93,7 @@ const Collapsible = ({ title, content, isOpen, onToggle }) => {
         >
           {/* title */}
           {title}
-          <span className="text-primary"> 
+          <span className="text-primary">
             {isOpen ? <FaArrowDown className="text-white" /> : <FaArrowRight />}
           </span>
         </button>
@@ -110,7 +112,7 @@ const Collapsible = ({ title, content, isOpen, onToggle }) => {
                 <div>
                   {/* store name */}
                   <span className="font-semibold capitalize">
-                    Store name:
+                    {language == "en" ? "Store name: " : "ហាង:"}
                   </span>{" "}
                   {content.storeName}
                 </div>
@@ -118,7 +120,9 @@ const Collapsible = ({ title, content, isOpen, onToggle }) => {
                 {/* address */}
                 {content.address && (
                   <div>
-                    <span className="font-semibold">Address:</span>{" "}
+                    <span className="font-semibold">
+                      {language == "en" ? "Address: " : "អាស័យដ្ឋាន:"}
+                    </span>{" "}
                     {content.address}
                   </div>
                 )}
@@ -126,7 +130,9 @@ const Collapsible = ({ title, content, isOpen, onToggle }) => {
                 {/* phone number */}
                 {content.phone && (
                   <div>
-                    <span className="font-semibold">Phone:</span>{" "}
+                    <span className="font-semibold">
+                      {language == "en" ? "Phone: " : "ទូរស័ព្ទ:"}
+                    </span>{" "}
                     {content.phone}
                   </div>
                 )}
@@ -135,13 +141,12 @@ const Collapsible = ({ title, content, isOpen, onToggle }) => {
                 <div>
                   {content.mapLink && (
                     <>
-                      <span className="font-semibold">Map:</span>
-
+                      <span className="font-semibold">{language == "en" ? "Map:" : "ផែនទី:"}</span>{" "}
                       <Link
                         to={content.mapLink}
                         className="underline text-blue-400"
                       >
-                        Open map
+                       {language == "en" ? "Open map" : "មើលផែនទី"}
                       </Link>
                     </>
                   )}
@@ -167,6 +172,7 @@ const Collapsible = ({ title, content, isOpen, onToggle }) => {
 };
 
 Collapsible.propTypes = {
+  language: PropTypes.string,
   title: PropTypes.string,
   content: PropTypes.object,
   isOpen: PropTypes.bool,

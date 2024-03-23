@@ -13,7 +13,8 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
 import { Link } from "react-router-dom";
 const BlogListSection = () => {
-  const { blogList, authorList, blogCategoryList } = useContext(DataContext);
+  const { blogList, authorList, blogCategoryList, language } =
+    useContext(DataContext);
   const [visible1, setVisible1] = useState(6);
   const [visible2, setVisible2] = useState(4);
   const [filter, setFilter] = useState("default");
@@ -52,12 +53,13 @@ const BlogListSection = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     setFilter("default");
-    const searchedBlog = blogList.filter((blog) =>
-      blog.title.toLowerCase().includes(searchKeyword.toLowerCase().trim()) && blog.isActive
+    const searchedBlog = blogList.filter(
+      (blog) =>
+        blog.title.toLowerCase().includes(searchKeyword.toLowerCase().trim()) &&
+        blog.isActive
     );
     setActiveBlog(searchedBlog);
     setIsSearched(true);
-   
   };
 
   return (
@@ -77,7 +79,7 @@ const BlogListSection = () => {
                 }}
                 className="px-4 py-2 font-bold"
               >
-                All Blogs
+                {language == "en" ? "All Blogs" : "អត្ថបទទាំងអស់"}
               </button>
             </DrawOutlineButton>
 
@@ -88,7 +90,10 @@ const BlogListSection = () => {
                 value={filter}
                 onChange={(e) => setFilter(e.target.value)}
               >
-                <option value="default">All Categories</option>
+                <option value="default">
+                  {" "}
+                  {language == "en" ? "All Categories" : "ប្រភេទទាំងអស់"}
+                </option>
                 {activeCategory.map((category) => (
                   <option key={category.id} value={category.id}>
                     {category.categoryName}
@@ -106,7 +111,7 @@ const BlogListSection = () => {
                 <input
                   className="outline-none border-none p-1 w-full bg-transparent"
                   type="text"
-                  placeholder="Search..."
+                  placeholder={language == "en" ? "Search..." : "ស្វែងរក..."}
                   name="search"
                   value={searchKeyword}
                   onChange={(e) => {

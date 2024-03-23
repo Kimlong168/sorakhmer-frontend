@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
-import { FaFacebook, FaLine, FaTelegram } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import LinkIcon from "../../components/ui/LinkIcon";
@@ -12,7 +11,7 @@ import WarningModal from "../../components/ui/WarningModal";
 import RedStar from "../../components/ui/RedStar";
 const ContactSection = () => {
   // get user email to cc to the user when they submit the contact form
-  const { contactList } = useContext(DataContext);
+  const { contactList, language } = useContext(DataContext);
   const contactInfo = contactList.map((item) => item)[0];
   const [formData, setFormData] = useState({
     fullname: "",
@@ -102,7 +101,8 @@ const ContactSection = () => {
           {/* map */}
           <div>
             <h3 className="text-nowrap font-primary-bold text-4xl md:text-5xl ">
-              Our Company<span className="text-primary font-bold">.</span>
+              {language == "en" ? "Our Company" : "ក្រុមហ៊ុនខ្មែរយ៉ូរីយូ"}
+              <span className="text-primary font-bold">.</span>
             </h3>
             <motion.div
               variants={fadeIn("right", 0.2)}
@@ -111,16 +111,17 @@ const ContactSection = () => {
               viewport={{ once: true, amount: 0.3 }}
             >
               {/* company address */}
-              <div className="pt-8 pb-2 porse lg:prose-xl ">
-                #45, st. 59, Au anlok village, Tasen commune, Kamrieng district,
-                Battambang Province, Cambodia.
+              <div className="pt-8 mb-4 lg:prose-xl ">
+                {language == "en"
+                  ? "  #45, st. 59, Au anlok village, Tasen commune, Kamrieng district, Battambang Province, Cambodia."
+                  : "ភូមិអូអន្លក់ ឃុំតាសែន ស្រុកកំរៀង ខេត្តបាត់ដំបង ព្រះរាជាណាចក្រកម្ពុជា"}
               </div>
 
               <div>
                 {/* google map */}
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2376179.8368609776!2d103.5552563901511!3d12.003517282077828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3104b5c321b14653%3A0x37f19d875254fa2b!2sKhmer%20Jyoryu%20company!5e0!3m2!1skm!2skh!4v1707702223808!5m2!1skm!2skh"
-                  className="w-full lg:w-[75%]"
+                  className="w-full xl:w-[80%]"
                   height="310"
                   style={{ border: 0 }}
                   allowFullScreen=""
@@ -133,10 +134,11 @@ const ContactSection = () => {
           {/* contact info */}
           <div className="mt-10">
             <h3 className="text-nowrap font-primary-bold text-4xl md:text-5xl ">
-              Our Contact<span className="text-primary font-bold">.</span>
+              {language == "en" ? "Our Contact" : "ទំនាក់ទំនងតាមរយៈ"}
+              <span className="text-primary font-bold">.</span>
             </h3>
 
-            {contactInfo ? (
+            {contactInfo && (
               <motion.div
                 variants={fadeIn("right", 0.2)}
                 initial="hidden"
@@ -147,7 +149,7 @@ const ContactSection = () => {
                 <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
                   {/* phone */}
                   <div>
-                    Phone:{" "}
+                    {language == "en" ? "Phone" : "លេខទូរស័ព្ទ"}:{" "}
                     <Link to={`tel:${contactInfo.phoneNumber}`}>
                       {convertToPhoneNumber(contactInfo.phoneNumber)}
                     </Link>
@@ -156,7 +158,7 @@ const ContactSection = () => {
                 <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
                   {/* email */}
                   <div>
-                    Email:{" "}
+                    {language == "en" ? "Email" : "អ៊ីម៉ែល"}:{" "}
                     <Link to={`mailto:${contactInfo.email}`}>
                       {contactInfo.email}
                     </Link>
@@ -165,40 +167,17 @@ const ContactSection = () => {
                 <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
                   {/* telegram */}
                   <div>
-                    Telegram: <Link to={contactInfo.telegram}>@sorakhmer</Link>
+                    {" "}
+                    {language == "en" ? "Telegram" : "តេលេក្រាម"}:{" "}
+                    <Link to={contactInfo.telegram}>@sorakhmer</Link>
                   </div>
                 </div>
               </motion.div>
-            ) : (
-              <div className="pt-6 pb-3">
-                <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
-                  {/* phone */}
-                  <div>
-                    Phone: <Link to="tel:012739573">012 739 573</Link>
-                  </div>
-                </div>
-                <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
-                  {/* email */}
-                  <div>
-                    Email:{" "}
-                    <Link to="mailto:hongmean2002@yahoo.com">
-                      hongmean2002@yahoo.com
-                    </Link>
-                  </div>
-                </div>
-                <div className=" hover:text-primary hover:underline cursor-pointer w-fit">
-                  {/* telegram */}
-                  <div>
-                    Telegram:{" "}
-                    <Link to="https://t.me/+85512739573">@sorakhmer</Link>
-                  </div>
-                </div>
-              </div>
             )}
 
             {/* social media */}
-            <div className="flex items-center gap-4 text-2xl ">
-              {contactInfo ? (
+            <div className="flex items-center gap-4 text-2xl mt-4">
+              {contactInfo &&
                 contactInfo.socialMedia.map((item, index) => (
                   <Link
                     to={item.url}
@@ -207,29 +186,7 @@ const ContactSection = () => {
                   >
                     <LinkIcon title={item.title} size={32} />
                   </Link>
-                ))
-              ) : (
-                <>
-                  <Link
-                    to="https://www.facebook.com/sorakhmer1"
-                    className="hover:text-primary-light hover:underline"
-                  >
-                    <FaFacebook size={32} />
-                  </Link>
-                  <Link
-                    to="https://line.me/ti/p/KqXNVPfm2p"
-                    className="hover:text-primary-light hover:underline"
-                  >
-                    <FaLine size={32} />
-                  </Link>
-                  <Link
-                    to="https://t.me/+85512739573"
-                    className="hover:text-primary-light hover:underline"
-                  >
-                    <FaTelegram size={32} />
-                  </Link>
-                </>
-              )}
+                ))}
             </div>
           </div>
         </div>
@@ -237,7 +194,8 @@ const ContactSection = () => {
         {/* contact form */}
         <div className="w-full">
           <h3 className="text-nowrap font-primary-bold text-4xl md:text-5xl ">
-            Send a message<span className="text-primary font-bold">.</span>
+            {language == "en" ? "Send a message" : "ផ្ញើសារមកកាន់យើង"}
+            <span className="text-primary font-bold">.</span>
           </h3>
 
           {/* form submit message */}
@@ -248,14 +206,14 @@ const ContactSection = () => {
             viewport={{ once: true, amount: 0.3 }}
             onSubmit={(e) => sendToTelegram(e)}
           >
-            <div className="flex flex-col gap-3 mt-5 md:mt-8 ">
+            <div className="flex flex-col gap-3 mt-5 md:mt-8">
               <div className="flex flex-col gap-0.5">
                 {/* input fullname */}
-                <label>
-                  Fullname <RedStar />
+                <label className="lg:prose-xl ">
+                  {language == "en" ? "Fullname" : "ឈ្មោះ"} <RedStar />
                 </label>
                 <input
-                  className="border border-border focus:border-primary outline-none p-2 rounded dark:bg-transparent"
+                  className="border border-border focus:border-primary outline-none p-2.5 rounded bg-transparent"
                   type="text"
                   name="fullname"
                   onChange={(e) => handleOnChange(e)}
@@ -264,9 +222,13 @@ const ContactSection = () => {
 
               <div className="flex flex-col gap-0.5">
                 {/* input social media  */}
-                <label>Social media (Telegram, Line, Facebook,...)</label>
+                <label className="lg:prose-xl ">
+                  {" "}
+                  {language == "en" ? "Social media" : "បណ្តាញសង្គម"}(Telegram,
+                  Line, Facebook,...)
+                </label>
                 <input
-                  className="border border-border focus:border-primary outline-none p-2 rounded dark:bg-transparent"
+                  className="border border-border focus:border-primary outline-none p-2.5 rounded bg-transparent"
                   type="url"
                   name="socialMediaLink"
                   onChange={(e) => handleOnChange(e)}
@@ -275,9 +237,11 @@ const ContactSection = () => {
 
               <div className="flex flex-col gap-0.5">
                 {/* input email */}
-                <label>Email</label>
+                <label className="lg:prose-xl ">
+                  {language == "en" ? "Email" : "អ៊ីម៉ែល"}
+                </label>
                 <input
-                  className="border border-border focus:border-primary outline-none p-2 rounded dark:bg-transparent"
+                  className="border border-border focus:border-primary outline-none p-2.5 rounded bg-transparent"
                   type="email"
                   name="email"
                   onChange={(e) => handleOnChange(e)}
@@ -286,9 +250,11 @@ const ContactSection = () => {
 
               <div className="flex flex-col gap-0.5">
                 {/* input phone */}
-                <label>Phone</label>
+                <label className="lg:prose-xl ">
+                  {language == "en" ? "Phone" : "លេខទូរស័ព្ទ"}
+                </label>
                 <input
-                  className="border border-border focus:border-primary outline-none p-2 rounded dark:bg-transparent"
+                  className="border border-border focus:border-primary outline-none p-2.5 rounded bg-transparent"
                   type="tel"
                   name="phone"
                   onChange={(e) => handleOnChange(e)}
@@ -297,9 +263,12 @@ const ContactSection = () => {
 
               <div className="flex flex-col gap-0.5">
                 {/* input country */}
-                <label>Address</label>
+                <label className="lg:prose-xl ">
+                  {" "}
+                  {language == "en" ? "Address" : "អាសយដ្ឋាន"}
+                </label>
                 <input
-                  className="border border-border focus:border-primary outline-none p-2 rounded dark:bg-transparent"
+                  className="border border-border focus:border-primary outline-none p-2.5 rounded bg-transparent"
                   type="text"
                   name="address"
                   onChange={(e) => handleOnChange(e)}
@@ -307,11 +276,12 @@ const ContactSection = () => {
               </div>
               <div className="flex flex-col gap-0.5">
                 {/* input message */}
-                <label>
-                  Message <RedStar />
+                <label className="lg:prose-xl ">
+                  {language == "en" ? "Message" : "ការពិពណ៌នា"}
+                  <RedStar />
                 </label>
                 <textarea
-                  className="border border-border focus:border-primary outline-none p-2 rounded dark:bg-transparent"
+                  className="border border-border focus:border-primary outline-none p-2.5 rounded bg-transparent"
                   name="description"
                   cols="30"
                   rows="5"
@@ -322,9 +292,9 @@ const ContactSection = () => {
               {/* submit button */}
               <button
                 type="submit"
-                className="border-2 border-dashed border-primarypx-6 py-3 font-semibold uppercase text-primary transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-xl hover:shadow-[4px_4px_0px_rgb(245,156,0)] active:translate-x-[0px] active:translate-y-[0px] active:rounded-lg active:shadow-none"
+                className="lg:prose-xl border-2 border-dashed border-primary px-6 py-2 font-semibold uppercase text-primary  transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-xl hover:shadow-[4px_4px_0px_rgb(245,156,0)] active:translate-x-[0px] active:translate-y-[0px] active:rounded-lg active:shadow-none"
               >
-                Send
+                {language == "en" ? "Send" : "ផ្ញើសារ"}
               </button>
             </div>
           </motion.form>
@@ -333,18 +303,31 @@ const ContactSection = () => {
           <WarningModal
             isOpen={isShowWarning}
             setIsOpen={setIsShowWarning}
-            title="Fill Required Information!"
-            description="Please fill the required fields with * mark. Thank you!"
+            title={
+              language == "en"
+                ? "Fill Required Information!"
+                : "បំពេញព័ត៌មានដែលចាំបាច់!"
+            }
+            description={
+              language == "en"
+                ? "Please fill the required fields with * mark. Thank you!"
+                : "សូមបំពេញព័ត៌មានដែលចាំបាច់ដែលមាន * ជាសម្គាល់។ អរគុណ!"
+            }
           />
 
           {/* submiting successfully alert */}
+
           <SuccessModal
             isOpen={isSubmitted}
             setIsOpen={() => {
               setIsSubmitted(false);
             }}
-            title="Message Sent!"
-            description="Thank you for reaching out to us. We will get back to you as soon as possible."
+            title={language == "en" ? "Message Sent!" : "ផ្ញើសារដោយជោគជ័យ!"}
+            description={
+              language == "en"
+                ? "Thank you for reaching out to us. We will get back to you as soon as possible."
+                : "សូមអរគុណសំរាប់ការទំនាក់ទំនងមកកាន់យើង។ យើងនឹងឆ្លើយតបទៅអ្នកវិញនៅពេលក្រោយ។"
+            }
           />
         </div>
       </div>

@@ -5,13 +5,19 @@ import DistillerySection from "./DistillerySection";
 import FarmSection from "./FarmSection";
 import VisitorSection from "./VisitorSection";
 import MetadataHeader from "../../components/ui/MetadataHeader";
+import { useContext } from "react";
+import { DataContext } from "../../contexts/DataContext";
 const Distillery = () => {
+  const { language } = useContext(DataContext);
   return (
     <>
       <Layout>
-        <MetadataHeader title="Sorakhmer | Distillery" description="Welcome to Sorakhmer" />
+        <MetadataHeader
+          title="Sorakhmer | Distillery"
+          description="Welcome to Sorakhmer"
+        />
         <div className="overflow-x-hidden">
-          <PageTitle text="Distillery" />
+          <PageTitle text={language == "en" ? "Distillery" : "រោងចក្រផលិត"} />
           <IntroSection />
           <DistillerySection />
           <FarmSection />

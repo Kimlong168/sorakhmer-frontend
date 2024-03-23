@@ -22,7 +22,7 @@ const ProductDetailCard = ({
   description,
   productCategoryList,
 }) => {
-  const { addToCart, setShowViewCartBtn } = useContext(DataContext);
+  const { addToCart, setShowViewCartBtn, language } = useContext(DataContext);
   const [showImage, setShowImage] = useState(false);
   const [showDetail, setShowDetail] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -60,7 +60,7 @@ const ProductDetailCard = ({
               </div>
               <div>
                 <div className="font-semibold text-center p-4">
-                  Share this product
+                  {language == "en" ? "Share this product" : "ចែករំលែកទៅកាន់"}
                 </div>
                 <SharingBtn url={currentURL} title={name} />
               </div>
@@ -76,7 +76,7 @@ const ProductDetailCard = ({
 
                 {/* category */}
                 <h4 className="mb-5 text-blue-gray-900 text-sm flex items-center gap-2">
-                  <span>Category: </span>
+                  <span>{language == "en" ? "Category:" : "ប្រភេទ:"} </span>
                   <div className="text-primary">
                     {productCategoryList &&
                       productCategoryList.map((data) => {
@@ -96,7 +96,7 @@ const ProductDetailCard = ({
                         !showDetail && "text-primary border-b-2 border-primary "
                       } cursor-pointer `}
                     >
-                      Description
+                      {language == "en" ? "Description:" : "ការពិពណ៌នា:"}
                     </div>
                     <div
                       onClick={() => setShowDetail(true)}
@@ -104,7 +104,7 @@ const ProductDetailCard = ({
                         showDetail && "text-primary border-b-2 border-primary "
                       } cursor-pointer `}
                     >
-                      Detail
+                      {language == "en" ? "Detail:" : "សេចក្តីលម្អិត:"}
                     </div>
                   </div>
 
@@ -127,7 +127,7 @@ const ProductDetailCard = ({
 
                 {/* price */}
                 <div className="flex items-center gap-8 mt-8">
-                  Price:
+                  {language == "en" ? "Price:" : "តម្លៃ:"}
                   <h5 className="font-bold text-4xl">
                     $ {`${price}${!price.includes(".") ? ".00" : ""}`}
                   </h5>
@@ -168,7 +168,7 @@ const ProductDetailCard = ({
                   }}
                 >
                   <button className="flex items-center gap-2 p-2.5 font-bold rounded bg-blue-500 hover:bg-blue-600 text-white">
-                    Copy Link
+                    {language == "en" ? "Copy Link" : "ចម្លងតំណ"}
                     {copied ? (
                       <IoMdCheckmarkCircleOutline className="animate-ping" />
                     ) : (
@@ -186,7 +186,11 @@ const ProductDetailCard = ({
             <div className="flex flex-col gap-1 w-72 fixed top-1 right-2 z-50 pointer-events-none">
               <AnimatePresence>
                 <Notification
-                  text="Product link is copied!"
+                  text={
+                    language == "en"
+                      ? "Product link is copied!"
+                      : "តំណផលិតផលនេះត្រូវបានចម្លង!"
+                  }
                   removeNotif={() => setCopied(false)}
                   id={currentURL}
                   bg="bg-blue-500"
@@ -201,7 +205,9 @@ const ProductDetailCard = ({
             <div className="flex flex-col gap-1 w-72 fixed top-1 right-2 z-50 pointer-events-none">
               <AnimatePresence>
                 <Notification
-                  text={`${name} is added to cart!`}
+                  text={`${name} ${
+                    language == "en" ? "is added to" : "បានបញ្ជូលទៅក្នុង"
+                  } cart!`}
                   removeNotif={() => setIsAddedtoCart(false)}
                   id={id}
                   bg="bg-primary"

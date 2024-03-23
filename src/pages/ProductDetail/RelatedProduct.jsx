@@ -2,8 +2,11 @@ import BackToPrevBtn from "../../components/ui/BackToPrevBtn";
 import GoToTop from "../../components/ui/GoToTop";
 import PropType from "prop-types";
 import ProductCard from "../../components/ui/ProductCard";
+import { useContext } from "react";
+import { DataContext } from "../../contexts/DataContext";
 
 const RelatedProduct = ({ relatedProduct }) => {
+  const { language } = useContext(DataContext);
   return (
     <div>
       {/* related content */}
@@ -11,7 +14,7 @@ const RelatedProduct = ({ relatedProduct }) => {
         <div className="mb-8">
           <div className="text-white font-semibold  bg-primary px-5 py-3 mt-8 rounded-sm flex items-center justify-between">
             <small className="border-l-[5px] pl-5 border-white text-lg md:text-xl uppercase ">
-              Related Products
+               {language == "en" ? "Related Products" : "ផលិតផលដែលពាក់ព័ន្ធ"}
             </small>
           </div>
 

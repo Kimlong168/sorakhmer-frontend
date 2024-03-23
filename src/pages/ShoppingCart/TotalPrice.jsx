@@ -2,7 +2,7 @@ import PropType from "prop-types";
 import LinkIcon from "../../components/ui/LinkIcon";
 import { Link } from "react-router-dom";
 import { FaFacebook, FaLine, FaTelegram } from "react-icons/fa";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../contexts/DataContext";
 import cambodiaFlag from "../../assets/images/cambodiaFlag.png";
 import usFlag from "../../assets/images/us-flag.png";
@@ -21,9 +21,13 @@ const TotalPrice = ({
   orderId,
   changeContent,
 }) => {
-  const { contactList } = useContext(DataContext);
+  const { contactList, language } = useContext(DataContext);
   const contactInfo = contactList.map((item) => item)[0];
-  const [language, setLanguage] = useState("us");
+  const [languageInBox, setLanguageInBox] = useState(language);
+
+  useEffect(() => {
+    setLanguageInBox(language);
+  }, [language]);
 
   return (
     <div className="mb-8">
@@ -31,22 +35,26 @@ const TotalPrice = ({
         {/* show when there is at least one product in the cart */}
         {total !== "0" && (
           <div className={`w-full ${isOpenForm && " lg:mb-4 lg:ml-4"}`}>
-            <table className="border-collapse w-full dark:bg-gray-950">
+            <table
+              className={`border-collapse w-full bg-white  text-black ${
+                !isOpenForm && "dark:bg-gray-950 dark:text-white "
+              }`}
+            >
               <thead>
                 <th
                   colSpan={2}
                   className="p-3 text-left font-bold pr-3 break-keep uppercase bg-primary  border border-gray-300  table-cell"
                 >
-                  Total Price
+                  {language == "en" ? "Total Price" : "តម្លៃសរុប"}
                 </th>
               </thead>
               <tbody className="text-left ">
                 <tr>
                   {/* subtotal */}
-                  <td className="p-3 border-l border-gray-300 text-gray-700 table-cell dark:text-white">
-                    Subtotal:
+                  <td className="p-3 border-l border-gray-300 table-cell">
+                    {language == "en" ? "Subtotal:" : "សរុប"}
                   </td>
-                  <td className="p-3 border-r border-gray-300 text-gray-700 table-cell dark:text-white">
+                  <td className="p-3 border-r border-gray-300 table-cell">
                     ${!changeContent && subtotal}
                     {changeContent && subtotal}
                     {!subtotal.includes(".") ? ".00" : ""}
@@ -54,19 +62,19 @@ const TotalPrice = ({
                 </tr>
                 {/* other price = 0 */}
                 <tr>
-                  <td className="p-3 border-l  border-gray-300 text-gray-700 table-cell dark:text-white">
-                    Other:
+                  <td className="p-3 border-l  border-gray-300 table-cell">
+                    {language == "en" ? "Other:" : "ផ្សេងៗ"}
                   </td>
-                  <td className="p-3 border-r border-gray-300 text-gray-700 table-cell dark:text-white">
+                  <td className="p-3 border-r border-gray-300 table-cell">
                     $ {`${otherPrice}${!otherPrice.includes(".") ? ".00" : ""}`}
                   </td>
                 </tr>
                 {/* total price */}
                 <tr>
-                  <td className="p-3 border border-r-0 border-gray-300 text-gray-700 table-cell dark:text-white">
-                    Total:
+                  <td className="p-3 border border-r-0 border-gray-300 table-cell">
+                    {language == "en" ? "Total:" : "តម្លៃសរុបរួម"}
                   </td>
-                  <td className="p-3 border border-l-0 border-gray-300 text-gray-700 table-cell dark:text-white  font-bold pr-3 break-keep">
+                  <td className="p-3 border border-l-0 border-gray-300 table-cell  font-bold pr-3 break-keep">
                     $ {!changeContent && total}
                     {changeContent && total}
                     {!total.includes(".") ? ".00" : ""}
@@ -77,7 +85,7 @@ const TotalPrice = ({
                   <tr>
                     <td
                       colSpan={2}
-                      className="p-3 border text-center border-gray-300 text-gray-700 table-cell dark:text-white"
+                      className="p-3 border text-center border-gray-300 table-cell"
                     >
                       <button
                         onClick={() => {
@@ -85,7 +93,8 @@ const TotalPrice = ({
                         }}
                         className="bg-primary text-white font-bold pr-3 break-keep w-full h-full py-2 rounded hover:bg-primary-dark flex items-center justify-center gap-2"
                       >
-                        Place Order <FaShoppingCart />
+                        {language == "en" ? "Place Order" : "បញ្ជាទិញ"}{" "}
+                        <FaShoppingCart />
                       </button>
                     </td>
                   </tr>
@@ -98,7 +107,7 @@ const TotalPrice = ({
         {!isOpenForm ? (
           <div className="w-full h-[100%] inline-block bg-black/90 p-4 text-white relative pt-14  md:pt-4 ">
             {/* how to buy introduction */}
-            {language === "us" ? (
+            {languageInBox === "en" ? (
               <div>
                 <h4 className="text-white text-center text-2xl mb-4">
                   How to buy our products?
@@ -160,7 +169,8 @@ const TotalPrice = ({
 
             {/* social media icon */}
             <div className="mt-5 flex gap-4 items-center">
-              Contact Us:{" "}
+              {" "}
+              {language == "en" ? " Contact Us:" : "ទំនាក់ទំនងយើង៖"}
               <div className="flex items-center gap-3">
                 {contactInfo ? (
                   contactInfo.socialMedia.map((item, index) => (
@@ -199,17 +209,17 @@ const TotalPrice = ({
             {/* flag KH and US */}
             <div className="mx-8 shadow  text-xs h-10 mt-4 flex gap-2 p-1 absolute top-0 -right-4 items-center">
               <div
-                onClick={() => setLanguage("kh")}
+                onClick={() => setLanguageInBox("kh")}
                 className={`w-full flex justify-center p-1 px-2 rounded ${
-                  language == "kh" ? "bg-white" : " cursor-pointer"
+                  languageInBox == "kh" ? "bg-white" : " cursor-pointer"
                 } `}
               >
                 <img className="w-5 h-5" src={cambodiaFlag} alt="" />
               </div>
               <div
-                onClick={() => setLanguage("us")}
+                onClick={() => setLanguageInBox("en")}
                 className={`w-full flex justify-center p-1 px-2 rounded ${
-                  language == "us" ? "bg-white" : " cursor-pointer"
+                  languageInBox == "en" ? "bg-white" : " cursor-pointer"
                 } `}
               >
                 <img className="w-5 h-5" src={usFlag} alt="" />
@@ -226,6 +236,7 @@ const TotalPrice = ({
               <div className="w-full">
                 <table className="w-full ">
                   <tbody className="break-all">
+                    {/* order id */}
                     {orderId && (
                       <tr>
                         <td className="flex items-start">

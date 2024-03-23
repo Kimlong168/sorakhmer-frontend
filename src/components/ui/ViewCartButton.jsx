@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { DataContext } from "../../contexts/DataContext";
 import scrollTop from "../../utils/scrollTop";
 export default function Component() {
-  const { cartItems } = useContext(DataContext);
+  const { cartItems, language } = useContext(DataContext);
   return (
     <div
       className="fixed bottom-5 left-[50%] -translate-x-[50%] z-10"
@@ -12,7 +12,8 @@ export default function Component() {
       <Link to="/cart">
         <button className=" flex justify-center items-center gap-3 animate-bounce p-3 border border-gray-800/70 bg-white/60 dark:border-primary dark:text-primary dark:bg-gray-950/60 rounded">
           <ShoppingCartIcon className="h-6 w-6" />
-          View Cart <span className="text-red-600">({cartItems.length})</span>
+          {language == "en" ? "View Cart" : "ចូលទៅកាន់ Cart"}
+          <span className="text-red-600">({cartItems.length})</span>
         </button>
       </Link>
     </div>

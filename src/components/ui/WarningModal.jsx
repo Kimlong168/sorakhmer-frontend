@@ -1,8 +1,11 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { FiAlertCircle } from "react-icons/fi";
 import PropType from "prop-types";
+import { useContext } from "react";
+import { DataContext } from "../../contexts/DataContext";
 
 const WarningModal = ({ isOpen, setIsOpen, title, description }) => {
+  const { language } = useContext(DataContext);
   return (
     <AnimatePresence>
       {isOpen && (
@@ -37,7 +40,7 @@ const WarningModal = ({ isOpen, setIsOpen, title, description }) => {
                   onClick={() => setIsOpen(false)}
                   className="bg-white hover:opacity-90 transition-opacity text-gray-900 font-semibold w-full py-2 rounded"
                 >
-                  Understood!
+                  {language == "en" ? "Understood!" : "យល់ហើយ!"}
                 </button>
               </div>
             </div>

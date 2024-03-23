@@ -6,7 +6,7 @@ import { FaArrowDown, FaArrowRight } from "react-icons/fa";
 import ContentDisplay from "../../components/ui/ContentDisplay";
 import { DataContext } from "../../contexts/DataContext";
 const ProcessSection = () => {
-  const { processList } = useContext(DataContext);
+  const { processList, language } = useContext(DataContext);
   const [openItemIndex, setOpenItemIndex] = useState(null);
 
   // toggle the collapsible item
@@ -15,17 +15,19 @@ const ProcessSection = () => {
   };
 
   // if there is no process list, return null
-  if (!processList) return null;
+  if (processList.length == 0) return null;
 
   return (
     <section className="container p-8 md:pt-0">
       <div className="pt-12 md:py-12">
         <h3 className="text-nowrap text-center font-primary-bold text-4xl md:text-5xl ">
-          Our Process<span className="text-primary font-bold">.</span>
+          {language == "en" ? "Production Process" : "ដំណើរផលិតផល"}
+          <span className="text-primary font-bold">.</span>
         </h3>
         <p className="text-center mb-8 mt-2 porse lg:prose-xl">
-          Discover how we create our products and explore their ingredients
-          below
+          {language == "en"
+            ? "Discover how we create our products and explore their ingredients below"
+            : "ស្វែងយល់ពីរបៀបដែលយើងបង្កើតផលិតផលរបស់យើង និងស្វែងយល់ពីធាតុផ្សំរបស់វាខាងក្រោម"}
         </p>
 
         <div>
@@ -60,7 +62,7 @@ const Collapsible = ({ title, description, isOpen, onToggle }) => {
       <div className={`border rounded w-full ${isOpen && "border-primary"}`}>
         <button
           onClick={onToggle}
-          className={`w-full px-4 py-2.5  font-semibold focus:outline-none flex justify-between items-center  ${
+          className={`w-full px-4 py-2.5  font-semibold focus:outline-none flex justify-between items-center capitalize ${
             isOpen && "bg-primary text-white"
           }`}
         >

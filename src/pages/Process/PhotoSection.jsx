@@ -29,7 +29,10 @@ import awardOnProducts from "../../assets/images/awardOnProducts.jpg";
 import awardProductsFront from "../../assets/images/awardProductFront.jpg";
 
 import HoverMe from "../../components/ui/HoverMe";
+import { useContext } from "react";
+import { DataContext } from "../../contexts/DataContext";
 const PhotoSection = () => {
+  const { language } = useContext(DataContext);
   const imageList = [
     herophoto1,
     herophoto2,
@@ -61,7 +64,18 @@ const PhotoSection = () => {
     <section className="p-0">
       <div className="md:pt-12">
         <h4 className="text-2xl text-center font-semibold">
-          We crafted it with passion and care{" "}
+          {language == "en" ? (
+            <span>
+              We crafted it with <span className="text-primary">passion</span>{" "}
+              & <span className="text-primary">care</span>
+            </span>
+          ) : (
+            <span>
+              យើងបានផលិតវាឡើងដោយ
+              <span className="text-primary"> ក្តីស្រលាញ់</span> &{" "}
+              <span className="text-primary">ការយកចិត្តទុកដាក់បំផុត</span>
+            </span>
+          )}
           <span className="text-primary">!</span>
         </h4>
         {/* <ImagesCarousel imageList={imageList} /> */}

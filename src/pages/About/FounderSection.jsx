@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
-import adminProfile from "../../assets/images/founder.jpg";
+import adminProfile from "../../assets/images/adminProfile.png";
+import { useContext } from "react";
+import { DataContext } from "../../contexts/DataContext";
 const FounderSection = () => {
+  const { language } = useContext(DataContext);
   return (
     <section className="container p-8 md:pt-0">
       <div className="flex flex-col md:flex-row items-center gap-5 md:gap-24 py-12">
@@ -20,8 +23,22 @@ const FounderSection = () => {
           />
           {/* founder name */}
           <div className="text-center mt-5">
-            <h5 className="font-bold uppercase text-xl">Hong Sokmean</h5>
-            <p className="text-gray-700 dark:text-primary">Founder of SORAKHMER</p>
+            <h5
+              className={`font-bold uppercase ${
+                language == "en" ? "text-xl" : "text-2xl"
+              }`}
+            >
+              {language == "en" ? "Hong Sokmean" : "ហុង សុខមាន"}
+            </h5>
+            <p
+              className={` text-primary   ${
+                language == "en" ? "text-md" : "text-lg"
+              }`}
+            >
+              {language == "en"
+                ? "Founder of SORAKHMER"
+                : "ស្ថាបនិកនៃ សុរាខ្មែរ"}
+            </p>
           </div>
         </motion.div>
 

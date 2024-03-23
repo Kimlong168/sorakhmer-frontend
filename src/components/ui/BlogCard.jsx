@@ -6,6 +6,8 @@ import { BiSolidUser } from "react-icons/bi";
 import { BsArrowRight } from "react-icons/bs";
 import scrollTop from "../../utils/scrollTop";
 import PropType from "prop-types";
+import { useContext } from "react";
+import { DataContext } from "../../contexts/DataContext";
 const BlogCard = ({
   coverImage,
   title,
@@ -13,6 +15,7 @@ const BlogCard = ({
   authorImg,
   authorName,
 }) => {
+  const { language } = useContext(DataContext);
   return (
     <motion.div
       onClick={scrollTop}
@@ -49,8 +52,9 @@ const BlogCard = ({
         {/* description */}
         <div className="line-clamp-2 text-sm text-gray-400">{description}</div>
         <div className="mt-4">
-          <button className="flex items-center gap-2 hover:gap-5 hover:text-primary transition-all font-light text-sm">
-            Continue Reading <BsArrowRight />
+          <button className="flex items-center gap-2 group-hover:gap-5 group-hover:text-primary transition-all font-light text-sm">
+            {language == "en" ? " Continue Reading" : "បន្តការអាន"}{" "}
+            <BsArrowRight />
           </button>
         </div>
       </div>

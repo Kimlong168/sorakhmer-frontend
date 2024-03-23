@@ -9,7 +9,7 @@ import { AnimatePresence } from "framer-motion";
 import Notification from "../../components/ui/Notification";
 import TotalPrice from "./TotalPrice";
 import { Link } from "react-router-dom";
-import axios from "axios"; // Make sure axios is installed via npm or yarn
+import axios from "axios";
 import html2canvas from "html2canvas";
 import { db, storage } from "../../firebase-config";
 import {
@@ -21,8 +21,10 @@ import {
 import CustomerContactForm from "./CustomerContactForm";
 import checkSocialMedia from "../../utils/checkSocialMedia";
 import { addDoc, collection } from "firebase/firestore";
+
 const CartItemsSection = () => {
-  const { cartItems, setCartItems, contactList } = useContext(DataContext);
+  const { cartItems, setCartItems, contactList, language } =
+    useContext(DataContext);
   // show popup image
   const [showImage, setShowImage] = useState({
     id: "",
@@ -182,7 +184,7 @@ const CartItemsSection = () => {
       var a = document.createElement("a");
       a.href = canvas.toDataURL("image/png");
       a.download = `Invoice_${orderId}.png`;
-      // a.click();
+      a.click();
     });
 
     // reset the fullName to avoid dubplicate order id bcoz we user fullName to generate order id
@@ -241,8 +243,9 @@ const CartItemsSection = () => {
   const thStyle =
     "p-3 font-bold uppercase bg-primary  border border-gray-300  table-cell";
 
-  const tdStyle =
-    "p-3 border border-gray-300 text-gray-700 dark:bg-gray-950 dark:text-white/80 table-cell";
+  const tdStyle = `p-3 border border-gray-300 text-gray-700 ${
+    !isOpenForm && " dark:bg-gray-950 dark:text-white/80"
+  }`;
 
   const trStyle =
     "bg-white lg:hover:bg-gray-100 flex table-row text-center flex-row flex-wrap flex-no-wrap mb-0 ";
@@ -252,8 +255,8 @@ const CartItemsSection = () => {
       <div className="pt-8">
         <div className="flex items-end">
           <img width={60} height={150} src={dragon} alt="dragon" />
-          <span className="first-line:font-semibold text-3xl uppercase font-bold border-b-2 rounded-br-xl border-primary -ml-3 mb-[3.5px] pr-3">
-            Shopping cart
+          <span className="first-line:font-semibold text-[28px] sm:text-3xl uppercase font-bold border-b-2 rounded-br-xl border-primary -ml-3 mb-[3.5px] pr-3">
+            {language == "en" ? "Shopping Cart" : "Shopping Cart"}
           </span>
         </div>
 
@@ -281,15 +284,35 @@ const CartItemsSection = () => {
               {/* table head */}
               <thead>
                 <tr>
-                  {!isOpenForm && <th className={thStyle}>Image</th>}
-                  <th className={thStyle}>Name</th>
-                  <th className={thStyle}>Price</th>
+                  {!isOpenForm && (
+                    <th className={thStyle}>
+                      {language == "en" ? "Image" : "រូបភាព"}
+                    </th>
+                  )}
                   <th className={thStyle}>
-                    <span className="md:hidden">Qty</span>
-                    <span className="hidden md:block">Quantity</span>
+                    {language == "en" ? "Name" : "ឈ្មោះទំនិញ"}
                   </th>
-                  <th className={thStyle}>Total</th>
-                  {!isOpenForm && <th className={thStyle}>Remove</th>}
+                  <th className={thStyle}>
+                    {language == "en" ? "Price" : "តម្លៃ"}
+                  </th>
+                  <th className={thStyle}>
+                    {language == "en" ? (
+                      <>
+                        <span className="md:hidden">Qty</span>
+                        <span className="hidden md:block">Quantity</span>
+                      </>
+                    ) : (
+                      "ចំនួន"
+                    )}
+                  </th>
+                  <th className={thStyle}>
+                    {language == "en" ? "Total" : "តម្លៃសរុប"}
+                  </th>
+                  {!isOpenForm && (
+                    <th className={thStyle}>
+                      {language == "en" ? "Remove" : "យកចេញ"}
+                    </th>
+                  )}
                 </tr>
               </thead>
 
@@ -461,7 +484,9 @@ const CartItemsSection = () => {
                             }}
                             className="flex justify-center items-center gap-3 cursor-pointer hover:text-error"
                           >
-                            <span className="hidden lg:block">Remove</span>{" "}
+                            <span className="hidden lg:block">
+                              {language == "en" ? "Remove" : "យកចេញ"}
+                            </span>{" "}
                             <MdOutlineDeleteOutline size={24} />
                           </div>
                         </td>
@@ -486,15 +511,20 @@ const CartItemsSection = () => {
                   <tr className={trStyle}>
                     {/* if no items in the card */}
                     <td className={tdStyle} colSpan="6">
-                      <span className="text-lg font-bold">
-                        No items in the cart. <br />{" "}
+                      <div className="text-lg font-bold">
+                        <div className="py-5">
+                          {language == "en"
+                            ? "No items in the cart."
+                            : "មិនទាន់មានទំនិញនៅក្នុង Cart"}
+                        </div>
+
                         <Link
                           to="/products"
                           className="text-blue-400 hover:underline hover:text-blue-600"
                         >
-                          Shop now
+                          {language == "en" ? "Shop Now" : "ទិញឥឡូវនេះ"}
                         </Link>
-                      </span>
+                      </div>
                     </td>
                   </tr>
                 )}
@@ -536,7 +566,9 @@ const CartItemsSection = () => {
         <div className="flex flex-col gap-1 w-72 fixed top-1 right-2 z-50 pointer-events-none">
           <AnimatePresence>
             <Notification
-              text={`${showRemoveNotification.name} is removed from cart!`}
+              text={`${showRemoveNotification.name} ${
+                language == "en" ? "is removed from" : "បានលុបចេញពី"
+              } cart!`}
               removeNotif={() =>
                 setShowRemoveNotification({ show: false, name: "" })
               }

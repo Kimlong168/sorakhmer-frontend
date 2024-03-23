@@ -5,7 +5,11 @@ import ProcessSection from "./ProcessSection";
 import VideoSection from "./VideoSection";
 import PhotoSection from "./PhotoSection";
 import MetadataHeader from "../../components/ui/MetadataHeader";
+import { useContext } from "react";
+import { DataContext } from "../../contexts/DataContext";
+
 const Process = () => {
+  const { language } = useContext(DataContext);
   return (
     <Layout>
       <MetadataHeader
@@ -13,7 +17,8 @@ const Process = () => {
         description="Welcome to Sorakhmer"
       />
       <div className="overflow-x-hidden">
-        <PageTitle text="Process" />
+        <PageTitle text={language == "en" ? "Process" : "ដំណើរការផលិត"} />
+
         <IntroSection />
         <ProcessSection />
         <VideoSection />

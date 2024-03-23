@@ -1,8 +1,6 @@
 import { FaShoppingCart } from "react-icons/fa";
 import PropType from "prop-types";
-// motion
 import { AnimatePresence, motion } from "framer-motion";
-// vartants
 import { fadeIn } from "../../variants";
 import scrollTop from "../../utils/scrollTop";
 import { useContext, useState } from "react";
@@ -12,7 +10,7 @@ import Notification from "./Notification";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 
 const ProductCard = ({ product }) => {
-  const { addToCart, setShowViewCartBtn } = useContext(DataContext);
+  const { addToCart, setShowViewCartBtn, language } = useContext(DataContext);
   const { id, name, price, image } = product;
   const [isAddedtoCart, setIsAddedtoCart] = useState(false);
   return (
@@ -29,7 +27,7 @@ const ProductCard = ({ product }) => {
       >
         <Link to={`/product/${id}`}>
           <img
-            className="w-full h-[325px] md:h-[280px] lg:h-[315px] group-hover:scale-110 transition-all"
+            className="w-full  h-[325px] md:h-[280px] lg:h-[315px]  group-hover:scale-110 transition-all "
             src={product.image}
             alt="product-image"
           />
@@ -87,7 +85,10 @@ const ProductCard = ({ product }) => {
         <div className="flex flex-col gap-1 w-72 fixed top-1 right-2 z-50 pointer-events-none">
           <AnimatePresence>
             <Notification
-              text={`${name} is added to cart!`}
+              // text={`${name} is added to cart!`}
+              text={`${name} ${
+                language == "en" ? "is added to" : "បានបញ្ជូលទៅក្នុង"
+              } cart!`}
               removeNotif={() => setIsAddedtoCart(false)}
               id={id}
               bg="bg-primary"

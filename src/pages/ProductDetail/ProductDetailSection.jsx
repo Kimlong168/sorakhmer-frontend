@@ -11,7 +11,8 @@ import { IoIosArrowBack } from "react-icons/io";
 
 const ProductDetailSection = () => {
   const { id: productParams } = useParams();
-  const { productList, productCategoryList } = useContext(DataContext);
+  const { productList, productCategoryList, language } =
+    useContext(DataContext);
   const [data, setData] = useState(null);
 
   //   fetch data from firestore by id or param
@@ -62,14 +63,13 @@ const ProductDetailSection = () => {
 
   return (
     <section className="container p-4 md:pt-0">
-
-
       {/* back button */}
       <div className="mt-4">
         <Link to="/products">
           <DrawOutlineButton>
             <button className="group text-primary font-bold rounded px-3 py-1.5  flex items-center justify-center gap-1 ">
-              <IoIosArrowBack className="group-hover:block hidden" /> Back
+              <IoIosArrowBack className="group-hover:block hidden" />
+              {language == "en" ? "Back" : "ត្រឡប់ក្រោយ"}
             </button>
           </DrawOutlineButton>
         </Link>

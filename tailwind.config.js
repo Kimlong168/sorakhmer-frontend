@@ -7,7 +7,6 @@ export default {
   theme: {
     container: {
       center: true,
-      
     },
 
     screens: {
@@ -15,6 +14,8 @@ export default {
       md: "768px",
       lg: "960px",
       xl: "1350px",
+      "2xl": "1736px", // Add a breakpoint named 2xl
+      "3xl": "1920px", // Add a breakpoint named 3xl
     },
     extend: {
       fontFamily: {

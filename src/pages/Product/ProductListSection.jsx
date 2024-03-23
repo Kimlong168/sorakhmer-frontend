@@ -11,7 +11,8 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
 // import { Link } from "react-router-dom";
 const ProductListSection = () => {
-  const { productList, productCategoryList } = useContext(DataContext);
+  const { productList, productCategoryList, language } =
+    useContext(DataContext);
   const [filter, setFilter] = useState("default");
   const [activeProduct, setActiveProduct] = useState(productList);
   const [activeCategory, setActiveCategory] = useState(productCategoryList);
@@ -141,7 +142,7 @@ const ProductListSection = () => {
                   }}
                   className="px-4 py-2 font-bold"
                 >
-                  All Products
+                  {language == "en" ? "All Products" : "ផលិតផលទាំងអស់"}
                 </button>
               </DrawOutlineButton>
 
@@ -152,7 +153,9 @@ const ProductListSection = () => {
                   value={filter}
                   onChange={(e) => setFilter(e.target.value)}
                 >
-                  <option value="default">All Categories</option>
+                  <option value="default">
+                    {language == "en" ? "All Categories" : "ប្រភេទទាំងអស់"}
+                  </option>
                   {activeCategory.map((category) => (
                     <option key={category.id} value={category.id}>
                       {category.categoryName}
@@ -183,7 +186,7 @@ const ProductListSection = () => {
                 <input
                   className="outline-none border-none p-1 w-full bg-transparent"
                   type="text"
-                  placeholder="Search..."
+                  placeholder={language == "en" ? "Search..." : "ស្វែងរក..."}
                   name="search"
                   value={searchKeyword}
                   onChange={(e) => {
@@ -204,7 +207,7 @@ const ProductListSection = () => {
         {/* result search for text */}
         {isSearched && searchKeyword.length !== 0 && (
           <div className="mt-8 ">
-            Search result for{" "}
+            {language == "en" ? "Search result for" : "លទ្ធផលសម្រាប់"}
             <span className="text-primary font-bold">
               &quot;{searchKeyword}&ldquo;
             </span>
@@ -213,7 +216,8 @@ const ProductListSection = () => {
 
         {maxMinPrice.max != priceRange && (
           <div className="mt-8 flex items-center gap-2">
-            Result for price <TbMathEqualLower /> {priceRange} $
+            {language == "en" ? "Result for price" : "លទ្ធផលសម្រាប់តម្លៃ"}
+            <TbMathEqualLower /> {priceRange} $
           </div>
         )}
 
@@ -232,7 +236,7 @@ const ProductListSection = () => {
                   whileInView={"show"}
                   viewport={{ once: true, amount: 0 }}
                 >
-                  No product found
+                  {language == "en" ? "No product found" : "រកមិនឃើញផលិតផល"}
                 </motion.div>
               </div>
             )}
@@ -252,6 +256,7 @@ const PriceRangeFilter = ({
   priceRange,
   setPriceRange,
 }) => {
+  const { language } = useContext(DataContext);
   const handleChange = (event) => {
     setPriceRange(parseInt(event.target.value));
   };
@@ -259,7 +264,10 @@ const PriceRangeFilter = ({
   return (
     <div className="flex items-center justify-center">
       <div className="flex items-center">
-        <label className="mr-2 font-bold whitespace-pre">Price Range:</label>
+        <label className="mr-2 font-bold whitespace-pre">
+          {" "}
+          {language == "en" ? "Price Range:" : "តម្លៃ:"}
+        </label>
         <input
           type="range"
           min={minPrice}

@@ -25,6 +25,9 @@ export default function App() {
   const [theme, setTheme] = useState(
     localStorage.getItem("mode") ? localStorage.getItem("mode") : "dark"
   );
+  const [language, setLanguage] = useState(
+    localStorage.getItem("language") ? localStorage.getItem("language") : "kh"
+  );
   const [productCategoryList, setProductCategoryList] = useState([]);
   const [productList, setProductList] = useState([]);
   const [blogCategoryList, setBlogCategoryList] = useState([]);
@@ -191,6 +194,8 @@ export default function App() {
           handleThemeSwitch,
           showViewCartBtn,
           setShowViewCartBtn,
+          language,
+          setLanguage,
         }}
       >
         <Router>

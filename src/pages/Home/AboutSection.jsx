@@ -4,7 +4,10 @@ import PrimaryButton from "../../components/ui/PrimaryButton";
 import Title from "../../components/ui/Title";
 import about_1 from "../../assets/images/about_1.jpg";
 import { TypeAnimation } from "react-type-animation";
+import { useContext } from "react";
+import { DataContext } from "../../contexts/DataContext";
 const AboutSection = () => {
+  const { language } = useContext(DataContext);
   return (
     <section className="container p-8 md:pt-0 flex flex-col md:flex-row items-center justify-between  gap-8 md:gap-24 md:h-screen">
       <motion.div
@@ -13,37 +16,55 @@ const AboutSection = () => {
         whileInView={"show"}
         viewport={{ once: true, amount: 0.5 }}
       >
-        <Title text="about"/>
+        <Title text={language == "en" ? "About" : "អំពីយើង"} />
         <h3 className="font-primary-bold text-4xl md:text-5xl py-8">
-          {/* <div className="mb-6 text-[36px] lg:text-[40px] font-secondary font-semibold uppercase leading-[1]"> */}
           <TypeAnimation
             speed={50}
             cursor={false}
-            sequence={[
-              "SORA KHMER",
-              2000,
-              "OUR JOURNEY",
-              2000,
-              "OUR HISTORY",
-              2000,
-              "OUR MISSION",
-              2000,
-              "OUR VISION",
-              2000,
-            ]}
+            sequence={
+              language == "en"
+                ? [
+                    "SORA KHMER",
+                    2000,
+                    "OUR JOURNEY",
+                    2000,
+                    "OUR HISTORY",
+                    2000,
+                    "OUR MISSION",
+                    2000,
+                    "OUR VISION",
+                    2000,
+                  ]
+                : [
+                    "សុរាខ្មែរ",
+                    2000,
+                    "ប្រវត្តិរបស់យើង",
+                    2000,
+
+                    "បេសកកម្មរបស់យើង",
+                    2000,
+                    "ចក្ខុវិស័យរបស់យើង",
+                    2000,
+                  ]
+            }
             className="text-accent"
             wrapper="span"
             repeat={Infinity}
           />
-          {/* </div> */}
+
           <span className="text-primary font-bold">.</span>
         </h3>
-        <p className="md:mb-10 porse lg:prose-xl">
-          We create fine spirits that support post-demining sustainable
-          community development<span className="text-primary font-bold">.</span>
+        <p className="md:mb-10 lg:prose-xl">
+          {language == "en"
+            ? "We create fine spirits that support post-demining sustainable community development"
+            : "យើងមានស្មារតីគាំទ្រដល់ការអភិវឌ្ឍន៍សហគមន៍ប្រកបដោយនិរន្តរភាពក្រោយការដោះមីន"}
+          <span className="text-primary font-bold">.</span>
         </p>
         <div className="hidden md:block">
-          <PrimaryButton content="Learn More" href="/about" />
+          <PrimaryButton
+            content={language == "en" ? "Learn More" : "ស្វែងយល់បន្ថែម"}
+            href="/about"
+          />
         </div>
       </motion.div>
       <motion.div
@@ -60,7 +81,10 @@ const AboutSection = () => {
         />
       </motion.div>
       <div className="md:hidden block w-full">
-        <PrimaryButton content="Learn More" href="/about" />
+        <PrimaryButton
+          content={language == "en" ? "Learn More" : "ស្វែងយល់បន្ថែម"}
+          href="/about"
+        />
       </div>
     </section>
   );

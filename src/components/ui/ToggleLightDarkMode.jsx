@@ -1,22 +1,20 @@
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { FiMoon, FiSun } from "react-icons/fi";
-import PropTypes from "prop-types";
 import { DataContext } from "../../contexts/DataContext";
 const TOGGLE_CLASSES =
   "text-sm font-medium flex items-center gap-2 px-3 md:pl-3 md:pr-3.5 py-3 md:py-1.5 transition-colors relative z-10";
 
 const ToggleLightDarkMode = () => {
-  const { handleThemeSwitch, theme } = useContext(DataContext);
-
   return (
     <div className={`grid  place-content-center transition-colors `}>
-      <SliderToggle handleThemeSwitch={handleThemeSwitch} theme={theme} />
+      <SliderToggle />
     </div>
   );
 };
 
-const SliderToggle = ({ handleThemeSwitch, theme }) => {
+const SliderToggle = () => {
+  const { handleThemeSwitch, theme, language } = useContext(DataContext);
   return (
     <div className="relative flex w-fit items-center rounded-full">
       <button
@@ -27,8 +25,11 @@ const SliderToggle = ({ handleThemeSwitch, theme }) => {
           handleThemeSwitch("light");
         }}
       >
-        <FiMoon className="relative z-10 text-sm " />
-        <span className="relative z-10 hidden md:block">Light</span>
+        {" "}
+        <FiSun className="relative z-10 text-sm " />
+        <span className="relative z-10 hidden md:block">
+          {language == "en" ? "Light" : <span className="px-1">ភ្លឺ</span>}
+        </span>
       </button>
       <button
         className={`${TOGGLE_CLASSES} ${
@@ -38,8 +39,10 @@ const SliderToggle = ({ handleThemeSwitch, theme }) => {
           handleThemeSwitch("dark");
         }}
       >
-        <FiSun className="relative z-10 text-sm " />
-        <span className="relative z-10 hidden md:block">Dark</span>
+        <FiMoon className="relative z-10 text-sm " />
+        <span className="relative z-10 hidden md:block">
+          {language == "en" ? "Dark" : "ងងឹត"}
+        </span>
       </button>
       <div
         className={`absolute inset-0 z-0 flex ${
@@ -55,8 +58,5 @@ const SliderToggle = ({ handleThemeSwitch, theme }) => {
     </div>
   );
 };
-SliderToggle.propTypes = {
-  theme: PropTypes.string,
-  handleThemeSwitch: PropTypes.func,
-};
+
 export default ToggleLightDarkMode;

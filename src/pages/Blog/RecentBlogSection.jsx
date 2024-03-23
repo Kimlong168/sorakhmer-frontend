@@ -5,7 +5,7 @@ import { TypeAnimation } from "react-type-animation";
 import { useContext } from "react";
 import { DataContext } from "../../contexts/DataContext";
 const RecentBlogSection = () => {
-  const { blogList } = useContext(DataContext);
+  const { blogList, language } = useContext(DataContext);
   const activeBlog = blogList.filter((blog) => blog.isActive);
 
   //   return nothing if there is no active blog
@@ -15,15 +15,20 @@ const RecentBlogSection = () => {
       <div className="pt-12 md:py-12 ">
         <div className="mb-10">
           <h3 className="text-nowrap font-primary-bold text-4xl md:text-5xl ">
-            <span className="text-primary">Recent </span>
+            {language == "en" && <span className="text-primary">Recent</span>}{" "}
             <TypeAnimation
               speed={50}
               cursor={false}
-              sequence={["Blog", 3000, "Event", 3000]}
+              sequence={
+                language == "en"
+                  ? ["Blog", 3000, "Event", 3000]
+                  : ["អត្ថបទ", 3000, "ព្រឹត្តិការណ៍", 3000]
+              }
               className="text-accent"
               wrapper="span"
               repeat={Infinity}
             />
+            <span className="text-primary">{language == "kh" && " ថ្មីៗ"}</span>
             <span className="text-primary font-bold">.</span>
           </h3>
         </div>
@@ -47,7 +52,7 @@ const RecentBlogSection = () => {
                   </p>
                   <div className="hidden md:block">
                     <PrimaryButton
-                      content="Read More"
+                      content={language == "en" ? "Read More" : "អានបន្ថែមទៀត"}
                       href={`/blog/${blog.id}`}
                     />
                   </div>
@@ -61,7 +66,7 @@ const RecentBlogSection = () => {
                   className="w-full"
                 >
                   <img
-                    className="w-full lg:w-4/5 max-h-[330px] shadow-2xl  ml-auto  rounded-lg"
+                    className="w-full lg:w-4/5 max-h-[330px] md:hover:scale-110 transition-all ease-in shadow-2xl  ml-auto  rounded-lg"
                     src={blog.coverImage}
                     alt="coverImage"
                   />

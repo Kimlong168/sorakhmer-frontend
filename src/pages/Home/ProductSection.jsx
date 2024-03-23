@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { DataContext } from "../../contexts/DataContext";
 
 const ProductSection = () => {
+  const { language } = useContext(DataContext);
   return (
     <>
       <section className="container p-8 md:pt-0 flex flex-col md:flex-row items-center justify-between  gap-8 md:gap-24 md:h-screen md:-mt-36">
@@ -28,23 +29,40 @@ const ProductSection = () => {
           viewport={{ once: true, amount: 0.5 }}
           className="order-1 md:order-2"
         >
-          <Title text="Popular Products" />
+          <Title
+            text={language == "en" ? "Popular Products" : "ផលិតផលពេញនិយម"}
+          />
           <h3 className="font-primary-bold text-4xl md:text-5xl py-8">
             <TypeAnimation
               speed={50}
               cursor={false}
-              sequence={[
-                "OUR PRODUCTS",
-                2000,
-                "SORA KHMER",
-                2000,
-                "DRIED FRUIT",
-                2000,
-                "NATURAL TEA",
-                2000,
-                "ESSENTIAL OIL",
-                2000,
-              ]}
+              sequence={
+                language == "en"
+                  ? [
+                      "OUR PRODUCTS",
+                      2000,
+                      "SORA KHMER",
+                      2000,
+                      "DRIED FRUIT",
+                      2000,
+                      "NATURAL TEA",
+                      2000,
+                      "ESSENTIAL OIL",
+                      2000,
+                    ]
+                  : [
+                      "ផលិតផលរបស់យើង",
+                      2000,
+                      "សុរាខ្មែរ",
+                      2000,
+                      "ផ្លែឈើសម្ងួត",
+                      2000,
+                      "តែធម្មជាតិ",
+                      2000,
+                      "ប្រេងស្លឹកគ្រៃ",
+                      2000,
+                    ]
+              }
               className="text-accent"
               wrapper="span"
               repeat={Infinity}
@@ -52,13 +70,17 @@ const ProductSection = () => {
 
             <span className="text-primary font-bold">.</span>
           </h3>
-          <p className="md:mb-10 porse lg:prose-xl">
-            Sora Khmer envisions building peace for the world by supporting
-            post-demining sustainable community development
+          <p className="md:mb-10 lg:prose-xl">
+            {language == "en"
+              ? " Sora Khmer envisions building peace for the world by supporting post-demining sustainable community development"
+              : "សុរាខ្មែរស្រមៃចង់កសាងសន្តិភាពសម្រាប់ពិភពលោកដោយគាំទ្រដល់ការអភិវឌ្ឍន៍សហគមន៍ប្រកបដោយនិរន្តរភាពក្រោយការដោះមីន"}
             <span className="text-primary font-bold">.</span>
           </p>
           <div className="hidden md:block">
-            <PrimaryButton content="Shop Now" href="/products" />
+            <PrimaryButton
+              content={language == "en" ? "Shop Now" : "ទិញឥឡូវនេះ"}
+              href="/products"
+            />
           </div>
         </motion.div>
         <div className="md:hidden block w-full order-3">

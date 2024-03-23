@@ -1,9 +1,11 @@
 import { useAnimate } from "framer-motion";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import PropType from "prop-types";
 import { FiMousePointer } from "react-icons/fi";
+import { DataContext } from "../../contexts/DataContext";
 
 const HoverMe = ({ imageList }) => {
+  const { language } = useContext(DataContext);
   return (
     <MouseImageTrail
       renderImageBuffer={50}
@@ -13,8 +15,14 @@ const HoverMe = ({ imageList }) => {
       <section className=" min-h-screen w-full grid place-content-centermt-8 ">
         <p className="flex items-center justify-center gap-2 text-3xl font-bold uppercase text-primary">
           <FiMousePointer />
-          <div className="hidden md:block">Hover me</div>
-          <div className="md:hidden">Click me</div>
+          {language == "en" ? (
+            <>
+              <div className="hidden md:block">Hover me</div>
+              <div className="md:hidden">Click me</div>
+            </>
+          ) : (
+            "ចុចទីនេះ"
+          )}
         </p>
       </section>
     </MouseImageTrail>

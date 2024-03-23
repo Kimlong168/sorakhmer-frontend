@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import PropType from "prop-types";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import RedStar from "../../components/ui/RedStar";
@@ -7,6 +7,7 @@ import WarningModal from "../../components/ui/WarningModal";
 import LoadingWithPercentage from "../../components/ui/LoadingWithPercentage";
 import { FaWindowClose } from "react-icons/fa";
 import "../../App.css";
+import { DataContext } from "../../contexts/DataContext";
 const CustomerContactForm = ({
   setIsOpenForm,
   formData,
@@ -14,6 +15,7 @@ const CustomerContactForm = ({
   sendToTelegram,
   setChangeContent,
 }) => {
+  const { language } = useContext(DataContext);
   const [isSubmitted, setIsSubmitted] = useState({
     showForm: true,
     showAlert: false,
@@ -80,7 +82,9 @@ const CustomerContactForm = ({
             <div className=" md:w-[600px] lg:w-[700px]">
               {/* title */}
               <div className="sticky top-0 left-5 right-5 pb-3 pt-6 mb-4 border-b-4 border-gray-400  bg-white  flex justify-between items-center gap-4">
-                <h2 className="text-2xl font-bold">Place Order</h2>
+                <h2 className="text-2xl font-bold">
+                  {language == "en" ? "Place Order" : "បញ្ជាទិញ"}
+                </h2>
                 <div
                   onClick={() => setIsOpenForm(false)}
                   className="cursor-pointer hover:text-primary"
@@ -98,7 +102,9 @@ const CustomerContactForm = ({
                       htmlFor="fullName"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Fullname <RedStar />
+                      {" "}
+                      {language == "en" ? "Fullname" : "ឈ្មោះ"}
+                      <RedStar />
                     </label>
                     <input
                       type="text"
@@ -117,7 +123,8 @@ const CustomerContactForm = ({
                       htmlFor="phoneNumber"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Phone Number <RedStar />
+                      {language == "en" ? "Phone Number" : "លេខទូរស័ព្ទ"}
+                      <RedStar />
                     </label>
                     <input
                       type="tel"
@@ -136,7 +143,9 @@ const CustomerContactForm = ({
                       htmlFor="address"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Address <RedStar />
+                      {" "}
+                      {language == "en" ? "Address" : "អាសយដ្ឋាន"}
+                      <RedStar />
                     </label>
                     <input
                       type="text"
@@ -156,7 +165,9 @@ const CustomerContactForm = ({
                       className="text-sm font-medium text-gray-700 flex items-center gap-4 mb-1"
                     >
                       <div>
-                        Telegram, Line, Facebook or other 
+                        {language == "en"
+                          ? " Telegram, Line, Facebook or other"
+                          : "Telegram, Line, Facebook ឬផ្សេងទៀត"}
                       </div>
 
                       {/* button option qrcode and url */}
@@ -191,7 +202,11 @@ const CustomerContactForm = ({
                           type="url"
                           id="telegram"
                           name="telegram"
-                          placeholder="example: https://t.me/kimlong_chann"
+                          placeholder={
+                            language == "en"
+                              ? "copy your url and paste here..."
+                              : "ចម្លង url របស់អ្នក ហើយបិទភ្ជាប់នៅទីនេះ..."
+                          }
                           value={formData.telegram}
                           onChange={handleChange}
                           className="mt-1 p-2 border w-full border-gray-300 rounded-md"
@@ -205,7 +220,9 @@ const CustomerContactForm = ({
                         {/* qrcode scanner */}
                         <div className="rounded" id="reader"></div>
                         <p className="text-center text-gray-500">
-                          Please scan the qr-code to get the link
+                          {language == "en"
+                            ? "Please scan the qr-code to get the link"
+                            : "សូមស្កេន qr-code របស់អ្នកដើម្បីទទួលបានតំណ"}
                         </p>
                       </div>
                     )}
@@ -217,7 +234,7 @@ const CustomerContactForm = ({
                       htmlFor="message"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Message
+                      {language == "en" ? "Message" : "ចំណាំ"}
                     </label>
                     <textarea
                       name="message"
@@ -259,29 +276,41 @@ const CustomerContactForm = ({
                     }}
                     className="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark w-fit cursor-pointer font-bold"
                   >
-                    Order Now
+                    {language == "en" ? "Order Now" : "បញ្ជាទិញឥឡូវនេះ"}
                   </div>
 
                   {/* note */}
                   <div className="my-4">
                     <hr />
-                    <p className="mt-2">
-                      <span className="font-bold rounded mr-2">Note:</span> We
-                      will reach out to you via your contact or Telegram
-                      promptly. Once we confirm your order, we will proceed to
-                      process the checkout. Thank you for your patience
-                    </p>
+
+                    {language == "en" ? (
+                      <p className="mt-2">
+                        <span className="font-bold rounded mr-2">Note:</span> We
+                        will reach out to you via your contact or Telegram
+                        promptly. Once we confirm your order, we will proceed to
+                        process the checkout. Thank you for your patience
+                      </p>
+                    ) : (
+                      <p className="mt-2">
+                        <span className="font-bold rounded mr-2">ចំណាំ</span>{" "}
+                        យើងនឹងទាក់ទងទៅអ្នកតាមរយៈលេខទំនាក់ទំនងរបស់អ្នក ឬ Telegram
+                        ភ្លាមៗ។ អរគុណចំពោះការរងចាំរបស់អ្នក
+                      </p>
+                    )}
                   </div>
                 </form>
               ) : (
                 // loading with percentage
                 <div className="  rounded-md flex flex-col gap-5 items-center justify-center">
                   <p>
-                    Please wait a moment, we are sending your order to our
-                    system
+                    {language == "en"
+                      ? "Please wait a moment, we are sending your order to our system"
+                      : "សូមរង់ចាំមួយភ្លែត យើងកំពុងផ្ញើការបញ្ជាទិញរបស់អ្នកទៅកាន់ប្រព័ន្ធរបស់យើង។"}
                   </p>
                   <div className="flex items-center gap-3 bg-green-500 w-fit  py-2 px-4 rounded-sm">
-                    <span className="font-bold text-white">Sending</span>
+                    <span className="font-bold text-white">
+                      {language == "en" ? "Sending" : "កំពុងផ្ញើ"}
+                    </span>
                     <LoadingWithPercentage percentage={progress} />
                   </div>
                 </div>
@@ -295,8 +324,16 @@ const CustomerContactForm = ({
       <WarningModal
         isOpen={isShowWarning}
         setIsOpen={setIsShowWarning}
-        title="Fill Required Information!"
-        description="Please fill the required fields with * mark. Thank you!"
+        title={
+          language == "en"
+            ? "Fill Required Information!"
+            : "បំពេញព័ត៌មានដែលចាំបាច់!"
+        }
+        description={
+          language == "en"
+            ? "Please fill the required fields with * mark. Thank you!"
+            : "សូមបំពេញព័ត៌មានដែលចាំបាច់ដែលមាន * ជាសម្គាល់។ អរគុណ!"
+        }
       />
 
       {/* submiting successfully alert */}
@@ -309,8 +346,16 @@ const CustomerContactForm = ({
           });
           setIsOpenForm(false);
         }}
-        title="You have ordered successfully!"
-        description="We will contact to you as soon as possible. Thank you for your patience."
+        title={
+          language == "en"
+            ? "You have ordered successfully!"
+            : "អ្នកបានបញ្ជាទិញដោយជោគជ័យ!"
+        }
+        description={
+          language == "en"
+            ? "We will contact to you as soon as possible. Thank you for your patience."
+            : "យើងនឹងទាក់ទងទៅអ្នកលឿនបំផុតតាមដែលអាចធ្វើបាន។ អរគុណចំពោះការរងចាំរបស់អ្នក។"
+        }
       />
     </div>
   );

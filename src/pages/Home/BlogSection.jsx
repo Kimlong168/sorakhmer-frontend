@@ -7,17 +7,22 @@ import { DataContext } from "../../contexts/DataContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 const BlogSection = () => {
-  const { blogList, authorList } = useContext(DataContext);
+  const { blogList, authorList, language } = useContext(DataContext);
   const activeBlog = blogList.filter((blog) => blog.isActive);
+
+  // return if there is no active blog
+  if (!activeBlog || activeBlog.length < 3) return null;
 
   return (
     <section className="container p-8 md:pt-0 mb-12">
       <h3 className="font-primary-bold text-4xl md:text-5xl py-8 uppercase text-center mb-4">
-        Blogs <span className="text-primary">&</span> Events
+        {language == "en" ? "Blogs" : "អត្ថបទ"}{" "}
+        <span className="text-primary">&</span>{" "}
+        {language == "en" ? "Events" : "ព្រឹត្តិការណ៍"}
         <span className="text-primary">.</span>
       </h3>
       <div
-        className="flex justify-between gap-5 lg:gap-10 overflow-x-auto pb-5"
+        className="flex gap-5 lg:gap-10 overflow-x-auto pb-5"
         id="blog"
       >
         {activeBlog &&
@@ -56,7 +61,10 @@ const BlogSection = () => {
           })}
       </div>
       <div className="flex justify-center mt-4">
-        <PrimaryButton content="View All Blogs" href="/blogs" />
+        <PrimaryButton
+          content={language == "en" ? "View All Blogs" : "មើលអត្ថបទទាំងអស់"}
+          href="/blogs"
+        />
       </div>
     </section>
   );

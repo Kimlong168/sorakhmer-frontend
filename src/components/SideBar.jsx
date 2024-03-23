@@ -1,5 +1,5 @@
 import { useMotionValue, motion, useSpring, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import PropTypes from "prop-types";
 import { FiArrowRight } from "react-icons/fi";
 import about_1 from "../assets/images/about_1.jpg";
@@ -13,8 +13,10 @@ import { IoMdClose } from "react-icons/io";
 import { Link } from "react-router-dom";
 import "../App.css";
 import scrollToTop from "../utils/scrollTop";
+import { DataContext } from "../contexts/DataContext";
 
 const SideBar = ({ setShowSideBar, showSideBar }) => {
+  const { language } = useContext(DataContext);
   return (
     <div
       id="sideBar"
@@ -22,47 +24,61 @@ const SideBar = ({ setShowSideBar, showSideBar }) => {
         showSideBar ? "translate-x-0" : "-translate-x-full"
       }`}
     >
-      <section className="bg-neutral-950 p-4 md:p-8 ">
+      <section className="bg-neutral-950 p-4 md:p-8">
         <div className="mx-auto max-w-5xl " onClick={scrollToTop}>
           <LinkContainer
-            heading="Home"
-            subheading="Welcome to Sora Khmer"
+            heading={language == "en" ? "Home" : "ទំព័រដើម"}
+            subheading={
+              language == "en" ? "Welcome to Sora Khmer" : "សូមស្វាគមន៍មកកាន់សុរាខ្មែរ"
+            }
             imgSrc={about_1}
             href="/"
           />
           <LinkContainer
-            heading="Shop"
-            subheading="Explore our amazing products"
+            heading={language == "en" ? "Shop" : "ទិញទំនិញ"}
+            subheading={
+              language == "en" ? "Explore our amazing products" : "ស្វែងយល់ពីផលិតផលរបស់យើង"
+            }
             imgSrc={allProducts}
             href="/products"
           />
           <LinkContainer
-            heading="Blogs"
-            subheading="Read our latest blogs"
+            heading={language == "en" ? "Blogs" : "អត្ថបទ"}
+            subheading={
+              language == "en" ? "Read our latest blogs" : "អានអត្ថបទថ្មីៗរបស់យើង"
+            }
             imgSrc={heroPhoto3}
             href="/blogs"
           />
           <LinkContainer
-            heading="Process"
-            subheading="Our work speaks for itself"
+            heading={language == "en" ? "Process" : "ដំណើរការផលិត"}
+            subheading={
+              language == "en" ? "Our work speaks for itself" : "ការងារក្នុងការផលិតរបស់យើង"
+            }
             imgSrc={process_1}
             href="/process"
           />
           <LinkContainer
-            heading="Distillery"
-            subheading="Learn about our distillery"
+            heading={language == "en" ? "Distillery" : "រោងចក្រផលិត"}
+            subheading={
+              language == "en" ? "Learn about our distillery" : "ស្វែងយល់ពីរោងចក្រផលិតរបស់យើង"
+            }
             imgSrc={farm_1}
             href="/distillery"
           />
           <LinkContainer
-            heading="About"
-            subheading="Learn what we do here"
+            heading={language == "en" ? "About" : "អំពីយើង"}
+            subheading={
+              language == "en" ? "Learn what we do here" : "ស្វែងយល់អំពីយើងនៅទីនេះ"
+            }
             imgSrc={heroPhoto9}
             href="/about"
           />
           <LinkContainer
-            heading="Contact"
-            subheading="Incase you want to contact us"
+            heading={language == "en" ? "Contact" : "ទំនាក់ទំង"}
+            subheading={
+              language == "en" ? "Incase you want to contact us" : "ប្រសិនបើអ្នកចង់ទំនាក់ទំងយើង"
+            }
             imgSrc={distilery_5}
             href="/contact"
           />
@@ -81,6 +97,7 @@ const SideBar = ({ setShowSideBar, showSideBar }) => {
 };
 
 const LinkContainer = ({ heading, imgSrc, subheading, href }) => {
+  const { language } = useContext(DataContext);
   const ref = useRef(null);
 
   const x = useMotionValue(0);
@@ -130,19 +147,25 @@ const LinkContainer = ({ heading, imgSrc, subheading, href }) => {
             }}
             className="relative z-10 block text-4xl font-bold text-neutral-500 transition-colors duration-500 group-hover:text-neutral-50 md:text-6xl"
           >
-            {heading.split("").map((l, i) => (
-              <motion.span
-                variants={{
-                  initial: { x: 0 },
-                  whileHover: { x: 16 },
-                }}
-                transition={{ type: "spring" }}
-                className="inline-block"
-                key={i}
-              >
-                {l}
-              </motion.span>
-            ))}
+            {language == "en" ? (
+              <>
+                {heading.split("").map((l, i) => (
+                  <motion.span
+                    variants={{
+                      initial: { x: 0 },
+                      whileHover: { x: 16 },
+                    }}
+                    transition={{ type: "spring" }}
+                    className="inline-block"
+                    key={i}
+                  >
+                    {l}
+                  </motion.span>
+                ))}
+              </>
+            ) : (
+              <>{heading}</>
+            )}
           </motion.span>
           <span className="relative z-10 mt-2 block text-base text-neutral-500 transition-colors duration-500 group-hover:text-neutral-50">
             {subheading}

@@ -23,7 +23,8 @@ import "../../App.css";
 import MetadataHeader from "../../components/ui/MetadataHeader";
 const BlogDetailSection = () => {
   const { id: blogParams } = useParams();
-  const { blogList, authorList, blogCategoryList } = useContext(DataContext);
+  const { blogList, authorList, blogCategoryList, language } =
+    useContext(DataContext);
   const [data, setData] = useState(null);
   const [author, setAuthor] = useState(null);
   const [category, setCategory] = useState(null);
@@ -132,7 +133,8 @@ const BlogDetailSection = () => {
         <Link to="/blogs">
           <DrawOutlineButton>
             <button className="group text-primary font-bold rounded px-3 py-1.5  flex items-center justify-center gap-1 ">
-              <IoIosArrowBack className="group-hover:block hidden" /> Back
+              <IoIosArrowBack className="group-hover:block hidden" />{" "}
+              {language == "en" ? "Back" : "ត្រឡប់ក្រោយ"}
             </button>
           </DrawOutlineButton>
         </Link>
@@ -141,7 +143,7 @@ const BlogDetailSection = () => {
           className="flex items-center gap-3 font-bold hover:text-primary cursor-pointer lg:hidden"
           onClick={() => setShowSearchBar(true)}
         >
-          Search <FaSearch />
+          {language == "en" ? "Search" : "ស្វែងរក"} <FaSearch />
         </div>
       </div>
 
@@ -182,7 +184,9 @@ const BlogDetailSection = () => {
 
           {/* sharing to social media button */}
           <div className="mt-10 mb-5">
-            <div className="font-semibold text-center p-4">Share this blog</div>
+            <div className="font-semibold text-center p-4">
+              {language == "en" ? "Share this blog" : "ចែករំលែកទៅកាន់"}
+            </div>
             <SharingBtn url={currentURL} title={data.title} />
           </div>
           <hr />
@@ -212,7 +216,7 @@ const BlogDetailSection = () => {
           >
             {/* search bar header */}
             <div className="flex justify-between items-center gap-4 text-black lg:dark:text-white">
-              <span>Search</span>
+              <span>{language == "en" ? "Search" : "ស្វែងរក"} </span>
               <FaWindowClose
                 className="cursor-pointer lg:hidden hover:text-primary"
                 onClick={() => setShowSearchBar(false)}
@@ -227,7 +231,9 @@ const BlogDetailSection = () => {
                   <input
                     className="outline-none border-none p-1 w-full bg-transparent "
                     type="text"
-                    placeholder="find blogs..."
+                    placeholder={
+                      language == "en" ? "find blogs..." : "ស្វែងរកអត្ថបទ..."
+                    }
                     name="search"
                     value={searchKeyword}
                     onChange={(e) => {
@@ -251,11 +257,16 @@ const BlogDetailSection = () => {
               {/* search result for text */}
               {resultBlog.length !== 0 && searchKeyword.length !== 0 && (
                 <div className="mb-2 text-sm text-black lg:dark:text-white">
-                  Found{" "}
+                  {language == "en" ? "Found" : "ស្វែងរកឃើញ"}{" "}
                   <span className="text-primary font-bold">
                     {resultBlog.length}
                   </span>{" "}
-                  {resultBlog.length === 1 ? " blog" : "blogs"} for{" "}
+                  {language == "en" ? (
+                    <>{resultBlog.length === 1 ? " blog" : "blogs"}</>
+                  ) : (
+                    "អត្ថបទ"
+                  )}{" "}
+                  {language == "en" ? "for" : "សម្រាប់"}{" "}
                   <span className="text-primary font-bold">
                     &quot;{searchKeyword}&ldquo;
                   </span>
@@ -314,7 +325,7 @@ const BlogDetailSection = () => {
                       viewport={{ once: true, amount: 0.3 }}
                       className="text-center lg:dark:text-white"
                     >
-                      No blog found
+                      {language == "en" ? "No blog found" : "ស្វែងរកមិនឃើញ"}
                     </motion.div>
                   )}
                 </>
@@ -335,8 +346,12 @@ const BlogDetailSection = () => {
         <WarningModal
           isOpen={isOpen}
           setIsOpen={setIsOpen}
-          title="No Result Found!"
-          description="Please Enter a Keyword to Search"
+          title={language == "en" ? "No Result Found!" : "ស្វែងរកមិនឃើញ!"}
+          description={
+            language == "en"
+              ? "Please Enter a Keyword to Search"
+              : "សូមបញ្ចូលពាក្យគន្លឺះដើម្បីស្វែងរក"
+          }
         />
       </div>
     </section>

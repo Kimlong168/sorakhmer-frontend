@@ -9,6 +9,7 @@ import scrollTop from "../../utils/scrollTop";
 import { Link } from "react-router-dom";
 
 const RelatedContent = ({ relatedPost }) => {
+  const { language } = useContext(DataContext);
   return (
     <div>
       {/* related content */}
@@ -16,7 +17,7 @@ const RelatedContent = ({ relatedPost }) => {
         <div className="mb-8">
           <div className="text-white font-semibold  bg-primary px-5 py-3 mt-8 rounded-sm flex items-center justify-between">
             <small className="border-l-[5px] pl-5 border-white text-lg md:text-xl uppercase ">
-              Related Contents
+              {language == "en" ? "Related Contents" : "អត្ថបទដែលពាក់ព័ន្ធ"}
             </small>
           </div>
 
