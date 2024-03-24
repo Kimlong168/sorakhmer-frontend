@@ -82,7 +82,7 @@ const HistorySection = () => {
                   </p>
                   <p>
                     Today, Sora Khmer has expanded its liquor and rum recipes,
-                    using jackfruit, mango, rice, coffee, and sugarcane.
+                    using jackfruit, banana, mango, rice, coffee, and sugarcane.
                   </p>
                 </article>
               </>
@@ -92,7 +92,7 @@ const HistorySection = () => {
                   គំនិតនៃការបង្កើតសុរាខ្មែរបានចាប់ផ្តើមតាំងពីឆ្នាំ 2008
                   គឺនៅពេលដែលសុខមាន និង Tayakama
                   បានធ្វើការរួមគ្នាដើម្បីកែលម្អជីវភាពរស់នៅរបស់ប្រជាជន
-                  តាមរយៈដោយការដោះមីន និង UXO នៅឃុំតាសែន។
+                  តាមរយៈការដោះមីន និង UXO នៅឃុំតាសែន។
                 </p>
                 <p>
                   ជារៀងរាល់ថ្ងៃ Tayakama ឃើញរថយន្តដឹកដំឡូងមីត្រឡប់មកពី
@@ -115,7 +115,7 @@ const HistorySection = () => {
                 </p>
                 <p>
                   មកទល់ឥឡូវនេះ សុរាខ្មែរ បានពង្រីករូបមន្តស្រារបស់ខ្លួនដោយ
-                  ប្រើខ្នុរ ស្វាយ អង្ករ កាហ្វេ និងអំពៅ។
+                  ប្រើខ្នុរ ចេក ស្វាយ អង្ករ កាហ្វេ និងអំពៅ។
                 </p>
               </article>
             )}

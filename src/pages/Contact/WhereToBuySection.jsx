@@ -121,7 +121,7 @@ const Collapsible = ({ title, content, isOpen, onToggle, language }) => {
                 {content.address && (
                   <div>
                     <span className="font-semibold">
-                      {language == "en" ? "Address: " : "អាស័យដ្ឋាន:"}
+                      {language == "en" ? "Address: " : "អាសយដ្ឋាន:"}
                     </span>{" "}
                     {content.address}
                   </div>

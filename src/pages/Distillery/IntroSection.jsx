@@ -77,7 +77,10 @@ const IntroSection = () => {
           </motion.div>
         </div>
         <div className="mt-8 md:hidden block">
-          <PrimaryButton content="Contact us" href="/contact" />
+          <PrimaryButton
+            content={language == "en" ? "Contact Us" : "ទំនាក់ទំនងយើង"}
+            href="/contact"
+          />
         </div>
       </div>
     </section>

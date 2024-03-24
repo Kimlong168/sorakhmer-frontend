@@ -7,9 +7,12 @@ import "../../App.css";
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../contexts/DataContext";
 import FlipCard from "./FlipCard";
+
 function AwardCarousel() {
   const [slidesToShow, setSlidesToShow] = useState(3);
   const { awardList } = useContext(DataContext);
+
+
   useEffect(() => {
     const handleResize = () => {
       // Check Tailwind breakpoints and update slidesToShow accordingly
@@ -51,6 +54,7 @@ function AwardCarousel() {
     <div className="py-8 flex justify-center">
       <div className="w-[95%] md:w-[90%]  lg:w-[95%] relative">
         <Slider {...settings}>
+        
           {awardList &&
             awardList.map((award, index) => {
               return (
@@ -59,6 +63,7 @@ function AwardCarousel() {
                 </div>
               );
             })}
+        
         </Slider>
       </div>
     </div>

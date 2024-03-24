@@ -2,22 +2,31 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
 import dragon from "../../assets/images/dragon.png";
 import ImagesCarousel from "../../components/ui/ImagesCarousel";
-import distilery_1 from "../../assets/images/distilery_1.webp";
-import distilery_2 from "../../assets/images/distilery_2.webp";
-import distilery_3 from "../../assets/images/distilery_3.webp";
-import distilery_4 from "../../assets/images/distilery_4.webp";
-import distilery_5 from "../../assets/images/distilery_5.webp";
+import distillery_1 from "../../assets/images/distillery_1.webp";
+import distillery_2 from "../../assets/images/distillery_2.jpg";
+import distillery_3 from "../../assets/images/distillery_3.jpg";
+import distillery_4 from "../../assets/images/distillery_4.jpg";
+import distillery_5 from "../../assets/images/distillery_5.webp";
+import distillery_6 from "../../assets/images/distillery_6.jpg";
+import distillery_7 from "../../assets/images/distillery_7.jpg";
+import distillery_8 from "../../assets/images/distillery_8.jpg";
+import distillery_9 from "../../assets/images/distillery_9.jpg";
+
 import { useContext } from "react";
 import { DataContext } from "../../contexts/DataContext";
 
 const DistillerySection = () => {
   const { language } = useContext(DataContext);
   const imageList = [
-    distilery_1,
-    distilery_2,
-    distilery_3,
-    distilery_5,
-    distilery_4,
+    distillery_9,
+    distillery_1,
+    distillery_8,
+    distillery_3,
+    distillery_5,
+    distillery_4,
+    distillery_2,
+    distillery_6,
+    distillery_7,
   ];
   return (
     <section className="container p-8 md:pt-0">

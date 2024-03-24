@@ -8,7 +8,7 @@ import kbachkhmer from "../../assets/images/kbachkhmer.png";
 const NavLinkDropdown = () => {
   const { language } = useContext(DataContext);
   return (
-    <div className="flex  justify-center ">
+    <div className="flex justify-center">
       <FlyoutLink FlyoutContent={AboutContent}>
         {language == "en" ? "About" : "អំពីយើង"}
       </FlyoutLink>

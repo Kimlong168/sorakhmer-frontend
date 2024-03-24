@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import { FiArrowRight } from "react-icons/fi";
 import about_1 from "../assets/images/about_1.jpg";
 import process_1 from "../assets/images/process_1.webp";
-import distilery_5 from "../assets/images/distilery_5.webp";
-import farm_1 from "../assets/images/farm_1.jpeg";
+import distillery_5 from "../assets/images/distillery_5.webp";
+import farm_4 from "../assets/images/farm_4.jpg";
 import allProducts from "../assets/images/allProducts.jpg";
 import heroPhoto3 from "../assets/images/heroPhoto/heroPhoto3.jpg";
 import heroPhoto9 from "../assets/images/heroPhoto/heroPhoto9.jpg";
@@ -29,58 +29,78 @@ const SideBar = ({ setShowSideBar, showSideBar }) => {
           <LinkContainer
             heading={language == "en" ? "Home" : "ទំព័រដើម"}
             subheading={
-              language == "en" ? "Welcome to Sora Khmer" : "សូមស្វាគមន៍មកកាន់សុរាខ្មែរ"
+              language == "en"
+                ? "Welcome to Sora Khmer"
+                : "សូមស្វាគមន៍មកកាន់សុរាខ្មែរ"
             }
             imgSrc={about_1}
             href="/"
           />
+
           <LinkContainer
             heading={language == "en" ? "Shop" : "ទិញទំនិញ"}
             subheading={
-              language == "en" ? "Explore our amazing products" : "ស្វែងយល់ពីផលិតផលរបស់យើង"
+              language == "en"
+                ? "Explore our amazing products"
+                : "ស្វែងយល់ពីផលិតផលរបស់យើង"
             }
             imgSrc={allProducts}
             href="/products"
           />
+
           <LinkContainer
             heading={language == "en" ? "Blogs" : "អត្ថបទ"}
             subheading={
-              language == "en" ? "Read our latest blogs" : "អានអត្ថបទថ្មីៗរបស់យើង"
+              language == "en"
+                ? "Read our latest blogs"
+                : "អានអត្ថបទថ្មីៗរបស់យើង"
             }
             imgSrc={heroPhoto3}
             href="/blogs"
           />
+
           <LinkContainer
-            heading={language == "en" ? "Process" : "ដំណើរការផលិត"}
+            heading={language == "en" ? "Contact" : "ទំនាក់ទំង"}
             subheading={
-              language == "en" ? "Our work speaks for itself" : "ការងារក្នុងការផលិតរបស់យើង"
+              language == "en"
+                ? "Incase you want to contact us"
+                : "ប្រសិនបើអ្នកចង់ទំនាក់ទំងយើង"
             }
-            imgSrc={process_1}
-            href="/process"
+            imgSrc={distillery_5}
+            href="/contact"
           />
-          <LinkContainer
-            heading={language == "en" ? "Distillery" : "រោងចក្រផលិត"}
-            subheading={
-              language == "en" ? "Learn about our distillery" : "ស្វែងយល់ពីរោងចក្រផលិតរបស់យើង"
-            }
-            imgSrc={farm_1}
-            href="/distillery"
-          />
+
           <LinkContainer
             heading={language == "en" ? "About" : "អំពីយើង"}
             subheading={
-              language == "en" ? "Learn what we do here" : "ស្វែងយល់អំពីយើងនៅទីនេះ"
+              language == "en"
+                ? "Learn what we do here"
+                : "ស្វែងយល់អំពីយើងនៅទីនេះ"
             }
             imgSrc={heroPhoto9}
             href="/about"
           />
+
           <LinkContainer
-            heading={language == "en" ? "Contact" : "ទំនាក់ទំង"}
+            heading={language == "en" ? "Process" : "ដំណើរការផលិត"}
             subheading={
-              language == "en" ? "Incase you want to contact us" : "ប្រសិនបើអ្នកចង់ទំនាក់ទំងយើង"
+              language == "en"
+                ? "Our work speaks for itself"
+                : "ការងារក្នុងការផលិតរបស់យើង"
             }
-            imgSrc={distilery_5}
-            href="/contact"
+            imgSrc={process_1}
+            href="/process"
+          />
+
+          <LinkContainer
+            heading={language == "en" ? "Distillery" : "រោងចក្រផលិត"}
+            subheading={
+              language == "en"
+                ? "Learn about our distillery"
+                : "ស្វែងយល់ពីរោងចក្រផលិតរបស់យើង"
+            }
+            imgSrc={farm_4}
+            href="/distillery"
           />
         </div>
       </section>

@@ -15,11 +15,13 @@ import { useContext } from "react";
 import { DataContext } from "../contexts/DataContext";
 import LinkIcon from "./ui/LinkIcon";
 import convertToPhoneNumber from "../utils/convertToPhoneNumber";
+import { scrollTopSmooth } from "../utils/scrollTop";
+// import KbachKhmerLine from "./ui/KbachKhmerLine";
 const Footer = () => {
   const { contactList, language } = useContext(DataContext);
   const contactInfo = contactList.map((item) => item)[0];
   return (
-    <div className=" bg-primary-content">
+    <div className="relative bg-primary-content overflow-hidden">
       <footer className="container text-white  flex flex-col lg:flex-row items-start lg:justify-between gap-12 py-10 px-6">
         {/* logo */}
         <div className="w-full p-0 lg:pr-10">
@@ -68,6 +70,25 @@ const Footer = () => {
               {language == "en" ? "Blogs" : "អត្ថបទ"}
             </Link>
             <Link
+              to="/contact"
+              className="hover:text-primary-light hover:underline flex items-center gap-2 group"
+            >
+              <div className="hidden group-hover:block h-2 w-2 rotate-45 ">
+                <img className="block" src={kbachkhmer} alt="kbachkhmer" />
+              </div>
+              {language == "en" ? "Contact" : "ទំនាក់ទំនង"}
+            </Link>
+            <Link
+              to="/about"
+              className="hover:text-primary-light hover:underline flex items-center gap-2 group"
+            >
+              <div className="hidden group-hover:block h-2 w-2 rotate-45 ">
+                <img className="block" src={kbachkhmer} alt="kbachkhmer" />
+              </div>
+              {language == "en" ? "About" : "អំពីយើង"}
+            </Link>
+
+            <Link
               to="/process"
               className="hover:text-primary-light hover:underline flex items-center gap-2 group"
             >
@@ -85,31 +106,13 @@ const Footer = () => {
               </div>
               {language == "en" ? "Distillery" : "រោងចក្រផលិត"}
             </Link>
-            <Link
-              to="/about"
-              className="hover:text-primary-light hover:underline flex items-center gap-2 group"
-            >
-              <div className="hidden group-hover:block h-2 w-2 rotate-45 ">
-                <img className="block" src={kbachkhmer} alt="kbachkhmer" />
-              </div>
-              {language == "en" ? "About" : "អំពីយើង"}
-            </Link>
-            <Link
-              to="/contact"
-              className="hover:text-primary-light hover:underline flex items-center gap-2 group"
-            >
-              <div className="hidden group-hover:block h-2 w-2 rotate-45 ">
-                <img className="block" src={kbachkhmer} alt="kbachkhmer" />
-              </div>
-              {language == "en" ? "Contact" : "ទំនាក់ទំង"}
-            </Link>
           </div>
         </div>
 
         {/* contact information */}
         <div className="w-full">
           <h3 className="font-bold text-primary text-xl mb-4">
-            {language == "en" ? "Contact Us" : "ទំនាក់ទំងយើង"}
+            {language == "en" ? "Contact Us" : "ទំនាក់ទំនងយើង"}
           </h3>
           <div className="flex flex-col gap-4">
             {contactInfo ? (
@@ -206,9 +209,24 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <div className="bg-primary-dark w-[90%] h-[1px] mx-auto"></div>
+
+      {/* kbach khmer */}
+      <div className="overflow-hidden group" onClick={scrollTopSmooth}>
+        <div className="text-primary font-bold text-right text-xl absolute -right-24 bottom-[145px] md:bottom-[120px] transition-transform duration-300 ease-in-out animate-bounce group-hover:right-[130px]">
+          {language == "en" ? "Go to Top" : "ទៅខាងលើ"}
+        </div>
+        <img
+          className="w-[400px] absolute rotate-[42deg]  md:rotate-[6deg]  brightness-50 -bottom-[250px] hover:rotate-[6deg] -right-[210px] md:-bottom-[217px] md:-right-[187px] md:hover:rotate-[40deg] transition-transform duration-300 ease-in-out cursor-pointer"
+          src={kbachkhmer}
+          alt="kbachkhmer"
+        />
+      </div>
+
+      {/* line */}
+      <div className="bg-primary-dark w-[90%] h-[1px] mx-auto mb-[52px] "></div>
+
       {/* copyright */}
-      <div className=" py-4 text-white flex justify-center items-center gap-2 text-sm">
+      <div className="w-full py-4 text-white flex justify-center items-center gap-2 text-sm absolute bottom-0 left-0 right-0">
         <FaCopyright />{" "}
         {language == "en"
           ? "2024 Copyright, Sorakhmer. All rights reserved."

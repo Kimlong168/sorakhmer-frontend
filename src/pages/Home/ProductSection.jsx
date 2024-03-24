@@ -84,7 +84,10 @@ const ProductSection = () => {
           </div>
         </motion.div>
         <div className="md:hidden block w-full order-3">
-          <PrimaryButton content="Shop Now" href="/products" />
+          <PrimaryButton
+            content={language == "en" ? "Shop Now" : "ទិញឥឡូវនេះ"}
+            href="/products"
+          />
         </div>
       </section>
     </>
@@ -116,7 +119,7 @@ const ProductCarousel = () => {
       >
         {products &&
           products.map((item) => (
-            <div className="w-full h-[330px] md:h-[390px]" key={item.id}>
+            <div className="w-full h-[370px] md:h-[390px]" key={item.id}>
               <img className="h-full w-full" src={item.image} alt={item.name} />
             </div>
           ))}

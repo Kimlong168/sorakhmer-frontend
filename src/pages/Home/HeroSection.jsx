@@ -1,27 +1,27 @@
 import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
 import { useContext, useEffect, useRef, useState } from "react";
-// import herophoto1 from "../../assets/images/heroPhoto/heroPhoto1.jpg";
 import herophoto2 from "../../assets/images/heroPhoto/heroPhoto2.jpg";
-// import herophoto3 from "../../assets/images/heroPhoto/heroPhoto3.jpg";
 import herophoto4 from "../../assets/images/heroPhoto/heroPhoto4.jpg";
-import herophoto5 from "../../assets/images/heroPhoto/heroPhoto5.jpg";
-import herophoto6 from "../../assets/images/heroPhoto/heroPhoto6.jpg";
+// import herophoto5 from "../../assets/images/heroPhoto/heroPhoto5.jpg";
+// import herophoto6 from "../../assets/images/heroPhoto/heroPhoto6.jpg";
 import herophoto7 from "../../assets/images/heroPhoto/heroPhoto7.jpg";
-import herophoto8 from "../../assets/images/heroPhoto/heroPhoto8.jpg";
-// import herophoto9 from "../../assets/images/heroPhoto/heroPhoto9.jpg";
+// import herophoto8 from "../../assets/images/heroPhoto/heroPhoto8.jpg";
 import herophoto10 from "../../assets/images/heroPhoto/heroPhoto10.jpg";
 
 import sora1 from "../../assets/images/sora1.jpg";
 import sora4 from "../../assets/images/sora4.jpg";
 import sora5 from "../../assets/images/sora5.jpg";
 import sora7 from "../../assets/images/sora7.jpg";
-
+import farm_5 from "../../assets/images/farm_5.jpg";
+import distillery_6 from "../../assets/images/distillery_6.jpg";
+import distillery_8 from "../../assets/images/distillery_8.jpg";
 import allProducts from "../../assets/images/allProducts.jpg";
 
 import PrimaryButton from "../../components/ui/PrimaryButton";
 import { TypeAnimation } from "react-type-animation";
 import { DataContext } from "../../contexts/DataContext";
+
 // import dragon from "../../assets/images/dragon.png";
 const HeroSection = () => {
   const { language } = useContext(DataContext);
@@ -87,7 +87,10 @@ const HeroSection = () => {
         <ShuffleGrid />
       </motion.div>
       <div className="md:hidden block">
-        <PrimaryButton content="Contact Us" href="/contact" />
+        <PrimaryButton
+          content={language == "en" ? "contact us" : "ទំនាក់ទំនងយើង"}
+          href="/contact"
+        />
       </div>
     </section>
   );
@@ -119,61 +122,47 @@ const squareData = [
     id: 2,
     src: herophoto2,
   },
-  // {
-  //   id: 3,
-  //   src: sora2,
-  // },
+  {
+    id: 3,
+    src: farm_5,
+  },
   {
     id: 4,
     src: herophoto4,
   },
+
   {
     id: 5,
-    src: herophoto5,
-  },
-  {
-    id: 6,
-    src: herophoto6,
-  },
-  {
-    id: 7,
     src: herophoto7,
   },
 
   {
-    id: 8,
-    src: herophoto8,
+    id: 6,
+    src: distillery_6,
   },
-  // {
-  //   id: 9,
-  //   src: sora3,
-  // },
   {
-    id: 10,
+    id: 7,
     src: herophoto10,
   },
   {
-    id: 11,
+    id: 8,
     src: allProducts,
   },
-  // {
-  //   id: 12,
-  //   src: sora2,
-  // },
-  // {
-  //   id: 13,
-  //   src: sora3,
-  // },
   {
-    id: 14,
+    id: 9,
+    src: distillery_8,
+  },
+
+  {
+    id: 10,
     src: sora4,
   },
   {
-    id: 15,
+    id: 11,
     src: sora5,
   },
   {
-    id: 18,
+    id: 12,
     src: sora7,
   },
 ];

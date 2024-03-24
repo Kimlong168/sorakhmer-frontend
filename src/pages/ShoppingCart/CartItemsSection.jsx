@@ -253,6 +253,7 @@ const CartItemsSection = () => {
   return (
     <section className="container p-8 md:pt-0">
       <div className="pt-8">
+        {/* dragon with title */}
         <div className="flex items-end">
           <img width={60} height={150} src={dragon} alt="dragon" />
           <span className="first-line:font-semibold text-[28px] sm:text-3xl uppercase font-bold border-b-2 rounded-br-xl border-primary -ml-3 mb-[3.5px] pr-3">
@@ -273,6 +274,7 @@ const CartItemsSection = () => {
                   alt="logo"
                 />
               </div>
+              {/* show when the form appears */}
               <span className="md:block hidden">===== New Order =====</span>
               <span className="md:hidden text-md">New Order</span>
             </h2>
@@ -290,7 +292,7 @@ const CartItemsSection = () => {
                     </th>
                   )}
                   <th className={thStyle}>
-                    {language == "en" ? "Name" : "ឈ្មោះទំនិញ"}
+                    {language == "en" ? "Name" : "ទំនិញ"}
                   </th>
                   <th className={thStyle}>
                     {language == "en" ? "Price" : "តម្លៃ"}
@@ -306,7 +308,7 @@ const CartItemsSection = () => {
                     )}
                   </th>
                   <th className={thStyle}>
-                    {language == "en" ? "Total" : "តម្លៃសរុប"}
+                    {language == "en" ? "Total" : "សរុប"}
                   </th>
                   {!isOpenForm && (
                     <th className={thStyle}>

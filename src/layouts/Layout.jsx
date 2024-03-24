@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
       {showViewCartBtn && <ViewCartButton />}
       {/* <div>
         <img
-          className="w-[400px]  absolute rotate-45 opacity-20 top-[600px] -left-[70px] "
+          className="w-[400px]  absolute rotate-[62deg] opacity-40 top-[600px] -left-[70px] "
           src={kbachkhmer}
           alt="kbachkhmer"
         />

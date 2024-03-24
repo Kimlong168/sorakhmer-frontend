@@ -19,7 +19,7 @@ const VideoSection = () => {
               : "សុរាខ្មែរ ឈ្នះមេដាយនៅទីក្រុងប៉ារីស ប្រទេសបារាំង។ យើងមានមោទនភាពដែលបានក្លាយជាក្រុមហ៊ុនកម្ពុជាដំបូងគេដែលឈ្នះពានរង្វាន់នេះ។ យើងប្តេជ្ញាផលិតគុណភាពល្អបំផុតនៃផលិតផលរបស់យើង។"}
           </p>
 
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <PrimaryButton
               content={language == "en" ? "View more" : "មើលបន្ថែម"}
               href="https://youtube.com/@012130567?si=OjaMuNzPX_zZhKmL"
@@ -43,7 +43,7 @@ const VideoSection = () => {
           ></iframe>
         </motion.div>
 
-        <div className="md:hidden block">
+        <div className="lg:hidden block ">
           <PrimaryButton
             content={language == "en" ? "View more" : "មើលបន្ថែម"}
             href="https://youtube.com/@012130567?si=OjaMuNzPX_zZhKmL"

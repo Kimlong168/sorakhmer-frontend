@@ -207,7 +207,7 @@ const ProductListSection = () => {
         {/* result search for text */}
         {isSearched && searchKeyword.length !== 0 && (
           <div className="mt-8 ">
-            {language == "en" ? "Search result for" : "លទ្ធផលសម្រាប់"}
+            {language == "en" ? "Search result for" : "លទ្ធផលសម្រាប់"}{" "}
             <span className="text-primary font-bold">
               &quot;{searchKeyword}&ldquo;
             </span>

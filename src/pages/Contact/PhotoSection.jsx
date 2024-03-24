@@ -1,8 +1,8 @@
 import ImagesCarousel from "../../components/ui/ImagesCarousel";
-import farm_1 from "../../assets/images/farm_1.jpeg";
-import farm_2 from "../../assets/images/farm_2.jpeg";
-import farm_3 from "../../assets/images/farm_3.jpeg";
-import farm_4 from "../../assets/images/farm_4.jpeg";
+import farm_1 from "../../assets/images/farm_1.jpg";
+import farm_2 from "../../assets/images/farm_2.jpg";
+import farm_3 from "../../assets/images/farm_3.jpg";
+import farm_4 from "../../assets/images/farm_4.jpg";
 import { useContext } from "react";
 import { DataContext } from "../../contexts/DataContext";
 

@@ -2,7 +2,7 @@ import Layout from "../../layouts/Layout";
 import PageTitle from "../../components/ui/PageTitle";
 import HistorySection from "./HistorySection";
 import MissionAndVisionSection from "./MissionAndVisionSection";
-import FounderSection from "./FounderSection";
+// import FounderSection from "./FounderSection";
 import AwardSection from "./AwardSection";
 import PartnerSection from "./PartnerSection";
 import PhotoSection from "./PhotoSection";
@@ -23,7 +23,7 @@ const About = () => {
           <PageTitle text={language == "en" ? "About us" : "អំពីយើង"} />
           <HistorySection />
           <MissionAndVisionSection />
-          <FounderSection />
+          {/* <FounderSection /> */}
           <VideoSection />
           <PhotoSection />
           <AwardSection />

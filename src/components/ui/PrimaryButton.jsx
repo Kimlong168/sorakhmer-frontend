@@ -16,7 +16,7 @@ const PrimaryButton = ({ content, href }) => {
     }, 1000); // Adjust the delay (in milliseconds) as needed
   };
   return (
-    <>
+    <div className="w-fit">
       <Link to={href}>
         <button
           onMouseEnter={handleMouseEnter}
@@ -35,7 +35,7 @@ const PrimaryButton = ({ content, href }) => {
           {content}
         </button>
       </Link>
-    </>
+    </div>
   );
 };
 PrimaryButton.propTypes = {

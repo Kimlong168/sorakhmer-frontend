@@ -15,6 +15,7 @@ const VisitorSection = () => {
   const imageRow2 = galleryList.slice(imgLength, 2 * imgLength);
   const imageRow3 = galleryList.slice(2 * imgLength, galleryList.length);
 
+  if (galleryList.length == 0) return null;
   return (
     <section>
       <div className="pt-12 pb-1">
@@ -36,7 +37,7 @@ const VisitorSection = () => {
         </motion.h3>
 
         {/* gallery */}
-         <div>
+        <div>
           <Marquee
             pauseOnClick={true}
             autoFill={true}
@@ -85,7 +86,6 @@ const VisitorSection = () => {
               })}
           </Marquee>
 
-      
           {galleryList.length > 11 && (
             <Marquee
               pauseOnClick={true}
@@ -111,9 +111,7 @@ const VisitorSection = () => {
                 })}
             </Marquee>
           )}
-        </div> 
-
-      
+        </div>
       </div>
     </section>
   );

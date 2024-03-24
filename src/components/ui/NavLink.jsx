@@ -1,7 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-
 // link in the navigation bar with the underline animation
 const NavLink = ({ href, title }) => {
   return (
@@ -18,7 +17,7 @@ const FlyoutLink = ({ children, href }) => {
     <div
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
-      className="relative w-fit h-fit"
+      className="relative w-fit h-fit group"
     >
       <Link to={href} className="relative">
         {children}
@@ -29,6 +28,7 @@ const FlyoutLink = ({ children, href }) => {
           className="absolute -bottom-2 -left-2 -right-2 h-1 origin-left scale-x-0 rounded-full bg-primary-light transition-transform duration-300 ease-out"
         />
       </Link>
+
     </div>
   );
 };

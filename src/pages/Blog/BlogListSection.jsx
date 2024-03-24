@@ -133,7 +133,7 @@ const BlogListSection = () => {
 
         {isSearched && searchKeyword.length !== 0 && (
           <div className="mt-8 ">
-            Search result for{" "}
+            {language == "en" ? "Search result for" : "លទ្ធផលសម្រាប់"}{" "}
             <span className="text-primary font-bold">
               &quot;{searchKeyword}&ldquo;
             </span>
@@ -149,6 +149,7 @@ const BlogListSection = () => {
             activeBlog={activeBlog}
             visible={visible1}
             authorList={authorList}
+            language={language}
           />
         </div>
         {/* blog list for small screen */}
@@ -160,6 +161,7 @@ const BlogListSection = () => {
             activeBlog={activeBlog}
             visible={visible2}
             authorList={authorList}
+            language={language}
           />
         </div>
 
@@ -172,7 +174,7 @@ const BlogListSection = () => {
                 onClick={() => setVisible1((prev) => prev + 3)}
                 className="flex group  items-center gap-2 border-2 border-dashed border-primary  px-6 py-3 font-semibold uppercase text-primary transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-xl hover:shadow-[4px_4px_0px_rgb(245,156,0)] active:translate-x-[0px] active:translate-y-[0px] active:rounded-lg active:shadow-none"
               >
-                Load More{" "}
+                {language == "en" ? "Load More" : "បង្ហាញបន្ថែម"}{" "}
                 <span className="group-hover:block hidden animate-ping">
                   <IoMdArrowForward />
                 </span>
@@ -191,7 +193,7 @@ const BlogListSection = () => {
                 onClick={() => setVisible2((prev) => prev + 2)}
                 className="flex group  items-center gap-2 border-2 border-dashed border-primary  px-6 py-3 font-semibold uppercase text-primary transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-xl hover:shadow-[4px_4px_0px_rgb(245,156,0)] active:translate-x-[0px] active:translate-y-[0px] active:rounded-lg active:shadow-none"
               >
-                Load More{" "}
+                {language == "en" ? "Load More" : "បង្ហាញបន្ថែម"}{" "}
                 <span className="group-hover:block hidden animate-ping">
                   <IoMdArrowForward />
                 </span>
@@ -206,7 +208,7 @@ const BlogListSection = () => {
   );
 };
 
-const BlogList = ({ activeBlog, visible, authorList }) => {
+const BlogList = ({ activeBlog, visible, authorList, language }) => {
   return (
     <>
       {activeBlog.length > 0 ? (
@@ -250,7 +252,7 @@ const BlogList = ({ activeBlog, visible, authorList }) => {
             whileInView={"show"}
             viewport={{ once: true, amount: 0 }}
           >
-            No blog found
+            {language == "en" ? "No blog found" : "រកមិនឃើញអត្ថបទ"}
           </motion.div>
         </div>
       )}
@@ -262,6 +264,7 @@ BlogList.propTypes = {
   activeBlog: PropType.array,
   visible: PropType.number,
   authorList: PropType.array,
+  language: PropType.string,
 };
 
 export default BlogListSection;

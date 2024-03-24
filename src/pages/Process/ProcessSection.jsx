@@ -21,7 +21,7 @@ const ProcessSection = () => {
     <section className="container p-8 md:pt-0">
       <div className="pt-12 md:py-12">
         <h3 className="text-nowrap text-center font-primary-bold text-4xl md:text-5xl ">
-          {language == "en" ? "Production Process" : "ដំណើរផលិតផល"}
+          {language == "en" ? "Production Process" : "ដំណើរផលិត"}
           <span className="text-primary font-bold">.</span>
         </h3>
         <p className="text-center mb-8 mt-2 porse lg:prose-xl">

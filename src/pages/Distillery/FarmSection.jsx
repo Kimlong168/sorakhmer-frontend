@@ -3,15 +3,18 @@ import { fadeIn } from "../../variants";
 import dragon from "../../assets/images/dragon.png";
 import ImagesCarousel from "../../components/ui/ImagesCarousel";
 
-import farm_1 from "../../assets/images/farm_1.jpeg";
-import farm_2 from "../../assets/images/farm_2.jpeg";
-import farm_3 from "../../assets/images/farm_3.jpeg";
-import farm_4 from "../../assets/images/farm_4.jpeg";
+import farm_1 from "../../assets/images/farm_1.jpg";
+import farm_2 from "../../assets/images/farm_2.jpg";
+import farm_3 from "../../assets/images/farm_3.jpg";
+import farm_4 from "../../assets/images/farm_4.jpg";
+import farm_5 from "../../assets/images/farm_5.jpg";
+import farm_6 from "../../assets/images/farm_6.jpeg";
+
 import { useContext } from "react";
 import { DataContext } from "../../contexts/DataContext";
 const EstateSection = () => {
   const { language } = useContext(DataContext);
-  const imageList = [farm_1, farm_2, farm_3, farm_4];
+  const imageList = [farm_1, farm_3, farm_2, farm_4, farm_5, farm_6];
   return (
     <section className="container p-8 md:pt-0">
       <div className="pt-12 md:py-12">

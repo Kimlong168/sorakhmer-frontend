@@ -43,7 +43,7 @@ const TotalPrice = ({
               <thead>
                 <th
                   colSpan={2}
-                  className="p-3 text-left font-bold pr-3 break-keep uppercase bg-primary  border border-gray-300  table-cell"
+                  className="p-3 text-left font-extrabold pr-3 break-keep uppercase bg-primary  border border-gray-300  table-cell"
                 >
                   {language == "en" ? "Total Price" : "តម្លៃសរុប"}
                 </th>
@@ -71,7 +71,7 @@ const TotalPrice = ({
                 </tr>
                 {/* total price */}
                 <tr>
-                  <td className="p-3 border border-r-0 border-gray-300 table-cell">
+                  <td className="p-3 border border-r-0 border-gray-300 table-cell font-semibold">
                     {language == "en" ? "Total:" : "តម្លៃសរុបរួម"}
                   </td>
                   <td className="p-3 border border-l-0 border-gray-300 table-cell  font-bold pr-3 break-keep">
@@ -170,7 +170,7 @@ const TotalPrice = ({
             {/* social media icon */}
             <div className="mt-5 flex gap-4 items-center">
               {" "}
-              {language == "en" ? " Contact Us:" : "ទំនាក់ទំនងយើង៖"}
+              {languageInBox == "en" ? " Contact Us:" : "ទំនាក់ទំនងយើង៖"}
               <div className="flex items-center gap-3">
                 {contactInfo ? (
                   contactInfo.socialMedia.map((item, index) => (

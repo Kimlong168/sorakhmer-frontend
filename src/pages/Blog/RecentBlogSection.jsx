@@ -75,7 +75,7 @@ const RecentBlogSection = () => {
                 {/* buuton */}
                 <div className="md:hidden block mt-4">
                   <PrimaryButton
-                    content="Read More"
+                    content={language == "en" ? "Read More" : "អានបន្ថែមទៀត"}
                     href={`/blog/${blog.id}`}
                   />
                 </div>
