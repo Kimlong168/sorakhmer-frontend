@@ -23,7 +23,7 @@ import checkSocialMedia from "../../utils/checkSocialMedia";
 import { addDoc, collection } from "firebase/firestore";
 
 const CartItemsSection = () => {
-  const { cartItems, setCartItems, contactList, language } =
+  const { productList, cartItems, setCartItems, contactList, language } =
     useContext(DataContext);
   // show popup image
   const [showImage, setShowImage] = useState({
@@ -87,13 +87,19 @@ const CartItemsSection = () => {
     let otherPrice = 0;
     let total = 0;
     cartItems.forEach((item) => {
-      subtotal += parseFloat(item.price) * parseFloat(item.quantity);
+      // get the price of the product from the productList instead of local storage
+      let itemPrice = productList
+        .filter((product) => product.id === item.id)
+        .map((filteredProduct) => filteredProduct.price);
+
+      subtotal += parseFloat(itemPrice) * parseFloat(item.quantity);
     });
+
     total = subtotal + otherPrice;
     setSubtotal(subtotal);
     setOtherPrice(otherPrice);
     setTotal(total);
-  }, [cartItems]);
+  }, [cartItems, productList]);
 
   // handle send message to telegram
   //bot token
@@ -349,16 +355,69 @@ const CartItemsSection = () => {
                             title="see product detail"
                             className="hover:text-blue-500 hover:underline"
                           >
-                            {!changeContent && item.name}
-                            {changeContent && item.name}
+                            {/* use data from proudct list instead of local storage to avoid bad guy from inspect to change name */}
+                            {!changeContent && (
+                              <>
+                                {productList &&
+                                  productList
+                                    .filter((product) => product.id === item.id)
+                                    .map((filteredProduct) => (
+                                      <span key={filteredProduct.id}>
+                                        {filteredProduct.name}
+                                      </span>
+                                    ))}
+                              </>
+                            )}
+                            {changeContent && (
+                              <>
+                                {productList &&
+                                  productList
+                                    .filter((product) => product.id === item.id)
+                                    .map((filteredProduct) => (
+                                      <span key={filteredProduct.id}>
+                                        {filteredProduct.name}
+                                      </span>
+                                    ))}
+                              </>
+                            )}
                           </span>
                         </Link>
                       </td>
                       {/* product price */}
                       <td className={tdStyle}>
-                        {!changeContent && <span>$ {item.price}</span>}
-                        {changeContent && <span>$ {item.price}</span>}
-                        {!item.price.includes(".") ? ".00" : ""}
+                        {/* use data from proudct list instead of local storage to avoid bad guy from inspect to change price and also get update if the data is updated, abd state changeContent is used to prevent from changing content when inspect*/}
+                        ${" "}
+                        {!changeContent && (
+                          <>
+                            {productList &&
+                              productList
+                                .filter((product) => product.id === item.id)
+                                .map((filteredProduct) => (
+                                  <span key={filteredProduct.id}>
+                                    {filteredProduct.price}
+                                  </span>
+                                ))}
+                          </>
+                        )}
+                        {changeContent && (
+                          <>
+                            {productList &&
+                              productList
+                                .filter((product) => product.id === item.id)
+                                .map((filteredProduct) => (
+                                  <span key={filteredProduct.id}>
+                                    {filteredProduct.price}
+                                  </span>
+                                ))}
+                          </>
+                        )}
+                        {!productList
+                          .filter((product) => product.id === item.id)
+                          .map((filteredProduct) => filteredProduct.price)
+                          .toString()
+                          .includes(".")
+                          ? ".00"
+                          : ""}
                       </td>
                       {/* product quantity */}
                       <td className={tdStyle}>
@@ -393,7 +452,7 @@ const CartItemsSection = () => {
                                 className=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none"
                               >
                                 <span className="m-auto text-2xl font-thin">
-                                  −
+                                  -
                                 </span>
                               </button>
 
@@ -466,12 +525,40 @@ const CartItemsSection = () => {
                       </td>
                       {/* total price for each product */}
                       <td className={tdStyle}>
+                        {/* use data from proudct list instead of local storage to avoid bad guy from inspect to change price and also get update if the data is updated, abd state changeContent is used to prevent from changing content when inspect*/}
                         ${" "}
-                        {!changeContent &&
-                          parseFloat(item.price) * parseFloat(item.quantity)}
-                        {changeContent &&
-                          parseFloat(item.price) * parseFloat(item.quantity)}
-                        {!item.price.includes(".") ? ".00" : ""}
+                        {!changeContent && (
+                          <>
+                            {productList.filter(
+                              (product) => product.id === item.id
+                            ).length > 0 &&
+                              parseFloat(
+                                productList.filter(
+                                  (product) => product.id === item.id
+                                )[0].price
+                              ) * parseFloat(item.quantity)}
+                          </>
+                        )}
+                        {changeContent && (
+                          <>
+                            {productList.filter(
+                              (product) => product.id === item.id
+                            ).length > 0 &&
+                              parseFloat(
+                                productList.filter(
+                                  (product) => product.id === item.id
+                                )[0].price
+                              ) * parseFloat(item.quantity)}
+                          </>
+                        )}
+                        {/* if it a float or not */}
+                        {!productList
+                          .filter((product) => product.id === item.id)
+                          .map((filteredProduct) => filteredProduct.price)
+                          .toString()
+                          .includes(".")
+                          ? ".00"
+                          : ""}
                       </td>
                       {/* action remove item form cart */}
                       {!isOpenForm && (
@@ -545,6 +632,7 @@ const CartItemsSection = () => {
               formData={formData}
               orderId={orderId}
               changeContent={changeContent}
+              itemsLength={cartItems.length}
             />
           </div>
         </div>

@@ -7,7 +7,9 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import { useContext } from "react";
 import { DataContext } from "../../contexts/DataContext";
-
+import { LuView } from "react-icons/lu";
+import { Link } from "react-router-dom";
+import scrollTop from "../../utils/scrollTop";
 const ProductSection = () => {
   const { language } = useContext(DataContext);
   return (
@@ -119,8 +121,23 @@ const ProductCarousel = () => {
       >
         {products &&
           products.map((item) => (
-            <div className="w-full h-[370px] md:h-[390px]" key={item.id}>
-              <img className="h-full w-full" src={item.image} alt={item.name} />
+            <div
+              className="w-full h-[370px] md:h-[390px] relative"
+              key={item.id}
+            >
+              <span
+                className="absolute top-3 left-3 text-primary bg-white/10 hover:bg-white/30 p-1 rounded text-xl cursor-pointer"
+                onClick={scrollTop}
+              >
+                <Link to={`/product/${item.id}`}>
+                  <LuView />
+                </Link>
+              </span>
+              <img
+                className="h-full w-full object-cover object-center"
+                src={item.image}
+                alt={item.name}
+              />
             </div>
           ))}
       </Carousel>

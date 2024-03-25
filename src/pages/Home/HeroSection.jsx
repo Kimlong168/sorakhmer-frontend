@@ -16,7 +16,7 @@ import sora7 from "../../assets/images/sora7.jpg";
 import farm_5 from "../../assets/images/farm_5.jpg";
 import distillery_6 from "../../assets/images/distillery_6.jpg";
 import distillery_8 from "../../assets/images/distillery_8.jpg";
-import allProducts from "../../assets/images/allProducts.jpg";
+// import allProducts from "../../assets/images/allProducts.jpg";
 
 import PrimaryButton from "../../components/ui/PrimaryButton";
 import { TypeAnimation } from "react-type-animation";
@@ -144,10 +144,10 @@ const squareData = [
     id: 7,
     src: herophoto10,
   },
-  {
-    id: 8,
-    src: allProducts,
-  },
+  // {
+  //   id: 8,
+  //   src: allProducts,
+  // },
   {
     id: 9,
     src: distillery_8,

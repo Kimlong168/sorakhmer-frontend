@@ -12,7 +12,7 @@ const PageTitle = ({ text = "About" }) => {
 
   return (
     <section className="relative -mb-6">
-      <div className="absolute bg-pageTitleSmall md:bg-pageTitle brightness-[0.6]  inset-0 bg-cover bg-center bg-no-repeat  xl:bg-no-repeat  2xl:bg-cover 2xl:bg-center 2xl:bg-no-repeat"></div>
+      <div className="absolute bg-pageTitleSmall md:bg-pageTitle brightness-[0.7]  inset-0 bg-cover bg-center bg-no-repeat  xl:bg-no-repeat  2xl:bg-cover 2xl:bg-center 2xl:bg-no-repeat"></div>
       {/* bg-repeat-round */}
       {/* xl:bg-contain xl:bg-left xl:bg-repeat-round  */}
       <div

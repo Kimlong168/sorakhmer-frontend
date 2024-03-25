@@ -8,18 +8,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import PropTypes from "prop-types";
 import kbachkhmer from "../../assets/images/kbachkhmer.png";
 const LanguageSwitchButton = () => {
-  const { language, setLanguage } = useContext(DataContext);
+  const { language } = useContext(DataContext);
 
   return (
     <div
-      onClick={() => {
-        setLanguage((prev) => (prev === "en" ? "kh" : "en"));
-        if (language == "en") {
-          localStorage.setItem("language", "kh");
-        } else {
-          localStorage.setItem("language", "en");
-        }
-      }}
       className="flex items-center gap-2 text-sm"
     >
       <div>
@@ -99,7 +91,7 @@ const AboutContent = () => {
       <div className="mb-3 space-y-3 text-md">
         <div
           onClick={() => {
-            setLanguage("en");
+            setLanguage("kh");
             if (language == "en") {
               localStorage.setItem("language", "kh");
             } else {
@@ -117,7 +109,7 @@ const AboutContent = () => {
         </div>
         <div
           onClick={() => {
-            setLanguage("kh");
+            setLanguage("en");
             if (language == "en") {
               localStorage.setItem("language", "kh");
             } else {

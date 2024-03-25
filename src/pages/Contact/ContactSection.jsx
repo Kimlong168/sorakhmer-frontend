@@ -210,7 +210,7 @@ const ContactSection = () => {
               <div className="flex flex-col gap-0.5">
                 {/* input fullname */}
                 <label className="lg:prose-xl ">
-                  {language == "en" ? "Fullname" : "ឈ្មោះ"} <RedStar />
+                  {language == "en" ? "Fullname" : "ឈ្មោះ"}<RedStar />
                 </label>
                 <input
                   className="border border-border focus:border-primary outline-none p-2.5 rounded bg-transparent"

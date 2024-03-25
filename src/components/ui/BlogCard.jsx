@@ -28,8 +28,9 @@ const BlogCard = ({
       <div className="w-full h-[240px] overflow-hidden">
         {/* cover image */}
         <img
-          className="w-full h-full  group-hover:scale-110 transition-all"
+          className="w-full h-full  group-hover:scale-110 transition-all object-cover object-center"
           src={coverImage}
+          alt="blog-cover-image"
         />
       </div>
       <div className="-mt-[40px] px-4 md:px-7 flex gap-4 md:gap-7 items-end  relative">

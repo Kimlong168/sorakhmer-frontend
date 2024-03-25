@@ -51,7 +51,8 @@ const ProductDetailCard = ({
                 {/* product image */}
                 <img
                   src={image}
-                  className="h-full w-full rounded object-cover  cursor-zoom-in"
+                  className="h-full w-full rounded object-cover object-center cursor-zoom-in"
+                  alt="product-image"
                 />
                 {/* open button */}
                 <div className="absolute top-0  rounded text-white cursor-pointer bg-primary grid place-content-center w-[30px] h-[30px]">

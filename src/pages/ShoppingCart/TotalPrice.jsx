@@ -20,6 +20,7 @@ const TotalPrice = ({
   formData,
   orderId,
   changeContent,
+  itemsLength,
 }) => {
   const { contactList, language } = useContext(DataContext);
   const contactInfo = contactList.map((item) => item)[0];
@@ -33,7 +34,7 @@ const TotalPrice = ({
     <div className="mb-8">
       <div className="flex flex-col lg:flex-row gap-5">
         {/* show when there is at least one product in the cart */}
-        {total !== "0" && (
+        {itemsLength !== 0 && (
           <div className={`w-full ${isOpenForm && " lg:mb-4 lg:ml-4"}`}>
             <table
               className={`border-collapse w-full bg-white  text-black ${
@@ -374,6 +375,7 @@ TotalPrice.propTypes = {
   formData: PropType.object,
   orderId: PropType.string,
   changeContent: PropType.bool,
+  itemsLength: PropType.string,
 };
 
 export default TotalPrice;
