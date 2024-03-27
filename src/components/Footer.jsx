@@ -16,12 +16,13 @@ import { DataContext } from "../contexts/DataContext";
 import LinkIcon from "./ui/LinkIcon";
 import convertToPhoneNumber from "../utils/convertToPhoneNumber";
 import { scrollTopSmooth } from "../utils/scrollTop";
+import gizLogo from "../assets/images/giz-icone.png";
 // import KbachKhmerLine from "./ui/KbachKhmerLine";
 const Footer = () => {
   const { contactList, language } = useContext(DataContext);
   const contactInfo = contactList.map((item) => item)[0];
   return (
-    <div className="relative bg-primary-content overflow-hidden">
+    <div className="relative bg-primary-content bg-neutral-950 overflow-hidden">
       <footer className="container text-white  flex flex-col lg:flex-row items-start lg:justify-between gap-12 py-10 px-6">
         {/* logo */}
         <div className="w-full p-0 lg:pr-10">
@@ -168,44 +169,56 @@ const Footer = () => {
         </div>
 
         {/* social media */}
-        <div className="w-full">
-          <h3 className="font-bold text-primary text-xl mb-4">
-            {" "}
-            {language == "en" ? "Follow Us" : "បណ្តាញសង្គមរបស់យើង"}
-          </h3>
-          <div className="flex item-center gap-5 text-3xl">
-            {contactInfo ? (
-              contactInfo.socialMedia.map((item, index) => (
-                <Link
-                  to={item.url}
-                  key={index}
-                  className="hover:text-primary-light hover:underline"
-                >
-                  <LinkIcon title={item.title} size={32} />
-                </Link>
-              ))
-            ) : (
-              <>
-                <Link
-                  to="https://www.facebook.com/sorakhmer1"
-                  className="hover:text-primary-light hover:underline"
-                >
-                  <FaFacebook />
-                </Link>
-                <Link
-                  to="https://line.me/ti/p/KqXNVPfm2p"
-                  className="hover:text-primary-light hover:underline"
-                >
-                  <FaLine />
-                </Link>
-                <Link
-                  to="https://t.me/+85512739573"
-                  className="hover:text-primary-light hover:underline"
-                >
-                  <FaTelegram />
-                </Link>
-              </>
-            )}
+        <div className="w-full flex flex-col gap-7">
+          <div className="w-full">
+            <h3 className="font-bold text-primary text-xl mb-4">
+              {" "}
+              {language == "en" ? "Follow Us" : "បណ្តាញសង្គមរបស់យើង"}
+            </h3>
+            <div className="flex item-center gap-5 text-3xl">
+              {contactInfo ? (
+                contactInfo.socialMedia.map((item, index) => (
+                  <Link
+                    to={item.url}
+                    key={index}
+                    className="hover:text-primary-light hover:underline"
+                  >
+                    <LinkIcon title={item.title} size={32} />
+                  </Link>
+                ))
+              ) : (
+                <>
+                  <Link
+                    to="https://www.facebook.com/sorakhmer1"
+                    className="hover:text-primary-light hover:underline"
+                  >
+                    <FaFacebook />
+                  </Link>
+                  <Link
+                    to="https://line.me/ti/p/KqXNVPfm2p"
+                    className="hover:text-primary-light hover:underline"
+                  >
+                    <FaLine />
+                  </Link>
+                  <Link
+                    to="https://t.me/+85512739573"
+                    className="hover:text-primary-light hover:underline"
+                  >
+                    <FaTelegram />
+                  </Link>
+                </>
+              )}
+            </div>
+          </div>
+
+          {/* support by */}
+          <div>
+            <h3 className=" font-bold text-primary text-xl mb-4">
+              {language == "en" ? "Supported By" : "គាំទ្រដោយ"}
+            </h3>
+            <div className="relative z-[20] p-3 w-[70%] max-w-[185px] bg-white/90 rounded-lg hover:bg-primary">
+              <img className="w-full" src={gizLogo} alt="giz-logo" />
+            </div>
           </div>
         </div>
       </footer>
@@ -223,7 +236,7 @@ const Footer = () => {
       </div>
 
       {/* line */}
-      <div className="bg-primary-dark w-[90%] h-[1px] mx-auto mb-[52px] "></div>
+      <div className="bg-primary-dark w-[90%]  h-[1px] mx-auto mb-[52px] "></div>
 
       {/* copyright */}
       <div className="w-full py-4 text-white flex justify-center items-center gap-2 text-sm absolute bottom-0 left-0 right-0">

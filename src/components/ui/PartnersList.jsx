@@ -10,21 +10,23 @@ const PartnersList = ({ direction = "left" }) => {
     <>
       <div>
         <Marquee
-          // pauseOnClick={true}
-          pauseOnHover={true}
+          pauseOnClick={true}
+          // pauseOnHover={true}
           autoFill={true}
           speed={80}
           delay={3}
           gradient={true}
           gradientWidth={0}
           direction={direction}
-          className="flex justify-between items-center py-3 w-full bg-primary border-[3px] dark:border-white border-black"
+          // className="flex justify-between items-center py-3 w-full bg-primary border-[3px] dark:border-white border-black"
+
+          className="flex justify-between items-center py-3 w-full "
         >
           {partnerList.map((partner, index) => {
             return (
               <Link to={partner.link} key={index}>
                 <img
-                  className="max-w-[80px] md:max-w-[80px] mr-8 md:mr-16"
+                  className="max-w-[100px] md:max-w-[120px] mr-8 md:mr-16 hover:scale-125" //80px
                   src={partner.partnerLogo}
                   alt="partner"
                 />

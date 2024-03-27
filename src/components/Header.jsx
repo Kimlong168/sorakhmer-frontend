@@ -70,7 +70,7 @@ const Header = () => {
       </div>
 
       {/* header */}
-      <header className="text-primary-content sticky top-0 bg-white z-[10] shadow-xl">
+      <header className="text-primary-content sticky top-0 bg-neutral-950 z-[10] shadow-xl">
         <nav className="flex justify-between items-center gap-5 px-6 md:px-8 p-2 bg-primary-content text-white">
           <div
             className="flex item-center gap-10 md:gap-20"

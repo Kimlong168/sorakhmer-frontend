@@ -4,7 +4,7 @@ import PartnersList from "../../components/ui/PartnersList";
 import { useContext } from "react";
 import { DataContext } from "../../contexts/DataContext";
 const PartnerSection = () => {
-  const { language } = useContext(DataContext);
+  const { language, theme } = useContext(DataContext);
   return (
     <section className="overflow-hidden md:mt-32 pt-3">
       <h3 className="font-primary-bold text-4xl md:text-5xl pt-8 uppercase text-center">
@@ -17,13 +17,32 @@ const PartnerSection = () => {
         whileInView={"show"}
         viewport={{ once: true, amount: 0.1 }}
       >
-        <div className=" w-[130%] translate-x-[-50px] -rotate-12 grayscale mt-12">
+        {/* <div className=" w-[130%] translate-x-[-50px] -rotate-12 grayscale mt-12">
           <PartnersList direction="left" />
         </div>
 
         <div className=" w-[130%] translate-x-[-50px] rotate-12 -mt-8 mb-4 md:mb-8">
           <PartnersList direction="right" />
-        </div>
+        </div> */}
+        {/* <div className=" w-[130%]    my-12 ">
+          <PartnersList direction="right" />
+        </div> */}
+
+        {theme == "dark" ? (
+          <div
+            className=" w-[130%] my-12 grayscale bg-transparent "
+            style={{ filter: "brightness(0) invert(1)" }}
+          >
+            <PartnersList direction={"left"} />
+          </div>
+        ) : (
+          <div className=" w-[130%] my-12">
+            <PartnersList
+              direction="left"
+              style={{ filter: "grayscale(100%)" }}
+            />
+          </div>
+        )}
       </motion.div>
     </section>
   );
