@@ -30,7 +30,7 @@ const Header = () => {
   return (
     <>
       {/* telephone and social media icon */}
-      <div className="flex justify-between items-center p-1 px-8 ">
+      <div className="flex justify-between items-center p-1 px-3 sm:px-6 md:px-8 ">
         {/* phone number */}
         <div className="flex items-center gap-2">
           <FaPhoneSquareAlt />
@@ -71,7 +71,7 @@ const Header = () => {
 
       {/* header */}
       <header className="text-primary-content sticky top-0 bg-neutral-950 z-[10] shadow-xl">
-        <nav className="flex justify-between items-center gap-5 px-6 md:px-8 p-2 bg-primary-content text-white">
+        <nav className="flex justify-between items-center gap-4 sm:gap-5 px-2 sm:px-6 md:px-8 p-2 bg-primary-content text-white">
           <div
             className="flex item-center gap-10 md:gap-20"
             onClick={scrollToTop}
@@ -120,11 +120,15 @@ const Header = () => {
             </ul>
           </div>
 
-          <div className="flex items-center gap-6 md:gap-5 text-xl md:text-2xl">
-            {/* language switch button */}
-            <LanguageSwitchButton />
-            {/* light and dark mode icon */}
-            <ToggleLightDarkMode />
+          {/* left buttons */}
+          <div className="flex items-center justify-end gap-4 sm:gap-6 md:gap-5 text-xl md:text-2xl w-full md:w-auto">
+
+            {/* language switch button and light and dark mode icon  */}
+            <div className="flex gap-2 md:gap-5 items-center">
+              <LanguageSwitchButton />
+              <ToggleLightDarkMode />
+            </div>
+
             {/* shopping cart icon */}
             <Link to="/cart">
               <div onClick={scrollTop} className="relative">
@@ -140,6 +144,7 @@ const Header = () => {
                 )}
               </div>
             </Link>
+
             {/* menu icon */}
             <div
               className="lg:hidden"

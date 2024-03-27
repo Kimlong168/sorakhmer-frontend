@@ -45,7 +45,7 @@ const Footer = () => {
           <div className="flex flex-col gap-2" onClick={scrollToTop}>
             <Link
               to="/"
-              className="hover:text-primary-light hover:underline flex items-center gap-2 group"
+              className="hover:text-primary-light hover:underline  w-fit flex items-center gap-2 group"
             >
               <div className="hidden group-hover:block h-2 w-2 rotate-45 ">
                 <img className="block" src={kbachkhmer} alt="kbachkhmer" />
@@ -54,7 +54,7 @@ const Footer = () => {
             </Link>
             <Link
               to="/products"
-              className="hover:text-primary-light hover:underline flex items-center gap-2 group"
+              className="hover:text-primary-light hover:underline  w-fit flex items-center gap-2 group"
             >
               <div className="hidden group-hover:block h-2 w-2 rotate-45 ">
                 <img className="block" src={kbachkhmer} alt="kbachkhmer" />
@@ -63,7 +63,7 @@ const Footer = () => {
             </Link>
             <Link
               to="/blogs"
-              className="hover:text-primary-light hover:underline flex items-center gap-2 group"
+              className="hover:text-primary-light hover:underline  w-fit flex items-center gap-2 group"
             >
               <div className="hidden group-hover:block h-2 w-2 rotate-45 ">
                 <img className="block" src={kbachkhmer} alt="kbachkhmer" />
@@ -72,7 +72,7 @@ const Footer = () => {
             </Link>
             <Link
               to="/contact"
-              className="hover:text-primary-light hover:underline flex items-center gap-2 group"
+              className="hover:text-primary-light hover:underline  w-fit flex items-center gap-2 group"
             >
               <div className="hidden group-hover:block h-2 w-2 rotate-45 ">
                 <img className="block" src={kbachkhmer} alt="kbachkhmer" />
@@ -81,7 +81,7 @@ const Footer = () => {
             </Link>
             <Link
               to="/about"
-              className="hover:text-primary-light hover:underline flex items-center gap-2 group"
+              className="hover:text-primary-light hover:underline  w-fit flex items-center gap-2 group"
             >
               <div className="hidden group-hover:block h-2 w-2 rotate-45 ">
                 <img className="block" src={kbachkhmer} alt="kbachkhmer" />
@@ -91,7 +91,7 @@ const Footer = () => {
 
             <Link
               to="/process"
-              className="hover:text-primary-light hover:underline flex items-center gap-2 group"
+              className="hover:text-primary-light hover:underline  w-fit flex items-center gap-2 group"
             >
               <div className="hidden group-hover:block h-2 w-2 rotate-45 ">
                 <img className="block" src={kbachkhmer} alt="kbachkhmer" />
@@ -100,7 +100,7 @@ const Footer = () => {
             </Link>
             <Link
               to="/distillery"
-              className="hover:text-primary-light hover:underline flex items-center gap-2 group"
+              className="hover:text-primary-light hover:underline  w-fit flex items-center gap-2 group"
             >
               <div className="hidden group-hover:block h-2 w-2 rotate-45 ">
                 <img className="block" src={kbachkhmer} alt="kbachkhmer" />
@@ -120,7 +120,7 @@ const Footer = () => {
               <>
                 <Link
                   to={`tel:${contactInfo.phoneNumber}`}
-                  className="flex items-center gap-2 hover:text-primary-light hover:underline"
+                  className="flex items-center gap-2 hover:text-primary-light hover:underline  w-fit"
                 >
                   <FaPhoneSquareAlt />
                   <span>
@@ -129,7 +129,7 @@ const Footer = () => {
                 </Link>
                 <Link
                   to={`mailto:${contactInfo.email}`}
-                  className="flex items-center gap-2 hover:text-primary-light hover:underline"
+                  className="flex items-center gap-2 hover:text-primary-light hover:underline  w-fit"
                 >
                   <MdEmail />
                   <span>{contactInfo.email}</span>
@@ -139,14 +139,14 @@ const Footer = () => {
               <>
                 <Link
                   to="tel:012739573"
-                  className="flex items-center gap-2 hover:text-primary-light hover:underline"
+                  className="flex items-center gap-2 hover:text-primary-light hover:underline  w-fit"
                 >
                   <FaPhoneSquareAlt />
                   <span>(855) 012 739 573</span>
                 </Link>
                 <Link
                   to="mailto:hongmean2002@yahoo.com"
-                  className="flex items-center gap-2 hover:text-primary-light hover:underline"
+                  className="flex items-center gap-2 hover:text-primary-light hover:underline  w-fit"
                 >
                   <MdEmail />
                   <span>hongmean2002@yahoo.com</span>
@@ -156,7 +156,7 @@ const Footer = () => {
 
             <Link
               to="https://maps.app.goo.gl/GWBq9PAQotji4jceA"
-              className="flex items-center gap-2 hover:text-primary-light hover:underline"
+              className="flex items-center gap-2 hover:text-primary-light hover:underline  w-fit"
             >
               <FaMapMarkerAlt />
               <span>
@@ -169,7 +169,7 @@ const Footer = () => {
         </div>
 
         {/* social media */}
-        <div className="w-full flex flex-col gap-7">
+        <div className="w-full flex flex-col gap-12 lg:gap-7">
           <div className="w-full">
             <h3 className="font-bold text-primary text-xl mb-4">
               {" "}
@@ -181,7 +181,7 @@ const Footer = () => {
                   <Link
                     to={item.url}
                     key={index}
-                    className="hover:text-primary-light hover:underline"
+                    className="hover:text-primary-light hover:underline  w-fit"
                   >
                     <LinkIcon title={item.title} size={32} />
                   </Link>
@@ -190,19 +190,19 @@ const Footer = () => {
                 <>
                   <Link
                     to="https://www.facebook.com/sorakhmer1"
-                    className="hover:text-primary-light hover:underline"
+                    className="hover:text-primary-light hover:underline  w-fit"
                   >
                     <FaFacebook />
                   </Link>
                   <Link
                     to="https://line.me/ti/p/KqXNVPfm2p"
-                    className="hover:text-primary-light hover:underline"
+                    className="hover:text-primary-light hover:underline  w-fit"
                   >
                     <FaLine />
                   </Link>
                   <Link
                     to="https://t.me/+85512739573"
-                    className="hover:text-primary-light hover:underline"
+                    className="hover:text-primary-light hover:underline  w-fit"
                   >
                     <FaTelegram />
                   </Link>

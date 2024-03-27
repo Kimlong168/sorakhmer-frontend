@@ -17,10 +17,10 @@ const PartnerSection = () => {
         whileInView={"show"}
         viewport={{ once: true, amount: 0.1 }}
       >
-  
+
         {theme == "dark" ? (
           <div
-            className=" w-[130%] my-12 grayscale bg-transparent "
+            className=" w-[130%] my-12 bg-transparent "
             style={{ filter: "brightness(0) invert(1)" }}
           >
             <PartnersList direction={"left"} />
@@ -29,7 +29,7 @@ const PartnerSection = () => {
           <div className=" w-[130%] my-12">
             <PartnersList
               direction="left"
-              style={{ filter: "grayscale(100%)" }}
+          
             />
           </div>
         )}
