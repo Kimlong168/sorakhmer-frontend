@@ -12,7 +12,6 @@ import axios from "axios";
 import OrderCheckoutForm from "../../components/form/OrderCheckoutForm";
 import checkSocialMedia from "../../utils/checkSocialMedia";
 
-
 const ProductDetailSection = () => {
   const { id: productParams } = useParams();
   const { productList, productCategoryList, contactList, language } =
@@ -122,19 +121,12 @@ const ProductDetailSection = () => {
       send();
       // record order to database
       recordOrder();
-      // clear form data
-      setFormData({
-        fullname: "",
-        phone: "",
-        address: "",
-        description: "",
-        email: "",
-        socialMediaLink: "",
-      });
+      
+      // close form
+      setIsOpenForm(false);
     } catch (error) {
       console.error("Error sending message:", error);
     }
-
   };
 
   // record order to firestore database
@@ -191,7 +183,7 @@ const ProductDetailSection = () => {
       </div>
 
       {/* detail product */}
-      <div className="flex justify-between items-center" >
+      <div className="flex justify-between items-center">
         <ProductDetailCard
           {...data}
           id={productParams}

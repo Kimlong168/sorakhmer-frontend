@@ -95,226 +95,229 @@ const CustomerContactForm = ({
                 </div>
               </div>
 
-              {/* show order detail for buy now function */}
-              {orderDetail && (
-                <div className="-mt-1 mb-2.5 font-bold">
-                  {orderDetail.productName} ( ${orderDetail.price}
-                  {" x "}
-                  {orderDetail.quantity}
-                  {" = "}
-                  <span className="text-lg text-primary">
-                    {language == "en" ? `Total` : `សរុប`} ${orderDetail.total}
-                  </span>
-                  )
-                </div>
-              )}
               {!isSending ? (
-                // form for user to input their information
-                <form>
-                  {/* fullname */}
-                  <div className="mb-4">
-                    <label
-                      title="required"
-                      htmlFor="fullName"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      {" "}
-                      {language == "en" ? "Fullname" : "ឈ្មោះ"}
-                      <RedStar />
-                    </label>
-                    <input
-                      type="text"
-                      id="fullName"
-                      name="fullName"
-                      value={formData.fullName}
-                      onChange={handleChange}
-                      className="mt-1 p-2 border border-gray-300 rounded-md  w-full"
-                      required
-                    />
-                  </div>
-                  {/* phone number */}
-                  <div className="mb-4">
-                    <label
-                      title="required"
-                      htmlFor="phoneNumber"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      {language == "en" ? "Phone Number" : "លេខទូរស័ព្ទ"}
-                      <RedStar />
-                    </label>
-                    <input
-                      type="tel"
-                      id="phoneNumber"
-                      name="phoneNumber"
-                      value={formData.phoneNumber}
-                      onChange={handleChange}
-                      className="mt-1 p-2 border w-full border-gray-300 rounded-md"
-                      required
-                    />
-                  </div>
-                  {/* address */}
-                  <div className="mb-4">
-                    <label
-                      title="required"
-                      htmlFor="address"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      {" "}
-                      {language == "en" ? "Address" : "អាសយដ្ឋាន"}
-                      <RedStar />
-                    </label>
-                    <input
-                      type="text"
-                      id="address"
-                      name="address"
-                      value={formData.address}
-                      onChange={handleChange}
-                      className="mt-1 p-2 border w-full border-gray-300 rounded-md"
-                      required
-                    />
-                  </div>
+                <>
+                  {/* show order detail for buy now function */}
+                  {orderDetail && (
+                    <div className="-mt-1 mb-2.5 font-bold">
+                      {orderDetail.productName} ( ${orderDetail.price}
+                      {" x "}
+                      {orderDetail.quantity}
+                      {" = "}
+                      <span className="text-lg text-primary">
+                        {language == "en" ? `Total` : `សរុប`} $
+                        {orderDetail.total}
+                      </span>
+                      )
+                    </div>
+                  )}
+                  {/*  form for user to input their information */}
+                  <form>
+                    {/* fullname */}
+                    <div className="mb-4">
+                      <label
+                        title="required"
+                        htmlFor="fullName"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        {" "}
+                        {language == "en" ? "Fullname" : "ឈ្មោះ"}
+                        <RedStar />
+                      </label>
+                      <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        value={formData.fullName}
+                        onChange={handleChange}
+                        className="mt-1 p-2 border border-gray-300 rounded-md  w-full"
+                        required
+                      />
+                    </div>
+                    {/* phone number */}
+                    <div className="mb-4">
+                      <label
+                        title="required"
+                        htmlFor="phoneNumber"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        {language == "en" ? "Phone Number" : "លេខទូរស័ព្ទ"}
+                        <RedStar />
+                      </label>
+                      <input
+                        type="tel"
+                        id="phoneNumber"
+                        name="phoneNumber"
+                        value={formData.phoneNumber}
+                        onChange={handleChange}
+                        className="mt-1 p-2 border w-full border-gray-300 rounded-md"
+                        required
+                      />
+                    </div>
+                    {/* address */}
+                    <div className="mb-4">
+                      <label
+                        title="required"
+                        htmlFor="address"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        {" "}
+                        {language == "en" ? "Address" : "អាសយដ្ឋាន"}
+                        <RedStar />
+                      </label>
+                      <input
+                        type="text"
+                        id="address"
+                        name="address"
+                        value={formData.address}
+                        onChange={handleChange}
+                        className="mt-1 p-2 border w-full border-gray-300 rounded-md"
+                        required
+                      />
+                    </div>
 
-                  {/* contact link */}
-                  <div className="mb-4">
-                    <label
-                      htmlFor="telegram"
-                      className="text-sm font-medium text-gray-700 flex items-center gap-4 mb-1"
-                    >
-                      <div>
-                        {language == "en"
-                          ? " Telegram, Line, Facebook or other"
-                          : "Telegram, Line, Facebook ឬផ្សេងទៀត"}
-                      </div>
-
-                      {/* button option qrcode and url */}
-                      <div className="flex gap-2 items-center">
-                        <span
-                          className={`cursor-pointer px-4 py-1  text-xs rounded  ${
-                            inputLinkType == "url"
-                              ? "text-white bg-green-500"
-                              : "text-gray-900 border"
-                          } `}
-                          onClick={() => setInputLinkType("url")}
-                        >
-                          Url
-                        </span>
-                        <span
-                          className={`cursor-pointer px-4 py-1  text-xs rounded  ${
-                            inputLinkType == "qrcode"
-                              ? "text-white bg-green-500"
-                              : "text-gray-900 border"
-                          } `}
-                          onClick={() => setInputLinkType("qrcode")}
-                        >
-                          Qrcode
-                        </span>
-                      </div>
-                    </label>
-
-                    {inputLinkType === "url" ? (
-                      <div>
-                        {/* input url */}
-                        <input
-                          type="url"
-                          id="telegram"
-                          name="telegram"
-                          placeholder={
-                            language == "en"
-                              ? "copy your url and paste here..."
-                              : "ចម្លង url របស់អ្នក ហើយបិទភ្ជាប់នៅទីនេះ..."
-                          }
-                          value={formData.telegram}
-                          onChange={handleChange}
-                          className="mt-1 p-2 border w-full border-gray-300 rounded-md"
-                        />
-
-                        {/* to get rid of error unknown id="reader" */}
-                        <div className="hidden" id="reader"></div>
-                      </div>
-                    ) : (
-                      <div className="mt-2">
-                        {/* qrcode scanner */}
-                        <div className="rounded" id="reader"></div>
-                        <p className="text-center text-gray-500">
+                    {/* contact link */}
+                    <div className="mb-4">
+                      <label
+                        htmlFor="telegram"
+                        className="text-sm font-medium text-gray-700 flex items-center gap-4 mb-1"
+                      >
+                        <div>
                           {language == "en"
-                            ? "Please scan the qr-code to get the link"
-                            : "សូមស្កេន qr-code របស់អ្នកដើម្បីទទួលបានតំណ"}
-                        </p>
-                      </div>
-                    )}
-                  </div>
+                            ? " Telegram, Line, Facebook or other"
+                            : "Telegram, Line, Facebook ឬផ្សេងទៀត"}
+                        </div>
 
-                  {/* message */}
-                  <div className="mb-4">
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-gray-700"
+                        {/* button option qrcode and url */}
+                        <div className="flex gap-2 items-center">
+                          <span
+                            className={`cursor-pointer px-4 py-1  text-xs rounded  ${
+                              inputLinkType == "url"
+                                ? "text-white bg-green-500"
+                                : "text-gray-900 border"
+                            } `}
+                            onClick={() => setInputLinkType("url")}
+                          >
+                            Url
+                          </span>
+                          <span
+                            className={`cursor-pointer px-4 py-1  text-xs rounded  ${
+                              inputLinkType == "qrcode"
+                                ? "text-white bg-green-500"
+                                : "text-gray-900 border"
+                            } `}
+                            onClick={() => setInputLinkType("qrcode")}
+                          >
+                            Qrcode
+                          </span>
+                        </div>
+                      </label>
+
+                      {inputLinkType === "url" ? (
+                        <div>
+                          {/* input url */}
+                          <input
+                            type="url"
+                            id="telegram"
+                            name="telegram"
+                            placeholder={
+                              language == "en"
+                                ? "copy your url and paste here..."
+                                : "ចម្លង url របស់អ្នក ហើយបិទភ្ជាប់នៅទីនេះ..."
+                            }
+                            value={formData.telegram}
+                            onChange={handleChange}
+                            className="mt-1 p-2 border w-full border-gray-300 rounded-md"
+                          />
+
+                          {/* to get rid of error unknown id="reader" */}
+                          <div className="hidden" id="reader"></div>
+                        </div>
+                      ) : (
+                        <div className="mt-2">
+                          {/* qrcode scanner */}
+                          <div className="rounded" id="reader"></div>
+                          <p className="text-center text-gray-500">
+                            {language == "en"
+                              ? "Please scan the qr-code to get the link"
+                              : "សូមស្កេន qr-code របស់អ្នកដើម្បីទទួលបានតំណ"}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* message */}
+                    <div className="mb-4">
+                      <label
+                        htmlFor="message"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        {language == "en" ? "Message" : "ចំណាំ"}
+                      </label>
+                      <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        rows="3"
+                        className="mt-1 p-2 border w-full border-gray-300 rounded-md"
+                      />
+                    </div>
+
+                    {/* order now button */}
+                    <div
+                      onClick={() => {
+                        if (
+                          formData.fullName &&
+                          formData.phoneNumber &&
+                          formData.address
+                        ) {
+                          setIsSending(true);
+
+                          // this function is used to prevent user from changing the content of the page epsecially the price, and quantity to make us screenshot the wrong data
+                          setChangeContent();
+                          // delay 1.5s to make sure the content is changed and the image is taken
+                          setTimeout(() => {
+                            sendToTelegram();
+                          }, 2000);
+                          // delay 3s to make sure the image is uploaded and also deleted after sending to telegram successfully
+                          setTimeout(() => {
+                            setIsSubmitted({
+                              showForm: false,
+                              showAlert: true,
+                            });
+                          }, 3000);
+                          // reset the percentage value
+                          setProgress(0);
+                        } else {
+                          setIsShowWarning(true);
+                        }
+                      }}
+                      className="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark w-fit cursor-pointer font-bold"
                     >
-                      {language == "en" ? "Message" : "ចំណាំ"}
-                    </label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      rows="3"
-                      className="mt-1 p-2 border w-full border-gray-300 rounded-md"
-                    />
-                  </div>
+                      {language == "en" ? "Order Now" : "បញ្ជាទិញឥឡូវនេះ"}
+                    </div>
 
-                  {/* order now button */}
-                  <div
-                    onClick={() => {
-                      if (
-                        formData.fullName &&
-                        formData.phoneNumber &&
-                        formData.address
-                      ) {
-                        setIsSending(true);
+                    {/* note */}
+                    <div className="my-4">
+                      <hr />
 
-                        // this function is used to prevent user from changing the content of the page epsecially the price, and quantity to make us screenshot the wrong data
-                        setChangeContent();
-                        // delay 1.5s to make sure the content is changed and the image is taken
-                        setTimeout(() => {
-                          sendToTelegram();
-                        }, 2000);
-                        // delay 3s to make sure the image is uploaded and also deleted after sending to telegram successfully
-                        setTimeout(() => {
-                          setIsSubmitted({
-                            showForm: false,
-                            showAlert: true,
-                          });
-                        }, 3000);
-                        // reset the percentage value
-                        setProgress(0);
-                      } else {
-                        setIsShowWarning(true);
-                      }
-                    }}
-                    className="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark w-fit cursor-pointer font-bold"
-                  >
-                    {language == "en" ? "Order Now" : "បញ្ជាទិញឥឡូវនេះ"}
-                  </div>
-
-                  {/* note */}
-                  <div className="my-4">
-                    <hr />
-
-                    {language == "en" ? (
-                      <p className="mt-2">
-                        <span className="font-bold rounded mr-2">Note:</span> We
-                        will reach out to you via your contact or Telegram
-                        promptly. Once we confirm your order, we will proceed to
-                        process the checkout. Thank you for your patience
-                      </p>
-                    ) : (
-                      <p className="mt-2">
-                        <span className="font-bold rounded mr-2">ចំណាំ</span>{" "}
-                        យើងនឹងទាក់ទងទៅអ្នកតាមរយៈលេខទំនាក់ទំនងរបស់អ្នក ឬ Telegram
-                        ភ្លាមៗ។ អរគុណចំពោះការរងចាំរបស់អ្នក
-                      </p>
-                    )}
-                  </div>
-                </form>
+                      {language == "en" ? (
+                        <p className="mt-2">
+                          <span className="font-bold rounded mr-2">Note:</span>{" "}
+                          We will reach out to you via your contact or Telegram
+                          promptly. Once we confirm your order, we will proceed
+                          to process the checkout. Thank you for your patience
+                        </p>
+                      ) : (
+                        <p className="mt-2">
+                          <span className="font-bold rounded mr-2">ចំណាំ</span>{" "}
+                          យើងនឹងទាក់ទងទៅអ្នកតាមរយៈលេខទំនាក់ទំនងរបស់អ្នក ឬ
+                          Telegram ភ្លាមៗ។ អរគុណចំពោះការរងចាំរបស់អ្នក
+                        </p>
+                      )}
+                    </div>
+                  </form>
+                </>
               ) : (
                 // loading with percentage
                 <div className="  rounded-md flex flex-col gap-5 items-center justify-center">

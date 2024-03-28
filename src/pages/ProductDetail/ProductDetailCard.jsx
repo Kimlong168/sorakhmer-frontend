@@ -142,10 +142,10 @@ const ProductDetailCard = ({
                 </div>
               </div>
 
-              <div className="mt-8 flex items-center gap-4">
+              <div className="mt-8 flex items-center gap-4 ">
                 {/* quantity button */}
 
-                <div className="flex flex-row max-w-[130px] relative bg-transparent overflow-hidden">
+                <div className="flex flex-row  min-w-[130px] max-w-[130px] relative bg-transparent overflow-hidden bg-gray-300">
                   {/* minus button */}
                   <button
                     onClick={() => {
@@ -161,7 +161,7 @@ const ProductDetailCard = ({
                   {/* input quantity */}
                   <input
                     type="number"
-                    className="focus:outline-none text-center w-[50px] pl-2.5 bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"
+                    className="focus:outline-none text-center w-[50px] sm:pl-2.5 bg-gray-300 rounded-none font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"
                     name="custom-input-number"
                     min={1}
                     value={parseFloat(quantity)}
@@ -187,7 +187,7 @@ const ProductDetailCard = ({
                 {/* buy now */}
                 <button
                   onClick={() => setIsOpenForm(true)}
-                  className="flex items-center justify-center max-w-[130px] w-full gap-2 p-2.5 bg-green-600 hover:bg-green-700 text-white font-bold rounded"
+                  className="flex items-center justify-center max-w-[130px] w-[130px] gap-2 p-2.5 bg-green-600 hover:bg-green-700 text-white font-bold rounded"
                 >
                   {language == "en" ? "Buy Now" : "ទិញឥឡូវ"} <FaMoneyBill />
                 </button>
@@ -215,7 +215,7 @@ const ProductDetailCard = ({
                       setShowViewCartBtn(false);
                     }, 2000);
                   }}
-                  className="flex items-center justify-center max-w-[130px] w-full gap-2 p-2.5 bg-primary hover:bg-primary-light text-white font-bold rounded relative"
+                  className="flex items-center justify-center max-w-[130px] min-w-[130px] gap-2 p-2.5 bg-primary hover:bg-primary-light text-white font-bold rounded relative"
                 >
                   {language == "en" ? "Add to Cart" : "បន្ថែមទៅCart"}
                   {showNumberToAdd && (
@@ -240,7 +240,7 @@ const ProductDetailCard = ({
                     }, 5000); // 5s
                   }}
                 >
-                  <button className="flex items-center justify-center max-w-[130px] w-full gap-2 p-2.5 font-bold rounded bg-blue-500 hover:bg-blue-600 text-white">
+                  <button className="flex items-center justify-center w-[130px] max-w-[130px]  gap-2 p-2.5 font-bold rounded bg-blue-500 hover:bg-blue-600 text-white">
                     {language == "en" ? "Copy Link" : "ចម្លងតំណ"}
                     {copied ? (
                       <IoMdCheckmarkCircleOutline className="animate-ping" />
