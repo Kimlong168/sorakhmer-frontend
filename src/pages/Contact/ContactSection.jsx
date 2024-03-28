@@ -49,7 +49,7 @@ const ContactSection = () => {
           ${
             formData.socialMediaLink
               ? `\nSocial Media: ${formData.socialMediaLink}`
-              : ""
+              : null
           }
           ${formData.phone ? `\nPhone Number: ${formData.phone}` : ""}
           ${formData.address ? `\nAddress: ${formData.address}` : ""}

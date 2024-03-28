@@ -137,19 +137,20 @@ export default function App() {
     // find if the product is already in the cart
     const existingProduct = cartItems.find((item) => item.id === product.id);
 
-    if (!existingProduct) {
-      // Add quantity property to the product
-      product = { ...product, quantity: 1 };
-      // Update state
-      setCartItems((prevCartItems) => [...prevCartItems, product]);
-      // Update local storage
-      const updatedCartItems = [...cartItems, product];
-      localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
-
+    //if it exists add quantity
+    if (existingProduct) {
+      existingProduct.quantity += product.quantity ? product.quantity : 1;
+      setCartItems([...cartItems]);
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
       return true;
     }
 
-    return false;
+    // if it is a new item
+    let quantity = product.quantity ? product.quantity : 1;
+    product = { ...product, quantity: quantity };
+    setCartItems((prevCartItems) => [...prevCartItems, product]);
+    const newCartItems = [...cartItems, product];
+    localStorage.setItem("cartItems", JSON.stringify(newCartItems));
   };
 
   // dark mode and light mode

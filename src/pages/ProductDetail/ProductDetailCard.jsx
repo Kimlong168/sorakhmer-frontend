@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import ContentDisplay from "../../components/ui/ContentDisplay";
 import SharingBtn from "../../components/ui/SharingBtn";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { FaLink, FaShoppingCart } from "react-icons/fa";
+import { FaLink, FaMoneyBill, FaShoppingCart } from "react-icons/fa";
 import { AnimatePresence } from "framer-motion";
 import Notification from "../../components/ui/Notification";
 import { DataContext } from "../../contexts/DataContext";
@@ -21,12 +21,17 @@ const ProductDetailCard = ({
   detail,
   description,
   productCategoryList,
+  quantity,
+  setQuantity,
+  setIsOpenForm,
 }) => {
   const { addToCart, setShowViewCartBtn, language } = useContext(DataContext);
+
   const [showImage, setShowImage] = useState(false);
   const [showDetail, setShowDetail] = useState(false);
   const [copied, setCopied] = useState(false);
   const [isAddedtoCart, setIsAddedtoCart] = useState(false);
+  const [showNumberToAdd, setShowNumberToAdd] = useState(false);
   //   get current url
   const currentURL = window.location.href;
 
@@ -126,21 +131,82 @@ const ProductDetailCard = ({
                 </div>
                 <hr />
 
-                {/* price */}
-                <div className="flex items-center gap-8 mt-8">
-                  {language == "en" ? "Price:" : "តម្លៃ:"}
-                  <h5 className="font-bold text-4xl">
-                    $ {`${price}${!price.includes(".") ? ".00" : ""}`}
-                  </h5>
+                <div className="flex items-center gap-12  mt-8">
+                  {/* price */}
+                  <div className="flex items-center gap-8">
+                    {language == "en" ? "Price:" : "តម្លៃ:"}
+                    <h5 className="font-bold text-4xl">
+                      $ {`${price}${!price.includes(".") ? ".00" : ""}`}
+                    </h5>
+                  </div>
                 </div>
+              </div>
+
+              <div className="mt-8 flex items-center gap-4">
+                {/* quantity button */}
+
+                <div className="flex flex-row max-w-[130px] relative bg-transparent overflow-hidden">
+                  {/* minus button */}
+                  <button
+                    onClick={() => {
+                      if (quantity < 2) return;
+
+                      setQuantity(parseFloat(quantity) - 1);
+                    }}
+                    className="p-2.5 px-4 w-[40px] rounded-s bg-gray-400 hover:bg-gray-500 lg:active:animate-ping text-white font-bold "
+                  >
+                    <span className="m-auto  font-bold">-</span>
+                  </button>
+
+                  {/* input quantity */}
+                  <input
+                    type="number"
+                    className="focus:outline-none text-center w-[50px] pl-2.5 bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"
+                    name="custom-input-number"
+                    min={1}
+                    value={parseFloat(quantity)}
+                    onChange={(e) => {
+                      if (e.target.value < 1) return;
+
+                      setQuantity(e.target.value);
+                    }}
+                  ></input>
+
+                  {/* plus button */}
+                  <button
+                    onClick={() => {
+                      // find the product in the cart
+                      setQuantity(parseFloat(quantity) + 1);
+                    }}
+                    className="p-2.5 px-4 w-[40px] rounded-e bg-gray-400 hover:bg-gray-500 lg:active:animate-ping text-white font-bold "
+                  >
+                    <span className="m-auto font-bold">+</span>
+                  </button>
+                </div>
+
+                {/* buy now */}
+                <button
+                  onClick={() => setIsOpenForm(true)}
+                  className="flex items-center justify-center max-w-[130px] w-full gap-2 p-2.5 bg-green-600 hover:bg-green-700 text-white font-bold rounded"
+                >
+                  {language == "en" ? "Buy Now" : "ទិញឥឡូវ"} <FaMoneyBill />
+                </button>
               </div>
 
               {/* buying and add to cart button */}
 
-              <div className="flex items-center gap-4  mt-8">
+              <div className="flex items-center gap-4 mt-4">
                 <button
                   onClick={() => {
-                    addToCart({ id, name, price, image });
+                    addToCart({ id, name, price, image, quantity });
+
+                    // show number added to cart
+                    setShowNumberToAdd(true);
+                    setTimeout(() => {
+                      setShowNumberToAdd(false);
+                    }, 500);
+
+                    // show add to cart notification
                     setIsAddedtoCart(true);
                     // show view cart button
                     setShowViewCartBtn(true);
@@ -149,9 +215,15 @@ const ProductDetailCard = ({
                       setShowViewCartBtn(false);
                     }, 2000);
                   }}
-                  className="flex items-center gap-2 p-2.5 bg-primary hover:bg-primary-light text-white font-bold rounded"
+                  className="flex items-center justify-center max-w-[130px] w-full gap-2 p-2.5 bg-primary hover:bg-primary-light text-white font-bold rounded relative"
                 >
-                  Add to Cart
+                  {language == "en" ? "Add to Cart" : "បន្ថែមទៅCart"}
+                  {showNumberToAdd && (
+                    <span className="absolute -right-2 -top-2 text-white  font-bold text-xs bg-red-600 rounded-full w-5 h-5 p-2 grid place-content-center animate-bounce">
+                      +{quantity}
+                    </span>
+                  )}
+
                   {isAddedtoCart ? (
                     <IoMdCheckmarkCircleOutline className="animate-ping" />
                   ) : (
@@ -168,7 +240,7 @@ const ProductDetailCard = ({
                     }, 5000); // 5s
                   }}
                 >
-                  <button className="flex items-center gap-2 p-2.5 font-bold rounded bg-blue-500 hover:bg-blue-600 text-white">
+                  <button className="flex items-center justify-center max-w-[130px] w-full gap-2 p-2.5 font-bold rounded bg-blue-500 hover:bg-blue-600 text-white">
                     {language == "en" ? "Copy Link" : "ចម្លងតំណ"}
                     {copied ? (
                       <IoMdCheckmarkCircleOutline className="animate-ping" />
@@ -240,5 +312,8 @@ ProductDetailCard.propTypes = {
   isActive: PropTypes.bool.isRequired,
   productCategoryList: PropTypes.array.isRequired,
   productParams: PropTypes.string.isRequired,
+  quantity: PropTypes.number.isRequired,
+  setQuantity: PropTypes.func.isRequired,
+  setIsOpenForm: PropTypes.func.isRequired,
 };
 export default ProductDetailCard;

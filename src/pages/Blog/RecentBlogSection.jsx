@@ -43,6 +43,7 @@ const RecentBlogSection = () => {
                   whileInView={"show"}
                   viewport={{ once: true, amount: 0.3 }}
                   className="w-full"
+                  key={blog.id}
                 >
                   <h3 className="text-3xl font-bold hover:text-primary line-clamp-3">
                     {blog.title}

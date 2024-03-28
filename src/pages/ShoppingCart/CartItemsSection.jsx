@@ -18,7 +18,7 @@ import {
   ref,
   uploadBytes,
 } from "firebase/storage";
-import CustomerContactForm from "./CustomerContactForm";
+import OrderCheckoutForm from "../../components/form/OrderCheckoutForm";
 import checkSocialMedia from "../../utils/checkSocialMedia";
 import { addDoc, collection } from "firebase/firestore";
 
@@ -129,7 +129,7 @@ const CartItemsSection = () => {
               const form = new FormData();
 
               // caption for the image to send to telegram
-              const messageToSend = `===== New Order =====\n\nOrder id: ${orderId}\nDate: ${new Date().toLocaleString()}\nUpdate Status: https://sorakhmer-backend.netlify.app/orderDetail/${orderId}
+              const messageToSend = `===== New Order =====\n\nOrder id: ${orderId}\n\nDate: ${new Date().toLocaleString()}\n\nUpdate Status: https://sorakhmer-admin.netlify.app/orderDetail/${orderId}
                 \n----------------------------------${
                   formData.fullName ? `\nName: ${formData.fullName}` : ""
                 }
@@ -146,7 +146,7 @@ const CartItemsSection = () => {
                 }
                 ${formData.message ? `\nMessage: ${formData.message}` : ""}
                 \n----------------------------------
-                \nTotal: ${total} $
+                \n💰Total: ${total} $
                 \n----------------------------------`;
 
               form.append("chat_id", chat_id);
@@ -638,9 +638,9 @@ const CartItemsSection = () => {
         </div>
       </div>
 
-      {/* customer contact form */}
+      {/* order checkout form */}
       {isOpenForm && (
-        <CustomerContactForm
+        <OrderCheckoutForm
           setIsOpenForm={setIsOpenForm}
           formData={formData}
           setFormData={setFormData}

@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import PropType from "prop-types";
 import { Html5QrcodeScanner } from "html5-qrcode";
-import RedStar from "../../components/ui/RedStar";
-import SuccessModal from "../../components/ui/SuccessModal";
-import WarningModal from "../../components/ui/WarningModal";
-import LoadingWithPercentage from "../../components/ui/LoadingWithPercentage";
+import RedStar from "../ui/RedStar";
+import SuccessModal from "../ui/SuccessModal";
+import WarningModal from "../ui/WarningModal";
+import LoadingWithPercentage from "../ui/LoadingWithPercentage";
 import { FaWindowClose } from "react-icons/fa";
 import "../../App.css";
 import { DataContext } from "../../contexts/DataContext";
@@ -13,7 +13,8 @@ const CustomerContactForm = ({
   formData,
   setFormData,
   sendToTelegram,
-  setChangeContent,
+  setChangeContent = () => {},
+  orderDetail = null,
 }) => {
   const { language } = useContext(DataContext);
   const [isSubmitted, setIsSubmitted] = useState({
@@ -85,6 +86,7 @@ const CustomerContactForm = ({
                 <h2 className="text-2xl font-bold">
                   {language == "en" ? "Place Order" : "បញ្ជាទិញ"}
                 </h2>
+
                 <div
                   onClick={() => setIsOpenForm(false)}
                   className="cursor-pointer hover:text-primary"
@@ -92,6 +94,20 @@ const CustomerContactForm = ({
                   <FaWindowClose size={18} />
                 </div>
               </div>
+
+              {/* show order detail for buy now function */}
+              {orderDetail && (
+                <div className="-mt-1 mb-2.5 font-bold">
+                  {orderDetail.productName} ( ${orderDetail.price}
+                  {" x "}
+                  {orderDetail.quantity}
+                  {" = "}
+                  <span className="text-lg text-primary">
+                    {language == "en" ? `Total` : `សរុប`} ${orderDetail.total}
+                  </span>
+                  )
+                </div>
+              )}
               {!isSending ? (
                 // form for user to input their information
                 <form>
@@ -366,7 +382,8 @@ CustomerContactForm.propTypes = {
   formData: PropType.object.isRequired,
   setFormData: PropType.func.isRequired,
   sendToTelegram: PropType.func.isRequired,
-  setChangeContent: PropType.func.isRequired,
+  setChangeContent: PropType.func,
+  orderDetail: PropType.object,
 };
 
 export default CustomerContactForm;

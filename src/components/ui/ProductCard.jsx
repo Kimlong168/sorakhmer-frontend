@@ -56,6 +56,7 @@ const ProductCard = ({ product }) => {
           </Link>
           <span
             onClick={() => {
+              if (isAddedtoCart) return; //return if already added to cart
               // const isAdded = addToCart({ id, name, price, image });
               addToCart({ id, name, price, image });
               setIsAddedtoCart(true);
